@@ -1,0 +1,18 @@
+substance3d package
+===================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   substance3d.api
+
+Module contents
+---------------
+
+.. automodule:: substance3d
+   :members:
+   :undoc-members:
+   :show-inheritance:

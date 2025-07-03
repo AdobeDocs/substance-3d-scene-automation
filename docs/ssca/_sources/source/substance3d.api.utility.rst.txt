@@ -1,0 +1,30 @@
+substance3d.api.utility package
+===============================
+
+Submodules
+----------
+
+substance3d.api.utility.utility module
+--------------------------------------
+
+.. automodule:: substance3d.api.utility.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.utility.mesh_processing module
+----------------------------------------------
+
+.. automodule:: substance3d.api.utility.mesh_processing
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
