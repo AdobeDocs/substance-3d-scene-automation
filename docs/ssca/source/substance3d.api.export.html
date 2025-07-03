@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.export package &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.export package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/substance3d.api.export.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="substance3d-api-export-package">
+<h1>substance3d.api.export package<a class="headerlink" href="#substance3d-api-export-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-substance3d.api.export.export">
+<span id="substance3d-api-export-export-module"></span><h2>substance3d.api.export.export module<a class="headerlink" href="#module-substance3d.api.export.export" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.abc">
+<span class="sig-name descname"><span class="pre">abc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.abc" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Warning<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Experimental Feature</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – </p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p>Create an alembic file from selected scene or object.
+Alembic format support geometry tree, animation and particles, materials and other types will be discarded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the abc file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the abc file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.archive">
+<span class="sig-name descname"><span class="pre">archive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_sbsar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_usda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.archive" title="Permalink to this definition"></a></dt>
+<dd><p>Create an usdz archive with a scene containing all its dependencies.
+Assets path will be modified to match the new location in the archive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object to archive containing all its dependencies</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the archive file</p></li>
+<li><p><strong>bake_sbsar</strong> (<em>bool</em>) – If True all the sbsar assets will be baked as png files to avoid the need of the sbsar plugin
+If flat argument is True sbsar will be automatically baked</p></li>
+<li><p><strong>flat</strong> (<em>bool</em>) – If true the scene will be flattened before the archiving</p></li>
+<li><p><strong>root_usda</strong> – If True the root usd file in usdz archive will be saved as usda (instead of usd)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the archive file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.fbx">
+<span class="sig-name descname"><span class="pre">fbx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.fbx" title="Permalink to this definition"></a></dt>
+<dd><p>Create a fbx file from selected scene or object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object to archive containing all its dependencies</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the fbx file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the fbx file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.glb">
+<span class="sig-name descname"><span class="pre">glb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_material_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.glb" title="Permalink to this definition"></a></dt>
+<dd><p>Create a glb file from selected scene or object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object to archive containing all its dependencies</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the glb file</p></li>
+<li><p><strong>embed_images</strong> (<em>bool</em>) – If True the images dependencies will be written into the glb file as base64</p></li>
+<li><p><strong>use_material_extensions</strong> (<em>bool</em>) – If True the KHR_materials_transmission extension will be used to encode translucency and opacity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the glb file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.gltf">
+<span class="sig-name descname"><span class="pre">gltf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_material_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.gltf" title="Permalink to this definition"></a></dt>
+<dd><p>Create a gltf file with a .bin and textures next to it from selected scene or object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object to archive containing all its dependencies</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the gltf file</p></li>
+<li><p><strong>embed_images</strong> (<em>bool</em>) – If True the images dependencies will be written into the gltf file as base64</p></li>
+<li><p><strong>use_material_extensions</strong> (<em>bool</em>) – If True the KHR_materials_transmission extension will be used to encode translucency and opacity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the gltf file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.export.export.scene_with_dependencies">
+<span class="sig-name descname"><span class="pre">scene_with_dependencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_sbsar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.export.export.scene_with_dependencies" title="Permalink to this definition"></a></dt>
+<dd><p>Create an usd, usda, or usdc file with a scene containing all its dependencies.
+Assets path will be modified to match the new location in the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – Can be either a scene or an object to export containing all its dependencies</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – filename of the export file</p></li>
+<li><p><strong>bake_sbsar</strong> (<em>bool</em>) – If True all the sbsar assets will be baked as png files to avoid the need of the sbsar plugin
+If flat argument is True sbsar will be automatically baked</p></li>
+<li><p><strong>flat</strong> (<em>bool</em>) – If true the scene will be flattened before the archiving    “return: the export file path</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-substance3d.api.export.export_utilities">
+<span id="substance3d-api-export-export-utilities-module"></span><h2>substance3d.api.export.export_utilities module<a class="headerlink" href="#module-substance3d.api.export.export_utilities" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-substance3d.api.export">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.export" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

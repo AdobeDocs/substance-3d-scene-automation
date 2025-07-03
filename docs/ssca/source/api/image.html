@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.image &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="substance3d.api.utility" href="utility.html" />
+    <link rel="prev" title="substance3d.api.renderer" href="renderer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">ALLOWED_EXTENSIONS</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.from_filepath"><code class="docutils literal notranslate"><span class="pre">Image.from_filepath()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.__init__"><code class="docutils literal notranslate"><span class="pre">Image.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.save"><code class="docutils literal notranslate"><span class="pre">Image.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.over"><code class="docutils literal notranslate"><span class="pre">over()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.create_solid_color"><code class="docutils literal notranslate"><span class="pre">create_solid_color()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.superpose"><code class="docutils literal notranslate"><span class="pre">superpose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.create_contact_sheet"><code class="docutils literal notranslate"><span class="pre">create_contact_sheet()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.color_correction"><code class="docutils literal notranslate"><span class="pre">color_correction()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.invert_channel"><code class="docutils literal notranslate"><span class="pre">invert_channel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.save_animated_gif"><code class="docutils literal notranslate"><span class="pre">save_animated_gif()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.pixel_value"><code class="docutils literal notranslate"><span class="pre">pixel_value()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.num_channels"><code class="docutils literal notranslate"><span class="pre">num_channels()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.color_space"><code class="docutils literal notranslate"><span class="pre">color_space()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.save_multipart_exr"><code class="docutils literal notranslate"><span class="pre">save_multipart_exr()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.hdri_panorama_from_match_image"><code class="docutils literal notranslate"><span class="pre">hdri_panorama_from_match_image()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.add_metadata"><code class="docutils literal notranslate"><span class="pre">add_metadata()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.metadata"><code class="docutils literal notranslate"><span class="pre">metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/image.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-substance3d.api.image.image">
+<span id="substance3d-api-image"></span><h1>substance3d.api.image<a class="headerlink" href="#module-substance3d.api.image.image" title="Permalink to this heading"></a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.image.image.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">substance3d.api.image.image</span> <span class="pre">(Level</span> <span class="pre">1)&gt;</span></em><a class="headerlink" href="#substance3d.api.image.image.logger" title="Permalink to this definition"></a></dt>
+<dd><p>Supported image extensions</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.image.image.ALLOWED_EXTENSIONS">
+<span class="sig-name descname"><span class="pre">ALLOWED_EXTENSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#substance3d.api.image.image.ALLOWED_EXTENSIONS" title="Permalink to this definition"></a></dt>
+<dd><p>Best format for technical aov</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Image</span></span><a class="headerlink" href="#substance3d.api.image.image.Image" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>Image object represents an image buffer from a file path or as rendering results.</dt><dd><p>Image must be created with the class method Image.from_filepath()
+Members:
+* height      (int): image height, in pixels
+* width       (int): image width, in pixels
+* channels    (List[str, …]): image channel names</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image.from_filepath">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_filepath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_alpha_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.Image.from_filepath" title="Permalink to this definition"></a></dt>
+<dd><p>Create an Image object from a valid file path
+:param filename: a valid file path
+:param add_alpha_channel: Whether an alpha channel will be auto added if it’s missing, defaults to False
+:return: Image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>add_alpha_channel</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.Image.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aov_best_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_color_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.Image.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save the Image pixel buffer into a supported image file
+:param filename: A valid file path
+:param aov_best_format: Some AOVs are valid only if they are saved in a specific format, if True the best</p>
+<blockquote>
+<div><p>extension will be used in filename. If the given filename already has an extension it will be replaced</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force_color_space</strong> – Takes no account of color configuration and applies the given value in all cases. Value
+must be a valid string color space, for now values are ‘sRGB’ and ‘linear’</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the output file path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.over">
+<span class="sig-name descname"><span class="pre">over</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foreground</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_fg_colorspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_bg_colorspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.over" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Compose foreground and background images with an over operation. Final Image dimension will be the larger</dt><dd><p>of the two images.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>foreground</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – a valid image filepath or Image object for the foreground</p></li>
+<li><p><strong>background</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – a valid image filepath or Image object for the background</p></li>
+<li><p><strong>roi</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – rectangle of interest, on this operation it will act like a crop rectangle. The final image will be
+cropped by the roi values, the final image dimensions will be impacted by the roi values.
+roi tuple take four pixel values: (width1, width2, height1, height2)</p></li>
+<li><p><strong>force_fg_colorspace</strong> (<em>str</em><em> | </em><em>None</em>) – force foreground colorspace</p></li>
+<li><p><strong>force_bg_colorspace</strong> (<em>str</em><em> | </em><em>None</em>) – force background colorspace</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.resize">
+<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.resize" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Resize the given Image by the ROI rectangle size.</dt><dd><p>The filters are blackman-harris when upsizing and lanczos3 when downsizing</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – a valid image filepath or Image object for the foreground</p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – the new size for the given image, in pixel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.create_solid_color">
+<span class="sig-name descname"><span class="pre">create_solid_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1024,</span> <span class="pre">1024)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.create_solid_color" title="Permalink to this definition"></a></dt>
+<dd><p>Create a uniform color image of size of the ROI rectangle.
+:param color: a float tuple (R, G, B) or (R, G, B, A).
+:param size: a tuple for image size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>color</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>] </em><em>| </em><em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – </p></li>
+<li><p><strong>size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.superpose">
+<span class="sig-name descname"><span class="pre">superpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foreground</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.superpose" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Superpose foreground image on top of background image and apply the given offset.</dt><dd><p>Warning, it’s not an over operation, for example, the alpha multiplication will not be applied.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>background</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – The background Image.</p></li>
+<li><p><strong>foreground</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em>) – The foreground Image on which the offset will be applied</p></li>
+<li><p><strong>offset</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – two dimension offset, the offset will be applied from the top-left corner of the foreground Image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.create_contact_sheet">
+<span class="sig-name descname"><span class="pre">create_contact_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.create_contact_sheet" title="Permalink to this definition"></a></dt>
+<dd><p>Create a contact sheet image from the given images and the chosen grid size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_list</strong> (<em>list</em><em>[</em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em>] </em><em>| </em><em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>list</em><em>[</em><em>pathlib.Path</em><em>]</em>) – A list of Images or a list of valid file paths</p></li>
+<li><p><strong>grid_size</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The rows and columns number for the contact sheet</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Final width of the contact sheet, the height will be calculated according to
+the given width and height of the given images.</p></li>
+<li><p><strong>border_size</strong> (<em>int</em>) – Add a border between images by giving a border size in pixel</p></li>
+<li><p><strong>border_color</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – The color of the border, black is the default</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.color_correction">
+<span class="sig-name descname"><span class="pre">color_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_space</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.color_correction" title="Permalink to this definition"></a></dt>
+<dd><p>Color correct an image, from one color space to another.
+:param image: Image to color correct
+:param from_space: Should be the image’s origin color space, ex: “linear”
+:param to_space: The desired output color space ex: “sRGB”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>from_space</strong> (<em>str</em>) – </p></li>
+<li><p><strong>to_space</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>Normalize pixel values of an image between 0-1
+:param image: Image or filepath to normalize</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>min</strong> (<em>float</em>) – </p></li>
+<li><p><strong>max</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.invert_channel">
+<span class="sig-name descname"><span class="pre">invert_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.invert_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Invert the given channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – Image or filepath</p></li>
+<li><p><strong>channel_name</strong> (<em>str</em>) – the name of the channel to invert</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.save_animated_gif">
+<span class="sig-name descname"><span class="pre">save_animated_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.save_animated_gif" title="Permalink to this definition"></a></dt>
+<dd><p>Save an animated gif from an Image list or a valid filepath list.
+:param images: Image list or filepath list
+:param filename: A valid filename to save the gif
+:param fps: Frames per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list</em><em>[</em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em>] </em><em>| </em><em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>list</em><em>[</em><em>pathlib.Path</em><em>]</em>) – </p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>fps</strong> (<em>float</em><em> | </em><em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.pixel_value">
+<span class="sig-name descname"><span class="pre">pixel_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.pixel_value" title="Permalink to this definition"></a></dt>
+<dd><p>Get the pixel value for the given position and the given channel
+:param image: Image or filepath
+:param pos: position (x, y) of the pixel, the origin is upper-left
+:param channel_id: the channel index of the pixel value, R: 0, G: 1, B: 2, A: 3 …
+:param z: z position if it’s a deep image, by default 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>pos</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – </p></li>
+<li><p><strong>channel_id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>z</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.num_channels">
+<span class="sig-name descname"><span class="pre">num_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.num_channels" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of channels stored in the specified image
+:param image: Image or filepath</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.color_space">
+<span class="sig-name descname"><span class="pre">color_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.color_space" title="Permalink to this definition"></a></dt>
+<dd><p>Get the color space of the specified image
+:param image: Image or filepath</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.save_multipart_exr">
+<span class="sig-name descname"><span class="pre">save_multipart_exr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_color_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.save_multipart_exr" title="Permalink to this definition"></a></dt>
+<dd><p>Save a multipart (similar to layers) single EXR from a list of Image
+The first Image will be considered as the default one channels RGBA
+:param images: Image list or filepath list
+:param filename: A valid filename to save the exr
+:param force_color_space: Takes no account of color configuration and applies the given value in all cases. Value</p>
+<blockquote>
+<div><p>must be a valid string color space, for now values are ‘sRGB’ and ‘linear’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list</em><em>[</em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em>] </em><em>| </em><em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>list</em><em>[</em><em>pathlib.Path</em><em>]</em>) – </p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>force_color_space</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.hdri_panorama_from_match_image">
+<span class="sig-name descname"><span class="pre">hdri_panorama_from_match_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.hdri_panorama_from_match_image" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a ‘latlong’ panorama from the given image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – Image or filepath</p></li>
+<li><p><strong>camera_info</strong> (<em>Optional</em><em>[</em><em>substance3d.usd.ml.MatchPerspectiveEstimate</em><em>]</em>) – optional camera perspective estimation info</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.add_metadata">
+<span class="sig-name descname"><span class="pre">add_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.add_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Add a metadata dict to the buffer image.
+Supported types : str for the keys, str, int, float for the values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – Image or filepath</p></li>
+<li><p><strong>metadata</strong> (<em>dict</em>) – metadata dict</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Image</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Get metadata from an image file or an image buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>str</em><em> | </em><em>pathlib.Path</em>) – Image or filepath</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="renderer.html" class="btn btn-neutral float-left" title="substance3d.api.renderer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="substance3d.api.utility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
