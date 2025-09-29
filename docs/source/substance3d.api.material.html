@@ -111,6 +111,26 @@
 <dt class="sig sig-object py" id="substance3d.api.material.material.Definitions">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Definitions</span></span><a class="headerlink" href="#substance3d.api.material.material.Definitions" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.Definitions.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#substance3d.api.material.material.Definitions.ALL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.Definitions.ASM">
+<span class="sig-name descname"><span class="pre">ASM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#substance3d.api.material.material.Definitions.ASM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.Definitions.MaterialX">
+<span class="sig-name descname"><span class="pre">MaterialX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#substance3d.api.material.material.Definitions.MaterialX" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.Definitions.UsdPreviewSurface">
+<span class="sig-name descname"><span class="pre">UsdPreviewSurface</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#substance3d.api.material.material.Definitions.UsdPreviewSurface" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py data">
@@ -237,7 +257,7 @@ If parent is a Scope object material will be created under it.</p></li>
 <li><p><strong>material_name</strong> (<em>str</em><em> | </em><em>None</em>) – The material name if None it will be the file name</p></li>
 <li><p><strong>materials_root_path</strong> (<em>str</em><em> | </em><em>None</em>) – Scene’s object where all the materials will be created under, default: /{defaultPrim}/materials.
 If parent is a Scope object material will be created under it.</p></li>
-<li><p><strong>material_definitions</strong> (<em>list</em><em>[</em><a class="reference internal" href="#substance3d.api.material.material.Definitions" title="substance3d.api.material.material.Definitions"><em>substance3d.api.material.material.Definitions</em></a><em>] </em><em>| </em><a class="reference internal" href="#substance3d.api.material.material.Definitions" title="substance3d.api.material.material.Definitions"><em>substance3d.api.material.material.Definitions</em></a><em> | </em><em>None</em>) – A <cite>material.Definitions</cite> list or individual material definitions wanted in the USD from the sbsar, default: ASM &amp; UsdPreviewSurface</p></li>
+<li><p><strong>material_definitions</strong> (<em>list</em><em>[</em><a class="reference internal" href="#substance3d.api.material.material.Definitions" title="substance3d.api.material.material.Definitions"><em>substance3d.api.material.material.Definitions</em></a><em>] </em><em>| </em><a class="reference internal" href="#substance3d.api.material.material.Definitions" title="substance3d.api.material.material.Definitions"><em>substance3d.api.material.material.Definitions</em></a><em> | </em><em>None</em>) – Give a <cite>material.Definitions</cite> list the material definitions wanted in the USD from the sbsar, default ASM &amp; UsdPreviewSurface</p></li>
 <li><p><strong>graph_identifier</strong> (<em>str</em><em> | </em><em>None</em>) – use this graph if the sbsar has more than one material graph.
 If None, the graph with the same name as the file will be loaded otherwise the first one.</p></li>
 </ul>
@@ -289,7 +309,7 @@ split by channel with channel red for occlusion input, green for roughness input
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.material.material.create_shadow_catching">
-<span class="sig-name descname"><span class="pre">create_shadow_catching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflection_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadow_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_lights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">materials_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.create_shadow_catching" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_shadow_catching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflection_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadow_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">materials_root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.create_shadow_catching" title="Permalink to this definition"></a></dt>
 <dd><p>Create a shadow catching material</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -299,7 +319,6 @@ split by channel with channel red for occlusion input, green for roughness input
 <li><p><strong>reflection_opacity</strong> (<em>float</em>) – Reflection opacity</p></li>
 <li><p><strong>roughness</strong> (<em>float</em>) – Roughness of the surface reflections</p></li>
 <li><p><strong>shadow_opacity</strong> (<em>float</em>) – Shadow opacity</p></li>
-<li><p><strong>local_lights</strong> (<em>bool</em>) – take into account the scene’s lights</p></li>
 <li><p><strong>materials_root_path</strong> (<em>str</em><em> | </em><em>None</em>) – Scene’s object where all the materials will be created under, default: /{defaultPrim}/materials.
 If parent is a Scope object material will be created under it.</p></li>
 </ul>
@@ -501,7 +520,7 @@ search the entire scene</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.material.material.set_input">
-<span class="sig-name descname"><span class="pre">set_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_definition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">substance3d.usd.utils.NetworkType.AllNetworks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.set_input" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_definition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Definitions.ALL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.set_input" title="Permalink to this definition"></a></dt>
 <dd><p>Set material input, if input doesn’t exist, it will be created in material and connected for the given material definition.
 :param parent: A material PrimHandler
 :param input_name: a valid input name
