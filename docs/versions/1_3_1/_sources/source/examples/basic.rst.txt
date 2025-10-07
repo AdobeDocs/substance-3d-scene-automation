@@ -1,0 +1,58 @@
+Scene manipulations
+-------------------
+
+This basic example show how to create and load a scene file with the `scene` module.
+
+Create and save a new scene
+===========================
+
+.. testcode:: python
+
+    # import the scene module from the api package
+    from substance3d.api import scene
+
+    """
+    To create a new scene simply call `scene.new`, by giving a valid filepath an empty file
+    will be reserved at this path, by giving nothing no file will be reserved until calling
+    a save function.
+    """
+    # create a new scene without filepath
+    my_scn = scene.new()
+
+    # save the scene by giving an valid output filepath
+    output_path = scene.save(my_scn, 'empty_scene.usda')
+
+
+    # create a new scene by giving a filepath
+    my_scn = scene.new('empty_scene2.usda')
+
+    # no need to give a filepath, it defined during the scene creation
+    output_path = scene.save(my_scn)
+
+    # consider the function as "save as" by giving a different filepath
+    output_path = scene.save(my_scn, 'empty_scene3.usda')
+
+
+.. testcleanup:: python
+
+    import os
+    os.remove('empty_scene.usda')
+    os.remove('empty_scene2.usda')
+    os.remove('empty_scene3.usda')
+
+
+Open an existing scene
+======================
+
+.. code-block:: python
+
+    # import the scene module from the api package
+    from substance3d.api import scene
+
+    """
+    Use `scene.load` by giving a valid filepath to load en existing scene
+    the scene can be in .usda, .usd, .gltf and more, check `scene.ALLOWED_EXTENSIONS` to get
+    the full list
+    """
+    my_scn = scene.load('park.usda')
+

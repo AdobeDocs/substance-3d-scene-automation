@@ -1,0 +1,214 @@
+Introduction
+------------
+
+.. note:: Substance 3D Scene Automation is currently in development and released as a beta. Its usage is restricted to non commercial use.
+
+What is Substance 3D Scene Automation?
+======================================
+Substance 3D Scene Automation (SSCA) is a set of APIs that allows you to create workflows to automate pipelines to create and
+process 3D assets at scale. SSCA uses USD to allow for format and visual consistency as well
+as performance optimization across the workflow.
+
+SSCA's powerful pipeline tools mean that it has use cases across industries.
+Generate textures for game assets, automate e-commerce content creation,
+or create hundreds of variations of a product during the design phase.
+
+.. important::
+
+    SSCA is also designed to be as easy to use as possible -
+    it doesn't require USD specific knowledge or extensive programming experience.
+    Users with basic Python skills should be able to easily pick up and use SSCA.
+
+
+While SSCA is built on USD, we developed several plugins to support multiple filetypes:
+USD, FBX, OBJ, and GLTF. At the time of writing, USD is still relatively new in the 3D space,
+and many well-known 3D applications do not yet have full support for all features of the format.
+If you're saving to USD format, we recommend using an application with native USD support for viewing
+or testing your SSCA creations.
+Screenshots in this user guide were taken from Omniverse Create,
+an application created by Nvidia for building and working with USD scenes.
+
+How to install and configure SSCA
+=================================
+SSCA Environment
+#################
+SSCA requires the user to run the python executable contained in the SSCA package.  It is important to make sure this is run in a clean environment.  If the environment's PATH variable includes path(s) to other USD installations, specifically the USD/bin or USD/lib folders, it will conflict with SSCA.  In addition, SSCA has python package and USD plugin dependencies.  Therefore, please be careful if setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could conflict with SSCA.
+
+.. note::  Due to the system environment restrictions, it is recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.
+
+.. note:: If you already developed with USD, be sure to clean your PATH before setting up SSCA
+
+Visual Studio Code Instructions
+*******************************
+Set up
+""""""
+#. Download and install the community version of `Visual Studio Code <https://code.visualstudio.com/download>`_.
+
+#. Download and unzip the Substance 3D SSCA package.
+
+#. Move the contents of the unzipped SSCA package to your desired working location. For example: ``C:/Users/<username>/SSCA Workspace``.
+
+#. Create a folder for your SSCA project
+
+#. Launch Visual Studio Code.
+
+#. Open a project with File > Open Folder and navigate to the folder created in step 4
+
+Set up the Python interpreter
+"""""""""""""""""""""""""""""
+Visual Studio Code allows the user to set the python interpreter for a specific project.
+
+#. Open Visual Studio Code settings with File > Preferences -> Settings
+
+#. Expand the Extensions menu
+
+#. Select Python
+
+#. Set the Default Interpreter path to the SSCA python executable:
+
+    * Windows: This should be located in ``<SSCA package>/bin/python.exe``
+
+    * Mac/Linux: This should be located in ``<SSCA package>/bin/python3``
+
+Run your first script
+"""""""""""""""""""""
+#. Create a python file with File > New File Test.py
+#. Copy the code below into the new file - this script creates a simple scene with a light and a cube.
+
+    .. code-block:: python
+
+        # import the scene module from the api package
+        from substance3d.api import scene, primitive, light
+
+        # create a new scene
+        my_scene = scene.new()
+
+        # create a cube
+        shape1 = primitive.cube(my_scene, 'cube')
+
+        # create a light
+        light1 = light.distant(my_scene, 'distant_light')
+
+        # save the scene with a valid output filepath
+        output_path = scene.save(my_scene, './TestScene.usda')
+
+.. image:: ../static/run_script.png
+
+#. Run the script with shortcut Ctrl+Shift+D
+#. To confirm the script ran successfully, a file called TestScene.usda should have been created in the same folder as your script.
+
+
+.. warning::
+
+    If the test script fails to find the SSCA modules, there could  be a conflict in the environment. 
+    Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
+
+Pycharm Instructions
+********************
+(skip if Visual Studio Code was setup)
+
+Set up
+""""""
+
+#. Download and install the community version of `Pycharm <https://www.jetbrains.com/pycharm/download/>`_.
+
+#. Download and unzip the Substance 3D SSCA package.
+
+#. Move the contents of the unzipped SSCA package to your desired working location.
+
+    * For example: "C:/Users/<username>/SSCA Workspace".
+
+#. Launch Pycharm.
+
+#. Open a project with File > Open
+
+    * If it's your first time launching Pycharm, navigate through the prompts and then select Open.
+
+#. Navigate to and open the folder where you saved the SSCA package.
+
+Set up the Python interpreter
+"""""""""""""""""""""""""""""
+PyCharm comes with the capability to create virtual environments for your Python interpreter. A virtual environment allows you to manage settings and dependencies of your project without impacting other projects.
+
+#. Open Pycharm's settings with File > Settings (or press Ctrl + Alt + S)
+
+#. In the left panel, select "Project: <Your project name>" and then "Python Interpreter".
+
+#. Select Add Interpreter > Add Local Interpreter.
+
+#. Select "Virtualenv Environment" from the list of options on the left side of the window that appears.
+
+#. Enter the path to the python.exe file included with the SSCA package.
+
+    * Windows: This should be located in ``<SSCA package>/bin/python.exe``.
+
+    * Mac/Linux: This should be located in ``<SSCA package>/bin/python3``.
+
+Configure the project
+"""""""""""""""""""""
+
+#. With the project open in Pycharm, use Run > Edit Configurations
+
+#. Add a new run configuration
+
+#. Set Script path to the path of the script that you will run
+
+    * For example, ``C:/Users/<username>/SSCA Workspace/TestScript.py``
+
+#. Set Working directory to the path of the package
+
+    * For example, ``C:/Users/<username>/SSCA Workspace``
+
+#. Ensure that the Python Interpreter is set to the Python 3.11 Interpreter created earlier
+
+#. Leave Add content roots to PYTHONPATH checked
+
+#. Leave Add source roots to PYTHONPATH checked
+
+#. Select "OK" to save your run configuration
+
+Run your first script
+"""""""""""""""""""""
+
+#. Create a python file that matches the name used in the run configuration
+
+    * For example: "C:/Users/<username>/SSCA Workspace/TestScript.py"
+
+#. Copy the code below into the new file. This script creates a simple scene with a light and a cube.
+
+    .. code-block:: python
+
+        # import the scene module from the api package
+        from substance3d.api import scene, primitive, light
+
+        # create a new scene
+        my_scene = scene.new()
+
+        # create a cube
+        shape1 = primitive.cube(my_scene, 'cube')
+
+        # create a light
+        light1 = light.distant(my_scene, 'distant_light')
+
+        # save the scene with a valid output filepath
+        output_path = scene.save(my_scene, './TestScene.usda')
+
+#. Run the script with shortcut Shift + F10 or click the arrow at the top right of the Pycharm window.
+
+#. To confirm the script ran successfully, check the console at the bottom of the Pycharm window. The last line should say "Process finished with exit code 0".
+
+    * Additionally, a file called TestScene.usda should have been created in the same folder as your script.
+
+Configure your environment for Linux with NVIDIA GPU
+####################################################
+
+On Linux, running machine learning features (e.g., denoiser, match image, etc.) on GPU requires additional setup. 
+Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones with ``compute capability >= 8.6`` are tested.
+
+Follow the steps below to configure your environment:
+
+#. Download the NVIDIA CUDA Toolkit from `NVIDIA's website <https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Rocky&target_version=8&target_type=rpm_local>`_.
+
+#. Unzip the downloaded file
+
+#. Include the path in ``LD_LIBRARY_PATH``
