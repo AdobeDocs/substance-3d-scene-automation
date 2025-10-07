@@ -77,10 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.set_translate"><code class="docutils literal notranslate"><span class="pre">set_translate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_translate"><code class="docutils literal notranslate"><span class="pre">get_translate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.set_scale_pivot"><code class="docutils literal notranslate"><span class="pre">set_scale_pivot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.set_scale"><code class="docutils literal notranslate"><span class="pre">set_scale()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_scale_pivot"><code class="docutils literal notranslate"><span class="pre">get_scale_pivot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_scale"><code class="docutils literal notranslate"><span class="pre">get_scale()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.set_rotate_pivot"><code class="docutils literal notranslate"><span class="pre">set_rotate_pivot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.set_rotate"><code class="docutils literal notranslate"><span class="pre">set_rotate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_rotate_pivot"><code class="docutils literal notranslate"><span class="pre">get_rotate_pivot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_rotate"><code class="docutils literal notranslate"><span class="pre">get_rotate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.clear_transform"><code class="docutils literal notranslate"><span class="pre">clear_transform()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform.get_world_transform"><code class="docutils literal notranslate"><span class="pre">get_world_transform()</span></code></a></li>
@@ -100,7 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -108,9 +113,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -351,6 +356,28 @@ or append as new operator.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.set_scale_pivot">
+<span class="sig-name descname"><span class="pre">set_scale_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_scale_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Set a scale pivot for the given object, in this case a scale pivot is an invert transformation that allow
+to scale the object from somewhere other than the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to apply a scale pivot</p></li>
+<li><p><strong>value</strong> (<em>tuple</em><em> | </em><em>list</em>) – the vector value of the scale pivot position</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to move the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the moved object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform.set_scale">
 <span class="sig-name descname"><span class="pre">set_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_scale" title="Permalink to this definition"></a></dt>
 <dd><p>Set scale values, if a scale operator already exists the existing values will be replaced by the given ones.
@@ -368,6 +395,26 @@ In opposition to <cite>transform.scale</cite> that add given vector to the exist
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.get_scale_pivot">
+<span class="sig-name descname"><span class="pre">get_scale_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.get_scale_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Get scale pivot values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get values</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to get the object’s values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>scale values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -415,6 +462,28 @@ or append as new operator.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.set_rotate_pivot">
+<span class="sig-name descname"><span class="pre">set_rotate_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_rotate_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Set a rotate pivot for the given object, in this case a rotate pivot is an invert transformation that allow
+to rotate the object from somewhere other than the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to apply a rotate pivot</p></li>
+<li><p><strong>value</strong> (<em>tuple</em><em> | </em><em>list</em>) – the vector value of the rotate pivot position</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to move the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the moved object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform.set_rotate">
 <span class="sig-name descname"><span class="pre">set_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_rotate" title="Permalink to this definition"></a></dt>
 <dd><p>Set rotate values, if a rotate operator already exists the existing values will be replaced by the given ones.
@@ -432,6 +501,26 @@ In opposition to <cite>transform.rotate</cite> that add given vector to the exis
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.get_rotate_pivot">
+<span class="sig-name descname"><span class="pre">get_rotate_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.get_rotate_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Get rotate pivot values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get values</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to get the object’s values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>rotate values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>

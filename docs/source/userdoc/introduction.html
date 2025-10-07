@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Main Concepts" href="mainconcepts.html" />
-    <link rel="prev" title="substance3d.api.utility.mesh_processing" href="../api/mesh_processing.html" /> 
+    <link rel="prev" title="substance3d.api.stats" href="../api/stats.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,7 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul class="current">
@@ -69,8 +70,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-substance-3d-scene-automation">What is Substance 3D Scene Automation?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-install-and-configure-ssca">How to install and configure SSCA</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ssca-environment">SSCA Environment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#visual-studio-code-instructions">Visual Studio Code Instructions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pycharm-instructions">Pycharm Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visual-studio-code-instructions-version-1-99-2">Visual Studio Code Instructions (version 1.99.2)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pycharm-instructions-version-2024-2-3">PyCharm Instructions (version 2024.2.3)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-your-environment-for-linux-with-nvidia-gpu">Configure your environment for Linux with NVIDIA GPU</a></li>
@@ -81,9 +82,9 @@
 <li class="toctree-l1"><a class="reference internal" href="mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -116,10 +117,6 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Substance 3D Scene Automation is currently in development and released as a beta. Its usage is restricted to non commercial use.</p>
-</div>
 <section id="what-is-substance-3d-scene-automation">
 <h2>What is Substance 3D Scene Automation?<a class="headerlink" href="#what-is-substance-3d-scene-automation" title="Permalink to this heading"></a></h2>
 <p>Substance 3D Scene Automation (SSCA) is a set of APIs that allows you to create workflows to automate pipelines to create and
@@ -146,41 +143,85 @@ an application created by Nvidia for building and working with USD scenes.</p>
 <h2>How to install and configure SSCA<a class="headerlink" href="#how-to-install-and-configure-ssca" title="Permalink to this heading"></a></h2>
 <section id="ssca-environment">
 <h3>SSCA Environment<a class="headerlink" href="#ssca-environment" title="Permalink to this heading"></a></h3>
-<p>SSCA requires the user to run the python executable contained in the SSCA package.  It is important to make sure this is run in a clean environment.  If the environment’s PATH variable includes path(s) to other USD installations, specifically the USD/bin or USD/lib folders, it will conflict with SSCA.  In addition, SSCA has python package and USD plugin dependencies.  Therefore, please be careful if setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could conflict with SSCA.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Due to the system environment restrictions, it is recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.</p>
+<p>In order to use SSCA modules, the user must run their scripts with the <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> provided in SSCA package.</p>
+<p>Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you already developed with USD, be sure you clean your PATH (LD_LIBRARY_PATH for linux/mac) from other USD installation paths before setting up SSCA, as there will be conflicts.
+This can be done by removing USD/bin and USD/lib from your PATH.</p>
+<p>In addition, SSCA has python package and USD plugin dependencies.
+Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could also conflict with SSCA.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you already developed with USD, be sure to clean your PATH before setting up SSCA</p>
-</div>
-<section id="visual-studio-code-instructions">
-<h4>Visual Studio Code Instructions<a class="headerlink" href="#visual-studio-code-instructions" title="Permalink to this heading"></a></h4>
-<section id="set-up">
-<h5>Set up<a class="headerlink" href="#set-up" title="Permalink to this heading"></a></h5>
-<ol class="arabic simple">
-<li><p>Download and install the community version of <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p></li>
+<section id="visual-studio-code-instructions-version-1-99-2">
+<h4>Visual Studio Code Instructions (version 1.99.2)<a class="headerlink" href="#visual-studio-code-instructions-version-1-99-2" title="Permalink to this heading"></a></h4>
+<section id="set-up-new-project">
+<h5>Set up new project<a class="headerlink" href="#set-up-new-project" title="Permalink to this heading"></a></h5>
+<ol class="arabic">
+<li><p>Download and install the free version of <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p></li>
 <li><p>Download and unzip the Substance 3D SSCA package.</p></li>
-<li><p>Move the contents of the unzipped SSCA package to your desired working location. For example: <code class="docutils literal notranslate"><span class="pre">C:/Users/&lt;username&gt;/SSCA</span> <span class="pre">Workspace</span></code>.</p></li>
-<li><p>Create a folder for your SSCA project</p></li>
-<li><p>Launch Visual Studio Code.</p></li>
-<li><p>Open a project with File &gt; Open Folder and navigate to the folder created in step 4</p></li>
+<li><p>Move the contents of the unzipped SSCA package to your desired installation location.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In our example SSCA package content will be unzipped into: <code class="docutils literal notranslate"><span class="pre">C:/ssca/</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Open Visual Studio Code.</p></li>
+<li><p>On the Welcome tab click “<strong>Open Folder…</strong>”. In the explorer popup window, create and/or select your project folder.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In our example, our project folder will be: <code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/</span></code></p></li>
+</ul>
+<img alt="../../_images/vscode_01_open_folder.png" src="../../_images/vscode_01_open_folder.png" />
+</div></blockquote>
+</li>
+<li><p>Expand the project folder in the explorer of VS Code UI</p></li>
+<li><p>Create a Python file clicking on the project folder “New File…” icon and give the file a name including the ‘.py’ extension.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In our example the script will be named: <code class="docutils literal notranslate"><span class="pre">main.py</span></code></p></li>
+</ul>
+<img alt="../../_images/vscode_02_create_file.png" src="../../_images/vscode_02_create_file.png" />
+</div></blockquote>
+</li>
+<li><p>The python file should appear under your project folder.</p>
+<blockquote>
+<div><img alt="../../_images/vscode_02_file_created.png" src="../../_images/vscode_02_file_created.png" />
+</div></blockquote>
+</li>
 </ol>
 </section>
 <section id="set-up-the-python-interpreter">
 <h5>Set up the Python interpreter<a class="headerlink" href="#set-up-the-python-interpreter" title="Permalink to this heading"></a></h5>
-<p>Visual Studio Code allows the user to set the python interpreter for a specific project.</p>
+<p>Visual Studio Code allows the user to set the python interpreter for a specific project.
+Since VS Code takes the default system version of Python we installed, to work in a virtual environment, we will need to create it.</p>
 <ol class="arabic">
-<li><p>Open Visual Studio Code settings with File &gt; Preferences -&gt; Settings</p></li>
-<li><p>Expand the Extensions menu</p></li>
-<li><p>Select Python</p></li>
-<li><p>Set the Default Interpreter path to the SSCA python executable:</p>
+<li><p>With your project opended, click on the Python interpreter version in the very bottom right of the VS Code interface.</p></li>
+<li><p>A drop down menu will appear at the top where we have few options.</p></li>
+<li><p>Click on “<strong>Create Virtual Environment</strong>”</p>
+<blockquote>
+<div><img alt="../../_images/vscode_04_create_venv.png" src="../../_images/vscode_04_create_venv.png" />
+</div></blockquote>
+</li>
+<li><p>On next list click on “<strong>Venv</strong>”</p></li>
+<li><p>The application will ask you now to chose from a list of interpreters, click on “<strong>Enter interpreter path…</strong>”</p>
+<blockquote>
+<div><img alt="../../_images/vscode_03_add_interpreter_path.png" src="../../_images/vscode_03_add_interpreter_path.png" />
+</div></blockquote>
+</li>
+<li><p>Click again on “<strong>Find…</strong>”</p></li>
+<li><p>Navigate to the SSCA Python interpreter.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA</span> <span class="pre">package&gt;/bin/python.exe</span></code></p></li>
-<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA</span> <span class="pre">package&gt;/bin/python3</span></code></p></li>
+<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
+<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
 </ul>
+</div></blockquote>
+</li>
+<li><p>Now the project’s virtual environment based on SSCA Python interpreter is loading all files from the SSCA install folder.</p></li>
+<li><p>Once the loading is complete, you will be able to start coding with the SSCA api.</p>
+<blockquote>
+<div><img alt="../../_images/vscode_05_start_coding.png" src="../../_images/vscode_05_start_coding.png" />
 </div></blockquote>
 </li>
 </ol>
@@ -188,8 +229,8 @@ an application created by Nvidia for building and working with USD scenes.</p>
 <section id="run-your-first-script">
 <h5>Run your first script<a class="headerlink" href="#run-your-first-script" title="Permalink to this heading"></a></h5>
 <ol class="arabic">
-<li><p>Create a python file with File &gt; New File Test.py</p></li>
-<li><p>Copy the code below into the new file - this script creates a simple scene with a light and a cube.</p>
+<li><p>With the file we created in the precedent chapter “Set up new project” opened.</p></li>
+<li><p>Copy the code below into the file. This script creates a simple scene with a light and a cube.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">light</span>
@@ -207,11 +248,9 @@ an application created by Nvidia for building and working with USD scenes.</p>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
 </div></blockquote>
 </li>
-</ol>
-<img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
-<ol class="arabic simple">
 <li><p>Run the script with shortcut Ctrl+Shift+D</p></li>
 <li><p>To confirm the script ran successfully, a file called TestScene.usda should have been created in the same folder as your script.</p></li>
 </ol>
@@ -222,86 +261,99 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </div>
 </section>
 </section>
-<section id="pycharm-instructions">
-<h4>Pycharm Instructions<a class="headerlink" href="#pycharm-instructions" title="Permalink to this heading"></a></h4>
-<p>(skip if Visual Studio Code was setup)</p>
-<section id="id1">
-<h5>Set up<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h5>
+<section id="pycharm-instructions-version-2024-2-3">
+<h4>PyCharm Instructions (version 2024.2.3)<a class="headerlink" href="#pycharm-instructions-version-2024-2-3" title="Permalink to this heading"></a></h4>
+<section id="set-up-new-project-with-virtual-environment">
+<h5>Set up new project with virtual environment<a class="headerlink" href="#set-up-new-project-with-virtual-environment" title="Permalink to this heading"></a></h5>
 <ol class="arabic">
-<li><p>Download and install the community version of <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">Pycharm</a>.</p></li>
+<li><p>Download and install the community version of <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">PyCharm</a>.</p></li>
 <li><p>Download and unzip the Substance 3D SSCA package.</p></li>
-<li><p>Move the contents of the unzipped SSCA package to your desired working location.</p>
+<li><p>unzip the SSCA package wherever you want SSCA to be installed.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>For example: “C:/Users/&lt;username&gt;/SSCA Workspace”.</p></li>
+<li><p>In our example we will unzip the SSCA package content into: <code class="docutils literal notranslate"><span class="pre">&quot;C:/ssca/&quot;</span></code></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Launch Pycharm.</p></li>
-<li><p>Open a project with File &gt; Open</p>
+<li><p>Launch PyCharm or if your project already exists, you can jump to the next chapter “<strong>Set up a local SSCA Python interpreter</strong>”.</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">Create</span></code> a new project from the welcome window.</p>
+<blockquote>
+<div><img alt="../../_images/pycharm_01_welcome.png" src="../../_images/pycharm_01_welcome.png" />
+</div></blockquote>
+</li>
+<li><p>In the next setup window, give your project a Name.</p></li>
+<li><p>Enter your project Location.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>If it’s your first time launching Pycharm, navigate through the prompts and then select Open.</p></li>
+<li><p>In our example, our project folder will be in: <code class="docutils literal notranslate"><span class="pre">C:/projects</span></code></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Navigate to and open the folder where you saved the SSCA package.</p></li>
+<li><p>In the Interpreter type section, select <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">venv</span></code>.</p></li>
+<li><p>Select SSCA Python version, navigating to your SSCA ‘install’ folder.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
+<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">Create</span></code></p>
+<blockquote>
+<div><img alt="../../_images/pycharm_02_project_setup.png" src="../../_images/pycharm_02_project_setup.png" />
+</div></blockquote>
+</li>
+<li><p>You are now ready to start coding with Python and SSCA in your virtual environment (venv).</p></li>
 </ol>
 </section>
-<section id="id2">
-<h5>Set up the Python interpreter<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h5>
-<p>PyCharm comes with the capability to create virtual environments for your Python interpreter. A virtual environment allows you to manage settings and dependencies of your project without impacting other projects.</p>
+<section id="set-up-a-local-ssca-python-interpreter">
+<h5>Set up a local SSCA Python interpreter<a class="headerlink" href="#set-up-a-local-ssca-python-interpreter" title="Permalink to this heading"></a></h5>
 <ol class="arabic">
-<li><p>Open Pycharm’s settings with File &gt; Settings (or press Ctrl + Alt + S)</p></li>
-<li><p>In the left panel, select “Project: &lt;Your project name&gt;” and then “Python Interpreter”.</p></li>
-<li><p>Select Add Interpreter &gt; Add Local Interpreter.</p></li>
-<li><p>Select “Virtualenv Environment” from the list of options on the left side of the window that appears.</p></li>
-<li><p>Enter the path to the python.exe file included with the SSCA package.</p>
+<li><p>Once your project is open.</p></li>
+<li><p>Expand PyCharm top menu bar clicking on the “Main Menu” icon.</p>
+<blockquote>
+<div><img alt="../../_images/pycharm_03_main_menu.png" src="../../_images/pycharm_03_main_menu.png" />
+</div></blockquote>
+</li>
+<li><p>Open PyCharm’s settings with File &gt; Settings (or press Ctrl + Alt + S).</p>
+<blockquote>
+<div><img alt="../../_images/pycharm_04_settings.png" src="../../_images/pycharm_04_settings.png" />
+</div></blockquote>
+</li>
+<li><p>In the left panel, expand “Project: &lt;Your project name&gt;” and then click “Python Interpreter”.</p></li>
+<li><p>Select Add Interpreter &gt; Add Local Interpreter.</p>
+<blockquote>
+<div><img alt="../../_images/pycharm_04_settings_interpreter.png" src="../../_images/pycharm_04_settings_interpreter.png" />
+</div></blockquote>
+</li>
+<li><p>In the new window, select “Virtualenv Environment” from the list of options on the left side of the window that appears.</p></li>
+<li><p>Enter the path to the python.exe file included within your SSCA ‘install’ (unzipped) folder.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA</span> <span class="pre">package&gt;/bin/python.exe</span></code>.</p></li>
-<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA</span> <span class="pre">package&gt;/bin/python3</span></code>.</p></li>
+<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
+<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
 </ul>
+<img alt="../../_images/pycharm_04_virtual_env.png" src="../../_images/pycharm_04_virtual_env.png" />
+</div></blockquote>
+</li>
+<li><p>Your Virtual environment (venv) is now created and you can start using your local SSCA Python interpreter.</p>
+<blockquote>
+<div><img alt="../../_images/pycharm_05_venv_folder.png" src="../../_images/pycharm_05_venv_folder.png" />
 </div></blockquote>
 </li>
 </ol>
 </section>
-<section id="configure-the-project">
-<h5>Configure the project<a class="headerlink" href="#configure-the-project" title="Permalink to this heading"></a></h5>
+<section id="id1">
+<h5>Run your first script<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h5>
 <ol class="arabic">
-<li><p>With the project open in Pycharm, use Run &gt; Edit Configurations</p></li>
-<li><p>Add a new run configuration</p></li>
-<li><p>Set Script path to the path of the script that you will run</p>
+<li><p>Open/Create a Python script file into your project.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>For example, <code class="docutils literal notranslate"><span class="pre">C:/Users/&lt;username&gt;/SSCA</span> <span class="pre">Workspace/TestScript.py</span></code></p></li>
+<li><p>In our example, <code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/main.py</span></code></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Set Working directory to the path of the package</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>For example, <code class="docutils literal notranslate"><span class="pre">C:/Users/&lt;username&gt;/SSCA</span> <span class="pre">Workspace</span></code></p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Ensure that the Python Interpreter is set to the Python 3.11 Interpreter created earlier</p></li>
-<li><p>Leave Add content roots to PYTHONPATH checked</p></li>
-<li><p>Leave Add source roots to PYTHONPATH checked</p></li>
-<li><p>Select “OK” to save your run configuration</p></li>
-</ol>
-</section>
-<section id="id3">
-<h5>Run your first script<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h5>
-<ol class="arabic">
-<li><p>Create a python file that matches the name used in the run configuration</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>For example: “C:/Users/&lt;username&gt;/SSCA Workspace/TestScript.py”</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Copy the code below into the new file. This script creates a simple scene with a light and a cube.</p>
+<li><p>Copy the code below into the opened file. This script creates a simple scene with a light and a cube.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">light</span>
@@ -319,9 +371,10 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
 </div></blockquote>
 </li>
-<li><p>Run the script with shortcut Shift + F10 or click the arrow at the top right of the Pycharm window.</p></li>
+<li><p>Run the current script with shortcut ctrl + Shift + F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.</p></li>
 <li><p>To confirm the script ran successfully, check the console at the bottom of the Pycharm window. The last line should say “Process finished with exit code 0”.</p>
 <blockquote>
 <div><ul class="simple">
@@ -330,6 +383,11 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </div></blockquote>
 </li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the test script fails to find the SSCA modules, there could  be a conflict in the environment.
+Check your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PXR_PLUGINPATH_NAME</span></code> environment variables and clean them if needed.</p>
+</div>
 </section>
 </section>
 </section>
@@ -351,7 +409,7 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../api/mesh_processing.html" class="btn btn-neutral float-left" title="substance3d.api.utility.mesh_processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/stats.html" class="btn btn-neutral float-left" title="substance3d.api.stats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mainconcepts.html" class="btn btn-neutral float-right" title="Main Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>substance3d.api.utility.mesh_processing &mdash; Substance3d API  documentation</title>
+  <title>substance3d.api.mesh_processing &mdash; Substance3d API  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
 
@@ -22,7 +22,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../userdoc/introduction.html" />
+    <link rel="next" title="substance3d.api.stats" href="stats.html" />
     <link rel="prev" title="substance3d.api.utility" href="utility.html" /> 
 </head>
 
@@ -61,10 +61,27 @@
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.utility.mesh_processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.mesh_processing.remove_isolated_vertices"><code class="docutils literal notranslate"><span class="pre">remove_isolated_vertices()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.mesh_processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.process"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.UnwrapOp"><code class="docutils literal notranslate"><span class="pre">UnwrapOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RepackOp"><code class="docutils literal notranslate"><span class="pre">RepackOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.TriangulateOp"><code class="docutils literal notranslate"><span class="pre">TriangulateOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp"><code class="docutils literal notranslate"><span class="pre">RemoveIsolatedVerticesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.DecimationOp"><code class="docutils literal notranslate"><span class="pre">DecimationOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemeshOp"><code class="docutils literal notranslate"><span class="pre">RemeshOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.SubdivisionOp"><code class="docutils literal notranslate"><span class="pre">SubdivisionOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp"><code class="docutils literal notranslate"><span class="pre">CloseSmallHolesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.NormalizationOp"><code class="docutils literal notranslate"><span class="pre">NormalizationOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDegenerateFacesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDuplicateFacesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDuplicateVerticesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp"><code class="docutils literal notranslate"><span class="pre">RemoveTinyFacesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp"><code class="docutils literal notranslate"><span class="pre">RemoveShortEdgesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp"><code class="docutils literal notranslate"><span class="pre">ResolveNonmanifoldnessOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp"><code class="docutils literal notranslate"><span class="pre">ResolveVertexNonmanifoldnessOp</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -72,9 +89,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -95,7 +112,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">substance3d.api.utility.mesh_processing</li>
+      <li class="breadcrumb-item active">substance3d.api.mesh_processing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/mesh_processing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -105,20 +122,375 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="substance3d-api-utility-mesh-processing">
-<h1>substance3d.api.utility.mesh_processing<a class="headerlink" href="#substance3d-api-utility-mesh-processing" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-substance3d.api.utility.mesh_processing"></span><dl class="py function">
-<dt class="sig sig-object py" id="substance3d.api.utility.mesh_processing.remove_isolated_vertices">
-<span class="sig-name descname"><span class="pre">remove_isolated_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.mesh_processing.remove_isolated_vertices" title="Permalink to this definition"></a></dt>
-<dd><p>Removes isolated vertices of a mesh</p>
+  <section id="module-substance3d.api.mesh_processing.mesh_processing">
+<span id="substance3d-api-mesh-processing"></span><h1>substance3d.api.mesh_processing<a class="headerlink" href="#module-substance3d.api.mesh_processing.mesh_processing" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.process" title="Permalink to this definition"></a></dt>
+<dd><p>Process a list of mesh operators on the given target and its subtree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>obj</strong> (<em>PrimHandler</em>) – the mesh object to process</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>PrimHandler</em></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em>) – Given targen can be a scene or an object</p></li>
+<li><p><strong>operators</strong> (<em>list</em><em>[</em><em>substance3d.api.mesh_processing.operators.MeshOperator</em><em>]</em>) – A list of mesh operators</p></li>
+</ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.UnwrapOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnwrapOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.UnwrapOp" title="Permalink to this definition"></a></dt>
+<dd><p>Seam, parameterize and pack all meshes in the given subtree into a single UV tile.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>input_attribute_name</strong></p></td>
+<td><p>str</p></td>
+<td><p>“primvars:st”</p></td>
+<td><p>Output UV attribute name.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>packing.padding_size</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.001</p></td>
+<td><p>Padding size around each island.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>packing.max_num_uv_tiles</strong></p></td>
+<td><p>int</p></td>
+<td><p>1</p></td>
+<td><p>Maximum number of UV tiles to generate.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>segmentation.enable_partition_chart</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>Enable chart splitting algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>segmentation.enable_elongated_islands</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>Enable elongated island detection.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>segmentation.elongation_threshold</strong></p></td>
+<td><p>float</p></td>
+<td><p>20.0</p></td>
+<td><p>Threshold to consider a chart elongated.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>segmentation.chunks_elongation</strong></p></td>
+<td><p>float</p></td>
+<td><p>10.0</p></td>
+<td><p>Max elongation for segmented chunks of elongated islands.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>segmentation.input_uv_attribute_name</strong></p></td>
+<td><p>str</p></td>
+<td><p>“”</p></td>
+<td><p>Use input UVs for seams instead of computing them.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RepackOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RepackOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RepackOp" title="Permalink to this definition"></a></dt>
+<dd><p>Pack all meshes in the given subtree into a single UV tile.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>input_attribute_name</strong></p></td>
+<td><p>str</p></td>
+<td><p>“primvars:st”</p></td>
+<td><p>Input UV attribute name.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>output_attribute_name</strong></p></td>
+<td><p>str</p></td>
+<td><p>“primvars:st”</p></td>
+<td><p>Output UV attribute name. Output UV will have the same value type as the input UV.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>packing.padding_size</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.001</p></td>
+<td><p>Padding size around each island.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>packing.max_num_uv_tiles</strong></p></td>
+<td><p>int</p></td>
+<td><p>1</p></td>
+<td><p>Maximum number of UV tiles to generate.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.TriangulateOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TriangulateOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.TriangulateOp" title="Permalink to this definition"></a></dt>
+<dd><p>Triangulate all meshes in the given subtree.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveIsolatedVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove isolated vertices for all meshes in the given subtree.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.DecimationOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecimationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.DecimationOp" title="Permalink to this definition"></a></dt>
+<dd><p>Decimate all meshes in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>max_facets</strong></p></td>
+<td><p>int</p></td>
+<td><p>10000</p></td>
+<td><p>Target maximum number of faces for either a single mesh or the entire scene (sum total of
+all mesh face counts).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>decimation_ratio</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>A ratio for the target number of faces. Overrides max_facets for a single mesh if between
+0.001 and 0.999 (inclusive). Ignored when decimating a scene.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>preserve_topology</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>Preserve topology of the input mesh. If false, connected components can disappear during
+edge collapses, among other topological changes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>angle_threshold</strong></p></td>
+<td><p>float</p></td>
+<td><p>1e-8</p></td>
+<td><p>Maximum cos for the angle between two vectors for them to be considered collinear.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemeshOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemeshOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemeshOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remesh all meshes in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>target_num_vertices</strong></p></td>
+<td><p>int</p></td>
+<td><p>4096</p></td>
+<td><p>Number of sites to generate for the Lloyd algorithm. Also the number of output vertices in the remeshed surface.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>remesh_coefficient</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>Coefficient for the target number of vertices. If set between 0.01 and 10.0, target_num_vertices is computed
+relative to current vertex count.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>abs_noise_level</strong></p></td>
+<td><p>float</p></td>
+<td><p>1e-5</p></td>
+<td><p>Max noise added to input vertices to ensure triangulation properties.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.SubdivisionOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SubdivisionOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.SubdivisionOp" title="Permalink to this definition"></a></dt>
+<dd><p>Subdivide all meshes in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>num_levels</strong></p></td>
+<td><p>int</p></td>
+<td><p>1</p></td>
+<td><p>Number of subdivision levels requested.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>use_limit_surface</strong></p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>Interpolate all data to the limit surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>scheme</strong></p></td>
+<td><p>str</p></td>
+<td><p>SubdivisionScheme.Automatic</p></td>
+<td><p>Subdivision scheme to use.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Possible values for the <code class="docutils literal notranslate"><span class="pre">scheme</span></code> attribute:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SubdivisionScheme.Bilinear</span></code>: Useful to subdivide a mesh prior to applying a displacement map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SubdivisionScheme.CatmullClark</span></code>: More widely used and suited to quad-dominant meshes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SubdivisionScheme.Loop</span></code>: For (and requires) purely triangulated meshes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SubdivisionScheme.Automatic</span></code>: Chooses between Catmull-Clark for quad-dominant meshes.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CloseSmallHolesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Close small holes for all the meshes in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>max_hole_size</strong></p></td>
+<td><p>int</p></td>
+<td><p>16</p></td>
+<td><p>Maximum number of vertices in a hole to be closed.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>triangulate_holes</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>Whether to triangulate holes. If false, holes filled by polygons.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.NormalizationOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NormalizationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.NormalizationOp" title="Permalink to this definition"></a></dt>
+<dd><p>Normalize a single mesh in its local coordinate system in-place.
+The mesh is resized so it fits in a unit bounding box centered at the origin.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>normalize_normals</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>If enabled, normals are normalized after transformation.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>normalize_tangents_bitangents</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>If enabled, tangents and bitangents are normalized after transformation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>reorient</strong></p></td>
+<td></td>
+<td><p>False</p></td>
+<td><p>If enabled, when applying a transform with negative determinant:n
+1. Normals, tangents and bitangents are flipped.n
+2. Facet orientations are reversed.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDegenerateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove degenerate faces from each mesh in the scene, in-place.
+The current method assumes input mesh is triangular.
+Non-degenerate facets adjacent to degenerate facets may be
+re-triangulated as a result of the removal.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDuplicateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove duplicate faces from each mesh in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>consider_orientation</strong></p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>If true, faces with opposite orientations (e.g. (0,1,2)
+and (2,1,0)) are considered non-duplicates.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDuplicateVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove duplicate vertices from each mesh in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>boundary_only</strong></p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>Only remove duplicate vertices on the boundary.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveTinyFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove zero-area faces from each mesh in the given subtree,
+zero-area threshold can be adjusted.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>null_area_threshold</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>Faces with area &lt;= null_area_threshold will be removed.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>remove_isolated_vertices</strong></p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>If true, also remove isolated vertices after removing null area faces.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveShortEdgesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp" title="Permalink to this definition"></a></dt>
+<dd><p>Remove short edges from each mesh in the given subtree.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>threshold</strong></p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>Edges with length &lt;= threshold will be removed.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResolveNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp" title="Permalink to this definition"></a></dt>
+<dd><p>Resolve non-manifold edges AND vertices for each mesh in the given subtree.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResolveVertexNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp" title="Permalink to this definition"></a></dt>
+<dd><p>Resolve non-manifold vertices for each mesh in the given subtree.</p>
 </dd></dl>
 
 </section>
@@ -128,7 +500,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="utility.html" class="btn btn-neutral float-left" title="substance3d.api.utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../userdoc/introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stats.html" class="btn btn-neutral float-right" title="substance3d.api.stats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

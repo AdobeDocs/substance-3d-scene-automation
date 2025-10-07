@@ -554,7 +554,7 @@ Example of the final asset imported in Unreal Engine :
 .. image:: ../static/potion_variant_unreal.gif
 
 Managing metadatas
-------------------
+==================
 
 SSCA includes a methods to get, modify and add metadata.
 
@@ -581,3 +581,69 @@ You can read the metadata of an image with ``image.metadata()`` and add or modif
                 difference = set(my_metadata).difference(file_metadata)
                 raise KeyError(f"Error : Non-corroborating Keywords! : {difference}")
             return my_metadata
+
+Move local prim to reference
+============================
+
+.. note:: 
+
+    You can find more information about strength ordering and **LIVRPS** in `openUSD documentation <https://openusd.org/release/glossary.html#usdglossary-livrps-strength-ordering>`_.
+
+Following USD Composition arc strength order, also called **LIVRPS**, there will be situations where
+you'll want a prim to be referenced instead of being local.
+
+One common situation is wanting to make variants on a local prim you just created in SSCA (e.g : a light).
+As the light is in a local (L) composition arc and its variants are in the eponymous composition arc (V), local parameters (set at creation) will
+take precedence and variants changes won't have any effect.
+
+A solution for this is using ``scene.move_to_reference()`` to move this prim from local composition arc (L) to reference composition arc (R), which is a weaker arc than variant (V)
+and such, allows variants to operate changes on the prim.
+
+Example:
+
+.. code-block:: python
+
+    from substance3d.api import scene, light, variant
+
+    main_scene = scene.new()
+    root = scene.get_default(main_scene)
+
+    light1 = light.sphere(root, "light1") # Create a light (L composition arc)
+
+    # Change intensity on the light with a variant (V composition arc) and immediatly show its value
+    with variant.create(root, "intensity1", "light1_intensities"):
+        light1.inputs.intensity.set(1000.0)
+        light1.inspect(display_values=True, filter="*intensity*")
+
+Result :
+
+.. code-block::
+
+    >>> ...
+    Attributes :
+        .inputs.intensity : 1.0
+    ...
+
+As we can see, intensity remains unchanged, our variant has no effect.
+Now let's use ``scene.move_to_reference()`` to move the light to reference arc.
+
+.. code-block:: python
+
+    # ...
+    scene.move_to_reference(light1) # Moving light1 from local (L) to reference (R) arc
+
+    # Change intensity on the light with a variant (V composition arc) and immediatly show its value
+    with variant.create(root, "intensity1", "light1_intensities"):
+        light1.inputs.intensity.set(1000.0)
+        light1.inspect(display_values=True, filter="*intensity*")
+
+Result :
+
+.. code-block::
+
+    >>> ...
+    Attributes :
+        .inputs.intensity : 1000.0
+    ...
+
+As light1 is now in reference arc, variant changes are taken into account as expected.

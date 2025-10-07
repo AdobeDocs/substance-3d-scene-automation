@@ -61,7 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul class="current">
@@ -77,7 +78,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#search-the-scene-for-objects">Search the scene for objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-objects-with-scene-search">Get objects with scene.search()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-objects-with-special-iterators">Get objects with special iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-improving-performance-even-more-while-iterating-through-the-scene">Advanced : Improving performance even more while iterating through the scene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-get-back-the-primhandler-s-attributes">How to get back the PrimHandler’s attributes?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#move-objects">Move objects</a></li>
@@ -108,9 +114,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -328,7 +334,10 @@ and only the children of the defaultPrim are imported to the hierarchy without b
 <h2>Search the scene for objects<a class="headerlink" href="#search-the-scene-for-objects" title="Permalink to this heading"></a></h2>
 <p>API Modules : <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a></p>
 <p>After loading a scene or appending a file to your scene, you may need to modify objects for which you don’t yet have a variable.</p>
-<p>You can look for objects in your scene with the <code class="docutils literal notranslate"><span class="pre">scene.search()</span></code> function.</p>
+<p>You can look for objects in your scene with the <code class="docutils literal notranslate"><span class="pre">scene.search()</span></code> function or iterate through all of them with special iterators like <code class="docutils literal notranslate"><span class="pre">scene.objects</span></code>.
+If performance is required and you don’t need the filters, prefer <code class="docutils literal notranslate"><span class="pre">scene.objects</span></code> and <code class="docutils literal notranslate"><span class="pre">prim.children</span></code>.</p>
+<section id="get-objects-with-scene-search">
+<h3>Get objects with scene.search()<a class="headerlink" href="#get-objects-with-scene-search" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">primitive</span>
 
 <span class="c1"># creating scene elements that we store into variables</span>
@@ -411,6 +420,7 @@ so this isn’t a full list, to get the full list call <code class="docutils lit
 <li><p>Volume</p></li>
 <li><p>Xform</p></li>
 </ul>
+</section>
 <section id="get-objects-with-special-iterators">
 <h3>Get objects with special iterators<a class="headerlink" href="#get-objects-with-special-iterators" title="Permalink to this heading"></a></h3>
 <p>There are two other ways to access objects, by using <cite>special iterators</cite>.
@@ -455,6 +465,29 @@ Scene’s <code class="docutils literal notranslate"><span class="pre">.objects<
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="n">my_cube</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="s2">&quot;Sphere3&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
+</section>
+<section id="advanced-improving-performance-even-more-while-iterating-through-the-scene">
+<h3>Advanced : Improving performance even more while iterating through the scene<a class="headerlink" href="#advanced-improving-performance-even-more-while-iterating-through-the-scene" title="Permalink to this heading"></a></h3>
+<p>The most efficient way to iterate through all objects in the scene is using the <code class="docutils literal notranslate"><span class="pre">scene.objects</span></code> iterator.</p>
+<p>However, you may have thousands of objects and iterating through all of them may be costly if you’re only checking for
+aliases like <em>variant sets</em> or relationships like <em>material binding</em>.</p>
+<p>For this situation, you can deactivate attribute initialization using the following setup :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">with_attrs</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">variant_sets</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<section id="how-to-get-back-the-primhandler-s-attributes">
+<h4>How to get back the PrimHandler’s attributes?<a class="headerlink" href="#how-to-get-back-the-primhandler-s-attributes" title="Permalink to this heading"></a></h4>
+<p>Once you’ve iterated through the scene, you can get attrs back on your selection with <code class="docutils literal notranslate"><span class="pre">my_prim.update()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="n">o</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 <section id="move-objects">

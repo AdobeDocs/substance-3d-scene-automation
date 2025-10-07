@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="substance3d.api.scene.branch" href="branch.html" />
-    <link rel="prev" title="Welcome to Substance3d API’s documentation" href="../../index.html" /> 
+    <link rel="prev" title="Introduction" href="../../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.scene.scene.set_visibility"><code class="docutils literal notranslate"><span class="pre">set_visibility()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.scene.scene.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.scene.scene.flatten_references"><code class="docutils literal notranslate"><span class="pre">flatten_references()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.scene.scene.local_to_reference"><code class="docutils literal notranslate"><span class="pre">local_to_reference()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
@@ -80,7 +81,8 @@
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -88,9 +90,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -421,13 +423,26 @@ Textures are exported in a ‘dependencies’ folder next to the scene path.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.scene.scene.local_to_reference">
+<span class="sig-name descname"><span class="pre">local_to_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.local_to_reference" title="Permalink to this definition"></a></dt>
+<dd><p>Demote a local object into a local reference from a given object,
+In the LIVERPS USD’s context, the object will be weakened from a local (L) to a reference (R). Can be useful to
+create and authoring variants on top of a formerly Local object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>PrimHandler</em>) – A Local PrimHandler</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../../index.html" class="btn btn-neutral float-left" title="Welcome to Substance3d API’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="branch.html" class="btn btn-neutral float-right" title="substance3d.api.scene.branch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

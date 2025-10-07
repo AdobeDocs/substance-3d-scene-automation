@@ -20,11 +20,3 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
-substance3d.api.utility.mesh_processing module
-----------------------------------------------
-
-.. automodule:: substance3d.api.utility.mesh_processing
-   :members:
-   :undoc-members:
-   :show-inheritance:
-

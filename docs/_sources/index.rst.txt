@@ -3,11 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Substance3d API's documentation
-==========================================
+.. include::
+   source/userdoc/introduction.rst
 
-.. important::
-   **API under construction!** things will moved
+
+Table of contents
+=================
 
 .. toctree::
    :maxdepth: 1
@@ -28,6 +29,7 @@ Welcome to Substance3d API's documentation
    source/api/image
    source/api/utility
    source/api/mesh_processing
+   source/api/stats
 
 .. toctree::
    :maxdepth: 3
@@ -39,6 +41,7 @@ Welcome to Substance3d API's documentation
    source/userdoc/nextsteps
    source/userdoc/handlers
    source/userdoc/knownissues
+   source/userdoc/mesh_processing
 
 .. toctree::
    :maxdepth: 2

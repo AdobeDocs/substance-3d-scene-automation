@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Processing &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Substance3d Release Notes" href="../release.html" />
+    <link rel="prev" title="Known Issues" href="knownissues.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mesh Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cad-file-processing">CAD File Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-processing-results">Mesh Processing results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mesh Processing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/userdoc/mesh_processing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-processing">
+<h1>Mesh Processing<a class="headerlink" href="#mesh-processing" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p><strong>SSCA</strong> <code class="docutils literal notranslate"><span class="pre">mesh_processing</span></code> module contains a list of operators that can be applied to a given target, such as a StageHandler or PrimHandler.
+These operators can be chained in any order to build relevant and adapted processing workflow.</p>
+<p>In industries involving 3d content, assets need to be prepared to fit pipelines requirements.
+With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and repack <strong>SSCA</strong> provides the advantage to automatize asset optimization.</p>
+<p><strong>Simple Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">mesh_processing</span> <span class="k">as</span> <span class="n">mp</span>
+
+<span class="c1"># Path to the 3D file</span>
+<span class="n">my_3d_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;meshes/mesh_file.obj&quot;</span><span class="p">)</span>
+
+<span class="c1"># Build a scene from the 3D file</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_3d_file</span><span class="p">)</span>
+
+<span class="c1"># Build a processing worflow (operators are configured via attributes)</span>
+<span class="n">ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="o">.</span><span class="n">DecimationOp</span><span class="p">(),</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()]</span>
+
+<span class="c1"># Run the workflow on the whole scene</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="n">ops</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Operators process the given prim and its sub-tree.
+Run it on a Stagehandler to process all meshes of the scene.</p>
+</div>
+</section>
+<section id="cad-file-processing">
+<h2>CAD File Processing<a class="headerlink" href="#cad-file-processing" title="Permalink to this heading"></a></h2>
+<p>Lets see, step by step, now how to optimize CAD files like <em>.step</em> ones.</p>
+<p><strong>1/ Build a scene from a CAD file</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">export</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">mesh_processing</span> <span class="k">as</span> <span class="n">mp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Path to the CAD file</span>
+<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;cad_input/my_cad_file.step&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a scene</span>
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="c1"># Create a group to host the imported cad file</span>
+<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;mesh_grp&quot;</span><span class="p">)</span>
+
+<span class="c1"># Import cad file and set the tessellation level at &#39;medium&#39;.</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">my_cad_file</span><span class="p">,</span> <span class="n">prcTessLevel</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point, it is important to remember that, for CAD files import, <a class="reference internal" href="nextsteps.html#file-import-parameters"><span class="std std-ref">prcTessLevel</span></a> argument gives you the opportunity to set a tessellation level at import.
+CAD files tesselation level (‘prcTessLevel’) string arguments options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
+<p>Here are some visual examples of the different tessellation levels:</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_low.png"><img alt="extraLow" src="../../_images/mp_cad_import_tesselation_extra_low.png" style="width: 135.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_low.png"><img alt="low" src="../../_images/mp_cad_import_tesselation_low.png" style="width: 135.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_medium.png"><img alt="medium" src="../../_images/mp_cad_import_tesselation_medium.png" style="width: 135.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_high.png"><img alt="high" src="../../_images/mp_cad_import_tesselation_high.png" style="width: 135.0px; height: 360.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_high.png"><img alt="extraHigh" src="../../_images/mp_cad_import_tesselation_extra_high.png" style="width: 135.0px; height: 360.0px;" /></a>
+<p><strong>2/ Clean mesh and optimize it for further processing</strong></p>
+<p>Now we have our StageHandler scene lets load some of the cleaning operators:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
+<span class="n">verts_weld_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">RemoveDuplicateVerticesOp</span><span class="p">()</span>
+
+<span class="c1"># Fill potential mesh holes</span>
+<span class="n">close_mesh_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">CloseSmallHolesOp</span><span class="p">()</span>
+<span class="c1"># Refine CloseSmallHolesOp attribute</span>
+<span class="n">close_mesh_op</span><span class="o">.</span><span class="n">max_hole_size</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># max hole&#39;s boundary vertices number to fill</span>
+
+<span class="c1"># Fix potential non-manifold edges and vertices</span>
+<span class="n">manifoldness_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">ResolveNonmanifoldnessOp</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>3/ Optimize mesh with decimation</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">decimate_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">DecimationOp</span><span class="p">()</span>
+<span class="c1"># Refine DecimationOp attributes</span>
+<span class="n">decimate_op</span><span class="o">.</span><span class="n">max_facets</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># target number of facets in the decimated mesh</span>
+</pre></div>
+</div>
+<p><strong>4/ Unwrap mesh UVs</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seam and unwrap UVs</span>
+<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
+<span class="c1"># Refine UnwrapOp attributes</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.005</span>  <span class="c1"># padding between islands in UV space</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Make sure islands are not too elongated</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unwrap Operator automatically packs UV after Unwrap.</p>
+</div>
+<p><strong>5/ Compute mesh processing operators on the scene.</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">[</span><span class="n">verts_weld_op</span><span class="p">,</span> <span class="n">close_mesh_op</span><span class="p">,</span> <span class="n">manifoldness_op</span><span class="p">,</span> <span class="n">decimate_op</span><span class="p">,</span> <span class="n">unwrap_op</span><span class="p">])</span>
+
+<span class="c1"># Export the processed asset scene to a new file</span>
+<span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mesh_output/processed_cad_file.fbx&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each operator is executed one after the other, following the specified order.</p>
+</div>
+</section>
+<section id="mesh-processing-results">
+<h2>Mesh Processing results<a class="headerlink" href="#mesh-processing-results" title="Permalink to this heading"></a></h2>
+<p><strong>Decimation (right image) on the imported CAD file (left image):</strong></p>
+<a class="reference internal image-reference" href="../../_images/grid_import.png"><img alt="Imported" src="../../_images/grid_import.png" style="width: 256.0px; height: 256.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/grid_decimation.png"><img alt="Decimated" src="../../_images/grid_decimation.png" style="width: 256.0px; height: 256.0px;" /></a>
+<p><strong>Unwrapped UVs after mesh decimation:</strong></p>
+<a class="reference internal image-reference" href="../../_images/grid_unwrapped_uvs.jpg"><img alt="Unwrapped UVs" src="../../_images/grid_unwrapped_uvs.jpg" style="width: 256.0px; height: 256.0px;" /></a>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Chain <strong>cleanup</strong> operators (duplicates / degenerates / short edges) <strong>before</strong>
+algorithms sensitive to topology (<code class="docutils literal notranslate"><span class="pre">decimation</span></code>, <code class="docutils literal notranslate"><span class="pre">remeshing</span></code>, <code class="docutils literal notranslate"><span class="pre">subdivision</span></code>).</p></li>
+<li><p>Keep UV management steps (<code class="docutils literal notranslate"><span class="pre">UnwrapOp</span></code> or <code class="docutils literal notranslate"><span class="pre">RepackOp</span></code>) <strong>after</strong> topology edits to avoid
+invalidating UVs unnecessarily.</p></li>
+<li><p>Start with default attributes values, verify results with your renderer or
+mesh review and then edit operators attributes value as needed.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="knownissues.html" class="btn btn-neutral float-left" title="Known Issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../release.html" class="btn btn-neutral float-right" title="Substance3d Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

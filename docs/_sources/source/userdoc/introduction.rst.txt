@@ -1,8 +1,6 @@
 Introduction
 ------------
 
-.. note:: Substance 3D Scene Automation is currently in development and released as a beta. Its usage is restricted to non commercial use.
-
 What is Substance 3D Scene Automation?
 ======================================
 Substance 3D Scene Automation (SSCA) is a set of APIs that allows you to create workflows to automate pipelines to create and
@@ -32,48 +30,90 @@ How to install and configure SSCA
 =================================
 SSCA Environment
 #################
-SSCA requires the user to run the python executable contained in the SSCA package.  It is important to make sure this is run in a clean environment.  If the environment's PATH variable includes path(s) to other USD installations, specifically the USD/bin or USD/lib folders, it will conflict with SSCA.  In addition, SSCA has python package and USD plugin dependencies.  Therefore, please be careful if setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could conflict with SSCA.
 
-.. note::  Due to the system environment restrictions, it is recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.
+In order to use SSCA modules, the user must run their scripts with the ``python.exe`` provided in SSCA package.  
 
-.. note:: If you already developed with USD, be sure to clean your PATH before setting up SSCA
+Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.
 
-Visual Studio Code Instructions
+.. important:: 
+    If you already developed with USD, be sure you clean your PATH (LD_LIBRARY_PATH for linux/mac) from other USD installation paths before setting up SSCA, as there will be conflicts.
+    This can be done by removing USD/bin and USD/lib from your PATH.
+
+    In addition, SSCA has python package and USD plugin dependencies.  
+    Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could also conflict with SSCA.
+
+Visual Studio Code Instructions (version 1.99.2)
 *******************************
-Set up
+
+Set up new project
 """"""
-#. Download and install the community version of `Visual Studio Code <https://code.visualstudio.com/download>`_.
+
+#. Download and install the free version of `Visual Studio Code <https://code.visualstudio.com/download>`_.
 
 #. Download and unzip the Substance 3D SSCA package.
 
-#. Move the contents of the unzipped SSCA package to your desired working location. For example: ``C:/Users/<username>/SSCA Workspace``.
+#. Move the contents of the unzipped SSCA package to your desired installation location. 
+    
+    * In our example SSCA package content will be unzipped into: ``C:/ssca/``
 
-#. Create a folder for your SSCA project
+#. Open Visual Studio Code.
 
-#. Launch Visual Studio Code.
+#. On the Welcome tab click "**Open Folder...**". In the explorer popup window, create and/or select your project folder.
 
-#. Open a project with File > Open Folder and navigate to the folder created in step 4
+    * In our example, our project folder will be: ``C:/projects/myProject/``
+
+    .. image:: ../static/introduction_ide_setup/vscode_01_open_folder.png
+
+#. Expand the project folder in the explorer of VS Code UI
+
+#. Create a Python file clicking on the project folder "New File..." icon and give the file a name including the '.py' extension.
+    
+    * In our example the script will be named: ``main.py``
+
+    .. image:: ../static/introduction_ide_setup/vscode_02_create_file.png
+
+#. The python file should appear under your project folder.
+
+    .. image:: ../static/introduction_ide_setup/vscode_02_file_created.png
 
 Set up the Python interpreter
 """""""""""""""""""""""""""""
-Visual Studio Code allows the user to set the python interpreter for a specific project.
 
-#. Open Visual Studio Code settings with File > Preferences -> Settings
+Visual Studio Code allows the user to set the python interpreter for a specific project. 
+Since VS Code takes the default system version of Python we installed, to work in a virtual environment, we will need to create it.
 
-#. Expand the Extensions menu
+#. With your project opended, click on the Python interpreter version in the very bottom right of the VS Code interface.
 
-#. Select Python
+#. A drop down menu will appear at the top where we have few options.
 
-#. Set the Default Interpreter path to the SSCA python executable:
+#. Click on "**Create Virtual Environment**"
 
-    * Windows: This should be located in ``<SSCA package>/bin/python.exe``
+    .. image:: ../static/introduction_ide_setup/vscode_04_create_venv.png
 
-    * Mac/Linux: This should be located in ``<SSCA package>/bin/python3``
+#. On next list click on "**Venv**"
+
+#. The application will ask you now to chose from a list of interpreters, click on "**Enter interpreter path...**"
+
+    .. image:: ../static/introduction_ide_setup/vscode_03_add_interpreter_path.png
+
+#. Click again on "**Find...**"
+
+#. Navigate to the SSCA Python interpreter.
+
+        * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
+
+        * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
+
+#. Now the project's virtual environment based on SSCA Python interpreter is loading all files from the SSCA install folder.
+
+#. Once the loading is complete, you will be able to start coding with the SSCA api.
+
+    .. image:: ../static/introduction_ide_setup/vscode_05_start_coding.png
 
 Run your first script
 """""""""""""""""""""
-#. Create a python file with File > New File Test.py
-#. Copy the code below into the new file - this script creates a simple scene with a light and a cube.
+#. With the file we created in the precedent chapter "Set up new project" opened.
+#. Copy the code below into the file. This script creates a simple scene with a light and a cube. 
 
     .. code-block:: python
 
@@ -92,89 +132,97 @@ Run your first script
         # save the scene with a valid output filepath
         output_path = scene.save(my_scene, './TestScene.usda')
 
-.. image:: ../static/run_script.png
+    .. image:: ../static/run_script.png
 
 #. Run the script with shortcut Ctrl+Shift+D
+
 #. To confirm the script ran successfully, a file called TestScene.usda should have been created in the same folder as your script.
 
-
 .. warning::
-
     If the test script fails to find the SSCA modules, there could  be a conflict in the environment. 
     Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
 
-Pycharm Instructions
+PyCharm Instructions (version 2024.2.3)
 ********************
-(skip if Visual Studio Code was setup)
 
-Set up
+Set up new project with virtual environment
 """"""
 
-#. Download and install the community version of `Pycharm <https://www.jetbrains.com/pycharm/download/>`_.
+#. Download and install the community version of `PyCharm <https://www.jetbrains.com/pycharm/download/>`_.
 
 #. Download and unzip the Substance 3D SSCA package.
 
-#. Move the contents of the unzipped SSCA package to your desired working location.
+#. unzip the SSCA package wherever you want SSCA to be installed.
 
-    * For example: "C:/Users/<username>/SSCA Workspace".
+    * In our example we will unzip the SSCA package content into: ``"C:/ssca/"``
 
-#. Launch Pycharm.
+#. Launch PyCharm or if your project already exists, you can jump to the next chapter "**Set up a local SSCA Python interpreter**".
 
-#. Open a project with File > Open
+#. Click on ``Create`` a new project from the welcome window.
 
-    * If it's your first time launching Pycharm, navigate through the prompts and then select Open.
+    .. image:: ../static/introduction_ide_setup/pycharm_01_welcome.png
 
-#. Navigate to and open the folder where you saved the SSCA package.
+#. In the next setup window, give your project a Name.
 
-Set up the Python interpreter
+#. Enter your project Location.
+
+    * In our example, our project folder will be in: ``C:/projects``
+
+#. In the Interpreter type section, select ``Project venv``.
+
+#. Select SSCA Python version, navigating to your SSCA 'install' folder.
+
+        * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
+
+        * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
+
+#. Click on ``Create``
+
+    .. image:: ../static/introduction_ide_setup/pycharm_02_project_setup.png
+
+#. You are now ready to start coding with Python and SSCA in your virtual environment (venv).
+
+Set up a local SSCA Python interpreter
 """""""""""""""""""""""""""""
-PyCharm comes with the capability to create virtual environments for your Python interpreter. A virtual environment allows you to manage settings and dependencies of your project without impacting other projects.
 
-#. Open Pycharm's settings with File > Settings (or press Ctrl + Alt + S)
+#. Once your project is open.
 
-#. In the left panel, select "Project: <Your project name>" and then "Python Interpreter".
+#. Expand PyCharm top menu bar clicking on the "Main Menu" icon.
 
-#. Select Add Interpreter > Add Local Interpreter.
+    .. image:: ../static/introduction_ide_setup/pycharm_03_main_menu.png
 
-#. Select "Virtualenv Environment" from the list of options on the left side of the window that appears.
+#. Open PyCharm's settings with File > Settings (or press Ctrl + Alt + S).
 
-#. Enter the path to the python.exe file included with the SSCA package.
+    .. image:: ../static/introduction_ide_setup/pycharm_04_settings.png
 
-    * Windows: This should be located in ``<SSCA package>/bin/python.exe``.
+#. In the left panel, expand "Project: <Your project name>" and then click "Python Interpreter".
 
-    * Mac/Linux: This should be located in ``<SSCA package>/bin/python3``.
+#. Select Add Interpreter > Add Local Interpreter. 
 
-Configure the project
-"""""""""""""""""""""
+    .. image:: ../static/introduction_ide_setup/pycharm_04_settings_interpreter.png
 
-#. With the project open in Pycharm, use Run > Edit Configurations
+#. In the new window, select "Virtualenv Environment" from the list of options on the left side of the window that appears.
 
-#. Add a new run configuration
+#. Enter the path to the python.exe file included within your SSCA 'install' (unzipped) folder.
 
-#. Set Script path to the path of the script that you will run
+    * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
 
-    * For example, ``C:/Users/<username>/SSCA Workspace/TestScript.py``
+    * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
 
-#. Set Working directory to the path of the package
+    .. image:: ../static/introduction_ide_setup/pycharm_04_virtual_env.png
 
-    * For example, ``C:/Users/<username>/SSCA Workspace``
+#. Your Virtual environment (venv) is now created and you can start using your local SSCA Python interpreter.
 
-#. Ensure that the Python Interpreter is set to the Python 3.11 Interpreter created earlier
-
-#. Leave Add content roots to PYTHONPATH checked
-
-#. Leave Add source roots to PYTHONPATH checked
-
-#. Select "OK" to save your run configuration
+    .. image:: ../static/introduction_ide_setup/pycharm_05_venv_folder.png
 
 Run your first script
 """""""""""""""""""""
 
-#. Create a python file that matches the name used in the run configuration
+#. Open/Create a Python script file into your project.
 
-    * For example: "C:/Users/<username>/SSCA Workspace/TestScript.py"
+    * In our example, ``C:/projects/myProject/main.py``
 
-#. Copy the code below into the new file. This script creates a simple scene with a light and a cube.
+#. Copy the code below into the opened file. This script creates a simple scene with a light and a cube.
 
     .. code-block:: python
 
@@ -193,11 +241,17 @@ Run your first script
         # save the scene with a valid output filepath
         output_path = scene.save(my_scene, './TestScene.usda')
 
-#. Run the script with shortcut Shift + F10 or click the arrow at the top right of the Pycharm window.
+    .. image:: ../static/run_script.png
+
+#. Run the current script with shortcut ctrl + Shift + F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.
 
 #. To confirm the script ran successfully, check the console at the bottom of the Pycharm window. The last line should say "Process finished with exit code 0".
 
     * Additionally, a file called TestScene.usda should have been created in the same folder as your script.
+
+.. warning::
+    If the test script fails to find the SSCA modules, there could  be a conflict in the environment. 
+    Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
 
 Configure your environment for Linux with NVIDIA GPU
 ####################################################

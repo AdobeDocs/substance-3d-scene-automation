@@ -223,7 +223,11 @@ API Modules : :ref:`scene<substance3d.api.scene>`
 
 After loading a scene or appending a file to your scene, you may need to modify objects for which you don't yet have a variable.
 
-You can look for objects in your scene with the ``scene.search()`` function.
+You can look for objects in your scene with the ``scene.search()`` function or iterate through all of them with special iterators like ``scene.objects``.
+If performance is required and you don't need the filters, prefer ``scene.objects`` and ``prim.children``.
+
+Get objects with scene.search()
+###############################
 
 .. code-block:: python
 
@@ -362,7 +366,34 @@ We will see the different features of them:
 
     child = my_cube.children["Sphere3"]
 
+Advanced : Improving performance even more while iterating through the scene
+##################################################################
 
+The most efficient way to iterate through all objects in the scene is using the ``scene.objects`` iterator.
+
+However, you may have thousands of objects and iterating through all of them may be costly if you're only checking for
+aliases like *variant sets* or relationships like *material binding*.
+
+For this situation, you can deactivate attribute initialization using the following setup :
+
+.. code-block:: python
+
+    scn.objects.with_attrs = False
+    for o in scn.objects:
+        o.material.binding.get()
+        o.variant_sets
+        # ...
+
+How to get back the PrimHandler's attributes?
++++++++++++++++++++++++++++++++++++++++++++++
+
+Once you've iterated through the scene, you can get attrs back on your selection with ``my_prim.update()``.
+
+.. code-block:: python
+
+    # ...
+    o.update()
+    # ...
 
 Move objects
 ============

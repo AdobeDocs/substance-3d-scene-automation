@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Known Issues" href="userdoc/knownissues.html" /> 
+    <link rel="prev" title="Mesh Processing" href="userdoc/mesh_processing.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,7 +60,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -68,59 +69,66 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Substance3d Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#april-17-2025">1.3.1 (April, 17 2025)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#march-25th-2025">1.3.0 (March, 25th 2025)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.4.0 (2025/09/23)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#improvements">Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#april-17-2025">1.3.1 (April, 17 2025)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#december-3rd-2024">1.2.0 (December, 3rd 2024)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Fixed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#experimental">Experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Fixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#march-25th-2025">1.3.0 (March, 25th 2025)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#july-23th-2024">1.1.0 (July, 23th 2024)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#api-breaks">API Breaks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Fixed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Fixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#december-3rd-2024">1.2.0 (December, 3rd 2024)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#beta1-march-21th-2024">1.0.0 - beta1 (March, 21th 2024)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Fixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Fixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#experimental">Experimental</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#july-23th-2024">1.1.0 (July, 23th 2024)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#beta0-january-15th-2024">1.0.0 - beta0 (January, 15th 2024)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Fixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-breaks">API Breaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Fixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Experimental</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#beta1-march-21th-2024">1.0.0 - beta1 (March, 21th 2024)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#november-15th-2023">0.12.0 (November, 15th 2023)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Fixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Fixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#beta0-january-15th-2024">1.0.0 - beta0 (January, 15th 2024)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#september-21st-2023">0.11.0 (September, 21st 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#september-18th-2023">0.10.0 (September, 18th 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#august-3rd-2023">0.9.0 (August, 3rd 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#june-27th-2023">0.8.0 (June 27th 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#may-30th-2023">0.7.0 (May 30th 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#may-2nd-2023">0.6.0 (May 2nd 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#april-14th-2023">0.5.0 (April 14th 2023)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mars-8th-2023">0.4.0 (Mars 8th 2023)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Fixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#november-15th-2023">0.12.0 (November, 15th 2023)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">Added</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">Fixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#september-21st-2023">0.11.0 (September, 21st 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#september-18th-2023">0.10.0 (September, 18th 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#august-3rd-2023">0.9.0 (August, 3rd 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#june-27th-2023">0.8.0 (June 27th 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#may-30th-2023">0.7.0 (May 30th 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#may-2nd-2023">0.6.0 (May 2nd 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#april-14th-2023">0.5.0 (April 14th 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mars-8th-2023">0.4.0 (Mars 8th 2023)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -151,19 +159,70 @@
              
   <section id="substance3d-release-notes">
 <h1>Substance3d Release Notes<a class="headerlink" href="#substance3d-release-notes" title="Permalink to this heading"></a></h1>
-<section id="april-17-2025">
-<h2>1.3.1 (April, 17 2025)<a class="headerlink" href="#april-17-2025" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h2>1.4.0 (2025/09/23)<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>[Mesh Processing] New <strong>mesh_processing</strong> API module for mesh operations.</p></li>
+<li><p>[Mesh Processing] New mesh processing operators (Decimation, Remeshing, Unwrap, Repack, …)</p></li>
+<li><p>[Mesh Processing] New function to process a chain of operators, <cite>mesh_processing.process()</cite></p></li>
+<li><p>[USDView] USDView with file format plugins support is now available</p></li>
+<li><p>[USDView][Plugins] Simplified behavior to <strong>add USDView plugins</strong>.</p></li>
+<li><p>[USDView][Plugins] Add USDView plugins into <cite>$substance3d/ssca_usdview_plugins</cite></p></li>
+<li><p>[USDView][Plugins] Add USDView plugins into a directory defined by <strong>SBS3D_USDVIEW_PLUGINS_PATH</strong> environment variable.</p></li>
+<li><p>[USDView][Plugins] Default USDView plugins are available (Camera creation, Variant finder, …)</p></li>
+<li><p>[Transform] New functions to set pivot transform, <cite>transform.set_scale_pivot()</cite>, <cite>transform.set_rotate_pivot()</cite></p></li>
+<li><p>[Transform] New functions to get pivot transform, <cite>transform.get_scale_pivot()</cite>, <cite>transform.get_rotate_pivot()</cite></p></li>
+<li><p>[Material] New function to create a material from reference <cite>material.create_from_reference()</cite>.</p></li>
+<li><p>[Material] New function to switch the material <strong>output surface</strong>, <cite>material.change_output_surface()</cite></p></li>
+<li><p>[Material] New function to change the <strong>normal</strong> format, <cite>material.set_normal_format()</cite></p></li>
+<li><p>[Material] Texture file parameters now support <strong>Path</strong> objects as input.</p></li>
+<li><p>[Image] <cite>image.normalize()</cite> can choose which <strong>channels</strong> to normalize.</p></li>
+<li><p>[Scene] New function to <strong>demote a local object</strong> to a local reference.</p></li>
+<li><p>[Scene] Option to <strong>search in display name</strong> metadata.</p></li>
+<li><p>[Renderer] When a <cite>time_limit</cite> is reached, the renderer issues <strong>finishRendering</strong> (denoiser, postprocess…) to finalize the frame.</p></li>
+<li><p>[Documentation] Added <strong>Stats module API</strong> docs and updated IDE setup and installation guides.</p></li>
+</ul>
+</section>
+<section id="improvements">
+<h3>Improvements<a class="headerlink" href="#improvements" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>[Stats][Performance] Speed up statistics collection</p></li>
+</ul>
+</section>
 <section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p>[Documentation] Update and fixes</p></li>
+<li><p>[Material] Fixed failure to <strong>create SBSAR</strong> when the <cite>.sbsar</cite> file is next to (or above) a <strong>USDZ</strong>-loaded file.</p></li>
+<li><p>[Material] Fixed <strong>unintended empty reference</strong> added by SBSAR materials in certain cases.</p></li>
+<li><p>[Material] Removed the <strong>cache limit</strong> for the SBSAR material creation.</p></li>
+<li><p>[Renderer] Fixed <strong>Normal AOVs render pass</strong> naming/typo to ensure correct output.</p></li>
+<li><p>[Camera][Transform] Fixed <strong>bounding box</strong> and <strong>camera framing</strong> behavior for <strong>animated transforms</strong>.</p></li>
+<li><p>[Variant] Corrected <cite>ReferenceList.clear()</cite> behavior inside a <strong>variant</strong>.</p></li>
 </ul>
 </section>
+<section id="known-issues">
+<h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>[USDView] USDView crashes when initializing Eclair</p></li>
+</ul>
 </section>
+<section id="april-17-2025">
+<h3>1.3.1 (April, 17 2025)<a class="headerlink" href="#april-17-2025" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id2">
+<h2>Fixed<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>[Documentation] Update and fixes</p></li>
+</ul>
 <section id="march-25th-2025">
-<h2>1.3.0 (March, 25th 2025)<a class="headerlink" href="#march-25th-2025" title="Permalink to this heading"></a></h2>
-<section id="added">
-<h3>Added<a class="headerlink" href="#added" title="Permalink to this heading"></a></h3>
+<h3>1.3.0 (March, 25th 2025)<a class="headerlink" href="#march-25th-2025" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id3">
+<h2>Added<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Global] Support for <cite>DisplayName</cite> on PrimHandlers</p></li>
 <li><p>[Scene] New function to flatten references as local in the current stage <cite>scene.flatten_references()</cite></p></li>
@@ -178,8 +237,8 @@
 <li><p>[Utility] New function to set GPU device <cite>substance3d.api.GPUSettings().index = 1</cite></p></li>
 </ul>
 </section>
-<section id="id1">
-<h3>Fixed<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h2>Fixed<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Variant] Allows to render within a variant block</p></li>
 <li><p>[Variant] Properly create several variant sets</p></li>
@@ -187,19 +246,19 @@
 <li><p>[Camera] Fixed an issue with orienting a camera along a specific direction colinear to the up axis</p></li>
 <li><p>[Light] The USD distant light now comes from +Z instead of -Z, consistent with other renderers.</p></li>
 </ul>
-</section>
-</section>
 <section id="december-3rd-2024">
-<h2>1.2.0 (December, 3rd 2024)<a class="headerlink" href="#december-3rd-2024" title="Permalink to this heading"></a></h2>
+<h3>1.2.0 (December, 3rd 2024)<a class="headerlink" href="#december-3rd-2024" title="Permalink to this heading"></a></h3>
+</section>
+</section>
 <section id="breaking-changes">
-<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this heading"></a></h3>
+<h2>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] New default prim behavior. When a new scene is created <cite>scene.new()</cite> a default Xform prim named <cite>root</cite> is created. This new behavior doesnt change any API signatures. If a scene is loaded without a valid defaultPrim, errors will be raised by some API functions. Check the documentation for more information <cite>Getting started - Create and build a scene</cite></p></li>
 <li><p>[Material] With this new behavior, materials are created by default under <cite>/{defaultPrim}/materials/…</cite> instead of <cite>/materials/…</cite></p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>Added<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<section id="id5">
+<h2>Added<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] Add depth option when printing the scene tree with <cite>scene.tree(depth=2)</cite></p></li>
 <li><p>[Material] New function <cite>set_input</cite> to set or change the value of a material input</p></li>
@@ -211,8 +270,8 @@
 <li><p>[Image] <cite>normalize</cite> function supports int32 and int64 image types</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Fixed<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h2>Fixed<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] Fix scale to the scene unit option</p></li>
 <li><p>[Material] More robust usage detection in texture files</p></li>
@@ -223,25 +282,25 @@
 </ul>
 </section>
 <section id="experimental">
-<h3>Experimental<a class="headerlink" href="#experimental" title="Permalink to this heading"></a></h3>
+<h2>Experimental<a class="headerlink" href="#experimental" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Light] New function <cite>dome_from_match_image</cite> to generate a dome light from an image</p></li>
 <li><p>[Image] New function <cite>panorama_from_image</cite> to generate an HDR panorama from an image</p></li>
 </ul>
-</section>
-</section>
 <section id="july-23th-2024">
-<h2>1.1.0 (July, 23th 2024)<a class="headerlink" href="#july-23th-2024" title="Permalink to this heading"></a></h2>
+<h3>1.1.0 (July, 23th 2024)<a class="headerlink" href="#july-23th-2024" title="Permalink to this heading"></a></h3>
+</section>
+</section>
 <section id="api-breaks">
-<h3>API Breaks<a class="headerlink" href="#api-breaks" title="Permalink to this heading"></a></h3>
+<h2>API Breaks<a class="headerlink" href="#api-breaks" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Renderer] Full support of stage’s RenderSettings (check Documentation - User Manual - Next steps - Render settings)</p></li>
 <li><p>[Renderer] <cite>Renderer.device</cite> enum is renamed in <cite>Renderer.RenderTechnique</cite> to match RenderSettings terminology</p></li>
 <li><p>Revamp how to get and set Attribute Handlers (check Documentation - User Manual - How to use Handlers)</p></li>
 </ul>
 </section>
-<section id="id4">
-<h3>Added<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h2>Added<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] New way to get an object with index or path <cite>my_scn.objects.get(index or path)</cite> <cite>my_scn.objects.[index or path]</cite></p></li>
 <li><p>[Stats] New module <cite>stats</cite> (check Documentation - User Manual - Statistics Collectors)</p></li>
@@ -267,8 +326,8 @@
 <li><p>[Global][Linux] Use Vulkan Substance Engine by default</p></li>
 </ul>
 </section>
-<section id="id5">
-<h3>Fixed<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id8">
+<h2>Fixed<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] add_reference with selected objects can support fileformat plugin options</p></li>
 <li><p>[Renderer] Fix white diffuse AOV</p></li>
@@ -279,17 +338,17 @@
 <li><p>[Export] All functions now work with relative destination path</p></li>
 </ul>
 </section>
-<section id="id6">
-<h3>Experimental<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id9">
+<h2>Experimental<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Camera] New function <cite>match_perspective</cite>. Contact Adobe for more information</p></li>
 </ul>
-</section>
-</section>
 <section id="beta1-march-21th-2024">
-<h2>1.0.0 - beta1 (March, 21th 2024)<a class="headerlink" href="#beta1-march-21th-2024" title="Permalink to this heading"></a></h2>
-<section id="id7">
-<h3>Added<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3>1.0.0 - beta1 (March, 21th 2024)<a class="headerlink" href="#beta1-march-21th-2024" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id10">
+<h2>Added<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Material] SBSAR Material support input image parameter</p></li>
 <li><p>[Material] New <cite>create_from_mtlx</cite> function to create a material from a MaterialX file.</p></li>
@@ -304,8 +363,8 @@
 <li><p>[Utility] Get object measurement with <cite>utility.bbox_info</cite></p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Fixed<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<section id="id11">
+<h2>Fixed<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Global] Better management of Z-axis scenes (camera creation, ground plane,…)</p></li>
 <li><p>[Material] Correct support of UsdPreviewSurface for all created materials</p></li>
@@ -315,12 +374,12 @@
 <li><p>[Scene] Given file path are now checked with asset path resolver</p></li>
 <li><p>[Plugins] Numerous minor fix for plugin formats</p></li>
 </ul>
-</section>
-</section>
 <section id="beta0-january-15th-2024">
-<h2>1.0.0 - beta0 (January, 15th 2024)<a class="headerlink" href="#beta0-january-15th-2024" title="Permalink to this heading"></a></h2>
-<section id="id9">
-<h3>Added<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>1.0.0 - beta0 (January, 15th 2024)<a class="headerlink" href="#beta0-january-15th-2024" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id12">
+<h2>Added<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Global] Add pathlib support</p></li>
 <li><p>[Global] Linux package is a tar.gz</p></li>
@@ -331,8 +390,8 @@
 <li><p>[Camera] Frame a camera to a given bounding box with <cite>camera.frame()</cite></p></li>
 </ul>
 </section>
-<section id="id10">
-<h3>Fixed<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<section id="id13">
+<h2>Fixed<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Package] Fix Substance Engine loading on MacOS</p></li>
 <li><p>[Material] Fix error when assigning a Substance material with no physical size</p></li>
@@ -344,12 +403,12 @@
 <li><p>[Render] Crash when rendering several presets of a Substance material coming from a template scene</p></li>
 <li><p>[Plugins] Numerous minor fix for plugin formats</p></li>
 </ul>
-</section>
-</section>
 <section id="november-15th-2023">
-<h2>0.12.0 (November, 15th 2023)<a class="headerlink" href="#november-15th-2023" title="Permalink to this heading"></a></h2>
-<section id="id11">
-<h3>Added<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<h3>0.12.0 (November, 15th 2023)<a class="headerlink" href="#november-15th-2023" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="id14">
+<h2>Added<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] Add support for USD collections with <cite>scene.collections</cite></p></li>
 <li><p>[Renderer] Save your render passes as a multipart EXR</p></li>
@@ -360,8 +419,8 @@
 <li><p>[Utility] BBOX computation, more precise but less performant <cite>utility.calculate_bbox(…, use_precise_mesh_bbox=True)</cite></p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>Fixed<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<section id="id15">
+<h2>Fixed<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>[Scene] Error when add reference/layer relative file path</p></li>
 <li><p>[Scene] Set scene’s metadata doesn’t udpate SSCA data if a value already exists</p></li>
@@ -370,10 +429,8 @@
 <li><p>[Plugins] Load obj files without .mtl</p></li>
 <li><p>[Plugins] Numerous minor fix for plugin formats</p></li>
 </ul>
-</section>
-</section>
 <section id="september-21st-2023">
-<h2>0.11.0 (September, 21st 2023)<a class="headerlink" href="#september-21st-2023" title="Permalink to this heading"></a></h2>
+<h3>0.11.0 (September, 21st 2023)<a class="headerlink" href="#september-21st-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function <cite>material.get_sbsar_parameters</cite> to get all parameters and their properties of a SBSAR file</p></li>
 <li><p>New function <cite>material.set_sbsar_parameter</cite> to easily set a new value of a given SBSAR parameter</p></li>
@@ -385,7 +442,7 @@
 </ul>
 </section>
 <section id="september-18th-2023">
-<h2>0.10.0 (September, 18th 2023)<a class="headerlink" href="#september-18th-2023" title="Permalink to this heading"></a></h2>
+<h3>0.10.0 (September, 18th 2023)<a class="headerlink" href="#september-18th-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><cite>renderer.render</cite> has a new argument <cite>denoiser</cite> to automatically denoise renders <cite>renderer.render(…, denoise=True)</cite></p></li>
 <li><p>Matching parity of GLB support between SSCA and Stager</p></li>
@@ -410,7 +467,7 @@ The old position argument <cite>name</cite> is now a keyword argument – old ca
 </ul>
 </section>
 <section id="august-3rd-2023">
-<h2>0.9.0 (August, 3rd 2023)<a class="headerlink" href="#august-3rd-2023" title="Permalink to this heading"></a></h2>
+<h3>0.9.0 (August, 3rd 2023)<a class="headerlink" href="#august-3rd-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function to set a groundplane for rendering <cite>render.set_groundplane()</cite></p></li>
 <li><p><cite>renderer.render</cite> has a new argument <cite>passes</cite> to render a list of passes</p></li>
@@ -428,7 +485,7 @@ The old position argument <cite>name</cite> is now a keyword argument – old ca
 </ul>
 </section>
 <section id="june-27th-2023">
-<h2>0.8.0 (June 27th 2023)<a class="headerlink" href="#june-27th-2023" title="Permalink to this heading"></a></h2>
+<h3>0.8.0 (June 27th 2023)<a class="headerlink" href="#june-27th-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Keyframe animation support</p></li>
 <li><p>Physical size support for material assignment</p></li>
@@ -451,7 +508,7 @@ The old position argument <cite>name</cite> is now a keyword argument – old ca
 </ul>
 </section>
 <section id="may-30th-2023">
-<h2>0.7.0 (May 30th 2023)<a class="headerlink" href="#may-30th-2023" title="Permalink to this heading"></a></h2>
+<h3>0.7.0 (May 30th 2023)<a class="headerlink" href="#may-30th-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added option to preserve camera orientation when framing
 the scene</p></li>
@@ -466,7 +523,7 @@ the scene</p></li>
 </ul>
 </section>
 <section id="may-2nd-2023">
-<h2>0.6.0 (May 2nd 2023)<a class="headerlink" href="#may-2nd-2023" title="Permalink to this heading"></a></h2>
+<h3>0.6.0 (May 2nd 2023)<a class="headerlink" href="#may-2nd-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Renamed package from substance3d-automation to substance3d_scene_automation</p></li>
 <li><p>Fixed issue with transform.clear</p></li>
@@ -476,7 +533,7 @@ the scene</p></li>
 </ul>
 </section>
 <section id="april-14th-2023">
-<h2>0.5.0 (April 14th 2023)<a class="headerlink" href="#april-14th-2023" title="Permalink to this heading"></a></h2>
+<h3>0.5.0 (April 14th 2023)<a class="headerlink" href="#april-14th-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Eclair CPU is now the default renderer</p></li>
 <li><p>Fixed issues for material creation</p></li>
@@ -516,7 +573,7 @@ turned False <cite>material.assign_to_objects(… , stronger_than_descendants=Fa
 </ul>
 </section>
 <section id="mars-8th-2023">
-<h2>0.4.0 (Mars 8th 2023)<a class="headerlink" href="#mars-8th-2023" title="Permalink to this heading"></a></h2>
+<h3>0.4.0 (Mars 8th 2023)<a class="headerlink" href="#mars-8th-2023" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Usd is now 23.02</p></li>
 <li><p>Updated OpenImageIO to 2.4.8.1</p></li>
@@ -539,12 +596,13 @@ turned False <cite>material.assign_to_objects(… , stronger_than_descendants=Fa
 </ul>
 </section>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="userdoc/knownissues.html" class="btn btn-neutral float-left" title="Known Issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="userdoc/mesh_processing.html" class="btn btn-neutral float-left" title="Mesh Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -59,7 +59,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -67,9 +68,9 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -379,9 +380,49 @@ Op values will be returned</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.get_rotate_pivot">
+<span class="sig-name descname"><span class="pre">get_rotate_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.get_rotate_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Get rotate pivot values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get values</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to get the object’s values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>rotate values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform.get_scale">
 <span class="sig-name descname"><span class="pre">get_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.get_scale" title="Permalink to this definition"></a></dt>
 <dd><p>Get scale values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get values</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to get the object’s values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>scale values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.get_scale_pivot">
+<span class="sig-name descname"><span class="pre">get_scale_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.get_scale_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Get scale pivot values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -531,6 +572,28 @@ In opposition to <cite>transform.rotate</cite> that add given vector to the exis
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.set_rotate_pivot">
+<span class="sig-name descname"><span class="pre">set_rotate_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_rotate_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Set a rotate pivot for the given object, in this case a rotate pivot is an invert transformation that allow
+to rotate the object from somewhere other than the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to apply a rotate pivot</p></li>
+<li><p><strong>value</strong> (<em>tuple</em><em> | </em><em>list</em>) – the vector value of the rotate pivot position</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to move the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the moved object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform.set_scale">
 <span class="sig-name descname"><span class="pre">set_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_scale" title="Permalink to this definition"></a></dt>
 <dd><p>Set scale values, if a scale operator already exists the existing values will be replaced by the given ones.
@@ -540,6 +603,28 @@ In opposition to <cite>transform.scale</cite> that add given vector to the exist
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get values</p></li>
 <li><p><strong>value</strong> (<em>tuple</em><em> | </em><em>list</em>) – the vector value to move the object, list or tuple of three floats</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to move the object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the moved object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.set_scale_pivot">
+<span class="sig-name descname"><span class="pre">set_scale_pivot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.set_scale_pivot" title="Permalink to this definition"></a></dt>
+<dd><p>Set a scale pivot for the given object, in this case a scale pivot is an invert transformation that allow
+to scale the object from somewhere other than the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to apply a scale pivot</p></li>
+<li><p><strong>value</strong> (<em>tuple</em><em> | </em><em>list</em>) – the vector value of the scale pivot position</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to move the object</p></li>
 </ul>
 </dd>
@@ -674,7 +759,7 @@ or append as new operator.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.bbox_info">
-<span class="sig-name descname"><span class="pre">bbox_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.bbox_info" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">bbox_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.bbox_info" title="Permalink to this definition"></a></dt>
 <dd><p>Return an info dict about bounding box size calculated from given arguments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -682,6 +767,7 @@ or append as new operator.</p>
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – The current scene</p></li>
 <li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – an object or a list of objects from which to compute the bbox info, if None then the whole scene will be used</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box info</p></li>
 </ul>
 </dd>
 </dl>
@@ -703,13 +789,14 @@ or append as new operator.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.calculate_bbox">
-<span class="sig-name descname"><span class="pre">calculate_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate a bounding box surrounding all the objects passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -723,14 +810,21 @@ or append as new operator.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.calculate_bbox_midpoint">
-<span class="sig-name descname"><span class="pre">calculate_bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox_midpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate_bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox_midpoint" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the midpoint from the bounding box surrounding all the objects passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box midpoint</p></li>
+<li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box midpoint</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the created bounding box</p>
+<dd class="field-even"><p>the created bounding box midpoint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -758,6 +852,23 @@ or append as new operator.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.get_world_transform_matrix">
+<span class="sig-name descname"><span class="pre">get_world_transform_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.get_world_transform_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Get world transform matrix of the given object, useful to do a local to world conversion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object to get world transform matrix</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to get the object’s world transform matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>world matrix 4x4</p>
 </dd>
 </dl>
 </dd></dl>

@@ -22,7 +22,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="substance3d.api.utility.mesh_processing" href="mesh_processing.html" />
+    <link rel="next" title="substance3d.api.mesh_processing" href="mesh_processing.html" />
     <link rel="prev" title="substance3d.api.image" href="image.html" /> 
 </head>
 
@@ -73,7 +73,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.original_formats"><code class="docutils literal notranslate"><span class="pre">original_formats()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul>
@@ -81,9 +82,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -208,7 +209,7 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.utility.utility.calculate_bbox">
-<span class="sig-name descname"><span class="pre">calculate_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.calculate_bbox" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.calculate_bbox" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate a bounding box surrounding all the objects passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -216,6 +217,7 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – the scene the objects belong to</p></li>
 <li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -229,17 +231,22 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.utility.utility.calculate_bbox_midpoint">
-<span class="sig-name descname"><span class="pre">calculate_bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.calculate_bbox_midpoint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate_bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.calculate_bbox_midpoint" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the midpoint from the bounding box surrounding all the objects passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – the scene the objects belong to</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box midpoint</p></li>
+<li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box midpoint</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the created bounding box</p>
+<dd class="field-even"><p>the created bounding box midpoint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
@@ -260,7 +267,7 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.utility.utility.bbox_info">
-<span class="sig-name descname"><span class="pre">bbox_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.bbox_info" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">bbox_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.bbox_info" title="Permalink to this definition"></a></dt>
 <dd><p>Return an info dict about bounding box size calculated from given arguments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -268,6 +275,7 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – The current scene</p></li>
 <li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – an object or a list of objects from which to compute the bbox info, if None then the whole scene will be used</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to calculate the bounding box info</p></li>
 </ul>
 </dd>
 </dl>
@@ -294,7 +302,7 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="image.html" class="btn btn-neutral float-left" title="substance3d.api.image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mesh_processing.html" class="btn btn-neutral float-right" title="substance3d.api.utility.mesh_processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mesh_processing.html" class="btn btn-neutral float-right" title="substance3d.api.mesh_processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

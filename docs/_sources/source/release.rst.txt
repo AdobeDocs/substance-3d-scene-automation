@@ -1,6 +1,48 @@
 Substance3d Release Notes
 =========================
 
+1.4.0 (2025/09/23)
+------------------
+
+Added
++++++
+- [Mesh Processing] New **mesh_processing** API module for mesh operations.
+- [Mesh Processing] New mesh processing operators (Decimation, Remeshing, Unwrap, Repack, ...)
+- [Mesh Processing] New function to process a chain of operators, `mesh_processing.process()`
+- [USDView] USDView with file format plugins support is now available
+- [USDView][Plugins] Simplified behavior to **add USDView plugins**.
+- [USDView][Plugins] Add USDView plugins into `$substance3d/ssca_usdview_plugins`
+- [USDView][Plugins] Add USDView plugins into a directory defined by **SBS3D_USDVIEW_PLUGINS_PATH** environment variable.
+- [USDView][Plugins] Default USDView plugins are available (Camera creation, Variant finder, ...)
+- [Transform] New functions to set pivot transform, `transform.set_scale_pivot()`, `transform.set_rotate_pivot()`
+- [Transform] New functions to get pivot transform, `transform.get_scale_pivot()`, `transform.get_rotate_pivot()`
+- [Material] New function to create a material from reference `material.create_from_reference()`.
+- [Material] New function to switch the material **output surface**, `material.change_output_surface()`
+- [Material] New function to change the **normal** format, `material.set_normal_format()`
+- [Material] Texture file parameters now support **Path** objects as input.
+- [Image] `image.normalize()` can choose which **channels** to normalize.
+- [Scene] New function to **demote a local object** to a local reference.
+- [Scene] Option to **search in display name** metadata.
+- [Renderer] When a `time_limit` is reached, the renderer issues **finishRendering** (denoiser, postprocess...) to finalize the frame.
+- [Documentation] Added **Stats module API** docs and updated IDE setup and installation guides.
+
+Improvements
+++++++++++++
+- [Stats][Performance] Speed up statistics collection
+
+Fixed
++++++
+- [Material] Fixed failure to **create SBSAR** when the `.sbsar` file is next to (or above) a **USDZ**-loaded file.
+- [Material] Fixed **unintended empty reference** added by SBSAR materials in certain cases.
+- [Material] Removed the **cache limit** for the SBSAR material creation.
+- [Renderer] Fixed **Normal AOVs render pass** naming/typo to ensure correct output.
+- [Camera][Transform] Fixed **bounding box** and **camera framing** behavior for **animated transforms**.
+- [Variant] Corrected `ReferenceList.clear()` behavior inside a **variant**.
+
+Known issues
+++++++++++++
+- [USDView] USDView crashes when initializing Eclair
+
 1.3.1 (April, 17 2025)
 +++++++++++++++++++++++
 

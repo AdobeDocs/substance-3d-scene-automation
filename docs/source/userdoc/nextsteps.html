@@ -61,7 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
 <ul class="current">
@@ -88,11 +89,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#local-reference-flattening">Local reference flattening</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#move-local-prim-to-reference">Move local prim to reference</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">Mesh Processing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -582,7 +585,7 @@ These additional keys let you add import parameters when importing a file in you
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.axf</span></code></p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">axfAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
 <div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
 <div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
 <div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
@@ -591,7 +594,7 @@ These additional keys let you add import parameters when importing a file in you
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.fbx</span></code></p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">fbxAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
 <div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
 <div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
 <div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
@@ -614,7 +617,7 @@ These additional keys let you add import parameters when importing a file in you
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.gltf</span></code>, <code class="docutils literal notranslate"><span class="pre">.glb</span></code></p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">gltfAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
 <div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
 <div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
 <div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
@@ -628,7 +631,7 @@ These additional keys let you add import parameters when importing a file in you
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.obj</span></code></p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">objAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
 <div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
 <div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
 <div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
@@ -667,7 +670,7 @@ These additional keys let you add import parameters when importing a file in you
 </div>
 </td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">prcAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
 <div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
 <div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
 <div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
@@ -724,9 +727,8 @@ make an USDZ Potion asset with variants that can be imported in Game Engines and
 <img alt="../../_images/potion_variant_unreal.gif" src="../../_images/potion_variant_unreal.gif" />
 </section>
 </section>
-</section>
 <section id="managing-metadatas">
-<h1>Managing metadatas<a class="headerlink" href="#managing-metadatas" title="Permalink to this heading"></a></h1>
+<h2>Managing metadatas<a class="headerlink" href="#managing-metadatas" title="Permalink to this heading"></a></h2>
 <p>SSCA includes a methods to get, modify and add metadata.</p>
 <p>You can read the metadata of an image with <code class="docutils literal notranslate"><span class="pre">image.metadata()</span></code> and add or modify metadata with <code class="docutils literal notranslate"><span class="pre">image.add_metadata()</span></code>.</p>
 <div class="admonition important">
@@ -750,6 +752,61 @@ We recommend to always test and verify keywords beforehand, with a function like
 </pre></div>
 </div>
 </div>
+</section>
+<section id="move-local-prim-to-reference">
+<h2>Move local prim to reference<a class="headerlink" href="#move-local-prim-to-reference" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find more information about strength ordering and <strong>LIVRPS</strong> in <a class="reference external" href="https://openusd.org/release/glossary.html#usdglossary-livrps-strength-ordering">openUSD documentation</a>.</p>
+</div>
+<p>Following USD Composition arc strength order, also called <strong>LIVRPS</strong>, there will be situations where
+you’ll want a prim to be referenced instead of being local.</p>
+<p>One common situation is wanting to make variants on a local prim you just created in SSCA (e.g : a light).
+As the light is in a local (L) composition arc and its variants are in the eponymous composition arc (V), local parameters (set at creation) will
+take precedence and variants changes won’t have any effect.</p>
+<p>A solution for this is using <code class="docutils literal notranslate"><span class="pre">scene.move_to_reference()</span></code> to move this prim from local composition arc (L) to reference composition arc (R), which is a weaker arc than variant (V)
+and such, allows variants to operate changes on the prim.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">variant</span>
+
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">get_default</span><span class="p">(</span><span class="n">main_scene</span><span class="p">)</span>
+
+<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">sphere</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;light1&quot;</span><span class="p">)</span> <span class="c1"># Create a light (L composition arc)</span>
+
+<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediatly show its value</span>
+<span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;intensity1&quot;</span><span class="p">,</span> <span class="s2">&quot;light1_intensities&quot;</span><span class="p">):</span>
+    <span class="n">light1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">)</span>
+    <span class="n">light1</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">display_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;*intensity*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="go">Attributes :</span>
+<span class="go">    .inputs.intensity : 1.0</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>As we can see, intensity remains unchanged, our variant has no effect.
+Now let’s use <code class="docutils literal notranslate"><span class="pre">scene.move_to_reference()</span></code> to move the light to reference arc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">move_to_reference</span><span class="p">(</span><span class="n">light1</span><span class="p">)</span> <span class="c1"># Moving light1 from local (L) to reference (R) arc</span>
+
+<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediatly show its value</span>
+<span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;intensity1&quot;</span><span class="p">,</span> <span class="s2">&quot;light1_intensities&quot;</span><span class="p">):</span>
+    <span class="n">light1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">)</span>
+    <span class="n">light1</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">display_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;*intensity*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="go">Attributes :</span>
+<span class="go">    .inputs.intensity : 1000.0</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>As light1 is now in reference arc, variant changes are taken into account as expected.</p>
+</section>
 </section>
 
 
