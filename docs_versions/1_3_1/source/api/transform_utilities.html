@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.transform.transform_utilities &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="substance3d.api.light" href="light.html" />
+    <link rel="prev" title="substance3d.api.transform" href="transform.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.transform.transform_utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.Anchor"><code class="docutils literal notranslate"><span class="pre">Anchor</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.calculate_bbox"><code class="docutils literal notranslate"><span class="pre">calculate_bbox()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.calculate_bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">calculate_bbox_midpoint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">bbox_midpoint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.bbox_anchor_midpoint"><code class="docutils literal notranslate"><span class="pre">bbox_anchor_midpoint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.is_valid_bbox"><code class="docutils literal notranslate"><span class="pre">is_valid_bbox()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.bbox_info"><code class="docutils literal notranslate"><span class="pre">bbox_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.calculate_distance"><code class="docutils literal notranslate"><span class="pre">calculate_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.transform.transform_utilities.find_most_distant_positions"><code class="docutils literal notranslate"><span class="pre">find_most_distant_positions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.transform.transform_utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/transform_utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-substance3d.api.transform.transform_utilities">
+<span id="substance3d-api-transform-transform-utilities"></span><h1>substance3d.api.transform.transform_utilities<a class="headerlink" href="#module-substance3d.api.transform.transform_utilities" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.Anchor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Anchor</span></span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.Anchor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>BBox anchor positions, used by align functions</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.calculate_bbox">
+<span class="sig-name descname"><span class="pre">calculate_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate a bounding box surrounding all the objects passed in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p></li>
+<li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the created bounding box</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.calculate_bbox_midpoint">
+<span class="sig-name descname"><span class="pre">calculate_bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_bbox_midpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the midpoint from the bounding box surrounding all the objects passed in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – the objects used to calculate the bounding box</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the created bounding box</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.bbox_midpoint">
+<span class="sig-name descname"><span class="pre">bbox_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.bbox_midpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Return center midpoint of the given bbox</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bbox</strong> (<em>Union</em><em>[</em><em>tuple</em><em>, </em><em>pxr.Gf.Range3f</em><em>]</em>) – a valid bbox can be a tuple(min, max) or a Gf.Range3f</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y, z)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.bbox_anchor_midpoint">
+<span class="sig-name descname"><span class="pre">bbox_anchor_midpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Anchor.CENTER</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.bbox_anchor_midpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Return the bbox midpoint of the given anchor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bbox</strong> (<em>Union</em><em>[</em><em>tuple</em><em>, </em><em>pxr.Gf.Range3f</em><em>]</em>) – a valid bbox can be a tuple(min, max) or a Gf.Range3f</p></li>
+<li><p><strong>anchor</strong> (<a class="reference internal" href="../substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor" title="substance3d.api.transform.transform_utilities.Anchor"><em>Anchor</em></a>) – An <cite>Anchor</cite> value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(x, y, z)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.is_valid_bbox">
+<span class="sig-name descname"><span class="pre">is_valid_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.is_valid_bbox" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the provided bounding box is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bbox</strong> (<em>Union</em><em>[</em><em>tuple</em><em>, </em><em>pxr.Gf.Range3f</em><em>]</em>) – the bounding box to check</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the bounding box is valid, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.bbox_info">
+<span class="sig-name descname"><span class="pre">bbox_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.bbox_info" title="Permalink to this definition"></a></dt>
+<dd><p>Return an info dict about bounding box size calculated from given arguments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scene</strong> (<em>StageHandler</em>) – The current scene</p></li>
+<li><p><strong>objects</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>]</em>) – an object or a list of objects from which to compute the bbox info, if None then the whole scene will be used</p></li>
+<li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.calculate_distance">
+<span class="sig-name descname"><span class="pre">calculate_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.calculate_distance" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate distance between two points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p1</strong> (<em>tuple</em>) – </p></li>
+<li><p><strong>p2</strong> (<em>tuple</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform_utilities.find_most_distant_positions">
+<span class="sig-name descname"><span class="pre">find_most_distant_positions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform_utilities.find_most_distant_positions" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>positions</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="transform.html" class="btn btn-neutral float-left" title="substance3d.api.transform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="light.html" class="btn btn-neutral float-right" title="substance3d.api.light" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

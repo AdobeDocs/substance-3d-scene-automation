@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Next Steps &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to use Handlers" href="handlers.html" />
+    <link rel="prev" title="Getting Started" href="gettingstarted.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Next Steps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-example-create-a-contact-sheet">Basic Example: Create a contact sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scene-branch-management">Scene Branch Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eclair-usdpreviewsurface-and-adobestandardmaterial">Eclair, USDPreviewSurface and AdobeStandardMaterial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-that-mean">What does that mean ?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#statistics-collectors">Statistics Collectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#render-settings">Render Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#missing-parameters-in-rendersettings">Missing parameters in RenderSettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render-settings-override">Render settings override</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#activate-displacement">Activate Displacement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-import-parameters">File import parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-flattening">Reference flattening</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#global-references-flattening">Global references flattening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-reference-flattening">Local reference flattening</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Next Steps</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/userdoc/nextsteps.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="next-steps">
+<h1>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading"></a></h1>
+<section id="basic-example-create-a-contact-sheet">
+<h2>Basic Example: Create a contact sheet<a class="headerlink" href="#basic-example-create-a-contact-sheet" title="Permalink to this heading"></a></h2>
+<p>API Modules : <a class="reference internal" href="../api/image.html#module-substance3d.api.image.image"><span class="std std-ref">image</span></a>, <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a>,
+<a class="reference internal" href="../api/renderer.html#module-substance3d.api.renderer.renderer"><span class="std std-ref">renderer</span></a>, <a class="reference internal" href="../api/transform.html#module-substance3d.api.transform.transform"><span class="std std-ref">transform</span></a>,
+<a class="reference internal" href="../api/camera.html#module-substance3d.api.camera.camera"><span class="std std-ref">camera</span></a>, <a class="reference internal" href="../api/light.html#module-substance3d.api.light.light"><span class="std std-ref">light</span></a></p>
+<p>Let’s use everything we’ve learned in Getting Started from the beginning and save the result as a contact-sheet.
+The next snippet shows how to render an asset with some material variation,
+render images and save them as contact-sheet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">camera</span>
+
+<span class="c1"># create a new scene</span>
+<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="c1"># create a xform that will reference our asset</span>
+<span class="n">walkman_grp</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;walkman_grp&#39;</span><span class="p">)</span>
+
+<span class="c1"># reference our walkman asset on this xform</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">walkman_grp</span><span class="p">,</span> <span class="s1">&#39;./walkman.fbx&#39;</span><span class="p">)</span>
+
+<span class="c1"># turn the asset of 90 degree on X axis to align it with the camera</span>
+<span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">walkman_grp</span><span class="p">,</span> <span class="p">(</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+
+<span class="c1"># create camera and move it back</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;camera&#39;</span><span class="p">)</span>
+<span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="c1"># add an environment light to have a studio lighting</span>
+<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;my_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio.hdr&#39;</span><span class="p">)</span>
+
+<span class="c1"># add a sbsar material for our walkman</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./walkman_material_presets.sbsar&#39;</span><span class="p">,</span> <span class="s1">&#39;walkman_material&#39;</span><span class="p">)</span>
+
+<span class="c1"># assign material on the walkman by using search function to select meshes</span>
+<span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">walkman_grp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
+
+<span class="c1"># get presets</span>
+<span class="n">mat_presets</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">get_sbsar_presets</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+
+<span class="c1"># and now let&#39;s render an image for each material presets and store the result in a list</span>
+<span class="n">render_images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scn</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">preset</span> <span class="ow">in</span> <span class="n">mat_presets</span><span class="p">:</span>
+    <span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_preset</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">preset</span><span class="p">)</span>
+    <span class="n">render_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="n">samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">default_light</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">cam</span><span class="p">,</span> <span class="n">background_image</span><span class="o">=</span><span class="s1">&#39;./grey_background.png&#39;</span><span class="p">)</span>
+    <span class="n">render_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">render_img</span><span class="p">)</span>
+
+<span class="c1"># gather all our images into a contact-sheet</span>
+<span class="n">final_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">create_contact_sheet</span><span class="p">(</span><span class="n">render_images</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">border_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># and save it !</span>
+<span class="n">final_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./walkman_variations.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/contact-sheet.png" src="../../_images/contact-sheet.png" />
+</section>
+<section id="scene-branch-management">
+<h2>Scene Branch Management<a class="headerlink" href="#scene-branch-management" title="Permalink to this heading"></a></h2>
+<p>What is the a scene branch?
+A scene branch is a way to edit your current scene in a defined context without impacting the current state of your scene.
+Similar to code development with git, you can create a branch to modify your scene without affecting the main branch.
+This branch system can be used to save several states of your scene or used as session layers</p>
+<p>Let’s see it in actions with an example.
+Branch Schema</p>
+<img alt="../../_images/scene_branch_documentation.jpg" src="../../_images/scene_branch_documentation.jpg" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">camera</span><span class="p">,</span> <span class="n">primitive</span>
+
+<span class="c1"># Start the scene creation</span>
+<span class="c1"># create a new scene</span>
+<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="c1"># create a xform that will reference our asset</span>
+<span class="n">walkman_grp</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;walkman_grp&#39;</span><span class="p">)</span>
+
+<span class="c1"># reference our walkman asset on this xform</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">walkman_grp</span><span class="p">,</span> <span class="s1">&#39;./walkman.fbx&#39;</span><span class="p">)</span>
+
+<span class="c1"># turn the asset of 90 degree on X axis to align it with the camera</span>
+<span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">walkman_grp</span><span class="p">,</span> <span class="p">(</span><span class="mf">90.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+
+<span class="c1"># create camera and move it back</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;camera&#39;</span><span class="p">)</span>
+<span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">))</span>
+
+<span class="c1"># At this stage, we have our untextured asset and a camera with no lighting</span>
+
+<span class="c1"># Create the red branch for lighting and texturing</span>
+<span class="n">red_branch</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">red_branch</span><span class="p">:</span>
+    <span class="c1"># Everything here is created and modified in the red branch context</span>
+    <span class="c1"># Create a material and texture the asset</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./walkman_material_presets.sbsar&#39;</span><span class="p">,</span> <span class="s1">&#39;walkman_material&#39;</span><span class="p">)</span>
+    <span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_preset</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">red_mat</span><span class="p">,</span> <span class="n">walkman_grp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Add lighting</span>
+    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_1.hdr&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Save only the content of the branch as an override in an USD file</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch&#39;</span><span class="p">,</span> <span class="s1">&#39;./red_branch.usda&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a new branch from main for another lighting and texturing</span>
+<span class="n">blue_branch</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;blue_branch&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">blue_branch</span><span class="p">:</span>
+    <span class="c1"># Everything here is created and modified in the blue branch context</span>
+    <span class="c1"># Create a material and texture the asset</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span>  <span class="s1">&#39;./walkman_material_presets.sbsar&#39;</span><span class="p">,</span> <span class="s1">&#39;walkman_material&#39;</span><span class="p">)</span>
+    <span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_preset</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">blue_mat</span><span class="p">,</span> <span class="n">walkman_grp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Add lighting</span>
+    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_2.hdr&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Save only the content of the branch as an override in an USD file</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;blue_branch&#39;</span><span class="p">,</span> <span class="s1">&#39;./main_scene_with_blue_branch.usda&#39;</span><span class="p">,</span> <span class="n">apply</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="eclair-usdpreviewsurface-and-adobestandardmaterial">
+<h2>Eclair, USDPreviewSurface and AdobeStandardMaterial<a class="headerlink" href="#eclair-usdpreviewsurface-and-adobestandardmaterial" title="Permalink to this heading"></a></h2>
+<p>API Modules : <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a></p>
+<p>Eclair is a renderer developed by Adobe and shipped with SSCA. SSCA integrates the hydra-delegate version of
+Eclair to easily use and render any USD scene.</p>
+<p>When creating a material with SSCA, an <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> shader is created that Eclair
+will primarly use if available. <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> has more features and can carry more informations, notably
+when using SBSAR materials and other Substance files in your workflow.</p>
+<section id="what-does-that-mean">
+<h3>What does that mean ?<a class="headerlink" href="#what-does-that-mean" title="Permalink to this heading"></a></h3>
+<p>Natively, USD features a shader called <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code>, that has several inputs values and that can be rendered with all Hydra-based renderers (more informations on <a class="reference external" href="https://openusd.org/release/spec_usdpreviewsurface.html">Pixar’s USD Documentation</a>).
+While Eclair can also render <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code>, it will prioritize <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> if available, meaning
+users must be aware of the renderer used, the shader used, and consequently, the inputs that will be used, should they wish to manipulate them.</p>
+<p>For example, let’s create a scene with a simple yellow color :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create scene</span>
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="c1"># Create material</span>
+<span class="n">my_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>At this point, SSCA will create a material with <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> and <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code> shaders.</p>
+<p><code class="docutils literal notranslate"><span class="pre">my_mat.inspect()</span></code> shows us the inputs available for change :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PrimHandler</span><span class="p">:</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="n">Attributes</span> <span class="p">:</span>
+        <span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span>
+        <span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">diffuseColor</span>
+        <span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">uvrotation</span>
+        <span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">uvscale</span>
+        <span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">uvtranslation</span>
+        <span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">surface</span>
+        <span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">displacement</span>
+        <span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">surface</span>
+        <span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">volume</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We can notice there’s a <code class="docutils literal notranslate"><span class="pre">.baseColor</span></code> input and a <code class="docutils literal notranslate"><span class="pre">.diffuseColor</span></code> input.
+<code class="docutils literal notranslate"><span class="pre">.diffuseColor</span></code> is used to change the material color within an <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code> workflow, while
+<code class="docutils literal notranslate"><span class="pre">.baseColor</span></code> is used within an <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> workflow.</p>
+<p>Without explaining further those workflows and shaders, what we must remind here is that there are common and specific inputs for both of them.
+If you work mainly with Eclair, you may want to primarily use ASM inputs, while if you
+use primarily PreviewSurface, you’ll want to use those inputs instead.</p>
+<p>Below stands a list of those specificities. It also features the usages when using <code class="docutils literal notranslate"><span class="pre">material.create_from_inputs()</span></code>
+or <code class="docutils literal notranslate"><span class="pre">material.create_from_textures_dir()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBSTANCE_USAGE_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="c1"># Common</span>
+    <span class="s2">&quot;roughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;roughness&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;metallic&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;metallic&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;normal&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,),</span>
+
+    <span class="c1"># USDPreview specific</span>
+    <span class="s2">&quot;diffuseColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;baseColor&quot;</span><span class="p">,</span> <span class="s2">&quot;Base_Color&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;emissiveColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;emissive&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;clearcoat&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatWeight&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;clearcoatRoughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatRoughness&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;occlusion&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;occlusion&quot;</span><span class="p">,</span> <span class="s2">&quot;ambientOcclusion&quot;</span><span class="p">,</span> <span class="s2">&quot;MixedAO&quot;</span><span class="p">,</span> <span class="s2">&quot;Mixed_AO&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;displacement&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;displacement&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;ior&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s2">&quot;IOR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ior&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+
+    <span class="c1"># ASM specific</span>
+    <span class="s2">&quot;baseColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;baseColor&quot;</span><span class="p">,</span> <span class="s2">&quot;Base_Color&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;specularLevel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;specularLevel&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;specularEdgeColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;specularEdgeColor&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;normalScale&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;normalScale&quot;</span><span class="p">,),</span>
+
+    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;heightScale&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;heightScale&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;heightLevel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;heightLevel&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;anisotropyLevel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;anisotropyLevel&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;anisotropyAngle&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;anisotropyAngle&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;emissiveIntensity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;emissiveIntensity&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;emissive&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;emissive&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;sheenOpacity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;sheenOpacity&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;sheenColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;sheenColor&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;sheenRoughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;sheenRoughness&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;translucency&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;translucency&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;IOR&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s2">&quot;IOR&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ior&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;dispersion&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;dispersion&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;absorptionColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;absorptionColor&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;absorptionDistance&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;absorptionDistance&quot;</span><span class="p">,),</span>
+
+    <span class="s2">&quot;scatteringColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;scatteringColor&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;scatteringDistance&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;scatteringDistance&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;scatteringDistanceScale&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;scatteringDistanceScale&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;scatteringRedShift&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;scatteringRedShift&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;scatteringRayleigh&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;scatteringRayleigh&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatOpacity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatOpacity&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatColor&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatRoughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatRoughness&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatIOR&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatIOR&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatSpecularLevel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatSpecularLevel&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatNormal&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatNormal&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;coatNormalScale&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatNormalScale&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;ambientOcclusion&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s2">&quot;ambientOcclusion&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MixedAO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Mixed_AO&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;volumeThickness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;volumeThickness&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;volumeThicknessScale&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;volumeThicknessScale&quot;</span><span class="p">,),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="statistics-collectors">
+<h2>Statistics Collectors<a class="headerlink" href="#statistics-collectors" title="Permalink to this heading"></a></h2>
+<p>API Modules : <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">stats</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">stats.collect_stats()</span></code> from the <code class="docutils literal notranslate"><span class="pre">stats</span></code> module allows you to quickly get native statistics of any scene/object/list of objects, like the number of triangles or the bounding box size.</p>
+<p>Example :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">collect_stats</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span>
+    <span class="s2">&quot;Animated attributes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Bbox info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bbCenter&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.013824090361595154</span><span class="p">,</span>
+            <span class="o">-</span><span class="mf">0.0176331028342247</span><span class="p">,</span>
+            <span class="mf">0.038637787103652954</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;bbMax&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.15761585533618927</span><span class="p">,</span>
+            <span class="mf">0.09596650302410126</span><span class="p">,</span>
+            <span class="mf">0.37433239817619324</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;bbMin&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">-</span><span class="mf">0.12996767461299896</span><span class="p">,</span>
+            <span class="o">-</span><span class="mf">0.13123270869255066</span><span class="p">,</span>
+            <span class="o">-</span><span class="mf">0.29705682396888733</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;bbSize&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.28758352994918823</span><span class="p">,</span>
+            <span class="mf">0.22719921171665192</span><span class="p">,</span>
+            <span class="mf">0.6713892221450806</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;metersPerUnit&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s2">&quot;stageHasAuthoredUnits&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;meters&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Lights&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Materials&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Meshes&quot;</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span>
+    <span class="s2">&quot;Object Prims&quot;</span><span class="p">:</span> <span class="mi">582</span><span class="p">,</span>
+    <span class="s2">&quot;Points&quot;</span><span class="p">:</span> <span class="mi">3889144</span><span class="p">,</span>
+    <span class="s2">&quot;Quads&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;SubMeshes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Triangles&quot;</span><span class="p">:</span> <span class="mi">7778172</span><span class="p">,</span>
+    <span class="s2">&quot;Vertices&quot;</span><span class="p">:</span> <span class="mi">3889144</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Current native collectors :  <code class="docutils literal notranslate"><span class="pre">Vertices,</span> <span class="pre">ObjectPrims,</span> <span class="pre">Points,</span> <span class="pre">ObjectMaterials,</span> <span class="pre">Triangles,</span> <span class="pre">Quads,</span> <span class="pre">ObjectMeshes,</span> <span class="pre">ObjectSubMeshes,</span> <span class="pre">ObjectLights,</span> <span class="pre">AttrAnimated,</span> <span class="pre">BboxInfo</span></code></p>
+</div>
+<p>Moreover, you can create your own collector by creating a class that inherits from <code class="docutils literal notranslate"><span class="pre">stats.BaseCollector</span></code> and passing it to <code class="docutils literal notranslate"><span class="pre">stats.collect_stats()</span></code>.
+Some methods and attributes <strong>must</strong> be implemented, as you will see in the example below.</p>
+<p>Example :
+Simple collector to collect meshes smaller than one (1) unit on every dimension</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SmallMeshes</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">BaseCollector</span><span class="p">):</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Small Meshes&quot;</span> <span class="c1"># Displayed name of the collector.</span>
+<span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;smallMeshes&quot;</span> <span class="c1"># Id of the collector (use a different id for each collector).</span>
+<span class="n">collect_on_inherited</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Set to True to collect stats within inherited types.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">collect_on</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="c1"># Define the object types you want to collect stats on.</span>
+    <span class="c1"># This needs to be a tuple with one or more type names.</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;Mesh&quot;</span><span class="p">,)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">do_with_previous_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous_result</span><span class="p">,</span> <span class="n">current_result</span><span class="p">):</span>
+    <span class="c1"># Define what to do with previously collected result of one entitiy and the current one, given the context.</span>
+    <span class="c1"># The returned value will be used as the next previous_result for the next collect.</span>
+    <span class="c1"># The final result is the value that will be displayed next to the collector name when printing stats.</span>
+    <span class="k">return</span> <span class="n">previous_result</span> <span class="o">+</span> <span class="n">current_result</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+    <span class="c1"># Collect instructions for one entity.</span>
+    <span class="n">bbox</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">bbox_info</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">stage_handler</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">use_precise_mesh_bbox</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">bbox</span><span class="p">[</span><span class="s2">&quot;bbSize&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">bbox</span><span class="p">[</span><span class="s2">&quot;bbSize&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">bbox</span><span class="p">[</span><span class="s2">&quot;bbSize&quot;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Let’s look at this collector in action</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">utility</span>
+
+<span class="c1"># Simple scene</span>
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">root</span>  <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">)</span>
+
+<span class="c1"># Adding two cubes</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">cube_small</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">transform</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">cube_small</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+
+<span class="c1"># Getting statistics from native collectors + our custom collector</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">collect_stats</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="n">user_collectors</span><span class="o">=</span><span class="p">[</span><span class="n">SmallMeshes</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;Small Meshes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># &lt;- Result of our collector</span>
+    <span class="s2">&quot;SubMeshes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Triangles&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;Vertices&quot;</span><span class="p">:</span> <span class="mi">16</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="render-settings">
+<h2>Render Settings<a class="headerlink" href="#render-settings" title="Permalink to this heading"></a></h2>
+<p><cite>RenderSettings</cite> is a prim that centralizes render parameters in your scene.
+They will be used by <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code> and <code class="docutils literal notranslate"><span class="pre">renderer.init()</span></code> when corresponding arguments aren’t set.
+When a parameter is set on the <cite>RenderSettings</cite> prim, it will be saved in the stage and
+in the resulting USD files, making it a good way to share render informations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">renderer.get_render_settings(scene)</span></code> is used to get the current render settings of the scene.
+If they don’t exist yet, this function will create them. Only one <cite>RenderSettings</cite> prim can be created per scene.</p>
+<p>When rendering, arguments given in <code class="docutils literal notranslate"><span class="pre">renderer.init()</span></code> and <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code> will take precedence
+over the <cite>RenderSettings</cite> corresponding parameters, but remember that only the latter will be saved in the scene and USD files.</p>
+<p>Render settings use example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new scene and a camera</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create_view</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">&#39;cam&#39;</span><span class="p">,</span> <span class="n">camera</span><span class="o">.</span><span class="n">Views</span><span class="o">.</span><span class="n">TOP_RIGHT</span><span class="p">)</span>
+
+<span class="c1"># Assigning values to render settings parameters</span>
+<span class="n">rs</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">get_render_settings</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>  <span class="c1"># If the RenderSettings prim didn&#39;t exist yet, it is created here</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">convergedPixelSamples</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">pixelCyclingType</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;noCycling&#39;</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">displacementEnabled</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">set</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">renderingTechnique</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;cpuPathTracing&#39;</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">envLightCameraVisibility</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">groundplane</span><span class="o">.</span><span class="n">enabled</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">compositingEnabled</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">backgroundColor</span><span class="o">.</span><span class="n">set</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+<span class="n">rs</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="n">cam</span><span class="p">])</span>  <span class="c1"># connect camera to the RenderSettings</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">rs.inspect()</span></code> to see all available parameters in render settings.
+<code class="docutils literal notranslate"><span class="pre">display_values=True</span></code> argument will show the current values,
+while <code class="docutils literal notranslate"><span class="pre">display_more=True</span></code> argument will show additional informations about
+each parameter.</p>
+<p>To filter the parameters, you can also use the <code class="docutils literal notranslate"><span class="pre">filter</span></code> argument.
+For example, to only show groundplane related parameters, you can use <code class="docutils literal notranslate"><span class="pre">filter=*groundplane*</span></code> .</p>
+</div>
+<section id="missing-parameters-in-rendersettings">
+<h3>Missing parameters in RenderSettings<a class="headerlink" href="#missing-parameters-in-rendersettings" title="Permalink to this heading"></a></h3>
+<p>Some render arguments aren’t available in <cite>RenderSettings</cite> and still must be passed in <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code>.
+You will find them below :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default_light</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="n">background_image</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">image</span><span class="o">.</span><span class="n">Image</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="n">background_resize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="n">time_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="n">passes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Pass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="render-settings-override">
+<h3>Render settings override<a class="headerlink" href="#render-settings-override" title="Permalink to this heading"></a></h3>
+<p>While <cite>RenderSettings</cite> is convenient to set render parameters,
+they don’t have the highest priority, and there are several cases
+where some parameters will be overridden.</p>
+<ul class="simple">
+<li><p>Arguments passed in <code class="docutils literal notranslate"><span class="pre">renderer.init()</span></code> and <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code></p></li>
+</ul>
+<p>As explained in the beginning of this section, values directly passed as arguments in those two methods take precedence over
+anything else in the scene, but they won’t be saved in <cite>RenderSettings</cite> prim or in USD files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rs</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">get_render_settings</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">renderingTechnique</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;cpuPathTracing&#39;</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">set</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+
+<span class="c1"># will take precedence over renderingTechnique set in render settings</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">renderer</span><span class="o">.</span><span class="n">RenderingTechnique</span><span class="o">.</span><span class="n">GPURasterization</span><span class="p">)</span>
+
+<span class="c1"># will take precedence over resolution set in render settings</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Values set by default by SSCA</p></li>
+</ul>
+<p>Below render settings are set by SSCA by default and can’t be changed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pixelCyclingType</span>
+<span class="n">diagnosticMode</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Resolution and camera set in Render Product</p></li>
+</ul>
+<p><cite>RenderProduct</cite> is a prim containing rendering informations that you may find in USD files created by other applications.
+If this prim exists in the scene, its <code class="docutils literal notranslate"><span class="pre">resolution</span></code> and <code class="docutils literal notranslate"><span class="pre">camera</span></code> values will be used over <cite>RenderSettings</cite> ones.</p>
+</section>
+</section>
+<section id="activate-displacement">
+<h2>Activate Displacement<a class="headerlink" href="#activate-displacement" title="Permalink to this heading"></a></h2>
+<p>Displacement is deactivated by default in SSCA. To activate it, you must get
+render settings and set <code class="docutils literal notranslate"><span class="pre">.adobe.displacementEnabled.set</span></code> parameter to True.
+This will allow displacement for the whole scene. You can control the intensity of
+displacement for each of your materials with their <code class="docutils literal notranslate"><span class="pre">heightScale</span></code> input.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">renderer</span>
+
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="c1"># ...</span>
+<span class="n">rs</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">get_render_settings</span><span class="p">(</span><span class="n">main_scene</span><span class="p">)</span>
+<span class="n">rs</span><span class="o">.</span><span class="n">adobe</span><span class="o">.</span><span class="n">displacementEnabled</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="file-import-parameters">
+<h2>File import parameters<a class="headerlink" href="#file-import-parameters" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">scene.load()</span></code>, <code class="docutils literal notranslate"><span class="pre">scene.add_reference()</span></code> and <code class="docutils literal notranslate"><span class="pre">scene.add_layer()</span></code> all possess a <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> argument.
+These additional keys let you add import parameters when importing a file in your scene.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example - Choosing the tesseleation level of an imported CAD file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
+
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;my_file.x_t&quot;</span><span class="p">,</span> <span class="n">prcTessLevel</span><span class="o">=</span><span class="s2">&quot;high&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will find below the supported parameters for the following extensions :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Extensions</p></th>
+<th class="head"><p>Available import parameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.axf</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">axfAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
+<div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
+<div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.fbx</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fbxAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
+<div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
+<div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fbxPhong</span></code> [bool] : Forces phong to PBR material conversion. </div>
+<div class="line">By default, the plugin imports the diffuse component only, without specularities. If this parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will convert PBR to phong.</div>
+<div class="line">The phong to PBR conversion follows <a class="reference external" href="https://docs.microsoft.com/en-us/azure/remote-rendering/reference/material-mapping">https://docs.microsoft.com/en-us/azure/remote-rendering/reference/material-mapping</a>.</div>
+<div class="line">Keep in mind this is a lossy conversion.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fbxAnimationStacks</span></code> [bool] : Allow import of multiple animation stacks. </div>
+<div class="line">By default, only the first animation stack is imported. When set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will import all animation stacks.</div>
+<div class="line">This parameter should be used only to convert a FBX file to another format, such as GLTF.</div>
+<div class="line">Furthermore, it is advised not to use this parameter if an .usd is exported after importing this FBX file.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">fbxOriginalColorSpace</span></code> [string] : Indicates the colorspace of the imported FBX (<code class="docutils literal notranslate"><span class="pre">sRGB</span></code> or <code class="docutils literal notranslate"><span class="pre">linear</span></code>).</div>
+<div class="line">While in USD, FBX with indicated sRGB color space will be converted to linear RGB to match USD color space.</div>
+<div class="line">Setting this param also makes USD environment remember the original color space of the file for future exports of the scene to FBX.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.gltf</span></code>, <code class="docutils literal notranslate"><span class="pre">.glb</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gltfAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
+<div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
+<div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">gltfAnimationTracks</span></code> [bool] : Allow import of multiple animation tracks. </div>
+<div class="line">By default, only the first animation track is imported. When set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will import all animation tracks.</div>
+<div class="line">This parameter should be used only to convert a GLB/GLTF file to another format, such as FBX.</div>
+<div class="line">Furthermore, it is advised not to use this parameter if an .usd is exported after importing this file.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.obj</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">objAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
+<div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
+<div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">objPhong</span></code> [bool] : Forces phong to PBR material conversion. </div>
+<div class="line">By default, the plugin imports the diffuse component only, without specularities. If this parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will convert PBR to phong.</div>
+<div class="line">The phong to PBR conversion follows <a class="reference external" href="https://docs.microsoft.com/en-us/azure/remote-rendering/reference/material-mapping">https://docs.microsoft.com/en-us/azure/remote-rendering/reference/material-mapping</a>.</div>
+<div class="line">Keep in mind this is a lossy conversion.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">objOriginalColorSpace</span></code> [string] : Indicates the colorspace of the imported OBJ (<code class="docutils literal notranslate"><span class="pre">sRGB</span></code> or <code class="docutils literal notranslate"><span class="pre">linear</span></code>).</div>
+<div class="line">While in USD, OBJ with indicated sRGB color space will be converted to linear RGB to match USD color space.</div>
+<div class="line">Setting this param also makes USD environment remember the original color space of the file for future exports of the scene to OBJ.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.ply</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">plyPoints</span></code> [bool] : Forces importing UsdGeomMesh instances as points if true.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">plyPointWidth</span></code> [float] : If the instance is treated as a point cloud, defines the default point size.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">plyGsplatsWithZup</span></code> [bool] : Whether the imported Gaussian splat is treated as a Z-up object (<code class="docutils literal notranslate"><span class="pre">True</span></code> by default). </div>
+<div class="line">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, an Y-up rotation is applied during import.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.3dm</span></code>, <code class="docutils literal notranslate"><span class="pre">.3ds</span></code>, <code class="docutils literal notranslate"><span class="pre">.3dxml</span></code>, <code class="docutils literal notranslate"><span class="pre">.3mf</span></code>, <code class="docutils literal notranslate"><span class="pre">.arc</span></code>, <code class="docutils literal notranslate"><span class="pre">.asm</span></code>, <code class="docutils literal notranslate"><span class="pre">.catdrawing</span></code>, </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.catpart</span></code>, <code class="docutils literal notranslate"><span class="pre">.catproduct</span></code>, <code class="docutils literal notranslate"><span class="pre">.catshape</span></code>, <code class="docutils literal notranslate"><span class="pre">.cgr</span></code>, <code class="docutils literal notranslate"><span class="pre">.dae</span></code>, <code class="docutils literal notranslate"><span class="pre">.dlv</span></code>, </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.dwf</span></code>, <code class="docutils literal notranslate"><span class="pre">.dwfx</span></code>, <code class="docutils literal notranslate"><span class="pre">.dxf</span></code>, <code class="docutils literal notranslate"><span class="pre">.exp</span></code>, <code class="docutils literal notranslate"><span class="pre">.iam</span></code>, <code class="docutils literal notranslate"><span class="pre">.ifc</span></code>, <code class="docutils literal notranslate"><span class="pre">.ifczip</span></code>, <code class="docutils literal notranslate"><span class="pre">.iges</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.igs</span></code>, <code class="docutils literal notranslate"><span class="pre">.ipt</span></code>, <code class="docutils literal notranslate"><span class="pre">.jt</span></code>, <code class="docutils literal notranslate"><span class="pre">.mf1</span></code>, <code class="docutils literal notranslate"><span class="pre">.model</span></code>, <code class="docutils literal notranslate"><span class="pre">.neu</span></code>, <code class="docutils literal notranslate"><span class="pre">.par</span></code>, <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.pkg</span></code>, <code class="docutils literal notranslate"><span class="pre">.prc</span></code>, <code class="docutils literal notranslate"><span class="pre">.prt</span></code>, <code class="docutils literal notranslate"><span class="pre">.psm</span></code>, <code class="docutils literal notranslate"><span class="pre">.pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">.rfa</span></code>, <code class="docutils literal notranslate"><span class="pre">.sab</span></code>, <code class="docutils literal notranslate"><span class="pre">.sat</span></code>, </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.session</span></code>, <code class="docutils literal notranslate"><span class="pre">.sldasm</span></code>, <code class="docutils literal notranslate"><span class="pre">.sldprt</span></code>, <code class="docutils literal notranslate"><span class="pre">.step</span></code>, <code class="docutils literal notranslate"><span class="pre">.stp</span></code>, <code class="docutils literal notranslate"><span class="pre">.stpx</span></code>, <code class="docutils literal notranslate"><span class="pre">.stpxz</span></code>, </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.stpz</span></code>, <code class="docutils literal notranslate"><span class="pre">.u3d</span></code>, <code class="docutils literal notranslate"><span class="pre">.unv</span></code>, <code class="docutils literal notranslate"><span class="pre">.vda</span></code>, <code class="docutils literal notranslate"><span class="pre">.vrml</span></code>, <code class="docutils literal notranslate"><span class="pre">.wrl</span></code>, <code class="docutils literal notranslate"><span class="pre">.x_b</span></code>, <code class="docutils literal notranslate"><span class="pre">.x_t</span></code>,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">.xas</span></code>, <code class="docutils literal notranslate"><span class="pre">.xmt</span></code>, <code class="docutils literal notranslate"><span class="pre">.xmt_txt</span></code>, <code class="docutils literal notranslate"><span class="pre">.xpr</span></code></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">prcAssetsPath</span></code> [string] : Path from where the image assets should be resolved. </div>
+<div class="line">By default, when the usd file is exported from SSCA, it will resolve the image assets from their current location in the file system.</div>
+<div class="line">If a path is set in this parameter, the image assets will be copied to this new location and resolved from there instead.</div>
+<div class="line"><em>“Image assets”</em> refer to texture maps used by materials of the source file.</div>
+<div class="line"><br /></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">prcTessLevel</span></code> [string] : Specifies the level of tessellation for the imported mesh. </div>
+<div class="line">Allowed values: “extraLow”, “low”, “medium”, “high”, “extraHigh”.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">asd</span></code>, <code class="docutils literal notranslate"><span class="pre">usd</span></code>, <code class="docutils literal notranslate"><span class="pre">usda</span></code>, <code class="docutils literal notranslate"><span class="pre">usdc</span></code>, <code class="docutils literal notranslate"><span class="pre">usdz</span></code>, <code class="docutils literal notranslate"><span class="pre">sbsar</span></code>, </div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">sdf</span></code>, <code class="docutils literal notranslate"><span class="pre">abc</span></code>, <code class="docutils literal notranslate"><span class="pre">stl</span></code>, <code class="docutils literal notranslate"><span class="pre">mtlx</span></code></div>
+</div>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reference-flattening">
+<h2>Reference flattening<a class="headerlink" href="#reference-flattening" title="Permalink to this heading"></a></h2>
+<section id="global-references-flattening">
+<h3>Global references flattening<a class="headerlink" href="#global-references-flattening" title="Permalink to this heading"></a></h3>
+<p>In order to export your USD to another software, you may want to remove
+models and material reference links to include them directly in the main file instead.</p>
+<p>This can be done automatically with <code class="docutils literal notranslate"><span class="pre">export.archive(flat=True)</span></code> or with any export available
+in the export module (i.e : glb, fbx).</p>
+<p>Models and USDs will be integrated directly in the file while SBSARs will be converted into a
+set of bitmaps. Bitmaps dependencies will be copied into a “dependencies”
+folder next to the exported USD file. If the exported file is an archive,
+bitmaps will be packed along the file.</p>
+<p>Flattening references this way will keep <strong>currently selected</strong> variants and branches but discard every other variants and branches.
+A local approach for flattening references exists with the <code class="docutils literal notranslate"><span class="pre">scene.flatten_references()</span></code> function.</p>
+</section>
+<section id="local-reference-flattening">
+<h3>Local reference flattening<a class="headerlink" href="#local-reference-flattening" title="Permalink to this heading"></a></h3>
+<p>If you need to flatten references while preserving features of your USD files (like variants), you can use <code class="docutils literal notranslate"><span class="pre">scene.flatten_references()</span></code>.
+This will flatten and transfer all external references for the given prim into the current scene.</p>
+<p>NOTE : This requires to set a filepath when you create a scene with <code class="docutils literal notranslate"><span class="pre">scene.new()</span></code>.</p>
+<p>The code snippet below illustrates the use of <code class="docutils literal notranslate"><span class="pre">scene.flatten_references</span></code> to
+make an USDZ Potion asset with variants that can be imported in Game Engines and other DCCs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+<span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;vial_potA1&quot;</span><span class="p">,</span> <span class="s2">&quot;vial&quot;</span><span class="p">):</span>
+    <span class="n">my_import_prim</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">my_import_prim</span><span class="p">,</span> <span class="s2">&quot;vial_potionA1.fbx&quot;</span><span class="p">)</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">flatten_references</span><span class="p">(</span><span class="n">my_import_prim</span><span class="p">)</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Example of the final asset imported in Unreal Engine :</p>
+<img alt="../../_images/potion_variant_unreal.gif" src="../../_images/potion_variant_unreal.gif" />
+</section>
+</section>
+</section>
+<section id="managing-metadatas">
+<h1>Managing metadatas<a class="headerlink" href="#managing-metadatas" title="Permalink to this heading"></a></h1>
+<p>SSCA includes a methods to get, modify and add metadata.</p>
+<p>You can read the metadata of an image with <code class="docutils literal notranslate"><span class="pre">image.metadata()</span></code> and add or modify metadata with <code class="docutils literal notranslate"><span class="pre">image.add_metadata()</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Depending of the keywords names and the save format, changes can occur.
+For example, saving a <code class="docutils literal notranslate"><span class="pre">Description</span></code> or <code class="docutils literal notranslate"><span class="pre">Author</span></code> key as metadata will translate into the file as <code class="docutils literal notranslate"><span class="pre">ImageDescription</span></code> and <code class="docutils literal notranslate"><span class="pre">Artist</span></code>.
+We recommend to always test and verify keywords beforehand, with a function like this one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_png_metadata</span><span class="p">(</span><span class="n">img</span><span class="p">:</span><span class="n">image</span><span class="o">.</span><span class="n">Image</span><span class="p">):</span>
+    <span class="n">test_file</span> <span class="o">=</span> <span class="s2">&quot;test.png&quot;</span>
+    <span class="n">my_metadata</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">test_file</span><span class="p">)</span>
+    <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">from_filepath</span><span class="p">(</span><span class="n">test_file</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">test_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">my_metadata</span> <span class="o">!=</span> <span class="n">file_metadata</span><span class="p">:</span>
+        <span class="n">difference</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">my_metadata</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">file_metadata</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error : Non-corroborating Keywords! : </span><span class="si">{</span><span class="n">difference</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">my_metadata</span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gettingstarted.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="handlers.html" class="btn btn-neutral float-right" title="How to use Handlers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

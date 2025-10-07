@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.core package &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.utility.mesh_processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.core package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/substance3d.api.core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="substance3d-api-core-package">
+<h1>substance3d.api.core package<a class="headerlink" href="#substance3d-api-core-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="substance3d-api-core-callbacks-module">
+<h2>substance3d.api.core.callbacks module<a class="headerlink" href="#substance3d-api-core-callbacks-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="substance3d-api-core-containers-module">
+<h2>substance3d.api.core.containers module<a class="headerlink" href="#substance3d-api-core-containers-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="substance3d-api-core-core-module">
+<h2>substance3d.api.core.core module<a class="headerlink" href="#substance3d-api-core-core-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="substance3d-api-core-exceptions-module">
+<h2>substance3d.api.core.exceptions module<a class="headerlink" href="#substance3d-api-core-exceptions-module" title="Permalink to this heading"></a></h2>
+<p>Python API substance3d exceptions</p>
+<span class="target" id="module-substance3d.api.core.exceptions"></span><dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.ArchiveCreationFailed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArchiveCreationFailed</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.ArchiveCreationFailed" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.ArchiveCreationFailed.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.ArchiveCreationFailed.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the archive creation failed
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.FailedToSaveImage">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FailedToSaveImage</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.FailedToSaveImage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.FailedToSaveImage.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.FailedToSaveImage.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the renderer failed to save the image on disk
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidDefaultPrim">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAValidDefaultPrim</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidDefaultPrim" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidDefaultPrim.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidDefaultPrim.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the defaultPrim is not valid when creating new prim if ALLOW_CREATION_AT_ROOT_STAGE is False
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidIdentifier">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAValidIdentifier</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidIdentifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidIdentifier.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidIdentifier.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when an usd identifier is ill-formed
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidImageBuffer">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAValidImageBuffer</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidImageBuffer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidImageBuffer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidImageBuffer.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the given image doesn’t have a valid buffer
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidPathIdentifier">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAValidPathIdentifier</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidPathIdentifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidPathIdentifier.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidPathIdentifier.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when an usd path is ill-formed
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidRendererBuffer">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAValidRendererBuffer</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidRendererBuffer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAValidRendererBuffer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAValidRendererBuffer.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the given renderer doesn’t have a valid renderer buffer
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAssignableError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotAssignableError</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAssignableError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotAssignableError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotAssignableError.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when an attribute is not assignable and only editable with its methods
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotEditableError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NotEditableError</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.NotEditableError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.NotEditableError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.NotEditableError.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when an attribute is protected or not editable
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.PrimEditedOutsideVariant">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PrimEditedOutsideVariant</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.PrimEditedOutsideVariant" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.PrimEditedOutsideVariant.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.PrimEditedOutsideVariant.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise in a variant context when prims are edited outside variant’s prim and its descendants
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.PropertyFnError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PropertyFnError</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.PropertyFnError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.PropertyFnError.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.PropertyFnError.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when a call back property function fail
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.RendererUninitialized">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RendererUninitialized</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.RendererUninitialized" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.RendererUninitialized.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.RendererUninitialized.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the given scene has not an initialized renderer on it
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.RenderingNotDone">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RenderingNotDone</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.RenderingNotDone" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.RenderingNotDone.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.RenderingNotDone.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the given scene has not yet been rendered
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.SceneBranchAlreadyExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SceneBranchAlreadyExist</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.SceneBranchAlreadyExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.SceneBranchAlreadyExist.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.SceneBranchAlreadyExist.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when trying to create a new scene branch with an existing identifier.
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.SceneNotCompliantForArchive">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SceneNotCompliantForArchive</span></span><a class="headerlink" href="#substance3d.api.core.exceptions.SceneNotCompliantForArchive" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.exceptions.SceneNotCompliantForArchive.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.exceptions.SceneNotCompliantForArchive.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Raise when the compliant checker fail during the archive creation
+:param msg: message to display at the end of the error stack
+:type msg: str</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="substance3d-api-core-handlers-module">
+<h2>substance3d.api.core.handlers module<a class="headerlink" href="#substance3d-api-core-handlers-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-substance3d.api.core.log">
+<span id="substance3d-api-core-log-module"></span><h2>substance3d.api.core.log module<a class="headerlink" href="#module-substance3d.api.core.log" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Channel</span></span><a class="headerlink" href="#substance3d.api.core.log.Channel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.DEBUG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.ERROR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.INFO">
+<span class="sig-name descname"><span class="pre">INFO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.INFO" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.TESTRUNNER">
+<span class="sig-name descname"><span class="pre">TESTRUNNER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">29</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.TESTRUNNER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.VERBOSE">
+<span class="sig-name descname"><span class="pre">VERBOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.VERBOSE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.WARNING">
+<span class="sig-name descname"><span class="pre">WARNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.WARNING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Channel.__new__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ConsoleHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConsoleHandler</span></span><a class="headerlink" href="#substance3d.api.core.log.ConsoleHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Handler</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ConsoleHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.ConsoleHandler.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the instance - basically setting the formatter to None
+and the filter list to empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ConsoleHandler.emit">
+<span class="sig-name descname"><span class="pre">emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.ConsoleHandler.emit" title="Permalink to this definition"></a></dt>
+<dd><p>Do whatever it takes to actually log the specified logging record.</p>
+<p>This version is intended to be implemented by subclasses and so
+raises a NotImplementedError.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Logger</span></span><a class="headerlink" href="#substance3d.api.core.log.Logger" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the logger with a name and an optional level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.add_file_sink">
+<span class="sig-name descname"><span class="pre">add_file_sink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Channel.DEBUG</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.add_file_sink" title="Permalink to this definition"></a></dt>
+<dd><p>If you call this function a file sink will be added to the logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>Path</em>) – </p></li>
+<li><p><strong>severity_level</strong> (<a class="reference internal" href="#substance3d.api.core.log.Channel" title="substance3d.api.core.log.Channel"><em>Channel</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.capture_warnings">
+<span class="sig-name descname"><span class="pre">capture_warnings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.capture_warnings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.console_handler">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">console_handler</span></span><a class="headerlink" href="#substance3d.api.core.log.Logger.console_handler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.remove_console_sink">
+<span class="sig-name descname"><span class="pre">remove_console_sink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.remove_console_sink" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.set_console_sink">
+<span class="sig-name descname"><span class="pre">set_console_sink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.set_console_sink" title="Permalink to this definition"></a></dt>
+<dd><p>Create a sink that prints to console</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sink</strong> (<em>Handler</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.sub_logger">
+<span class="sig-name descname"><span class="pre">sub_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.sub_logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.testrunner">
+<span class="sig-name descname"><span class="pre">testrunner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.testrunner" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Logger.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.verbose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ScopedLog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScopedLog</span></span><a class="headerlink" href="#substance3d.api.core.log.ScopedLog" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Creates a temporary stream to accept logger logs, scoped via the <cite>with</cite> context mananger.
+Useful for unit tests that need to check logger output – you can get it as a string with get().
+See tests/test_DemoTesting.py for an example.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ScopedLog.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Channel.DEBUG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.ScopedLog.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>severity_level</strong> (<a class="reference internal" href="#substance3d.api.core.log.Channel" title="substance3d.api.core.log.Channel"><em>Channel</em></a>) – </p></li>
+<li><p><strong>logger_</strong> (<em>Logger</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.log.ScopedLog.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.ScopedLog.get" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-substance3d.api.core.type_mapping">
+<span id="substance3d-api-core-type-mapping-module"></span><h2>substance3d.api.core.type_mapping module<a class="headerlink" href="#module-substance3d.api.core.type_mapping" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.AssetStr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssetStr</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.AssetStr" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.ConverterBase" title="substance3d.api.core.type_mapping.ConverterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConverterBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.AssetStr.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.AssetStr.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.AssetStr.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.AssetStr.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.AssetStr.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">pxr.Sdf.AssetPath)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.AssetStr.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.AssetStr.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Token,</span> <span class="pre">pxr.Sdf.AssetPath)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.AssetStr.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Bool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Bool</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Bool" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.ConverterBase" title="substance3d.api.core.type_mapping.ConverterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConverterBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Bool.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.Bool.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Bool.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.Bool.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Bool.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Bool.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Bool.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Bool.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConverterBase</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base interface for converters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.sdf_type">
+<span class="sig-name descname"><span class="pre">sdf_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.sdf_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.usd_cast">
+<span class="sig-name descname"><span class="pre">usd_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.usd_cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the python type to the usd type
+for basic type usd_cast() use cast()</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.ConverterBase.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.ConverterBase.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Float2</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Float2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float2.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float2.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float2.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float2.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float2.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec2f,</span> <span class="pre">pxr.Gf.Vec2d)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float2.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float3">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Float3</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Float3" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float3.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float3.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float3.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float3.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float3.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec3f,</span> <span class="pre">pxr.Gf.Vec3d)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float3.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float4">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Float4</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Float4" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float4.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float4.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float4.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float4.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Float4.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec4f,</span> <span class="pre">pxr.Gf.Vec4d)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Float4.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Int2</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Int2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int2.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int2.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int2.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int2.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int2.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec2i,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int2.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int3">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Int3</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Int3" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int3.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int3.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int3.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int3.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int3.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec3i,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int3.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int4">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Int4</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Int4" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.IterableBase" title="substance3d.api.core.type_mapping.IterableBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int4.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int4.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int4.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int4.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Int4.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Vec4i,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.Int4.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.IterableBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IterableBase</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.IterableBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.ConverterBase" title="substance3d.api.core.type_mapping.ConverterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConverterBase</span></code></a></p>
+<p>Base for immutable type like GfVec2f</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.IterableBase.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.IterableBase.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.IterableBase.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.IterableBase.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.IterableBase.length">
+<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.IterableBase.length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.IterableBase.usd_cast">
+<span class="sig-name descname"><span class="pre">usd_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.IterableBase.usd_cast" title="Permalink to this definition"></a></dt>
+<dd><p>Use usd_cast because USD binders doesnt support tuple or list as value</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Str">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Str</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Str" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.ConverterBase" title="substance3d.api.core.type_mapping.ConverterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConverterBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Str.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.Str.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Str.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.Str.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.Str.types">
+<span class="sig-name descname"><span class="pre">types</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.Str.types" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorBase</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.ConverterBase" title="substance3d.api.core.type_mapping.ConverterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConverterBase</span></code></a></p>
+<p>Base for mutable type like VtArray&lt;GfVec2f&gt;</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorBase.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorBase.cast" title="Permalink to this definition"></a></dt>
+<dd><p>convert the usd type to the entry type</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorBase.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorBase.is_valid" title="Permalink to this definition"></a></dt>
+<dd><p>valid the given value
+:return: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorBase.is_valid_inside">
+<span class="sig-name descname"><span class="pre">is_valid_inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorBase.is_valid_inside" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorFloat</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.FloatArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorFloat2</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat2.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Float2'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat2.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat2.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec2fArray,</span> <span class="pre">pxr.Vt.Vec2dArray)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat2.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat3">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorFloat3</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat3" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat3.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Float3'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat3.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat3.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec3fArray,</span> <span class="pre">pxr.Vt.Vec3dArray)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat3.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat4">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorFloat4</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat4" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat4.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Float4'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat4.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorFloat4.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec4fArray,</span> <span class="pre">pxr.Vt.Vec4dArray)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorFloat4.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorInt</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.IntArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorInt2</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt2.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Int2'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt2.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt2.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec2iArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt2.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt3">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorInt3</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt3" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt3.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Int3'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt3.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt3.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec3iArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt3.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt4">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorInt4</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt4" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt4.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'substance3d.api.core.type_mapping.Int4'&gt;,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt4.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorInt4.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Vec4iArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorInt4.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix2d</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2d.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix2d,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2d.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2d.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix2dArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2d.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2f">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix2f</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2f" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2f.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix2f,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2f.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix2f.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix2fArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix2f.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix3d</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3d.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix3d,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3d.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3d.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix3dArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3d.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3f">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix3f</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3f" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3f.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix3f,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3f.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix3f.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix3fArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix3f.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix4d</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4d.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix4d,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4d.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4d.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix4dArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4d.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4f">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorMatrix4f</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4f" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4f.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Gf.Matrix4f,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4f.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorMatrix4f.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.Matrix4fArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorMatrix4f.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorStr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VectorStr</span></span><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorStr" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#substance3d.api.core.type_mapping.VectorBase" title="substance3d.api.core.type_mapping.VectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorStr.types">
+<span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">pxr.Vt.Token)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorStr.types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.type_mapping.VectorStr.usd_types">
+<span class="sig-name descname"><span class="pre">usd_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(pxr.Vt.TokenArray,)</span></em><a class="headerlink" href="#substance3d.api.core.type_mapping.VectorStr.usd_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-substance3d.api.core.utilities">
+<span id="substance3d-api-core-utilities-module"></span><h2>substance3d.api.core.utilities module<a class="headerlink" href="#module-substance3d.api.core.utilities" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.BasePropertiesRepr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BasePropertiesRepr</span></span><a class="headerlink" href="#substance3d.api.core.utilities.BasePropertiesRepr" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.args_check_deco">
+<span class="sig-name descname"><span class="pre">args_check_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.args_check_deco" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.arguments_path_splitter">
+<span class="sig-name descname"><span class="pre">arguments_path_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.arguments_path_splitter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.asset_path_splitter">
+<span class="sig-name descname"><span class="pre">asset_path_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.asset_path_splitter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.attribute_exists">
+<span class="sig-name descname"><span class="pre">attribute_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.attribute_exists" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.check_layer_file_validity">
+<span class="sig-name descname"><span class="pre">check_layer_file_validity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pxr.Sdf.FileFormat.FindAllFileFormatExtensions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.check_layer_file_validity" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the file exist and if it’s a supported file format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.check_primhandler_type">
+<span class="sig-name descname"><span class="pre">check_primhandler_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.check_primhandler_type" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.check_stagehandler_type">
+<span class="sig-name descname"><span class="pre">check_stagehandler_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.check_stagehandler_type" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.cleaner_deco">
+<span class="sig-name descname"><span class="pre">cleaner_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.cleaner_deco" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.convert_path_to_relative">
+<span class="sig-name descname"><span class="pre">convert_path_to_relative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.convert_path_to_relative" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.deep_update">
+<span class="sig-name descname"><span class="pre">deep_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overrides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.deep_update" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.del_files">
+<span class="sig-name descname"><span class="pre">del_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.del_files" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.del_global_cache_files">
+<span class="sig-name descname"><span class="pre">del_global_cache_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.del_global_cache_files" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.filename_args_as_path_deco">
+<span class="sig-name descname"><span class="pre">filename_args_as_path_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.filename_args_as_path_deco" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.get_parent_or_default_prim">
+<span class="sig-name descname"><span class="pre">get_parent_or_default_prim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.get_parent_or_default_prim" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.get_public_attr">
+<span class="sig-name descname"><span class="pre">get_public_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.get_public_attr" title="Permalink to this definition"></a></dt>
+<dd><p>Get all attribute names and their values in a dict
+:return: list[tuple(name, value)]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.get_up_axis">
+<span class="sig-name descname"><span class="pre">get_up_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.get_up_axis" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>StageHandler</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.global_cleaner_deco">
+<span class="sig-name descname"><span class="pre">global_cleaner_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.global_cleaner_deco" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.is_macos_intel">
+<span class="sig-name descname"><span class="pre">is_macos_intel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.is_macos_intel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.list_get">
+<span class="sig-name descname"><span class="pre">list_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.list_get" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.validate_usd_identifier">
+<span class="sig-name descname"><span class="pre">validate_usd_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.validate_usd_identifier" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>identifier</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.validate_usd_path">
+<span class="sig-name descname"><span class="pre">validate_usd_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.validate_usd_path" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.validate_vector">
+<span class="sig-name descname"><span class="pre">validate_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.validate_vector" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector</strong> (<em>list</em>) – </p></li>
+<li><p><strong>length</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-substance3d.api.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.core" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

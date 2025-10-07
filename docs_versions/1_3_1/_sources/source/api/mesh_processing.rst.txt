@@ -1,0 +1,6 @@
+substance3d.api.utility.mesh_processing
+-------------------------------
+.. automodule:: substance3d.api.utility.mesh_processing
+    :members:
+    :show-inheritance:
+    :member-order: bysource

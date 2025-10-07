@@ -1,0 +1,29 @@
+substance3d.api.camera package
+==============================
+
+Submodules
+----------
+
+substance3d.api.camera.camera module
+------------------------------------
+
+.. automodule:: substance3d.api.camera.camera
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.camera.camera\_properties module
+------------------------------------------------
+
+.. automodule:: substance3d.api.camera.camera_properties
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.camera
+   :members:
+   :undoc-members:
+   :show-inheritance:
