@@ -1,0 +1,215 @@
+substance3d.api.mesh_processing
+-------------------------------
+.. automodule:: substance3d.api.mesh_processing.mesh_processing
+    :members:
+    :show-inheritance:
+    :member-order: bysource
+
+
+.. class:: UnwrapOp
+
+   Seam, parameterize and pack all meshes in the given subtree into a single UV tile.
+
+    .. rubric:: Attributes
+
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **input_attribute_name**                         | str      | "primvars:st"     | Output UV attribute name.                                     |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **packing.padding_size**                         | float    | 0.001             | Padding size around each island.                              |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **packing.max_num_uv_tiles**                     | int      | 1                 | Maximum number of UV tiles to generate.                       |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **segmentation.enable_partition_chart**          | bool     | True              | Enable chart splitting algorithm.                             |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **segmentation.enable_elongated_islands**        | bool     | True              | Enable elongated island detection.                            |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **segmentation.elongation_threshold**            | float    | 20.0              | Threshold to consider a chart elongated.                      |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **segmentation.chunks_elongation**               | float    | 10.0              | Max elongation for segmented chunks of elongated islands.     |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+    | **segmentation.input_uv_attribute_name**         | str      | ""                | Use input UVs for seams instead of computing them.            |
+    +--------------------------------------------------+----------+-------------------+---------------------------------------------------------------+
+
+
+.. class:: RepackOp
+
+   Pack all meshes in the given subtree into a single UV tile.
+
+    .. rubric:: Attributes
+
+    +--------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **input_attribute_name**       | str     | "primvars:st"     | Input UV attribute name.                                                                   |
+    +--------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **output_attribute_name**      | str     | "primvars:st"     | Output UV attribute name. Output UV will have the same value type as the input UV.         |
+    +--------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **packing.padding_size**       | float   | 0.001             | Padding size around each island.                                                           |
+    +--------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **packing.max_num_uv_tiles**   | int     | 1                 | Maximum number of UV tiles to generate.                                                    |
+    +--------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+
+
+.. class:: TriangulateOp
+
+   Triangulate all meshes in the given subtree.
+
+
+.. class:: RemoveIsolatedVerticesOp
+
+   Remove isolated vertices for all meshes in the given subtree.
+
+
+.. class:: DecimationOp
+
+   Decimate all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **max_facets**        | int     | 10000        | Target maximum number of faces for either a single mesh or the entire scene (sum total of  |
+    |                       |         |              | all mesh face counts).                                                                     |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **decimation_ratio**  | float   | 0.0          | A ratio for the target number of faces. Overrides max_facets for a single mesh if between  |
+    |                       |         |              | 0.001 and 0.999 (inclusive). Ignored when decimating a scene.                              |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **preserve_topology** | bool    | True         | Preserve topology of the input mesh. If false, connected components can disappear during   |
+    |                       |         |              | edge collapses, among other topological changes.                                           |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **angle_threshold**   | float   | 1e-8         | Maximum cos for the angle between two vectors for them to be considered collinear.         |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+
+
+.. class:: RemeshOp
+
+   Remesh all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **target_num_vertices**   | int     | 4096         | Number of sites to generate for the Lloyd algorithm. Also the number of output vertices in the remeshed surface.|
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **remesh_coefficient**    | float   | 0.0          | Coefficient for the target number of vertices. If set between 0.01 and 10.0, target_num_vertices is computed    |
+    |                           |         |              | relative to current vertex count.                                                                               |
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **abs_noise_level**       | float   | 1e-5         | Max noise added to input vertices to ensure triangulation properties.                                           |
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+
+
+.. class:: SubdivisionOp
+
+   Subdivide all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **num_levels**         | int     | 1                             | Number of subdivision levels requested.     |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **use_limit_surface**  | bool    | False                         | Interpolate all data to the limit surface.  |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **scheme**             | str     | SubdivisionScheme.Automatic   | Subdivision scheme to use.                  |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+
+    .. note::
+
+       Possible values for the ``scheme`` attribute:
+
+       - ``SubdivisionScheme.Bilinear``: Useful to subdivide a mesh prior to applying a displacement map.
+       - ``SubdivisionScheme.CatmullClark``: More widely used and suited to quad-dominant meshes.
+       - ``SubdivisionScheme.Loop``: For (and requires) purely triangulated meshes.
+       - ``SubdivisionScheme.Automatic``: Chooses between Catmull-Clark for quad-dominant meshes.
+
+
+.. class:: CloseSmallHolesOp
+
+   Close small holes for all the meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+    | **max_hole_size**       | int     | 16           | Maximum number of vertices in a hole to be closed.               |
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+    | **triangulate_holes**   | bool    | True         | Whether to triangulate holes. If false, holes filled by polygons.|
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+
+
+.. class:: NormalizationOp
+
+   Normalize a single mesh in its local coordinate system in-place.
+   The mesh is resized so it fits in a unit bounding box centered at the origin.
+
+    .. rubric:: Attributes
+
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **normalize_normals**             | bool    | True    | If enabled, normals are normalized after transformation.                                |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **normalize_tangents_bitangents** | bool    | True    | If enabled, tangents and bitangents are normalized after transformation.                |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **reorient**                      |         | False   | If enabled, when applying a transform with negative determinant:\n                      |
+    |                                   |         |         | 1. Normals, tangents and bitangents are flipped.\n                                      |
+    |                                   |         |         | 2. Facet orientations are reversed.                                                     |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+
+
+.. class:: RemoveDegenerateFacesOp
+
+   Remove degenerate faces from each mesh in the scene, in-place.
+   The current method assumes input mesh is triangular.
+   Non-degenerate facets adjacent to degenerate facets may be
+   re-triangulated as a result of the removal.
+
+
+.. class:: RemoveDuplicateFacesOp
+
+   Remove duplicate faces from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +------------------------------+---------+---------+-------------------------------------------------------------+
+    | **consider_orientation**     | bool    | False   | If true, faces with opposite orientations (e.g. (0,1,2)     |
+    |                              |         |         | and (2,1,0)) are considered non-duplicates.                 |
+    +------------------------------+---------+---------+-------------------------------------------------------------+
+
+
+.. class:: RemoveDuplicateVerticesOp
+
+   Remove duplicate vertices from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +--------------------+---------+---------+-------------------------------------------------+
+    | **boundary_only**  | bool    | False   | Only remove duplicate vertices on the boundary. |
+    +--------------------+---------+---------+-------------------------------------------------+
+
+
+.. class:: RemoveTinyFacesOp
+
+   Remove zero-area faces from each mesh in the given subtree,
+   zero-area threshold can be adjusted.
+
+    .. rubric:: Attributes
+
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+    | **null_area_threshold**      | float   | 0.0     | Faces with area <= null_area_threshold will be removed.                 |
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+    | **remove_isolated_vertices** | bool    | False   | If true, also remove isolated vertices after removing null area faces.  |
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+
+
+.. class:: RemoveShortEdgesOp
+
+   Remove short edges from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +--------------------+---------+---------+-------------------------------------------------+
+    | **threshold**      | float   | 0.0     | Edges with length <= threshold will be removed. |
+    +--------------------+---------+---------+-------------------------------------------------+
+
+
+.. class:: ResolveNonmanifoldnessOp
+
+   Resolve non-manifold edges AND vertices for each mesh in the given subtree.
+
+
+.. class:: ResolveVertexNonmanifoldnessOp
+
+   Resolve non-manifold vertices for each mesh in the given subtree.

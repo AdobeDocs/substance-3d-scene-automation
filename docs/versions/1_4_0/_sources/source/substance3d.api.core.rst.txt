@@ -1,0 +1,77 @@
+substance3d.api.core package
+============================
+
+Submodules
+----------
+
+substance3d.api.core.callbacks module
+-------------------------------------
+
+.. automodule:: substance3d.api.core.callbacks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.containers module
+--------------------------------------
+
+.. automodule:: substance3d.api.core.containers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.core module
+--------------------------------
+
+.. automodule:: substance3d.api.core.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.exceptions module
+--------------------------------------
+
+.. automodule:: substance3d.api.core.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.handlers module
+------------------------------------
+
+.. automodule:: substance3d.api.core.handlers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.log module
+-------------------------------
+
+.. automodule:: substance3d.api.core.log
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.type\_mapping module
+-----------------------------------------
+
+.. automodule:: substance3d.api.core.type_mapping
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.core.utilities module
+-------------------------------------
+
+.. automodule:: substance3d.api.core.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

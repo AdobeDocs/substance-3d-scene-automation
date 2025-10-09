@@ -1,0 +1,21 @@
+substance3d.api.primitive package
+=================================
+
+Submodules
+----------
+
+substance3d.api.primitive.primitive module
+------------------------------------------
+
+.. automodule:: substance3d.api.primitive.primitive
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.primitive
+   :members:
+   :undoc-members:
+   :show-inheritance:

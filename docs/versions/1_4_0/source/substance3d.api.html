@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api package &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/substance3d.api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="substance3d-api-package">
+<h1>substance3d.api package<a class="headerlink" href="#substance3d-api-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.camera.html">substance3d.api.camera package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.camera.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.camera.html#module-substance3d.api.camera.camera">substance3d.api.camera.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique"><code class="docutils literal notranslate"><span class="pre">BackplateFitTechnique</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique.CROP_TO_FIT"><code class="docutils literal notranslate"><span class="pre">BackplateFitTechnique.CROP_TO_FIT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique.ORIGINAL_SIZE"><code class="docutils literal notranslate"><span class="pre">BackplateFitTechnique.ORIGINAL_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique.SCALE_TO_FIT"><code class="docutils literal notranslate"><span class="pre">BackplateFitTechnique.SCALE_TO_FIT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views"><code class="docutils literal notranslate"><span class="pre">Views</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.BACK"><code class="docutils literal notranslate"><span class="pre">Views.BACK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.BOTTOM"><code class="docutils literal notranslate"><span class="pre">Views.BOTTOM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.FRONT"><code class="docutils literal notranslate"><span class="pre">Views.FRONT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.LEFT"><code class="docutils literal notranslate"><span class="pre">Views.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.RIGHT"><code class="docutils literal notranslate"><span class="pre">Views.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.TOP"><code class="docutils literal notranslate"><span class="pre">Views.TOP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.TOP_LEFT"><code class="docutils literal notranslate"><span class="pre">Views.TOP_LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.TOP_RIGHT"><code class="docutils literal notranslate"><span class="pre">Views.TOP_RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.Views.all"><code class="docutils literal notranslate"><span class="pre">Views.all()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.aspect_ratio"><code class="docutils literal notranslate"><span class="pre">aspect_ratio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.compute_clipping_range"><code class="docutils literal notranslate"><span class="pre">compute_clipping_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.create_framed_cameras"><code class="docutils literal notranslate"><span class="pre">create_framed_cameras()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.create_view"><code class="docutils literal notranslate"><span class="pre">create_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.frame"><code class="docutils literal notranslate"><span class="pre">frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.look_at"><code class="docutils literal notranslate"><span class="pre">look_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.match_image_perspective"><code class="docutils literal notranslate"><span class="pre">match_image_perspective()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.set_backplate"><code class="docutils literal notranslate"><span class="pre">set_backplate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.traveling"><code class="docutils literal notranslate"><span class="pre">traveling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.update_aspect_ratio"><code class="docutils literal notranslate"><span class="pre">update_aspect_ratio()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.camera.html#module-substance3d.api.camera.camera_properties">substance3d.api.camera.camera_properties module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties"><code class="docutils literal notranslate"><span class="pre">CameraProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.as_dict"><code class="docutils literal notranslate"><span class="pre">CameraProperties.as_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.clippingPlanes"><code class="docutils literal notranslate"><span class="pre">CameraProperties.clippingPlanes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.clippingRange"><code class="docutils literal notranslate"><span class="pre">CameraProperties.clippingRange</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.exposure"><code class="docutils literal notranslate"><span class="pre">CameraProperties.exposure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.fStop"><code class="docutils literal notranslate"><span class="pre">CameraProperties.fStop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.focalLength"><code class="docutils literal notranslate"><span class="pre">CameraProperties.focalLength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.focusDistance"><code class="docutils literal notranslate"><span class="pre">CameraProperties.focusDistance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.horizontalAperture"><code class="docutils literal notranslate"><span class="pre">CameraProperties.horizontalAperture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.horizontalApertureOffset"><code class="docutils literal notranslate"><span class="pre">CameraProperties.horizontalApertureOffset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.projection"><code class="docutils literal notranslate"><span class="pre">CameraProperties.projection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.purpose"><code class="docutils literal notranslate"><span class="pre">CameraProperties.purpose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.radius"><code class="docutils literal notranslate"><span class="pre">CameraProperties.radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.stereoRole"><code class="docutils literal notranslate"><span class="pre">CameraProperties.stereoRole</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.update"><code class="docutils literal notranslate"><span class="pre">CameraProperties.update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.verticalAperture"><code class="docutils literal notranslate"><span class="pre">CameraProperties.verticalAperture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties.verticalApertureOffset"><code class="docutils literal notranslate"><span class="pre">CameraProperties.verticalApertureOffset</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.DEFAULT_CAMERA_NAME"><code class="docutils literal notranslate"><span class="pre">DEFAULT_CAMERA_NAME</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.DEFAULT_FRAMED_CAMERAS_GRP_NAME"><code class="docutils literal notranslate"><span class="pre">DEFAULT_FRAMED_CAMERAS_GRP_NAME</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.properties"><code class="docutils literal notranslate"><span class="pre">properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera_properties.update_properties"><code class="docutils literal notranslate"><span class="pre">update_properties()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.camera.html#module-substance3d.api.camera">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.core.html">substance3d.api.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-callbacks-module">substance3d.api.core.callbacks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-containers-module">substance3d.api.core.containers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-core-module">substance3d.api.core.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-exceptions-module">substance3d.api.core.exceptions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ArchiveCreationFailed"><code class="docutils literal notranslate"><span class="pre">ArchiveCreationFailed</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ArchiveCreationFailed.__init__"><code class="docutils literal notranslate"><span class="pre">ArchiveCreationFailed.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.FailedToSaveImage"><code class="docutils literal notranslate"><span class="pre">FailedToSaveImage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.FailedToSaveImage.__init__"><code class="docutils literal notranslate"><span class="pre">FailedToSaveImage.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidDefaultPrim"><code class="docutils literal notranslate"><span class="pre">NotAValidDefaultPrim</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidDefaultPrim.__init__"><code class="docutils literal notranslate"><span class="pre">NotAValidDefaultPrim.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidIdentifier"><code class="docutils literal notranslate"><span class="pre">NotAValidIdentifier</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidIdentifier.__init__"><code class="docutils literal notranslate"><span class="pre">NotAValidIdentifier.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidImageBuffer"><code class="docutils literal notranslate"><span class="pre">NotAValidImageBuffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidImageBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">NotAValidImageBuffer.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidPathIdentifier"><code class="docutils literal notranslate"><span class="pre">NotAValidPathIdentifier</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidPathIdentifier.__init__"><code class="docutils literal notranslate"><span class="pre">NotAValidPathIdentifier.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidRendererBuffer"><code class="docutils literal notranslate"><span class="pre">NotAValidRendererBuffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAValidRendererBuffer.__init__"><code class="docutils literal notranslate"><span class="pre">NotAValidRendererBuffer.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAssignableError"><code class="docutils literal notranslate"><span class="pre">NotAssignableError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotAssignableError.__init__"><code class="docutils literal notranslate"><span class="pre">NotAssignableError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotEditableError"><code class="docutils literal notranslate"><span class="pre">NotEditableError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotEditableError.__init__"><code class="docutils literal notranslate"><span class="pre">NotEditableError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotLocalPrimError"><code class="docutils literal notranslate"><span class="pre">NotLocalPrimError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.NotLocalPrimError.__init__"><code class="docutils literal notranslate"><span class="pre">NotLocalPrimError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PrimEditedOutsideVariant"><code class="docutils literal notranslate"><span class="pre">PrimEditedOutsideVariant</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PrimEditedOutsideVariant.__init__"><code class="docutils literal notranslate"><span class="pre">PrimEditedOutsideVariant.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PropertyFnError"><code class="docutils literal notranslate"><span class="pre">PropertyFnError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PropertyFnError.__init__"><code class="docutils literal notranslate"><span class="pre">PropertyFnError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized"><code class="docutils literal notranslate"><span class="pre">RendererUninitialized</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized.__init__"><code class="docutils literal notranslate"><span class="pre">RendererUninitialized.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.RenderingNotDone"><code class="docutils literal notranslate"><span class="pre">RenderingNotDone</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.RenderingNotDone.__init__"><code class="docutils literal notranslate"><span class="pre">RenderingNotDone.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.Sbs3dException"><code class="docutils literal notranslate"><span class="pre">Sbs3dException</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.Sbs3dException.__init__"><code class="docutils literal notranslate"><span class="pre">Sbs3dException.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.SceneBranchAlreadyExist"><code class="docutils literal notranslate"><span class="pre">SceneBranchAlreadyExist</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.SceneBranchAlreadyExist.__init__"><code class="docutils literal notranslate"><span class="pre">SceneBranchAlreadyExist.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.SceneNotCompliantForArchive"><code class="docutils literal notranslate"><span class="pre">SceneNotCompliantForArchive</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.SceneNotCompliantForArchive.__init__"><code class="docutils literal notranslate"><span class="pre">SceneNotCompliantForArchive.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-handlers-module">substance3d.api.core.handlers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#module-substance3d.api.core.log">substance3d.api.core.log module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.DEBUG"><code class="docutils literal notranslate"><span class="pre">Channel.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.ERROR"><code class="docutils literal notranslate"><span class="pre">Channel.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.INFO"><code class="docutils literal notranslate"><span class="pre">Channel.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.TESTRUNNER"><code class="docutils literal notranslate"><span class="pre">Channel.TESTRUNNER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.VERBOSE"><code class="docutils literal notranslate"><span class="pre">Channel.VERBOSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.WARNING"><code class="docutils literal notranslate"><span class="pre">Channel.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Channel.__new__"><code class="docutils literal notranslate"><span class="pre">Channel.__new__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ConsoleHandler"><code class="docutils literal notranslate"><span class="pre">ConsoleHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ConsoleHandler.__init__"><code class="docutils literal notranslate"><span class="pre">ConsoleHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ConsoleHandler.emit"><code class="docutils literal notranslate"><span class="pre">ConsoleHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.__init__"><code class="docutils literal notranslate"><span class="pre">Logger.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.add_file_sink"><code class="docutils literal notranslate"><span class="pre">Logger.add_file_sink()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.capture_warnings"><code class="docutils literal notranslate"><span class="pre">Logger.capture_warnings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.console_handler"><code class="docutils literal notranslate"><span class="pre">Logger.console_handler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.remove_console_sink"><code class="docutils literal notranslate"><span class="pre">Logger.remove_console_sink()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.set_console_sink"><code class="docutils literal notranslate"><span class="pre">Logger.set_console_sink()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.sub_logger"><code class="docutils literal notranslate"><span class="pre">Logger.sub_logger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.testrunner"><code class="docutils literal notranslate"><span class="pre">Logger.testrunner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.Logger.verbose"><code class="docutils literal notranslate"><span class="pre">Logger.verbose()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ScopedLog"><code class="docutils literal notranslate"><span class="pre">ScopedLog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ScopedLog.__init__"><code class="docutils literal notranslate"><span class="pre">ScopedLog.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.log.ScopedLog.get"><code class="docutils literal notranslate"><span class="pre">ScopedLog.get()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#module-substance3d.api.core.type_mapping">substance3d.api.core.type_mapping module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.AssetStr"><code class="docutils literal notranslate"><span class="pre">AssetStr</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.AssetStr.cast"><code class="docutils literal notranslate"><span class="pre">AssetStr.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.AssetStr.is_valid"><code class="docutils literal notranslate"><span class="pre">AssetStr.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.AssetStr.types"><code class="docutils literal notranslate"><span class="pre">AssetStr.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.AssetStr.usd_types"><code class="docutils literal notranslate"><span class="pre">AssetStr.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Bool"><code class="docutils literal notranslate"><span class="pre">Bool</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Bool.cast"><code class="docutils literal notranslate"><span class="pre">Bool.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Bool.is_valid"><code class="docutils literal notranslate"><span class="pre">Bool.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Bool.types"><code class="docutils literal notranslate"><span class="pre">Bool.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Bool.usd_types"><code class="docutils literal notranslate"><span class="pre">Bool.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase"><code class="docutils literal notranslate"><span class="pre">ConverterBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.cast"><code class="docutils literal notranslate"><span class="pre">ConverterBase.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.is_valid"><code class="docutils literal notranslate"><span class="pre">ConverterBase.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.sdf_type"><code class="docutils literal notranslate"><span class="pre">ConverterBase.sdf_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.types"><code class="docutils literal notranslate"><span class="pre">ConverterBase.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.usd_cast"><code class="docutils literal notranslate"><span class="pre">ConverterBase.usd_cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase.usd_types"><code class="docutils literal notranslate"><span class="pre">ConverterBase.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float2"><code class="docutils literal notranslate"><span class="pre">Float2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float2.length"><code class="docutils literal notranslate"><span class="pre">Float2.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float2.types"><code class="docutils literal notranslate"><span class="pre">Float2.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float2.usd_types"><code class="docutils literal notranslate"><span class="pre">Float2.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float3"><code class="docutils literal notranslate"><span class="pre">Float3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float3.length"><code class="docutils literal notranslate"><span class="pre">Float3.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float3.types"><code class="docutils literal notranslate"><span class="pre">Float3.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float3.usd_types"><code class="docutils literal notranslate"><span class="pre">Float3.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float4"><code class="docutils literal notranslate"><span class="pre">Float4</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float4.length"><code class="docutils literal notranslate"><span class="pre">Float4.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float4.types"><code class="docutils literal notranslate"><span class="pre">Float4.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Float4.usd_types"><code class="docutils literal notranslate"><span class="pre">Float4.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int2"><code class="docutils literal notranslate"><span class="pre">Int2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int2.length"><code class="docutils literal notranslate"><span class="pre">Int2.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int2.types"><code class="docutils literal notranslate"><span class="pre">Int2.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int2.usd_types"><code class="docutils literal notranslate"><span class="pre">Int2.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int3"><code class="docutils literal notranslate"><span class="pre">Int3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int3.length"><code class="docutils literal notranslate"><span class="pre">Int3.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int3.types"><code class="docutils literal notranslate"><span class="pre">Int3.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int3.usd_types"><code class="docutils literal notranslate"><span class="pre">Int3.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int4"><code class="docutils literal notranslate"><span class="pre">Int4</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int4.length"><code class="docutils literal notranslate"><span class="pre">Int4.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int4.types"><code class="docutils literal notranslate"><span class="pre">Int4.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Int4.usd_types"><code class="docutils literal notranslate"><span class="pre">Int4.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.IterableBase"><code class="docutils literal notranslate"><span class="pre">IterableBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.IterableBase.cast"><code class="docutils literal notranslate"><span class="pre">IterableBase.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.IterableBase.is_valid"><code class="docutils literal notranslate"><span class="pre">IterableBase.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.IterableBase.length"><code class="docutils literal notranslate"><span class="pre">IterableBase.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.IterableBase.usd_cast"><code class="docutils literal notranslate"><span class="pre">IterableBase.usd_cast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Str"><code class="docutils literal notranslate"><span class="pre">Str</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Str.cast"><code class="docutils literal notranslate"><span class="pre">Str.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Str.is_valid"><code class="docutils literal notranslate"><span class="pre">Str.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.Str.types"><code class="docutils literal notranslate"><span class="pre">Str.types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorBase"><code class="docutils literal notranslate"><span class="pre">VectorBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorBase.cast"><code class="docutils literal notranslate"><span class="pre">VectorBase.cast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorBase.is_valid"><code class="docutils literal notranslate"><span class="pre">VectorBase.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorBase.is_valid_inside"><code class="docutils literal notranslate"><span class="pre">VectorBase.is_valid_inside()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat"><code class="docutils literal notranslate"><span class="pre">VectorFloat</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat.types"><code class="docutils literal notranslate"><span class="pre">VectorFloat.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorFloat.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat2"><code class="docutils literal notranslate"><span class="pre">VectorFloat2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat2.types"><code class="docutils literal notranslate"><span class="pre">VectorFloat2.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat2.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorFloat2.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat3"><code class="docutils literal notranslate"><span class="pre">VectorFloat3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat3.types"><code class="docutils literal notranslate"><span class="pre">VectorFloat3.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat3.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorFloat3.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat4"><code class="docutils literal notranslate"><span class="pre">VectorFloat4</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat4.types"><code class="docutils literal notranslate"><span class="pre">VectorFloat4.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorFloat4.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorFloat4.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt"><code class="docutils literal notranslate"><span class="pre">VectorInt</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt.types"><code class="docutils literal notranslate"><span class="pre">VectorInt.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorInt.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt2"><code class="docutils literal notranslate"><span class="pre">VectorInt2</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt2.types"><code class="docutils literal notranslate"><span class="pre">VectorInt2.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt2.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorInt2.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt3"><code class="docutils literal notranslate"><span class="pre">VectorInt3</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt3.types"><code class="docutils literal notranslate"><span class="pre">VectorInt3.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt3.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorInt3.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt4"><code class="docutils literal notranslate"><span class="pre">VectorInt4</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt4.types"><code class="docutils literal notranslate"><span class="pre">VectorInt4.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorInt4.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorInt4.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2d"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2d</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2d.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2d.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2d.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2d.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2f"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2f</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2f.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2f.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix2f.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix2f.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3d"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3d</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3d.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3d.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3d.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3d.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3f"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3f</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3f.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3f.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix3f.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix3f.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4d"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4d</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4d.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4d.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4d.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4d.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4f"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4f</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4f.types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4f.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorMatrix4f.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorMatrix4f.usd_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorStr"><code class="docutils literal notranslate"><span class="pre">VectorStr</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorStr.types"><code class="docutils literal notranslate"><span class="pre">VectorStr.types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.type_mapping.VectorStr.usd_types"><code class="docutils literal notranslate"><span class="pre">VectorStr.usd_types</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#module-substance3d.api.core.utilities">substance3d.api.core.utilities module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.BasePropertiesRepr"><code class="docutils literal notranslate"><span class="pre">BasePropertiesRepr</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.args_check_deco"><code class="docutils literal notranslate"><span class="pre">args_check_deco()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.arguments_path_splitter"><code class="docutils literal notranslate"><span class="pre">arguments_path_splitter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.asset_path_splitter"><code class="docutils literal notranslate"><span class="pre">asset_path_splitter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.attribute_exists"><code class="docutils literal notranslate"><span class="pre">attribute_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.check_layer_file_validity"><code class="docutils literal notranslate"><span class="pre">check_layer_file_validity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.check_primhandler_type"><code class="docutils literal notranslate"><span class="pre">check_primhandler_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.check_stagehandler_type"><code class="docutils literal notranslate"><span class="pre">check_stagehandler_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.cleaner_deco"><code class="docutils literal notranslate"><span class="pre">cleaner_deco()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.convert_path_to_relative"><code class="docutils literal notranslate"><span class="pre">convert_path_to_relative()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.deep_update"><code class="docutils literal notranslate"><span class="pre">deep_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.del_files"><code class="docutils literal notranslate"><span class="pre">del_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.del_global_cache_files"><code class="docutils literal notranslate"><span class="pre">del_global_cache_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.filename_args_as_path_deco"><code class="docutils literal notranslate"><span class="pre">filename_args_as_path_deco()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.get_parent_or_default_prim"><code class="docutils literal notranslate"><span class="pre">get_parent_or_default_prim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.get_public_attr"><code class="docutils literal notranslate"><span class="pre">get_public_attr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.get_up_axis"><code class="docutils literal notranslate"><span class="pre">get_up_axis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.global_cleaner_deco"><code class="docutils literal notranslate"><span class="pre">global_cleaner_deco()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.is_local_prim"><code class="docutils literal notranslate"><span class="pre">is_local_prim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.is_macos_intel"><code class="docutils literal notranslate"><span class="pre">is_macos_intel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.list_get"><code class="docutils literal notranslate"><span class="pre">list_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.validate_usd_identifier"><code class="docutils literal notranslate"><span class="pre">validate_usd_identifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.validate_usd_path"><code class="docutils literal notranslate"><span class="pre">validate_usd_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.validate_vector"><code class="docutils literal notranslate"><span class="pre">validate_vector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#module-substance3d.api.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.export.html">substance3d.api.export package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.export.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.export.html#module-substance3d.api.export.export">substance3d.api.export.export module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.abc"><code class="docutils literal notranslate"><span class="pre">abc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.archive"><code class="docutils literal notranslate"><span class="pre">archive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.fbx"><code class="docutils literal notranslate"><span class="pre">fbx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.glb"><code class="docutils literal notranslate"><span class="pre">glb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.gltf"><code class="docutils literal notranslate"><span class="pre">gltf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.export.html#substance3d.api.export.export.scene_with_dependencies"><code class="docutils literal notranslate"><span class="pre">scene_with_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.export.html#module-substance3d.api.export.export_utilities">substance3d.api.export.export_utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.export.html#module-substance3d.api.export">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.image.html">substance3d.api.image package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.image.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.image.html#module-substance3d.api.image.image">substance3d.api.image.image module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">ALLOWED_EXTENSIONS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image.__init__"><code class="docutils literal notranslate"><span class="pre">Image.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image.from_filepath"><code class="docutils literal notranslate"><span class="pre">Image.from_filepath()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image.metadata"><code class="docutils literal notranslate"><span class="pre">Image.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image.save"><code class="docutils literal notranslate"><span class="pre">Image.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.add_metadata"><code class="docutils literal notranslate"><span class="pre">add_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.color_correction"><code class="docutils literal notranslate"><span class="pre">color_correction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.color_space"><code class="docutils literal notranslate"><span class="pre">color_space()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.create_contact_sheet"><code class="docutils literal notranslate"><span class="pre">create_contact_sheet()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.create_solid_color"><code class="docutils literal notranslate"><span class="pre">create_solid_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.get_numpy_array"><code class="docutils literal notranslate"><span class="pre">get_numpy_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.hdri_panorama_from_match_image"><code class="docutils literal notranslate"><span class="pre">hdri_panorama_from_match_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.invert_channel"><code class="docutils literal notranslate"><span class="pre">invert_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.metadata"><code class="docutils literal notranslate"><span class="pre">metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.num_channels"><code class="docutils literal notranslate"><span class="pre">num_channels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.over"><code class="docutils literal notranslate"><span class="pre">over()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.pixel_value"><code class="docutils literal notranslate"><span class="pre">pixel_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.save_animated_gif"><code class="docutils literal notranslate"><span class="pre">save_animated_gif()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.save_multipart_exr"><code class="docutils literal notranslate"><span class="pre">save_multipart_exr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.superpose"><code class="docutils literal notranslate"><span class="pre">superpose()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.image.html#module-substance3d.api.image">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.light.html">substance3d.api.light package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.light.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.light.html#module-substance3d.api.light.light">substance3d.api.light.light module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.change_type"><code class="docutils literal notranslate"><span class="pre">change_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.cylinder"><code class="docutils literal notranslate"><span class="pre">cylinder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.disk"><code class="docutils literal notranslate"><span class="pre">disk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.distant"><code class="docutils literal notranslate"><span class="pre">distant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.dome"><code class="docutils literal notranslate"><span class="pre">dome()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.dome_from_match_image"><code class="docutils literal notranslate"><span class="pre">dome_from_match_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.import_environment_texture"><code class="docutils literal notranslate"><span class="pre">import_environment_texture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.rect"><code class="docutils literal notranslate"><span class="pre">rect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light.sphere"><code class="docutils literal notranslate"><span class="pre">sphere()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.light.html#module-substance3d.api.light.light_properties">substance3d.api.light.light_properties module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties"><code class="docutils literal notranslate"><span class="pre">LightProperties</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.as_dict"><code class="docutils literal notranslate"><span class="pre">LightProperties.as_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.color"><code class="docutils literal notranslate"><span class="pre">LightProperties.color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.colorTemperature"><code class="docutils literal notranslate"><span class="pre">LightProperties.colorTemperature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.diffuse"><code class="docutils literal notranslate"><span class="pre">LightProperties.diffuse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.enableColorTemperature"><code class="docutils literal notranslate"><span class="pre">LightProperties.enableColorTemperature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.exposure"><code class="docutils literal notranslate"><span class="pre">LightProperties.exposure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.intensity"><code class="docutils literal notranslate"><span class="pre">LightProperties.intensity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.normalize"><code class="docutils literal notranslate"><span class="pre">LightProperties.normalize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.radius"><code class="docutils literal notranslate"><span class="pre">LightProperties.radius</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.specular"><code class="docutils literal notranslate"><span class="pre">LightProperties.specular</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.update"><code class="docutils literal notranslate"><span class="pre">LightProperties.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.SUPPORTED_LIGHTS"><code class="docutils literal notranslate"><span class="pre">SUPPORTED_LIGHTS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.properties"><code class="docutils literal notranslate"><span class="pre">properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.light.html#substance3d.api.light.light_properties.update_properties"><code class="docutils literal notranslate"><span class="pre">update_properties()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.light.html#module-substance3d.api.light">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.material.html">substance3d.api.material package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#module-substance3d.api.material.material">substance3d.api.material.material module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.Definitions"><code class="docutils literal notranslate"><span class="pre">Definitions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.MATERIAL_REFERENCE_FORMATS"><code class="docutils literal notranslate"><span class="pre">MATERIAL_REFERENCE_FORMATS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.NormalFormat"><code class="docutils literal notranslate"><span class="pre">NormalFormat</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.NormalFormat.DirectX"><code class="docutils literal notranslate"><span class="pre">NormalFormat.DirectX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.NormalFormat.OpenGL"><code class="docutils literal notranslate"><span class="pre">NormalFormat.OpenGL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.SUPPORTED_ASSIGNMENT_TYPES"><code class="docutils literal notranslate"><span class="pre">SUPPORTED_ASSIGNMENT_TYPES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.assign_to_objects"><code class="docutils literal notranslate"><span class="pre">assign_to_objects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.change_output_surface"><code class="docutils literal notranslate"><span class="pre">change_output_surface()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.collect_textures_by_usage"><code class="docutils literal notranslate"><span class="pre">collect_textures_by_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_from_inputs"><code class="docutils literal notranslate"><span class="pre">create_from_inputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_from_mtlx"><code class="docutils literal notranslate"><span class="pre">create_from_mtlx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_from_reference"><code class="docutils literal notranslate"><span class="pre">create_from_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_from_sbsar"><code class="docutils literal notranslate"><span class="pre">create_from_sbsar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_from_textures_dir"><code class="docutils literal notranslate"><span class="pre">create_from_textures_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_shadow_catching"><code class="docutils literal notranslate"><span class="pre">create_shadow_catching()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.create_solid_color"><code class="docutils literal notranslate"><span class="pre">create_solid_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.get_assigned_material"><code class="docutils literal notranslate"><span class="pre">get_assigned_material()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.get_sbsar_parameters"><code class="docutils literal notranslate"><span class="pre">get_sbsar_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.get_sbsar_preset"><code class="docutils literal notranslate"><span class="pre">get_sbsar_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.get_sbsar_presets"><code class="docutils literal notranslate"><span class="pre">get_sbsar_presets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.get_sbsar_resolution"><code class="docutils literal notranslate"><span class="pre">get_sbsar_resolution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.remove_material_assignation"><code class="docutils literal notranslate"><span class="pre">remove_material_assignation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.scale_from_physicalsize"><code class="docutils literal notranslate"><span class="pre">scale_from_physicalsize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_input"><code class="docutils literal notranslate"><span class="pre">set_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_normal_format"><code class="docutils literal notranslate"><span class="pre">set_normal_format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_rotate"><code class="docutils literal notranslate"><span class="pre">set_rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_sbsar_parameter"><code class="docutils literal notranslate"><span class="pre">set_sbsar_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_sbsar_preset"><code class="docutils literal notranslate"><span class="pre">set_sbsar_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_sbsar_resolution"><code class="docutils literal notranslate"><span class="pre">set_sbsar_resolution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_scale"><code class="docutils literal notranslate"><span class="pre">set_scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.set_translate"><code class="docutils literal notranslate"><span class="pre">set_translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#module-substance3d.api.material.sbsar_utilities">substance3d.api.material.sbsar_utilities module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType"><code class="docutils literal notranslate"><span class="pre">SbsarType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.FLOAT1"><code class="docutils literal notranslate"><span class="pre">SbsarType.FLOAT1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.FLOAT2"><code class="docutils literal notranslate"><span class="pre">SbsarType.FLOAT2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.FLOAT3"><code class="docutils literal notranslate"><span class="pre">SbsarType.FLOAT3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.FLOAT4"><code class="docutils literal notranslate"><span class="pre">SbsarType.FLOAT4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.FONT"><code class="docutils literal notranslate"><span class="pre">SbsarType.FONT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.IMAGE"><code class="docutils literal notranslate"><span class="pre">SbsarType.IMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.INTEGER1"><code class="docutils literal notranslate"><span class="pre">SbsarType.INTEGER1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.INTEGER2"><code class="docutils literal notranslate"><span class="pre">SbsarType.INTEGER2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.INTEGER3"><code class="docutils literal notranslate"><span class="pre">SbsarType.INTEGER3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.INTEGER4"><code class="docutils literal notranslate"><span class="pre">SbsarType.INTEGER4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.STRING"><code class="docutils literal notranslate"><span class="pre">SbsarType.STRING</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget"><code class="docutils literal notranslate"><span class="pre">SbsarWidget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.ANGLE"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.ANGLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.COLOR"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.COLOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.COMBOBOX"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.COMBOBOX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.ENUMBUTTONS"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.ENUMBUTTONS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.IMAGE"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.IMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.NONE"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.NONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.POSITION"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.POSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.REVERSEPOSITION"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.REVERSEPOSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.SLIDER"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.SLIDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.STRAIGHTTRANSFORMATION"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.STRAIGHTTRANSFORMATION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.TOGGLEBUTTON"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.TOGGLEBUTTON</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.TRANSFORMATION"><code class="docutils literal notranslate"><span class="pre">SbsarWidget.TRANSFORMATION</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.bake_sbsar"><code class="docutils literal notranslate"><span class="pre">bake_sbsar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.bake_scene_sbsar"><code class="docutils literal notranslate"><span class="pre">bake_scene_sbsar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.sbsar_utilities.is_sbsar_material"><code class="docutils literal notranslate"><span class="pre">is_sbsar_material()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#module-substance3d.api.material">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.primitive.html">substance3d.api.primitive package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.primitive.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.primitive.html#module-substance3d.api.primitive.primitive">substance3d.api.primitive.primitive module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.cube"><code class="docutils literal notranslate"><span class="pre">cube()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.cyclo"><code class="docutils literal notranslate"><span class="pre">cyclo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.plane"><code class="docutils literal notranslate"><span class="pre">plane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.scope"><code class="docutils literal notranslate"><span class="pre">scope()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.sphere"><code class="docutils literal notranslate"><span class="pre">sphere()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.primitive.html#substance3d.api.primitive.primitive.xform"><code class="docutils literal notranslate"><span class="pre">xform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.primitive.html#module-substance3d.api.primitive">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.renderer.html">substance3d.api.renderer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.renderer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.renderer.html#module-substance3d.api.renderer.renderer">substance3d.api.renderer.renderer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.HydraImplementation"><code class="docutils literal notranslate"><span class="pre">HydraImplementation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderRequest"><code class="docutils literal notranslate"><span class="pre">RenderRequest</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.CPUPathTracing"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique.CPUPathTracing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.GPUPathTracing"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique.GPUPathTracing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.GPURasterization"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique.GPURasterization</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.as_dict"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique.as_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.available_renderer_names"><code class="docutils literal notranslate"><span class="pre">available_renderer_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_aov_list"><code class="docutils literal notranslate"><span class="pre">get_aov_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_image_from_aov"><code class="docutils literal notranslate"><span class="pre">get_image_from_aov()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_passes_list"><code class="docutils literal notranslate"><span class="pre">get_passes_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_product"><code class="docutils literal notranslate"><span class="pre">get_render_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_settings"><code class="docutils literal notranslate"><span class="pre">get_render_settings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.render"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.scene_resolution"><code class="docutils literal notranslate"><span class="pre">scene_resolution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.set_background_color"><code class="docutils literal notranslate"><span class="pre">set_background_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.set_groundplane"><code class="docutils literal notranslate"><span class="pre">set_groundplane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.set_scene_resolution"><code class="docutils literal notranslate"><span class="pre">set_scene_resolution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.renderer.html#module-substance3d.api.renderer">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.scene.html">substance3d.api.scene package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.scene.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.scene.html#module-substance3d.api.scene.scene">substance3d.api.scene.scene module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.AVAILABLE_OBJECT_TYPES"><code class="docutils literal notranslate"><span class="pre">AVAILABLE_OBJECT_TYPES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.PLUGINS_SDFMETADATA"><code class="docutils literal notranslate"><span class="pre">PLUGINS_SDFMETADATA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.VISIBLE_VALUES"><code class="docutils literal notranslate"><span class="pre">VISIBLE_VALUES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.add_layer"><code class="docutils literal notranslate"><span class="pre">add_layer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.add_reference"><code class="docutils literal notranslate"><span class="pre">add_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.flatten_references"><code class="docutils literal notranslate"><span class="pre">flatten_references()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.get_default"><code class="docutils literal notranslate"><span class="pre">get_default()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.local_to_reference"><code class="docutils literal notranslate"><span class="pre">local_to_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.new"><code class="docutils literal notranslate"><span class="pre">new()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.new_from_object"><code class="docutils literal notranslate"><span class="pre">new_from_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.replace_reference"><code class="docutils literal notranslate"><span class="pre">replace_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.set_default"><code class="docutils literal notranslate"><span class="pre">set_default()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.set_upaxis"><code class="docutils literal notranslate"><span class="pre">set_upaxis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.scene.set_visibility"><code class="docutils literal notranslate"><span class="pre">set_visibility()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.scene.html#module-substance3d.api.scene">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.scene.html#module-substance3d.api.scene.branch">substance3d.api.scene.branch module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.SceneBranch"><code class="docutils literal notranslate"><span class="pre">SceneBranch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.SceneBranch.PREFIX"><code class="docutils literal notranslate"><span class="pre">SceneBranch.PREFIX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.SceneBranch.__init__"><code class="docutils literal notranslate"><span class="pre">SceneBranch.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.SceneBranch.save"><code class="docutils literal notranslate"><span class="pre">SceneBranch.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.get_identifiers"><code class="docutils literal notranslate"><span class="pre">get_identifiers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.get_target_handler"><code class="docutils literal notranslate"><span class="pre">get_target_handler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.branch.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.scene.html#module-substance3d.api.scene.animation">substance3d.api.scene.animation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.animation.ActiveTimecode"><code class="docutils literal notranslate"><span class="pre">ActiveTimecode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.animation.ActiveTimecode.__init__"><code class="docutils literal notranslate"><span class="pre">ActiveTimecode.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.animation.activate_timecode"><code class="docutils literal notranslate"><span class="pre">activate_timecode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.animation.create_timecode_label"><code class="docutils literal notranslate"><span class="pre">create_timecode_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.scene.html#substance3d.api.scene.animation.set_time_range"><code class="docutils literal notranslate"><span class="pre">set_time_range()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.transform.html">substance3d.api.transform package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.transform.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.transform.html#module-substance3d.api.transform.transform">substance3d.api.transform.transform module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer"><code class="docutils literal notranslate"><span class="pre">Transformer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.Rotate"><code class="docutils literal notranslate"><span class="pre">Transformer.Rotate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.Scale"><code class="docutils literal notranslate"><span class="pre">Transformer.Scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.Translate"><code class="docutils literal notranslate"><span class="pre">Transformer.Translate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.__init__"><code class="docutils literal notranslate"><span class="pre">Transformer.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.rotate"><code class="docutils literal notranslate"><span class="pre">Transformer.rotate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.scale"><code class="docutils literal notranslate"><span class="pre">Transformer.scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.translate"><code class="docutils literal notranslate"><span class="pre">Transformer.translate</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.align_objects"><code class="docutils literal notranslate"><span class="pre">align_objects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.bake_transforms"><code class="docutils literal notranslate"><span class="pre">bake_transforms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.clean_unused_transforms"><code class="docutils literal notranslate"><span class="pre">clean_unused_transforms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.clear_transform"><code class="docutils literal notranslate"><span class="pre">clear_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.deco_class_xform_context"><code class="docutils literal notranslate"><span class="pre">deco_class_xform_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.deco_xform_context"><code class="docutils literal notranslate"><span class="pre">deco_xform_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.distribute_objects"><code class="docutils literal notranslate"><span class="pre">distribute_objects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_local_transform"><code class="docutils literal notranslate"><span class="pre">get_local_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_rotate"><code class="docutils literal notranslate"><span class="pre">get_rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_rotate_pivot"><code class="docutils literal notranslate"><span class="pre">get_rotate_pivot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_scale"><code class="docutils literal notranslate"><span class="pre">get_scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_scale_pivot"><code class="docutils literal notranslate"><span class="pre">get_scale_pivot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_translate"><code class="docutils literal notranslate"><span class="pre">get_translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.get_world_transform"><code class="docutils literal notranslate"><span class="pre">get_world_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.move_to_ground"><code class="docutils literal notranslate"><span class="pre">move_to_ground()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.move_to_origin"><code class="docutils literal notranslate"><span class="pre">move_to_origin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.set_rotate"><code class="docutils literal notranslate"><span class="pre">set_rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.set_rotate_pivot"><code class="docutils literal notranslate"><span class="pre">set_rotate_pivot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.set_scale"><code class="docutils literal notranslate"><span class="pre">set_scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.set_scale_pivot"><code class="docutils literal notranslate"><span class="pre">set_scale_pivot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.set_translate"><code class="docutils literal notranslate"><span class="pre">set_translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform.xform_context"><code class="docutils literal notranslate"><span class="pre">xform_context()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.transform.html#module-substance3d.api.transform">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.transform.html#module-substance3d.api.transform.transform_utilities">substance3d.api.transform.transform_utilities module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor"><code class="docutils literal notranslate"><span class="pre">Anchor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.BACK"><code class="docutils literal notranslate"><span class="pre">Anchor.BACK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.BOTTOM"><code class="docutils literal notranslate"><span class="pre">Anchor.BOTTOM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.CENTER"><code class="docutils literal notranslate"><span class="pre">Anchor.CENTER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.FRONT"><code class="docutils literal notranslate"><span class="pre">Anchor.FRONT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.LEFT"><code class="docutils literal notranslate"><span class="pre">Anchor.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.RIGHT"><code class="docutils literal notranslate"><span class="pre">Anchor.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.Anchor.TOP"><code class="docutils literal notranslate"><span class="pre">Anchor.TOP</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.bbox_anchor_midpoint"><code class="docutils literal notranslate"><span class="pre">bbox_anchor_midpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.bbox_info"><code class="docutils literal notranslate"><span class="pre">bbox_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">bbox_midpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.calculate_bbox"><code class="docutils literal notranslate"><span class="pre">calculate_bbox()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.calculate_bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">calculate_bbox_midpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.calculate_distance"><code class="docutils literal notranslate"><span class="pre">calculate_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.find_most_distant_positions"><code class="docutils literal notranslate"><span class="pre">find_most_distant_positions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.get_world_transform_matrix"><code class="docutils literal notranslate"><span class="pre">get_world_transform_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.transform.html#substance3d.api.transform.transform_utilities.is_valid_bbox"><code class="docutils literal notranslate"><span class="pre">is_valid_bbox()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="substance3d.api.utility.html">substance3d.api.utility package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.utility.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.utility.html#module-substance3d.api.utility.utility">substance3d.api.utility.utility module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.bbox_info"><code class="docutils literal notranslate"><span class="pre">bbox_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.calculate_bbox"><code class="docutils literal notranslate"><span class="pre">calculate_bbox()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.calculate_bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">calculate_bbox_midpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.calculate_material_tiling_from_physicalsize"><code class="docutils literal notranslate"><span class="pre">calculate_material_tiling_from_physicalsize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.find_available_identifier"><code class="docutils literal notranslate"><span class="pre">find_available_identifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.find_available_path"><code class="docutils literal notranslate"><span class="pre">find_available_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.get_plugins_sdfmetadata"><code class="docutils literal notranslate"><span class="pre">get_plugins_sdfmetadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.is_valid_bbox"><code class="docutils literal notranslate"><span class="pre">is_valid_bbox()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.original_formats"><code class="docutils literal notranslate"><span class="pre">original_formats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.utility.html#substance3d.api.utility.utility.temp_session_editing"><code class="docutils literal notranslate"><span class="pre">temp_session_editing()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.utility.html#module-substance3d.api.utility">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-substance3d.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api" title="Permalink to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.ANCHOR_REFERENCE_TO_STAGE">
+<span class="sig-name descname"><span class="pre">ANCHOR_REFERENCE_TO_STAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.ANCHOR_REFERENCE_TO_STAGE" title="Permalink to this definition"></a></dt>
+<dd><p>Allow prim creation at the root level, outside the defaultPrim</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.AUTO_FIX_IDENTIFIER">
+<span class="sig-name descname"><span class="pre">AUTO_FIX_IDENTIFIER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.AUTO_FIX_IDENTIFIER" title="Permalink to this definition"></a></dt>
+<dd><p>If True, a given absolute path will be converted to a relative path if it shares the same parent</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.CONVERT_PATH_TO_RELATIVE">
+<span class="sig-name descname"><span class="pre">CONVERT_PATH_TO_RELATIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.CONVERT_PATH_TO_RELATIVE" title="Permalink to this definition"></a></dt>
+<dd><p>Default environment texture file used by hydra renderer</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DEFAULT_END_TIMECODE">
+<span class="sig-name descname"><span class="pre">DEFAULT_END_TIMECODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_END_TIMECODE" title="Permalink to this definition"></a></dt>
+<dd><p>Default scene’s up axis value</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DEFAULT_ENV_TEXTURE">
+<span class="sig-name descname"><span class="pre">DEFAULT_ENV_TEXTURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/home/jenkins/slave/workspace/laya_laya-build_laya_ssca_1.4.0/build-Release/laya/automation/substance3d/resources/studio_black_soft_light.hdr'</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_ENV_TEXTURE" title="Permalink to this definition"></a></dt>
+<dd><p>Default start frame for scene creation</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DEFAULT_RESOLUTION">
+<span class="sig-name descname"><span class="pre">DEFAULT_RESOLUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1024,</span> <span class="pre">1024)</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_RESOLUTION" title="Permalink to this definition"></a></dt>
+<dd><p>If True the log level will be DEBUG</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DEFAULT_SCENE_UPAXIS">
+<span class="sig-name descname"><span class="pre">DEFAULT_SCENE_UPAXIS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Y'</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_SCENE_UPAXIS" title="Permalink to this definition"></a></dt>
+<dd><p>Default resolution, environment value must be two int with coma separation</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DEFAULT_START_TIMECODE">
+<span class="sig-name descname"><span class="pre">DEFAULT_START_TIMECODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_START_TIMECODE" title="Permalink to this definition"></a></dt>
+<dd><p>Default end frame for scene creation</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.DISABLED_PLUGIN_NAMES">
+<span class="sig-name descname"><span class="pre">DISABLED_PLUGIN_NAMES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['hdStorm']</span></em><a class="headerlink" href="#substance3d.api.DISABLED_PLUGIN_NAMES" title="Permalink to this definition"></a></dt>
+<dd><p>Paths are always referenced as posix/linux path in USD stage</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.ENABLE_DEBUG_LOG">
+<span class="sig-name descname"><span class="pre">ENABLE_DEBUG_LOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.ENABLE_DEBUG_LOG" title="Permalink to this definition"></a></dt>
+<dd><p>Disabled plugin names
+Setting only effective through environment variable ‘SBS3D_DISABLED_PLUGIN_NAMES’</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.GPUSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GPUSettings</span></span><a class="headerlink" href="#substance3d.api.GPUSettings" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.GPUSettings.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4294967295</span></em><a class="headerlink" href="#substance3d.api.GPUSettings.index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.GPUSettings.print_info">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.GPUSettings.print_info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.ML_MODEL_DIRECTORY">
+<span class="sig-name descname"><span class="pre">ML_MODEL_DIRECTORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#substance3d.api.ML_MODEL_DIRECTORY" title="Permalink to this definition"></a></dt>
+<dd><p>Relative reference path can be anchor to stage or layer (prefix ‘./’)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.PATH_AS_POSIX">
+<span class="sig-name descname"><span class="pre">PATH_AS_POSIX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.PATH_AS_POSIX" title="Permalink to this definition"></a></dt>
+<dd><p>Paths are always referenced as posix/linux path in USD stage</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+substance3d.api.stats package
+=============================
+
+Submodules
+----------
+
+substance3d.api.stats.stats module
+----------------------------------
+
+.. automodule:: substance3d.api.stats.stats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.stats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

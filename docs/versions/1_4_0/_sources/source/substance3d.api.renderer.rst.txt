@@ -1,0 +1,21 @@
+substance3d.api.renderer package
+================================
+
+Submodules
+----------
+
+substance3d.api.renderer.renderer module
+----------------------------------------
+
+.. automodule:: substance3d.api.renderer.renderer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.renderer
+   :members:
+   :undoc-members:
+   :show-inheritance:
