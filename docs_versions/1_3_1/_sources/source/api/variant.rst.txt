@@ -1,6 +1,0 @@
-substance3d.api.variant
------------------------------
-.. automodule:: substance3d.api.variant.variant
-    :members:
-    :show-inheritance:
-    :member-order: bysource

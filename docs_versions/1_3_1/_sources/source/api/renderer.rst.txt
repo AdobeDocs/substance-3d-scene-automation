@@ -1,6 +1,0 @@
-substance3d.api.renderer
-------------------------
-.. automodule:: substance3d.api.renderer.renderer
-    :members:
-    :show-inheritance:
-    :member-order: bysource

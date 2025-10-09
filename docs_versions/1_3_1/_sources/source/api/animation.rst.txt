@@ -1,6 +1,0 @@
-substance3d.api.scene.animation
--------------------------------
-.. automodule:: substance3d.api.scene.animation
-    :members:
-    :show-inheritance:
-    :member-order: bysource

@@ -1,6 +1,0 @@
-substance3d.api.camera
-----------------------
-.. automodule:: substance3d.api.camera.camera
-    :members:
-    :show-inheritance:
-    :member-order: bysource

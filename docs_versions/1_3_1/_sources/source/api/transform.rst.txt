@@ -1,6 +1,0 @@
-substance3d.api.transform
--------------------------
-.. automodule:: substance3d.api.transform.transform
-    :members:
-    :show-inheritance:
-    :member-order: bysource

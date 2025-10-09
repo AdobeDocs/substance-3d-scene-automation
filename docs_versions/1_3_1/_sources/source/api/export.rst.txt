@@ -1,6 +1,0 @@
-substance3d.api.export
-----------------------
-.. automodule:: substance3d.api.export.export
-    :members:
-    :show-inheritance:
-    :member-order: bysource

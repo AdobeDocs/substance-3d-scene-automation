@@ -1,6 +1,0 @@
-substance3d.api.image
----------------------
-.. automodule:: substance3d.api.image.image
-    :members:
-    :show-inheritance:
-    :member-order: bysource
