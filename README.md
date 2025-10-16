@@ -6,7 +6,7 @@
   
 - ---
 
-### -1/ Create ```_static/custom.css``` file and add these lines:
+#### -1/ Create ```_static/custom.css``` file and add these lines:
 
 ``` css
 /* custom.css */
@@ -35,16 +35,19 @@ code {
 ```
 
 
-### -2/ Edit conf.html:
+#### -2/ Edit docs/conf.html:
 
 - Delete these stylesheet lines in ```<head>```:
   - ```<link rel="stylesheet" type="text/css" href="../_static/pygments.css" />```
   - ```<link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />```
+  - or any lines into the top <head> section that link to other css files.
 - Right above ```</head>``` closing line, add this line (with 1 indent):
   - ```<link rel="stylesheet" href="../_static/custom.css">```
 
+#### -3/ TEMPORARY FIX for index.html missing imgs: Edit index.html:
+  - Search and replace ```../static/introduction_ide_setup``` with ```./_images```
 
-### -3/ Create GitHub pages custom Workflow file: 
+#### -4/ Create GitHub pages custom Workflow file: 
   - Name it ```deploy_saws_doc.yml```
   - Paste the workflow file content from below:
  ``` yaml
@@ -92,9 +95,16 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
-### Now push all changes to the ```doc_release``` branch will trigger the GitHub action to deploy to GitHub pages.
+-
+#### Now push all changes to the ```doc_release``` branch will trigger the GitHub action to deploy to GitHub pages.
 Cheers!
 
+- ---
+- ---
+- ---
+- ---
+- ---
+- ---
 - ---
 - ---
 - ---
