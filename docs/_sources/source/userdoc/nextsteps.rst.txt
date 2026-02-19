@@ -35,7 +35,7 @@ render images and save them as contact-sheet:
     transform.translate(cam, (0.0, 0.0, -50))
 
     # add an environment light to have a studio lighting
-    light.dome(my_scn, 'my_dome_light', './cool_studio.hdr')
+    light.dome(my_scn, './cool_studio.hdr', 'my_dome_light')
 
     # add a sbsar material for our walkman
     mat = material.create_from_sbsar(my_scn, './walkman_material_presets.sbsar', 'walkman_material')
@@ -61,7 +61,7 @@ render images and save them as contact-sheet:
     final_img.save('./walkman_variations.png')
 
 
-.. image:: ../static/contact-sheet.png
+.. image:: /source/static/contact-sheet.png
 
 Scene Branch Management
 =======================
@@ -74,7 +74,7 @@ This branch system can be used to save several states of your scene or used as s
 Let's see it in actions with an example.
 Branch Schema
 
-.. image:: ../static/scene_branch_documentation.jpg
+.. image:: /source/static/scene_branch_documentation.jpg
 
 .. code-block:: python
 
@@ -109,7 +109,7 @@ Branch Schema
         material.assign_to_objects(red_mat, walkman_grp.search(type='mesh'))
 
         # Add lighting
-        light.dome(my_scn, 'red_branch_dome_light', './cool_studio_1.hdr')
+        light.dome(my_scn, './cool_studio_1.hdr', 'red_branch_dome_light')
 
         # Save only the content of the branch as an override in an USD file
         scene.branch.save(my_scn, 'red_branch', './red_branch.usda')
@@ -124,7 +124,7 @@ Branch Schema
         material.assign_to_objects(blue_mat, walkman_grp.search(type='mesh'))
 
         # Add lighting
-        light.dome(my_scn, 'red_branch_dome_light', './cool_studio_2.hdr')
+        light.dome(my_scn, './cool_studio_2.hdr', 'blue_branch_dome_light')
 
         # Save only the content of the branch as an override in an USD file
         scene.branch.save(my_scn, 'blue_branch', './main_scene_with_blue_branch.usda', apply=True)
@@ -156,7 +156,7 @@ For example, let's create a scene with a simple yellow color :
     main_scene = scene.new()
 
     # Create material
-    my_mat = material.create_solid_color(main_scene, "yellow", (1.0, 1.0, 0.0))
+    my_mat = material.create_solid_color(main_scene, (1.0, 1.0, 0.0), "yellow")
 
 At this point, SSCA will create a material with ``AdobeStandardMaterial`` and ``USDPreviewSurface`` shaders.
 
@@ -506,52 +506,8 @@ You will find below the supported parameters for the following extensions :
 
 
 .. csv-table:: 
-    :file: ../static/import_params_table.csv
+    :file: /source/static/import_params_table.csv
     :header-rows: 1
-
-Reference flattening
-====================
-
-Global references flattening
-****************************
-
-In order to export your USD to another software, you may want to remove 
-models and material reference links to include them directly in the main file instead.
-
-This can be done automatically with ``export.archive(flat=True)`` or with any export available
-in the export module (i.e : glb, fbx).
-
-Models and USDs will be integrated directly in the file while SBSARs will be converted into a
-set of bitmaps. Bitmaps dependencies will be copied into a "dependencies" 
-folder next to the exported USD file. If the exported file is an archive,
-bitmaps will be packed along the file.
-
-Flattening references this way will keep **currently selected** variants and branches but discard every other variants and branches.
-A local approach for flattening references exists with the ``scene.flatten_references()`` function.
-
-Local reference flattening
-**************************
-
-If you need to flatten references while preserving features of your USD files (like variants), you can use ``scene.flatten_references()``.
-This will flatten and transfer all external references for the given prim into the current scene.
-
-NOTE : This requires to set a filepath when you create a scene with ``scene.new()``.
-
-The code snippet below illustrates the use of ``scene.flatten_references`` to 
-make an USDZ Potion asset with variants that can be imported in Game Engines and other DCCs.
-
-.. code-block:: python
-
-    # ...
-    with variant.create(root, "vial_potA1", "vial"):
-        my_import_prim = primitive.xform(root)
-        scene.add_reference(my_import_prim, "vial_potionA1.fbx")
-        scene.flatten_references(my_import_prim)
-    # ...
-
-Example of the final asset imported in Unreal Engine :
-
-.. image:: ../static/potion_variant_unreal.gif
 
 Managing metadatas
 ==================

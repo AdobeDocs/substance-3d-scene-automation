@@ -84,11 +84,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#activate-displacement">Activate Displacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-import-parameters">File import parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reference-flattening">Reference flattening</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#global-references-flattening">Global references flattening</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#local-reference-flattening">Local reference flattening</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#managing-metadatas">Managing metadatas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-local-prim-to-reference">Move local prim to reference</a></li>
 </ul>
@@ -155,7 +150,7 @@ render images and save them as contact-sheet:</p>
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">))</span>
 
 <span class="c1"># add an environment light to have a studio lighting</span>
-<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;my_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio.hdr&#39;</span><span class="p">)</span>
+<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./cool_studio.hdr&#39;</span><span class="p">,</span> <span class="s1">&#39;my_dome_light&#39;</span><span class="p">)</span>
 
 <span class="c1"># add a sbsar material for our walkman</span>
 <span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./walkman_material_presets.sbsar&#39;</span><span class="p">,</span> <span class="s1">&#39;walkman_material&#39;</span><span class="p">)</span>
@@ -223,7 +218,7 @@ Branch Schema</p>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">red_mat</span><span class="p">,</span> <span class="n">walkman_grp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
 
     <span class="c1"># Add lighting</span>
-    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_1.hdr&#39;</span><span class="p">)</span>
+    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_1.hdr&#39;</span><span class="p">,</span> <span class="s1">&#39;red_branch_dome_light&#39;</span><span class="p">)</span>
 
     <span class="c1"># Save only the content of the branch as an override in an USD file</span>
     <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch&#39;</span><span class="p">,</span> <span class="s1">&#39;./red_branch.usda&#39;</span><span class="p">)</span>
@@ -238,7 +233,7 @@ Branch Schema</p>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">blue_mat</span><span class="p">,</span> <span class="n">walkman_grp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
 
     <span class="c1"># Add lighting</span>
-    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;red_branch_dome_light&#39;</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_2.hdr&#39;</span><span class="p">)</span>
+    <span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;./cool_studio_2.hdr&#39;</span><span class="p">,</span> <span class="s1">&#39;blue_branch_dome_light&#39;</span><span class="p">)</span>
 
     <span class="c1"># Save only the content of the branch as an override in an USD file</span>
     <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;blue_branch&#39;</span><span class="p">,</span> <span class="s1">&#39;./main_scene_with_blue_branch.usda&#39;</span><span class="p">,</span> <span class="n">apply</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -263,7 +258,7 @@ users must be aware of the renderer used, the shader used, and consequently, the
 <span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># Create material</span>
-<span class="n">my_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">my_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>At this point, SSCA will create a material with <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> and <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code> shaders.</p>
@@ -692,40 +687,6 @@ These additional keys let you add import parameters when importing a file in you
 </tr>
 </tbody>
 </table>
-</section>
-<section id="reference-flattening">
-<h2>Reference flattening<a class="headerlink" href="#reference-flattening" title="Permalink to this heading"></a></h2>
-<section id="global-references-flattening">
-<h3>Global references flattening<a class="headerlink" href="#global-references-flattening" title="Permalink to this heading"></a></h3>
-<p>In order to export your USD to another software, you may want to remove
-models and material reference links to include them directly in the main file instead.</p>
-<p>This can be done automatically with <code class="docutils literal notranslate"><span class="pre">export.archive(flat=True)</span></code> or with any export available
-in the export module (i.e : glb, fbx).</p>
-<p>Models and USDs will be integrated directly in the file while SBSARs will be converted into a
-set of bitmaps. Bitmaps dependencies will be copied into a “dependencies”
-folder next to the exported USD file. If the exported file is an archive,
-bitmaps will be packed along the file.</p>
-<p>Flattening references this way will keep <strong>currently selected</strong> variants and branches but discard every other variants and branches.
-A local approach for flattening references exists with the <code class="docutils literal notranslate"><span class="pre">scene.flatten_references()</span></code> function.</p>
-</section>
-<section id="local-reference-flattening">
-<h3>Local reference flattening<a class="headerlink" href="#local-reference-flattening" title="Permalink to this heading"></a></h3>
-<p>If you need to flatten references while preserving features of your USD files (like variants), you can use <code class="docutils literal notranslate"><span class="pre">scene.flatten_references()</span></code>.
-This will flatten and transfer all external references for the given prim into the current scene.</p>
-<p>NOTE : This requires to set a filepath when you create a scene with <code class="docutils literal notranslate"><span class="pre">scene.new()</span></code>.</p>
-<p>The code snippet below illustrates the use of <code class="docutils literal notranslate"><span class="pre">scene.flatten_references</span></code> to
-make an USDZ Potion asset with variants that can be imported in Game Engines and other DCCs.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
-<span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;vial_potA1&quot;</span><span class="p">,</span> <span class="s2">&quot;vial&quot;</span><span class="p">):</span>
-    <span class="n">my_import_prim</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">my_import_prim</span><span class="p">,</span> <span class="s2">&quot;vial_potionA1.fbx&quot;</span><span class="p">)</span>
-    <span class="n">scene</span><span class="o">.</span><span class="n">flatten_references</span><span class="p">(</span><span class="n">my_import_prim</span><span class="p">)</span>
-<span class="c1"># ...</span>
-</pre></div>
-</div>
-<p>Example of the final asset imported in Unreal Engine :</p>
-<img alt="../../_images/potion_variant_unreal.gif" src="../../_images/potion_variant_unreal.gif" />
-</section>
 </section>
 <section id="managing-metadatas">
 <h2>Managing metadatas<a class="headerlink" href="#managing-metadatas" title="Permalink to this heading"></a></h2>

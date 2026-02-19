@@ -64,6 +64,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">ALLOWED_EXTENSIONS</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.image.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.from_filepath"><code class="docutils literal notranslate"><span class="pre">Image.from_filepath()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.from_assetpath"><code class="docutils literal notranslate"><span class="pre">Image.from_assetpath()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.from_asset_attr"><code class="docutils literal notranslate"><span class="pre">Image.from_asset_attr()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.__init__"><code class="docutils literal notranslate"><span class="pre">Image.__init__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#substance3d.api.image.image.Image.save"><code class="docutils literal notranslate"><span class="pre">Image.save()</span></code></a></li>
 </ul>
@@ -166,6 +168,40 @@ Members:
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – </p></li>
+<li><p><strong>add_alpha_channel</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image.from_assetpath">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_assetpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assetpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_alpha_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.Image.from_assetpath" title="Permalink to this definition"></a></dt>
+<dd><p>Create an Image object from an asset path
+:param assetpath: a valid asset path
+:param add_alpha_channel: Whether an alpha channel will be auto added if it’s missing, defaults to False
+:return: Image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assetpath</strong> (<em>str</em>) – </p></li>
+<li><p><strong>add_alpha_channel</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.image.image.Image.from_asset_attr">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_asset_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assetattr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_alpha_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.Image.from_asset_attr" title="Permalink to this definition"></a></dt>
+<dd><p>Create an Image object from an asset attribute
+:param assetpath: a valid asset attribute
+:param add_alpha_channel: Whether an alpha channel will be auto added if it’s missing, defaults to False
+:return: Image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assetattr</strong> (<em>AttrHandler</em>) – </p></li>
 <li><p><strong>add_alpha_channel</strong> (<em>bool</em>) – </p></li>
 </ul>
 </dd>

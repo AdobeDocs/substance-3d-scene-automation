@@ -88,7 +88,7 @@ You can access an attribute handler by using the dot "." operator of the `PrimHa
 .. code-block:: python
 
     # create a solid color material
-    mat = material.create_solid_color(main_scene, "red", (1.0,0.0,0.0))
+    mat = material.create_solid_color(main_scene, (1.0,0.0,0.0), "red")
     print(mat.inputs.baseColor)
     >>>
     <AttrHandler(inputs.baseColor) object at 0x2f6e5538970>
@@ -287,9 +287,9 @@ We'll start from the scene below and use it in the next sections to explain the 
     transform.translate(my_colored_sphere_03, (1.0, 0.0 ,0.0))
 
     # Material creation
-    red_mat = material.create_solid_color(main_scene, "red", (1.0,0.0,0.0))
-    blue_mat = material.create_solid_color(main_scene, "blue", (0.0,0.0,1.0))
-    green_mat = material.create_solid_color(main_scene, "green", (0.0,1.0,0.0))
+    red_mat = material.create_solid_color(main_scene, (1.0,0.0,0.0), "red")
+    blue_mat = material.create_solid_color(main_scene, (0.0,0.0,1.0), "blue")
+    green_mat = material.create_solid_color(main_scene, (0.0,1.0,0.0), "green")
 
     # Assign Material on each sphere
     material.assign_to_objects(red_mat, my_colored_sphere_01)
@@ -298,7 +298,7 @@ We'll start from the scene below and use it in the next sections to explain the 
 
 At this point, the scene will look like this :
 
-.. image:: ../static/colored_spheres_01.png
+.. image:: /source/static/colored_spheres_01.png
 
 Making connections
 ******************
@@ -314,7 +314,7 @@ Making connections
 On the image below, the spheres still have three distinct materials (red, blue and green), but their color is
 now driven by the red material baseColor.
 
-.. image:: ../static/colored_spheres_02.png
+.. image:: /source/static/colored_spheres_02.png
 
 If we change the baseColor value of the red material, the connected attributes of the other materials
 will perceive that change.
@@ -324,7 +324,7 @@ will perceive that change.
     # Changing red material color to purple
     red_mat.inputs.baseColor.set((1.0, 0.0, 1.0))
 
-.. image:: ../static/colored_spheres_03.png
+.. image:: /source/static/colored_spheres_03.png
 
 .. warning:: 
 
@@ -395,7 +395,7 @@ A connection can be cleared using ``.clear_connection()``
     green_mat.inputs.baseColor.clear_connection()
     
 
-.. image:: ../static/colored_spheres_04.png
+.. image:: /source/static/colored_spheres_04.png
 
 Inspect scene trees
 ===================

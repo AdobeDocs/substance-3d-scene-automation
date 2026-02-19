@@ -62,7 +62,7 @@ Set up new project
 
     * In our example, our project folder will be: ``C:/projects/myProject/``
 
-    .. image:: ../static/introduction_ide_setup/vscode_01_open_folder.png
+    .. image:: /source/static/introduction_ide_setup/vscode_01_open_folder.png
 
 #. Expand the project folder in the explorer of VS Code UI
 
@@ -70,11 +70,11 @@ Set up new project
     
     * In our example the script will be named: ``main.py``
 
-    .. image:: ../static/introduction_ide_setup/vscode_02_create_file.png
+    .. image:: /source/static/introduction_ide_setup/vscode_02_create_file.png
 
 #. The python file should appear under your project folder.
 
-    .. image:: ../static/introduction_ide_setup/vscode_02_file_created.png
+    .. image:: /source/static/introduction_ide_setup/vscode_02_file_created.png
 
 Set up the Python interpreter
 """""""""""""""""""""""""""""
@@ -88,13 +88,13 @@ Since VS Code takes the default system version of Python we installed, to work i
 
 #. Click on "**Create Virtual Environment**"
 
-    .. image:: ../static/introduction_ide_setup/vscode_04_create_venv.png
+    .. image:: /source/static/introduction_ide_setup/vscode_04_create_venv.png
 
 #. On next list click on "**Venv**"
 
 #. The application will ask you now to chose from a list of interpreters, click on "**Enter interpreter path...**"
 
-    .. image:: ../static/introduction_ide_setup/vscode_03_add_interpreter_path.png
+    .. image:: /source/static/introduction_ide_setup/vscode_03_add_interpreter_path.png
 
 #. Click again on "**Find...**"
 
@@ -108,7 +108,7 @@ Since VS Code takes the default system version of Python we installed, to work i
 
 #. Once the loading is complete, you will be able to start coding with the SSCA api.
 
-    .. image:: ../static/introduction_ide_setup/vscode_05_start_coding.png
+    .. image:: /source/static/introduction_ide_setup/vscode_05_start_coding.png
 
 Run your first script
 """""""""""""""""""""
@@ -132,7 +132,7 @@ Run your first script
         # save the scene with a valid output filepath
         output_path = scene.save(my_scene, './TestScene.usda')
 
-    .. image:: ../static/run_script.png
+    .. image:: /source/static/run_script.png
 
 #. Run the script with shortcut Ctrl+Shift+D
 
@@ -160,7 +160,7 @@ Set up new project with virtual environment
 
 #. Click on ``Create`` a new project from the welcome window.
 
-    .. image:: ../static/introduction_ide_setup/pycharm_01_welcome.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_01_welcome.png
 
 #. In the next setup window, give your project a Name.
 
@@ -178,7 +178,7 @@ Set up new project with virtual environment
 
 #. Click on ``Create``
 
-    .. image:: ../static/introduction_ide_setup/pycharm_02_project_setup.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_02_project_setup.png
 
 #. You are now ready to start coding with Python and SSCA in your virtual environment (venv).
 
@@ -189,17 +189,17 @@ Set up a local SSCA Python interpreter
 
 #. Expand PyCharm top menu bar clicking on the "Main Menu" icon.
 
-    .. image:: ../static/introduction_ide_setup/pycharm_03_main_menu.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_03_main_menu.png
 
 #. Open PyCharm's settings with File > Settings (or press Ctrl + Alt + S).
 
-    .. image:: ../static/introduction_ide_setup/pycharm_04_settings.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_04_settings.png
 
 #. In the left panel, expand "Project: <Your project name>" and then click "Python Interpreter".
 
 #. Select Add Interpreter > Add Local Interpreter. 
 
-    .. image:: ../static/introduction_ide_setup/pycharm_04_settings_interpreter.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_04_settings_interpreter.png
 
 #. In the new window, select "Virtualenv Environment" from the list of options on the left side of the window that appears.
 
@@ -209,11 +209,11 @@ Set up a local SSCA Python interpreter
 
     * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
 
-    .. image:: ../static/introduction_ide_setup/pycharm_04_virtual_env.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_04_virtual_env.png
 
 #. Your Virtual environment (venv) is now created and you can start using your local SSCA Python interpreter.
 
-    .. image:: ../static/introduction_ide_setup/pycharm_05_venv_folder.png
+    .. image:: /source/static/introduction_ide_setup/pycharm_05_venv_folder.png
 
 Run your first script
 """""""""""""""""""""
@@ -241,7 +241,7 @@ Run your first script
         # save the scene with a valid output filepath
         output_path = scene.save(my_scene, './TestScene.usda')
 
-    .. image:: ../static/run_script.png
+    .. image:: /source/static/run_script.png
 
 #. Run the current script with shortcut ctrl + Shift + F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.
 

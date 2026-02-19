@@ -65,12 +65,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.find_available_path"><code class="docutils literal notranslate"><span class="pre">find_available_path()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.get_plugins_sdfmetadata"><code class="docutils literal notranslate"><span class="pre">get_plugins_sdfmetadata()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.calculate_material_tiling_from_physicalsize"><code class="docutils literal notranslate"><span class="pre">calculate_material_tiling_from_physicalsize()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.temp_session_editing"><code class="docutils literal notranslate"><span class="pre">temp_session_editing()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.session_editing"><code class="docutils literal notranslate"><span class="pre">session_editing()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.calculate_bbox"><code class="docutils literal notranslate"><span class="pre">calculate_bbox()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.calculate_bbox_midpoint"><code class="docutils literal notranslate"><span class="pre">calculate_bbox_midpoint()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.is_valid_bbox"><code class="docutils literal notranslate"><span class="pre">is_valid_bbox()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.bbox_info"><code class="docutils literal notranslate"><span class="pre">bbox_info()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.original_formats"><code class="docutils literal notranslate"><span class="pre">original_formats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.utility.utility.variant_spec_data"><code class="docutils literal notranslate"><span class="pre">variant_spec_data()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
@@ -193,15 +194,16 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="substance3d.api.utility.utility.temp_session_editing">
-<span class="sig-name descname"><span class="pre">temp_session_editing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ssca-temp-session'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.temp_session_editing" title="Permalink to this definition"></a></dt>
-<dd><p>Retarget all prim edition in the session layer and clean in at the exit
-:param scn: the current scene</p>
+<dt class="sig sig-object py" id="substance3d.api.utility.utility.session_editing">
+<span class="sig-name descname"><span class="pre">session_editing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ssca-temp-rendering-session'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.session_editing" title="Permalink to this definition"></a></dt>
+<dd><p>Retarget all prim edition in the session layer
+:param scn: the current scene
+:param owner: session owner identifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>scn</strong> (<em>StageHandler</em>) – </p></li>
-<li><p><strong>identifier</strong> (<em>str</em>) – </p></li>
+<li><p><strong>owner</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -290,7 +292,54 @@ by default and for all Substance material the unit is cm (0.01)</p></li>
 <dd class="field-odd"><p><strong>parent</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em>) – a scene or an object that holds reference</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>tuple[str]</p>
+<dd class="field-even"><p>tuple[str, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.utility.utility.variant_spec_data">
+<span class="sig-name descname"><span class="pre">variant_spec_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.utility.utility.variant_spec_data" title="Permalink to this definition"></a></dt>
+<dd><p>Recursively extracts spec data from all variant sets defined
+across the parent’s layer stack.</p>
+<p>This function performs a low-level inspection of the layer stack to
+identify prims and properties defined within variants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the extracted data originates from ‘over’ specifiers
+or new prim with ‘def’ specifiers within the stack, the resulting
+paths and attributes may not exist in the final composed stage.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>PrimHandler</em>) – The PrimHandler which contains variant sets</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>a list of dict with variant data [{‘layer’: ,
+‘variantSets’:</p>
+<blockquote>
+<div><dl>
+<dt>{‘variants’:</dt><dd><dl>
+<dt>{‘name’:</dt><dd><dl class="simple">
+<dt>[{‘path’: ,</dt><dd><dl class="simple">
+<dt>’specifier’: ,</dt><dd><p>’properties’: []</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}]</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}]</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>

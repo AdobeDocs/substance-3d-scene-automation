@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cad-file-processing">CAD File Processing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mesh-processing-results">Mesh Processing results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
 </li>
@@ -127,7 +128,7 @@ With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and 
 <span class="c1"># Build a scene from the 3D file</span>
 <span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_3d_file</span><span class="p">)</span>
 
-<span class="c1"># Build a processing worflow (operators are configured via attributes)</span>
+<span class="c1"># Build a processing workflow (operators are configured via attributes)</span>
 <span class="n">ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="o">.</span><span class="n">DecimationOp</span><span class="p">(),</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()]</span>
 
 <span class="c1"># Run the workflow on the whole scene</span>
@@ -163,7 +164,7 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>At this point, it is important to remember that, for CAD files import, <a class="reference internal" href="nextsteps.html#file-import-parameters"><span class="std std-ref">prcTessLevel</span></a> argument gives you the opportunity to set a tessellation level at import.
-CAD files tesselation level (‘prcTessLevel’) string arguments options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
+CAD files tessellation level (‘prcTessLevel’) string arguments options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
 <p>Here are some visual examples of the different tessellation levels:</p>
 </div>
 <a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_low.png"><img alt="extraLow" src="../../_images/mp_cad_import_tesselation_extra_low.png" style="width: 135.0px; height: 360.0px;" /></a>
@@ -192,16 +193,52 @@ CAD files tesselation level (‘prcTessLevel’) string arguments options are: <
 </pre></div>
 </div>
 <p><strong>4/ Unwrap mesh UVs</strong></p>
+<p>The Unwrap operator has two main modes: <code class="docutils literal notranslate"><span class="pre">Default</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
+<p>While both modes perform well in most scenarios, the <code class="docutils literal notranslate"><span class="pre">Default</span></code> mode is generally better suited for organic meshes, whereas the <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> mode is optimized for hard-surface geometry.</p>
+<p><em>- Unwrapping using Default mode:</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seam and unwrap UVs</span>
 <span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
 <span class="c1"># Refine UnwrapOp attributes</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.005</span>  <span class="c1"># padding between islands in UV space</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Make sure islands are not too elongated</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># padding between islands in UV space</span>
+<span class="c1"># Make sure islands are not too much elongated (specific options for Default mode)</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">elongation_threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="../../_images/meetmat_default.png"><img alt="Imported" src="../../_images/meetmat_default.png" style="width: 227.48px; height: 227.26px;" /></a>
+<a class="reference internal image-reference" href="../../_images/meetmat_default_uvs.png"><img alt="Unwrapped UVs Default Mode" src="../../_images/meetmat_default_uvs.png" style="width: 229.0px; height: 229.25px;" /></a>
+<p><em>- Or Unwrapping using HardEdge mode:</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seam and unwrap UVs</span>
+<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
+<span class="c1"># Set Unwrap mode to HardEdge</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">HardEdge</span>
+<span class="c1"># Refine UnwrapOp attributes</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># padding between islands in UV space</span>
+<span class="c1"># Setting Hard Edge mode&#39;s specific segmentation options:</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_cluster_confidence</span> <span class="o">=</span> <span class="mf">0.97</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_iterations</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_outliers</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/meetmat_triplanar.png"><img alt="Imported" src="../../_images/meetmat_triplanar.png" style="width: 226.38px; height: 226.38px;" /></a>
+<a class="reference internal image-reference" href="../../_images/meetmat_triplanar_uvs.png"><img alt="Unwrapped UVs HardEdge Mode" src="../../_images/meetmat_triplanar_uvs.png" style="width: 228.5px; height: 228.5px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Unwrap Operator automatically packs UV after Unwrap.</p>
+<p>You may also have noticed above that the “default” and “hard edge” modes expose their own dedicated segmentation parameters:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Default</span></code>:</dt><dd><ul class="simple">
+<li><p>segmentation.chunks_elongation</p></li>
+<li><p>segmentation.elongation_threshold</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>:</dt><dd><ul class="simple">
+<li><p>segmentation.max_cluster_confidence</p></li>
+<li><p>segmentation.max_num_iterations</p></li>
+<li><p>segmentation.max_num_outliers</p></li>
+</ul>
+</dd>
+</dl>
 </div>
 <p><strong>5/ Compute mesh processing operators on the scene.</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">[</span><span class="n">verts_weld_op</span><span class="p">,</span> <span class="n">close_mesh_op</span><span class="p">,</span> <span class="n">manifoldness_op</span><span class="p">,</span> <span class="n">decimate_op</span><span class="p">,</span> <span class="n">unwrap_op</span><span class="p">])</span>
@@ -222,6 +259,49 @@ CAD files tesselation level (‘prcTessLevel’) string arguments options are: <
 <a class="reference internal image-reference" href="../../_images/grid_decimation.png"><img alt="Decimated" src="../../_images/grid_decimation.png" style="width: 256.0px; height: 256.0px;" /></a>
 <p><strong>Unwrapped UVs after mesh decimation:</strong></p>
 <a class="reference internal image-reference" href="../../_images/grid_unwrapped_uvs.jpg"><img alt="Unwrapped UVs" src="../../_images/grid_unwrapped_uvs.jpg" style="width: 256.0px; height: 256.0px;" /></a>
+</section>
+<section id="processing-mesh-attributes-and-mesh-subtree-values">
+<h2>Processing Mesh Attributes and Mesh/Subtree Values<a class="headerlink" href="#processing-mesh-attributes-and-mesh-subtree-values" title="Permalink to this heading"></a></h2>
+<p>SSCA provides access to mesh and scene hierarchy values, including mesh and/or UV surface areas and edge length metrics.</p>
+<p>These operators are divided into two categories:</p>
+<ul class="simple">
+<li><p><strong>Indexed mesh attribute</strong>: Operates on each mesh, storing their relative processed values into their mesh attributes.</p></li>
+<li><p><strong>Global mesh/subtree values</strong>: Operates on either an entire scene, a subtree, or a single mesh, returning their processed mesh values as a dictionary.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a 1cm cube mesh</span>
+<span class="n">cube_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./meshes/cube.obj&quot;</span><span class="p">)</span>
+<span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;mesh_grp&quot;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">cube_file</span><span class="p">)</span>
+
+<span class="c1"># Load values &amp; attributes operators</span>
+<span class="n">uv_area_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeUVAreaOp</span><span class="p">()</span>  <span class="c1"># Global mesh/subtree value</span>
+<span class="n">mesh_area_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeMeshAreaOp</span><span class="p">()</span>  <span class="c1"># Global mesh/subtree value</span>
+<span class="n">edge_lengths_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeEdgeLengthsOp</span><span class="p">()</span>  <span class="c1"># Indexed mesh attribute</span>
+
+<span class="c1"># Process the scene with the operators and store mesh group subtree global values as dictionary</span>
+<span class="n">processing_result</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="p">[</span><span class="n">uv_area_op</span><span class="p">,</span> <span class="n">mesh_area_op</span><span class="p">,</span> <span class="n">edge_lengths_op</span><span class="p">])</span>
+
+<span class="c1"># Print mesh_group&#39;s values using the operator class&#39;s names as keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">processing_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ComputeUVAreaOp&quot;</span><span class="p">))</span>
+<span class="c1"># &gt;&gt; 0.375</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">processing_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ComputeMeshAreaOp&quot;</span><span class="p">))</span>
+<span class="c1"># &gt;&gt; 6.0</span>
+
+<span class="c1"># Get and print mesh&#39;s edge lengths attributes.</span>
+<span class="n">cube_mesh</span> <span class="o">=</span> <span class="n">mesh_group</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">edge_lengths</span> <span class="o">=</span> <span class="n">cube_mesh</span><span class="o">.</span><span class="n">primvars</span><span class="o">.</span><span class="n">edgeLengths</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># cube_mesh.&lt;attribute_full_name&gt;.get()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">edge_lengths</span><span class="p">)</span>
+<span class="c1"># &gt;&gt; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After mesh is processed, its “primvars.edgeLengths” attribute can be found using: <code class="docutils literal notranslate"><span class="pre">cube_mesh.inspect(display_values=True)</span></code></p>
+<p>It will be printed among information like other attributes, metadata, etc. like this:
+<code class="docutils literal notranslate"><span class="pre">.primvars.edgeLengths</span> <span class="pre">:</span> <span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">primvars.edgeLengths</span></code> being the full name of the mesh attribute created by the <code class="docutils literal notranslate"><span class="pre">ComputeEdgeLengthsOp</span></code> operator.</p>
+</div>
 </section>
 <section id="best-practices">
 <h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this heading"></a></h2>

@@ -367,6 +367,11 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Channel</span></span><a class="headerlink" href="#substance3d.api.core.log.Channel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.CRITICAL">
+<span class="sig-name descname"><span class="pre">CRITICAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.CRITICAL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.core.log.Channel.DEBUG">
 <span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.DEBUG" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -384,6 +389,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.core.log.Channel.TESTRUNNER">
 <span class="sig-name descname"><span class="pre">TESTRUNNER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">29</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.TESTRUNNER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.core.log.Channel.TRACE_CPP_LEVEL">
+<span class="sig-name descname"><span class="pre">TRACE_CPP_LEVEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#substance3d.api.core.log.Channel.TRACE_CPP_LEVEL" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -476,7 +486,7 @@ raises a NotImplementedError.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.core.log.Logger.sub_logger">
-<span class="sig-name descname"><span class="pre">sub_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.sub_logger" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sub_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_already_registered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.log.Logger.sub_logger" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1078,6 +1088,19 @@ for basic type usd_cast() use cast()</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.apply_deprecated_switch">
+<span class="sig-name descname"><span class="pre">apply_deprecated_switch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.apply_deprecated_switch" title="Permalink to this definition"></a></dt>
+<dd><p>If DEPRECATED_FEATURES is True, replace functions by their _deprecated_ equivalents.
+For each function <cite>foo</cite> in the given module, if a <cite>_deprecated_foo</cite>
+exists, it will replace <cite>foo</cite> in the module namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – The module name as a string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.core.utilities.args_check_deco">
 <span class="sig-name descname"><span class="pre">args_check_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.args_check_deco" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -1165,6 +1188,20 @@ for basic type usd_cast() use cast()</p>
 <dd></dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.deprecated_deco">
+<span class="sig-name descname"><span class="pre">deprecated_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.deprecated_deco" title="Permalink to this definition"></a></dt>
+<dd><p>Decorator that emits a standardized deprecation warning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>info</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.core.utilities.filename_args_as_path_deco">
 <span class="sig-name descname"><span class="pre">filename_args_as_path_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.filename_args_as_path_deco" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -1204,7 +1241,9 @@ for basic type usd_cast() use cast()</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.core.utilities.is_local_prim">
 <span class="sig-name descname"><span class="pre">is_local_prim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.is_local_prim" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Checks if a USD Prim is strictly defined or authored within the current stage’s
+LayerStack and does not itself define any external composition arcs.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>parent</strong> (<em>PrimHandler</em>) – </p>
 </dd>

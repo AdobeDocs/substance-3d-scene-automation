@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.camera &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="substance3d.api.material" href="material.html" />
+    <link rel="prev" title="substance3d.api.light" href="light.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.camera</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.Views"><code class="docutils literal notranslate"><span class="pre">Views</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#substance3d.api.camera.camera.Views.all"><code class="docutils literal notranslate"><span class="pre">Views.all()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.create_framed_cameras"><code class="docutils literal notranslate"><span class="pre">create_framed_cameras()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.frame"><code class="docutils literal notranslate"><span class="pre">frame()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.look_at"><code class="docutils literal notranslate"><span class="pre">look_at()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.update_aspect_ratio"><code class="docutils literal notranslate"><span class="pre">update_aspect_ratio()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.aspect_ratio"><code class="docutils literal notranslate"><span class="pre">aspect_ratio()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.create_view"><code class="docutils literal notranslate"><span class="pre">create_view()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.compute_clipping_range"><code class="docutils literal notranslate"><span class="pre">compute_clipping_range()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.match_image_perspective"><code class="docutils literal notranslate"><span class="pre">match_image_perspective()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.traveling"><code class="docutils literal notranslate"><span class="pre">traveling()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.camera.camera.set_backplate"><code class="docutils literal notranslate"><span class="pre">set_backplate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.camera</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/camera.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-substance3d.api.camera.camera">
+<span id="substance3d-api-camera"></span><h1>substance3d.api.camera<a class="headerlink" href="#module-substance3d.api.camera.camera" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.Views">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Views</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Camera view orientations</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.all">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.Views.all" title="Permalink to this definition"></a></dt>
+<dd><p>Get all attribute names and its value in a dict
+:return: list[tuple(name, value)]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent under where the camera will be created, can be scene or another object</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – the name of the camera</p></li>
+<li><p><strong>properties</strong> (<a class="reference internal" href="../substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties" title="substance3d.api.camera.camera_properties.CameraProperties"><em>CameraProperties</em></a>) – optional parameter to pass in camera properties</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – camera aspect ratio</p></li>
+<li><p><strong>orthographic</strong> (<em>bool</em>) – use orthographic projection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the created camera object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.create_framed_cameras">
+<span class="sig-name descname"><span class="pre">create_framed_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_framed_cameras" title="Permalink to this definition"></a></dt>
+<dd><p>Create a set of cameras evenly spread out around selected objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the stage the camera belongs to</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>None</em>) – the object(s) the camera(s) should frame</p></li>
+<li><p><strong>number_of_cameras</strong> (<em>int</em>) – the number of cameras to create surrounding the object</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – the name for the xform group all the cameras will be created in</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – camera aspect ratio</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode for the created camera</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – the camera name before suffix incrementation</p></li>
+<li><p><strong>properties</strong> (<a class="reference internal" href="../substance3d.api.camera.html#substance3d.api.camera.camera_properties.CameraProperties" title="substance3d.api.camera.camera_properties.CameraProperties"><em>CameraProperties</em></a>) – optional parameter to pass in camera properties</p></li>
+<li><p><strong>orthographic</strong> (<em>bool</em>) – use orthographic projection</p></li>
+<li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+<p>:return group xform containing the cameras</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame" title="Permalink to this definition"></a></dt>
+<dd><p>Frame selected objects using an existing camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the existing camera to frame with</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera(s) should frame</p></li>
+<li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+<p>:return the updated and now framed camera</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.look_at">
+<span class="sig-name descname"><span class="pre">look_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.look_at" title="Permalink to this definition"></a></dt>
+<dd><p>Look at the target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the existing camera to look at the object</p></li>
+<li><p><strong>target</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>tuple</em>) – the location (x, y, z) or the object to look at</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the updated camera looking at the target</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.update_aspect_ratio">
+<span class="sig-name descname"><span class="pre">update_aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.update_aspect_ratio" title="Permalink to this definition"></a></dt>
+<dd><p>Update the aspect ratio for the given camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the camera to update the aspect ratio</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em>) – the value of the aspect ratio</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to retrieve camera info</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the updated camera</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.aspect_ratio">
+<span class="sig-name descname"><span class="pre">aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.aspect_ratio" title="Permalink to this definition"></a></dt>
+<dd><p>Get the aspect ratio of the given camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the camera to update the aspect ratio</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to retrieve camera info</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>aspect ratio value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.create_view">
+<span class="sig-name descname"><span class="pre">create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_view" title="Permalink to this definition"></a></dt>
+<dd><p>Create a camera view oriented by a given vector. <cite>camera.ViewOrientations</cite>’s value can be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – The parent scene or object under which the camera will be created</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – A valid identifier name for the created camera</p></li>
+<li><p><strong>orientation</strong> (<em>tuple</em>) – An orientation vector (x, y, z) or <cite>camera.ViewOrientations</cite>’s value</p></li>
+<li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
+<li><p><strong>orthographic</strong> (<em>bool</em>) – use orthographic projection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created camera PrimHandler</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.compute_clipping_range">
+<span class="sig-name descname"><span class="pre">compute_clipping_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.compute_clipping_range" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the proper clipping range for the camera given the objects passed in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the camera whose clipping range will be updated</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the objects to compute the clipping range from</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
+</ul>
+</dd>
+</dl>
+<p>:return the camera with updated clipping range</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.match_image_perspective">
+<span class="sig-name descname"><span class="pre">match_image_perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_longitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.match_image_perspective" title="Permalink to this definition"></a></dt>
+<dd><p>Match the given camera to the image perspective</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>PrimHandler</em>) – Camera to match with the perspective image</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera should frame for the match</p></li>
+<li><p><strong>img</strong> – the image to match can be path or an Image buffer</p></li>
+<li><p><strong>reset_longitude</strong> – If True the camera longitude (orientation to the ground) will be reset</p></li>
+<li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
+<li><p><strong>image</strong> (<em>str</em><em> | </em><em>pathlib.Path</em><em> | </em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the camera with the perspective match</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.traveling">
+<span class="sig-name descname"><span class="pre">traveling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.traveling" title="Permalink to this definition"></a></dt>
+<dd><p>Move the camera along the axis pointing towards the subject</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cam</strong> (<em>PrimHandler</em>) – a camera PrimHandler</p></li>
+<li><p><strong>value</strong> (<em>float</em><em> | </em><em>int</em>) – distance to move, a positive value will move the camera closer to the subject.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.set_backplate">
+<span class="sig-name descname"><span class="pre">set_backplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cropToFit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.set_backplate" title="Permalink to this definition"></a></dt>
+<dd><p>Add a backplate image to the given camera.
+Only available with Eclair delegate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cam</strong> (<em>PrimHandler</em>) – a camera PrimHandler</p></li>
+<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a valid image file path</p></li>
+<li><p><strong>fit</strong> (<a class="reference internal" href="../substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique" title="substance3d.api.camera.camera.BackplateFitTechnique"><em>substance3d.api.camera.camera.BackplateFitTechnique</em></a><em> | </em><em>str</em>) – how to fit the backplate image</p></li>
+<li><p><strong>translation</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – translate the backplate image</p></li>
+<li><p><strong>scale</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – scale the backplate image</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – rotate the backplate image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="light.html" class="btn btn-neutral float-left" title="substance3d.api.light" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="material.html" class="btn btn-neutral float-right" title="substance3d.api.material" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

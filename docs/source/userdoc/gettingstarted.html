@@ -470,11 +470,11 @@ Scene’s <code class="docutils literal notranslate"><span class="pre">.objects<
 <h3>Advanced : Improving performance even more while iterating through the scene<a class="headerlink" href="#advanced-improving-performance-even-more-while-iterating-through-the-scene" title="Permalink to this heading"></a></h3>
 <p>The most efficient way to iterate through all objects in the scene is using the <code class="docutils literal notranslate"><span class="pre">scene.objects</span></code> iterator.</p>
 <p>However, you may have thousands of objects and iterating through all of them may be costly if you’re only checking for
-aliases like <em>variant sets</em> or relationships like <em>material binding</em>.</p>
+aliases like <em>variant sets</em> or <em>custom_data</em>.</p>
 <p>For this situation, you can deactivate attribute initialization using the following setup :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">with_attrs</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
-    <span class="n">o</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">custom_data</span>
     <span class="n">o</span><span class="o">.</span><span class="n">variant_sets</span>
     <span class="c1"># ...</span>
 </pre></div>
@@ -567,7 +567,7 @@ You can set another parent by passing a Primhandler of type <cite>Scope</cite> t
 <span class="p">}</span>
 
 <span class="c1"># create the material from the texture dictionary</span>
-<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_inputs</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">,</span> <span class="n">texture_dictionary</span><span class="p">)</span>
+<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_inputs</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dictionary</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To gain time, it is also possible to create a PBR material by pointing to a textures directory that
@@ -593,7 +593,7 @@ with the correct input:</p>
 <p>So, create a material from a textures directory with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set a path to your texture folder</span>
 <span class="n">texture_dir</span> <span class="o">=</span> <span class="s2">&quot;./textures&quot;</span>
-<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">create_from_textures_dir</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">,</span> <span class="n">texture_dir</span><span class="p">)</span>
+<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_textures_dir</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dir</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can get the full list of substance usage mapping by printing the result of <code class="docutils literal notranslate"><span class="pre">material.SUBSTANCE_USAGE_MAPPING</span></code></p>
@@ -740,7 +740,7 @@ The code belows shows how to transform a material in the UV space.</p>
 <p>Dome lights behave slightly differently than other lights as they require an HDRI to cast light.
 To create a dome light and attach a texture to it, use:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dome_path</span> <span class="o">=</span> <span class="s2">&quot;./skylight.hdr&quot;</span>
-<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;my_dome_light&#39;</span><span class="p">,</span> <span class="n">texture_path</span><span class="o">=</span><span class="n">dome_path</span><span class="p">)</span>
+<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_path</span><span class="o">=</span><span class="n">dome_path</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;my_dome_light&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -953,7 +953,7 @@ a common variant set <code class="docutils literal notranslate"><span class="pre
 <span class="c1"># enter in the red variant context to edit it</span>
 <span class="c1"># all modifications on the cube or its children will be applied only on the variant</span>
 <span class="k">with</span> <span class="n">cube_mat_red</span><span class="p">:</span>
-    <span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;red_mat&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s1">&#39;red_mat&#39;</span><span class="p">)</span>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">red_mat</span><span class="p">,</span> <span class="n">cube_geo</span><span class="p">)</span>
 <span class="c1"># exit the red variant edition</span>
 
@@ -962,7 +962,7 @@ a common variant set <code class="docutils literal notranslate"><span class="pre
 
 <span class="c1"># enter in the blue variant context edition</span>
 <span class="k">with</span> <span class="n">cube_mat_blue</span><span class="p">:</span>
-    <span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;blue_mat&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">&#39;blue_mat&#39;</span><span class="p">)</span>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">blue_mat</span><span class="p">,</span> <span class="n">cube_geo</span><span class="p">)</span>
 <span class="c1"># exit the red variant edition</span>
 

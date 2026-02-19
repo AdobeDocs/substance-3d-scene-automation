@@ -124,8 +124,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>light_type</strong> (<em>str</em>) – the type of light to create, must be a value in SUPPORTED_LIGHTS</p></li>
 <li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent under where the light will be created, can be scene or another object</p></li>
+<li><p><strong>light_type</strong> (<em>str</em>) – the type of light to create, must be a value in SUPPORTED_LIGHTS</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the name of the light</p></li>
 <li><p><strong>add_xform</strong> (<em>bool</em>) – Optional parameter to add this light to an xform</p></li>
 <li><p><strong>xform_name</strong> (<em>str</em>) – Optional parameter to name the added xform, only used if add_xform is true</p></li>
@@ -222,8 +222,8 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent under where the light will be created, can be scene or another object</p></li>
-<li><p><strong>identifier</strong> (<em>str</em>) – the name of the light</p></li>
 <li><p><strong>texture_path</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – path to the environment lighting file; extension must be in <code class="xref py py-const docutils literal notranslate"><span class="pre">SUPPORTED_ENV_EXTENSIONS</span></code></p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – the name of the light</p></li>
 <li><p><strong>add_xform</strong> (<em>bool</em>) – Optional parameter to add this light to an xform</p></li>
 <li><p><strong>xform_name</strong> (<em>str</em>) – Optional parameter to name the added xform, only used if add_xform is true</p></li>
 <li><p><strong>properties</strong> (<a class="reference internal" href="../substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties" title="substance3d.api.light.light_properties.LightProperties"><em>LightProperties</em></a>) – Optional parameter to pass in light properties</p></li>
@@ -334,7 +334,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – the path to the file to import</p></li>
+<li><p><strong>texture_path</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – the path to the file to import</p></li>
 <li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent under where the light will be created, can be scene or another object</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the name of the light</p></li>
 <li><p><strong>add_xform</strong> (<em>bool</em>) – Optional parameter to add this light to an xform</p></li>

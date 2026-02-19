@@ -26,7 +26,7 @@ With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and 
    # Build a scene from the 3D file
    scn = scene.load(my_3d_file)
 
-   # Build a processing worflow (operators are configured via attributes)
+   # Build a processing workflow (operators are configured via attributes)
    ops = [mp.DecimationOp(), mp.UnwrapOp()]
 
    # Run the workflow on the whole scene
@@ -65,23 +65,23 @@ Lets see, step by step, now how to optimize CAD files like *.step* ones.
 .. note::
     
     At this point, it is important to remember that, for CAD files import, :ref:`prcTessLevel<File import parameters>` argument gives you the opportunity to set a tessellation level at import.
-    CAD files tesselation level ('prcTessLevel') string arguments options are: **"extraLow", "low", "medium", "high", "extraHigh"**
+    CAD files tessellation level ('prcTessLevel') string arguments options are: **"extraLow", "low", "medium", "high", "extraHigh"**
 
     Here are some visual examples of the different tessellation levels:
 
-.. image:: ../static/mesh_processing/mp_cad_import_tesselation_extra_low.png
+.. image:: /source/static/mesh_processing/mp_cad_import_tesselation_extra_low.png
     :scale: 50 %
     :alt: extraLow
-.. image:: ../static/mesh_processing/mp_cad_import_tesselation_low.png
+.. image:: /source/static/mesh_processing/mp_cad_import_tesselation_low.png
     :scale: 50 %
     :alt: low
-.. image:: ../static/mesh_processing/mp_cad_import_tesselation_medium.png
+.. image:: /source/static/mesh_processing/mp_cad_import_tesselation_medium.png
     :scale: 50 %
     :alt: medium
-.. image:: ../static/mesh_processing/mp_cad_import_tesselation_high.png
+.. image:: /source/static/mesh_processing/mp_cad_import_tesselation_high.png
     :scale: 50 %
     :alt: high
-.. image:: ../static/mesh_processing/mp_cad_import_tesselation_extra_high.png
+.. image:: /source/static/mesh_processing/mp_cad_import_tesselation_extra_high.png
     :scale: 50 %
     :alt: extraHigh
 
@@ -115,16 +115,64 @@ Now we have our StageHandler scene lets load some of the cleaning operators:
 
 **4/ Unwrap mesh UVs**
 
+The Unwrap operator has two main modes: ``Default`` and ``HardEdge``.
+
+While both modes perform well in most scenarios, the ``Default`` mode is generally better suited for organic meshes, whereas the ``HardEdge`` mode is optimized for hard-surface geometry.
+
+
+*- Unwrapping using Default mode:*
+
 .. code-block:: python
-    
+
     # Seam and unwrap UVs
     unwrap_op = mp.UnwrapOp()
     # Refine UnwrapOp attributes
-    unwrap_op.packing.padding_size = 0.005  # padding between islands in UV space
-    unwrap_op.segmentation.chunks_elongation = 1.0  # Make sure islands are not too elongated
+    unwrap_op.packing.padding_size = 0.002  # padding between islands in UV space
+    # Make sure islands are not too much elongated (specific options for Default mode)
+    unwrap_op.segmentation.chunks_elongation = 0.5
+    unwrap_op.segmentation.elongation_threshold = 0.5
+
+.. image:: /source/static/mesh_processing/meetmat_default.png
+    :scale: 22 %
+    :alt: Imported
+.. image:: /source/static/mesh_processing/meetmat_default_uvs.png
+    :scale: 25 %
+    :alt: Unwrapped UVs Default Mode
+
+*- Or Unwrapping using HardEdge mode:*
+
+.. code-block:: python
+
+    # Seam and unwrap UVs
+    unwrap_op = mp.UnwrapOp()
+    # Set Unwrap mode to HardEdge
+    unwrap_op.mode = mp.UnwrapOp.Mode.HardEdge
+    # Refine UnwrapOp attributes
+    unwrap_op.packing.padding_size = 0.002  # padding between islands in UV space
+    # Setting Hard Edge mode's specific segmentation options: 
+    unwrap_op.segmentation.max_cluster_confidence = 0.97
+    unwrap_op.segmentation.max_num_iterations = 7
+    unwrap_op.segmentation.max_num_outliers = 1
+
+.. image:: /source/static/mesh_processing/meetmat_triplanar.png
+    :scale: 22 %
+    :alt: Imported
+.. image:: /source/static/mesh_processing/meetmat_triplanar_uvs.png
+    :scale: 25 %
+    :alt: Unwrapped UVs HardEdge Mode   
     
 .. note::
     Unwrap Operator automatically packs UV after Unwrap.
+    
+    You may also have noticed above that the “default” and “hard edge” modes expose their own dedicated segmentation parameters:
+    
+    ``Default``:  
+        - segmentation.chunks_elongation
+        - segmentation.elongation_threshold
+    ``HardEdge``:
+        - segmentation.max_cluster_confidence
+        - segmentation.max_num_iterations
+        - segmentation.max_num_outliers
 
 
 **5/ Compute mesh processing operators on the scene.**
@@ -140,29 +188,75 @@ Now we have our StageHandler scene lets load some of the cleaning operators:
     Each operator is executed one after the other, following the specified order.
 
 
-
-
 Mesh Processing results
 -----------------------
 
 **Decimation (right image) on the imported CAD file (left image):**
 
-.. image:: ../static/mesh_processing/grid_import.png
+.. image:: /source/static/mesh_processing/grid_import.png
     :scale: 50 %
     :alt: Imported
-.. image:: ../static/mesh_processing/grid_decimation.png
+.. image:: /source/static/mesh_processing/grid_decimation.png
     :scale: 50 %
     :alt: Decimated
 
 
 **Unwrapped UVs after mesh decimation:**
 
-.. image:: ../static/mesh_processing/grid_unwrapped_uvs.jpg
+.. image:: /source/static/mesh_processing/grid_unwrapped_uvs.jpg
     :scale: 50 %
     :alt: Unwrapped UVs
 
 
+Processing Mesh Attributes and Mesh/Subtree Values
+--------------------------------------------------
 
+SSCA provides access to mesh and scene hierarchy values, including mesh and/or UV surface areas and edge length metrics.
+
+
+These operators are divided into two categories:
+
+- **Indexed mesh attribute**: Operates on each mesh, storing their relative processed values into their mesh attributes.
+
+- **Global mesh/subtree values**: Operates on either an entire scene, a subtree, or a single mesh, returning their processed mesh values as a dictionary.
+
+.. code-block:: python
+
+    # Load a 1cm cube mesh 
+    cube_file = Path("./meshes/cube.obj")
+    main_scene = scene.new()
+    mesh_group = primitive.xform(main_scene, "mesh_grp")
+    scene.add_reference(mesh_group, cube_file)
+
+    # Load values & attributes operators
+    uv_area_op = mesh_processing.ComputeUVAreaOp()  # Global mesh/subtree value
+    mesh_area_op = mesh_processing.ComputeMeshAreaOp()  # Global mesh/subtree value
+    edge_lengths_op = mesh_processing.ComputeEdgeLengthsOp()  # Indexed mesh attribute
+
+    # Process the scene with the operators and store mesh group subtree global values as dictionary
+    processing_result = mesh_processing.process(mesh_group, [uv_area_op, mesh_area_op, edge_lengths_op])
+
+    # Print mesh_group's values using the operator class's names as keys
+    print(processing_result.get("ComputeUVAreaOp"))
+    # >> 0.375
+    print(processing_result.get("ComputeMeshAreaOp"))
+    # >> 6.0
+
+    # Get and print mesh's edge lengths attributes.
+    cube_mesh = mesh_group.search(type='mesh')[0]
+    edge_lengths = cube_mesh.primvars.edgeLengths.get()  # cube_mesh.<attribute_full_name>.get()
+    print(edge_lengths)
+    # >> [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+
+.. note:: 
+
+    After mesh is processed, its "primvars.edgeLengths" attribute can be found using: ``cube_mesh.inspect(display_values=True)``
+
+    It will be printed among information like other attributes, metadata, etc. like this:  
+    ``.primvars.edgeLengths : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]``
+
+    ``primvars.edgeLengths`` being the full name of the mesh attribute created by the ``ComputeEdgeLengthsOp`` operator.
 
 Best Practices
 --------------

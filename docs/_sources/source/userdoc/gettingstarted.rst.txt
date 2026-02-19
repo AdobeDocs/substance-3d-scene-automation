@@ -30,7 +30,7 @@ The script below shows how to create a scene, add a cube and a light to it, and 
 
 Notice how the cube and light both need to reference ``my_scene`` object as a parent. Without a parent, these objects can't be created, hence why we need the scene.
 
-.. image:: ../static/scene_cube.jpg
+.. image:: /source/static/scene_cube.jpg
 
 The image above shows how the scene should appear in Omniverse Create.
 The ``scene.new()`` function allows you to pass a filepath as a parameter. By setting the filepath when the scene is created rather than when it is saved, the scene module will create an empty file at the given path to reserve the filename. If the path is defined when the scene is created with ``scene.new()``, then you do not need to specify the filepath with ``scene.save()``.
@@ -95,7 +95,7 @@ to avoid overwriting the original USD file.
 
 The image below shows the resulting scene after being modified by the script above.
 
-.. image:: ../static/scene_camera_cube.jpg
+.. image:: /source/static/scene_camera_cube.jpg
 
 Although we transform (move) the cube in the script above, we won't cover that in this article.
 Instead, you can learn more about moving objects in the scene in this article about the transform module, :ref:`Move objects<Move objects>`.
@@ -372,7 +372,7 @@ Advanced : Improving performance even more while iterating through the scene
 The most efficient way to iterate through all objects in the scene is using the ``scene.objects`` iterator.
 
 However, you may have thousands of objects and iterating through all of them may be costly if you're only checking for
-aliases like *variant sets* or relationships like *material binding*.
+aliases like *variant sets* or *custom_data*.
 
 For this situation, you can deactivate attribute initialization using the following setup :
 
@@ -380,7 +380,7 @@ For this situation, you can deactivate attribute initialization using the follow
 
     scn.objects.with_attrs = False
     for o in scn.objects:
-        o.material.binding.get()
+        o.custom_data
         o.variant_sets
         # ...
 
@@ -437,7 +437,7 @@ The script below shows how to translate, scale, and rotate an object in the scen
 
 The script above generates a USDA file containing a cube and a sphere with the cube transformed away from the origin.
 
-.. image:: ../static/move1.jpg
+.. image:: /source/static/move1.jpg
 
 To make the scene a little more interesting we can add a distant light and rotate it to create some shadows. Add the code below to the script (make sure it's added before the line where the scene is saved, or the change won't be reflected in the saved USDA).
 
@@ -450,7 +450,7 @@ To make the scene a little more interesting we can add a distant light and rotat
 
 With the light added the scene should look something like the image below.
 
-.. image:: ../static/move2.jpg
+.. image:: /source/static/move2.jpg
 
 
 Material
@@ -490,7 +490,7 @@ The code below shows how to create a simple PBR material by pointing to a collec
     }
 
     # create the material from the texture dictionary
-    cubes_material = material.create_from_inputs(my_scene, 'cubes_material', texture_dictionary)
+    cubes_material = material.create_from_inputs(my_scene, texture_dictionary, 'cubes_material')
 
 To gain time, it is also possible to create a PBR material by pointing to a textures directory that
 follows the Substance usages convention.
@@ -521,7 +521,7 @@ So, create a material from a textures directory with:
 
     # set a path to your texture folder
     texture_dir = "./textures"
-    cubes_material = create_from_textures_dir(my_scene, 'cubes_material', texture_dir)
+    cubes_material = material.create_from_textures_dir(my_scene, texture_dir, 'cubes_material')
 
 You can get the full list of substance usage mapping by printing the result of ``material.SUBSTANCE_USAGE_MAPPING``
 
@@ -629,7 +629,7 @@ When assigning a material to a object or a list of objects, you can automaticall
 
 Material applied without physical size - material applied with physical size (left to right)
 
-.. image:: ../static/physical-size.png
+.. image:: /source/static/physical-size.png
 
 Transform a material
 ####################
@@ -685,7 +685,7 @@ To create a dome light and attach a texture to it, use:
 .. code-block:: python
 
     dome_path = "./skylight.hdr"
-    light.dome(my_scene, identifier='my_dome_light', texture_path=dome_path)
+    light.dome(my_scene, texture_path=dome_path, identifier='my_dome_light')
 
 Cameras
 =======
@@ -931,7 +931,7 @@ Example :
     # enter in the red variant context to edit it
     # all modifications on the cube or its children will be applied only on the variant
     with cube_mat_red:
-        red_mat = material.create_solid_color(my_scene, 'red_mat', (1.0, 0.0, 0.0))
+        red_mat = material.create_solid_color(my_scene, (1.0, 0.0, 0.0), 'red_mat')
         material.assign_to_objects(red_mat, cube_geo)
     # exit the red variant edition
 
@@ -940,7 +940,7 @@ Example :
 
     # enter in the blue variant context edition
     with cube_mat_blue:
-        blue_mat = material.create_solid_color(my_scene, 'blue_mat', (0.0, 0.0, 1.0))
+        blue_mat = material.create_solid_color(my_scene, (0.0, 0.0, 1.0), 'blue_mat')
         material.assign_to_objects(blue_mat, cube_geo)
     # exit the red variant edition
 
@@ -1067,7 +1067,7 @@ Below, we will see how to animate an object:
         transform.set_rotate(cube, (0.0, 0.0, 0.0))
 
 
-.. image:: ../static/animation.gif
+.. image:: /source/static/animation.gif
 
 You can also directly get or set a transformation at a specific timecode with the ``timecode`` argument:
 
