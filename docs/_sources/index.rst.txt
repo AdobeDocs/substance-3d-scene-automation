@@ -20,11 +20,13 @@ Table of contents
    source/api/primitive
    source/api/variant
    source/api/export
+   source/api/thumbnails
    source/api/transform
    source/api/transform_utilities
    source/api/light
    source/api/camera
    source/api/material
+   source/api/material_utilities
    source/api/renderer
    source/api/image
    source/api/utility
@@ -42,6 +44,7 @@ Table of contents
    source/userdoc/handlers
    source/userdoc/knownissues
    source/userdoc/mesh_processing
+   source/userdoc/workflow_variant_compiler
 
 .. toctree::
    :maxdepth: 2

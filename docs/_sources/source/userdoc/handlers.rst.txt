@@ -8,7 +8,7 @@ to edit their properties like attributes and metadata.
 Properties
 ==========
 
-Properties are dispatched in four different categories, depending on their uses : Attributes, Metadata, Aliases and Relationships.
+Properties are divided into four categories based on their purpose: Attributes, Metadata, Aliases and Relationships.
 
 Inspect object properties
 *************************
@@ -61,7 +61,7 @@ Result:
 
     You can also display the properties values with ``PrimHandler.inspect(display_values=True)``
 
-Similarily to `PrimHandler`, you can also inspect scene properties with ``StageHandler.inspect()`` and display values with ``StageHandler.inspect(display_values=True)``.
+Similarly to `PrimHandler`, you can also inspect scene properties with ``StageHandler.inspect()`` and display values with ``StageHandler.inspect(display_values=True)``.
 
 .. code-block:: python
 
@@ -118,7 +118,7 @@ In a similar manner, ``.set()`` method must be used to set the attribute value.
 
     The given value type must be compatible with the attribute. An error will be raised if the value is not compatible.
 
-``.set_default()`` and ``.get_default()`` can get an set values at the default timecode, i.e, outside any sampled values / animation.
+``.set_default()`` and ``.get_default()`` can get and set values at the default timecode, i.e, outside any sampled values / animation.
 
 .. code-block:: python
 
@@ -137,7 +137,8 @@ In a similar manner, ``.set()`` method must be used to set the attribute value.
 
 .. important::
 
-    `StageHandler` doesn't have USD attributes but have Metadata, we will see in another chapter how to handle Metadata edition.
+    `StageHandler` doesn't have USD attributes, but it does have metadata.
+    We will see in another chapter how to handle metadata editing.
 
 User Properties
 ^^^^^^^^^^^^^^^
@@ -162,12 +163,12 @@ As the created property is an `AttrHandler`, you can access the new attribute wi
 Properties without `AttrHandler`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Only attributes use `AttrHandler`. Other properties like aliases (e.g :``.custom_data``) or metadata (e.g :``.documentation``) are accessed differently. We'll discuss further about those properties in the next sections.
+Only attributes use `AttrHandler`. Other properties like aliases (e.g., ``.custom_data``) or metadata (e.g., ``.documentation``) are accessed differently. We'll discuss further about those properties in the next sections.
 
 Metadata
 ********
-`StageHandler` and `PrimHandler` can have metadata. Unlike attributes, metadata values are obtained using directly the dot "." operator of the handler.
-Available metada can always be checked with ``.inspect()``.
+`StageHandler` and `PrimHandler` can have metadata. Unlike attributes, metadata values are obtained directly using the dot "." operator of the handler.
+Available metadata can always be checked with ``.inspect()``.
 
 .. code-block:: python
 
@@ -208,7 +209,7 @@ Custom Data
 ^^^^^^^^^^^
 
 Custom data can be added using `PrimHandler` and `StageHandler` ``.custom_data`` alias (dict). 
-As Custom Data are saved within the usd file, this is a convenient way to share informations between softwares.
+As Custom Data are saved within the USD file, this is a convenient way to share information between software.
 
 .. code-block:: python
 
@@ -231,7 +232,7 @@ The most used relationship is ``.material.binding`` that, as its name suggests, 
 
     card.material.binding.add(sphere_ball_mat)
 
-``.set()`` sets the Relationship list with the mentionned object list.
+``.set()`` sets the Relationship list with the mentioned object list.
 
 .. code-block:: python
 

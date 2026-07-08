@@ -1,6 +1,41 @@
 Substance3d Release Notes
 =========================
 
+1.6.0 (TBD)
+++++++++++++
+
+Added
+-----
+- [Thumbnails] New ``thumbnails`` module: ``thumbnails.set()``, ``thumbnails.get()``, ``thumbnails.get_from_filepath()``, ``thumbnails.remove()``, and ``thumbnails.render()`` to render a thumbnail image from the scene and reference it on a prim
+- [Camera] New ``camera.frame_turntable()`` function for consistent camera framing during turntable renders, using a bounding cylinder instead of a bounding box — the model occupies the same screen area at every rotation angle
+- [Variant] New ``utility.get_variant_data_specs()`` utility to inspect which prims and properties are affected by a variant, without activating it
+- [Material] New ``material.material_utilities.convert_vertex_colors_to_materials()`` function to convert vertex color attributes into materials
+- [Mesh Processing] New ``mesh_processing.QuadRecoverOp()`` operator to recover quad topology from triangle meshes
+- [Mesh Processing] Unwrap parameters are now exposed in ``mesh_processing.UnwrapOp()``
+- [Scene] New ``StageHandler.filename`` property as a convenient alias for ``StageHandler.path``
+- [Workflow Tools] New ``workflow_tools`` package shipped alongside SSCA, providing installable tools built on top of the API. 
+- [Workflow Tools] ``variant_compiler``, GUI and CLI apps to author and preview USD variants (see the Variant Compiler Guide in the documentation)
+- [Workflow Tools] ``batch_renderer``, GUI and CLI apps to render a batch of 3D files with template scenes and presets
+- [Workflow Tools] ``bom_cli``, a CLI app to assign materials to a batch of 3D files based on a bill of materials
+
+
+Improvements
+------------
+- [Scene] ``scene.replace_reference()`` now accepts relative paths (resolved from cwd or the stage path) and has a new ``recursive`` option to replace references under all children
+- [Mesh Processing] ``mesh_processing.ComputeUVAreaOp()`` now handles both indexed and non-indexed UV attributes, fixing failures on meshes imported from GLB and similar formats
+- [Material] ``material.set_input()`` now provides better error messages when an invalid input name is given
+- [Export] Asset metadata dependencies (``assetInfo``, ``customData``) are now crawled automatically for USDZ and SSCA exports, ensuring thumbnails and similar metadata-referenced assets are included
+
+Fixed
+-----
+- [Variant] ``variant.clear()`` no longer crashes with ``ValueError`` when the variant set has no active selection
+- [Primitive] Fixed incorrect UV orientation and winding for ``primitive.cube()`` and ``primitive.cyclorama()``
+- [Export] ``export.archive(bake_sbsar=False)`` now correctly converts non-USD dependencies (previously they were skipped)
+- [Export] Fixed exporting a ``PrimHandler`` via ``export.usdz()`` and ``export.scene_with_dependencies()``
+- [Transform] Fixed ``transform.move_to_ground()`` and ``transform.move_to_origin()`` for certain scene configurations
+- [Light] Fixed ``.sbar`` files not being correctly recognized as dome light texture files
+
+
 1.5.0 (2026/01/29)
 ++++++++++++++++++
 

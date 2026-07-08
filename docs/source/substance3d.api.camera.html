@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.camera package &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -51,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
@@ -70,7 +69,8 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -102,90 +102,94 @@
            <div itemprop="articleBody">
              
   <section id="substance3d-api-camera-package">
-<h1>substance3d.api.camera package<a class="headerlink" href="#substance3d-api-camera-package" title="Permalink to this heading"></a></h1>
+<h1>substance3d.api.camera package<a class="headerlink" href="#substance3d-api-camera-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-substance3d.api.camera.camera">
-<span id="substance3d-api-camera-camera-module"></span><h2>substance3d.api.camera.camera module<a class="headerlink" href="#module-substance3d.api.camera.camera" title="Permalink to this heading"></a></h2>
+<span id="substance3d-api-camera-camera-module"></span><h2>substance3d.api.camera.camera module<a class="headerlink" href="#module-substance3d.api.camera.camera" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.BackplateFitTechnique">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BackplateFitTechnique</span></span><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BackplateFitTechnique</span></span><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.BackplateFitTechnique.CROP_TO_FIT">
-<span class="sig-name descname"><span class="pre">CROP_TO_FIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cropToFit'</span></em><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.CROP_TO_FIT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CROP_TO_FIT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cropToFit'</span></span><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.CROP_TO_FIT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.BackplateFitTechnique.ORIGINAL_SIZE">
-<span class="sig-name descname"><span class="pre">ORIGINAL_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'originalSize'</span></em><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.ORIGINAL_SIZE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ORIGINAL_SIZE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'originalSize'</span></span><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.ORIGINAL_SIZE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.BackplateFitTechnique.SCALE_TO_FIT">
-<span class="sig-name descname"><span class="pre">SCALE_TO_FIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scaleToFit'</span></em><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.SCALE_TO_FIT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SCALE_TO_FIT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scaleToFit'</span></span><a class="headerlink" href="#substance3d.api.camera.camera.BackplateFitTechnique.SCALE_TO_FIT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Views</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Views</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Camera view orientations</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.BACK">
-<span class="sig-name descname"><span class="pre">BACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">-1.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.BACK" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">BACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">-1.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.BACK" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.BOTTOM">
-<span class="sig-name descname"><span class="pre">BOTTOM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">-1.0,</span> <span class="pre">1e-08)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.BOTTOM" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">BOTTOM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">-1.0,</span> <span class="pre">1e-08)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.BOTTOM" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.FRONT">
-<span class="sig-name descname"><span class="pre">FRONT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.FRONT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FRONT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.FRONT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.LEFT">
-<span class="sig-name descname"><span class="pre">LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(-1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.LEFT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">LEFT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(-1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.LEFT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.RIGHT">
-<span class="sig-name descname"><span class="pre">RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.RIGHT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RIGHT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.RIGHT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.TOP">
-<span class="sig-name descname"><span class="pre">TOP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">1.0,</span> <span class="pre">1e-08)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TOP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.0,</span> <span class="pre">1.0,</span> <span class="pre">1e-08)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.TOP_LEFT">
-<span class="sig-name descname"><span class="pre">TOP_LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(-1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP_LEFT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TOP_LEFT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(-1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP_LEFT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.TOP_RIGHT">
-<span class="sig-name descname"><span class="pre">TOP_RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP_RIGHT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TOP_RIGHT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera.Views.TOP_RIGHT" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.Views.all">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.Views.all" title="Permalink to this definition"></a></dt>
-<dd><p>Get all attribute names and its value in a dict
-:return: list[tuple(name, value)]</p>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.Views.all" title="Link to this definition"></a></dt>
+<dd><p>Get all attribute names and its value in a dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[tuple(name, value)]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.aspect_ratio">
-<span class="sig-name descname"><span class="pre">aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.aspect_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.aspect_ratio" title="Link to this definition"></a></dt>
 <dd><p>Get the aspect ratio of the given camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -205,13 +209,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.compute_clipping_range">
-<span class="sig-name descname"><span class="pre">compute_clipping_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.compute_clipping_range" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute_clipping_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.compute_clipping_range" title="Link to this definition"></a></dt>
 <dd><p>Compute the proper clipping range for the camera given the objects passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>camera</strong> (<em>PrimHandler</em>) – the camera whose clipping range will be updated</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the objects to compute the clipping range from</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em>) – the objects to compute the clipping range from</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
 </ul>
 </dd>
@@ -221,12 +225,12 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create" title="Link to this definition"></a></dt>
 <dd><p>Create a Camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent under where the camera will be created, can be scene or another object</p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em><em> | </em><em>PrimHandler</em>) – the parent under where the camera will be created, can be scene or another object</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the name of the camera</p></li>
 <li><p><strong>properties</strong> (<a class="reference internal" href="#substance3d.api.camera.camera_properties.CameraProperties" title="substance3d.api.camera.camera_properties.CameraProperties"><em>CameraProperties</em></a>) – optional parameter to pass in camera properties</p></li>
 <li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – camera aspect ratio</p></li>
@@ -244,13 +248,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.create_framed_cameras">
-<span class="sig-name descname"><span class="pre">create_framed_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_framed_cameras" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_framed_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_framed_cameras" title="Link to this definition"></a></dt>
 <dd><p>Create a set of cameras evenly spread out around selected objects</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the stage the camera belongs to</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>None</em>) – the object(s) the camera(s) should frame</p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em><em> | </em><em>PrimHandler</em>) – the stage the camera belongs to</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em><em> | </em><em>StageHandler</em><em> | </em><em>None</em>) – the object(s) the camera(s) should frame</p></li>
 <li><p><strong>number_of_cameras</strong> (<em>int</em>) – the number of cameras to create surrounding the object</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the name for the xform group all the cameras will be created in</p></li>
 <li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – camera aspect ratio</p></li>
@@ -271,12 +275,12 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.create_view">
-<span class="sig-name descname"><span class="pre">create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_view" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_view" title="Link to this definition"></a></dt>
 <dd><p>Create a camera view oriented by a given vector. <cite>camera.ViewOrientations</cite>’s value can be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – The parent scene or object under which the camera will be created</p></li>
+<li><p><strong>parent</strong> (<em>StageHandler</em><em> | </em><em>PrimHandler</em>) – The parent scene or object under which the camera will be created</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – A valid identifier name for the created camera</p></li>
 <li><p><strong>orientation</strong> (<em>tuple</em>) – An orientation vector (x, y, z) or <cite>camera.ViewOrientations</cite>’s value</p></li>
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
@@ -295,13 +299,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.frame">
-<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame" title="Link to this definition"></a></dt>
 <dd><p>Frame selected objects using an existing camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>camera</strong> (<em>PrimHandler</em>) – the existing camera to frame with</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera(s) should frame</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em><em> | </em><em>StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera(s) should frame</p></li>
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
@@ -315,14 +319,40 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.camera.camera.frame_turntable">
+<span class="sig-name descname"><span class="pre">frame_turntable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame_turntable" title="Link to this definition"></a></dt>
+<dd><p>Frame a camera using the bounding cylinder turntable framing algorithm.</p>
+<p>Unlike frame(), this method computes the minimum bounding cylinder of the objects
+around the Y-axis and frames the camera to fit the cylinder. This produces consistent
+framing for turntable renders: the object always occupies the same screen area
+regardless of rotation around the Y-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera</strong> (<em>PrimHandler</em>) – the existing camera to frame with</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em><em> | </em><em>StageHandler</em><em> | </em><em>None</em>) – the object(s) the camera should frame</p></li>
+<li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
+<li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to evaluate the geometry</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the updated and now framed camera</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.look_at">
-<span class="sig-name descname"><span class="pre">look_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.look_at" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">look_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.look_at" title="Link to this definition"></a></dt>
 <dd><p>Look at the target</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>camera</strong> (<em>PrimHandler</em>) – the existing camera to look at the object</p></li>
-<li><p><strong>target</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>tuple</em>) – the location (x, y, z) or the object to look at</p></li>
+<li><p><strong>target</strong> (<em>PrimHandler</em><em> | </em><em>tuple</em>) – the location (x, y, z) or the object to look at</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
 </ul>
 </dd>
@@ -337,17 +367,17 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.match_image_perspective">
-<span class="sig-name descname"><span class="pre">match_image_perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_longitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.match_image_perspective" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">match_image_perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_longitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.match_image_perspective" title="Link to this definition"></a></dt>
 <dd><p>Match the given camera to the image perspective</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>PrimHandler</em>) – Camera to match with the perspective image</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera should frame for the match</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em><em> | </em><em>StageHandler</em><em> | </em><em>tuple</em><em> | </em><em>None</em>) – the list of objects or a bounding box tuple of (min, max) the camera should frame for the match</p></li>
 <li><p><strong>img</strong> – the image to match can be path or an Image buffer</p></li>
 <li><p><strong>reset_longitude</strong> – If True the camera longitude (orientation to the ground) will be reset</p></li>
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
-<li><p><strong>image</strong> (<em>str</em><em> | </em><em>pathlib.Path</em><em> | </em><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a>) – </p></li>
+<li><p><strong>image</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><a class="reference internal" href="substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -358,15 +388,15 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.set_backplate">
-<span class="sig-name descname"><span class="pre">set_backplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cropToFit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.set_backplate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_backplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cropToFit'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.set_backplate" title="Link to this definition"></a></dt>
 <dd><p>Add a backplate image to the given camera.
 Only available with Eclair delegate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cam</strong> (<em>PrimHandler</em>) – a camera PrimHandler</p></li>
-<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a valid image file path</p></li>
-<li><p><strong>fit</strong> (<a class="reference internal" href="#substance3d.api.camera.camera.BackplateFitTechnique" title="substance3d.api.camera.camera.BackplateFitTechnique"><em>substance3d.api.camera.camera.BackplateFitTechnique</em></a><em> | </em><em>str</em>) – how to fit the backplate image</p></li>
+<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>Path</em>) – a valid image file path</p></li>
+<li><p><strong>fit</strong> (<a class="reference internal" href="#substance3d.api.camera.camera.BackplateFitTechnique" title="substance3d.api.camera.camera.BackplateFitTechnique"><em>BackplateFitTechnique</em></a><em> | </em><em>str</em>) – how to fit the backplate image</p></li>
 <li><p><strong>translation</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – translate the backplate image</p></li>
 <li><p><strong>scale</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – scale the backplate image</p></li>
 <li><p><strong>rotation</strong> (<em>float</em>) – rotate the backplate image</p></li>
@@ -377,7 +407,7 @@ Only available with Eclair delegate.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.traveling">
-<span class="sig-name descname"><span class="pre">traveling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.traveling" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">traveling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.traveling" title="Link to this definition"></a></dt>
 <dd><p>Move the camera along the axis pointing towards the subject</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -391,7 +421,7 @@ Only available with Eclair delegate.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.update_aspect_ratio">
-<span class="sig-name descname"><span class="pre">update_aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.update_aspect_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update_aspect_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.update_aspect_ratio" title="Link to this definition"></a></dt>
 <dd><p>Update the aspect ratio for the given camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -412,114 +442,114 @@ Only available with Eclair delegate.</p>
 
 </section>
 <section id="module-substance3d.api.camera.camera_properties">
-<span id="substance3d-api-camera-camera-properties-module"></span><h2>substance3d.api.camera.camera_properties module<a class="headerlink" href="#module-substance3d.api.camera.camera_properties" title="Permalink to this heading"></a></h2>
+<span id="substance3d-api-camera-camera-properties-module"></span><h2>substance3d.api.camera.camera_properties module<a class="headerlink" href="#module-substance3d.api.camera.camera_properties" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CameraProperties</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CameraProperties</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.utilities.BasePropertiesRepr" title="substance3d.api.core.utilities.BasePropertiesRepr"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePropertiesRepr</span></code></a></p>
 <p>The exposed properites of a camera</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.as_dict">
-<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.as_dict" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.as_dict" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.clippingPlanes">
-<span class="sig-name descname"><span class="pre">clippingPlanes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.clippingPlanes" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clippingPlanes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.clippingPlanes" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.clippingRange">
-<span class="sig-name descname"><span class="pre">clippingRange</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">1000000.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.clippingRange" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clippingRange</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">1000000.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.clippingRange" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.exposure">
-<span class="sig-name descname"><span class="pre">exposure</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.exposure" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">exposure</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.exposure" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.fStop">
-<span class="sig-name descname"><span class="pre">fStop</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.fStop" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fStop</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.fStop" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.focalLength">
-<span class="sig-name descname"><span class="pre">focalLength</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.focalLength" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">focalLength</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.focalLength" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.focusDistance">
-<span class="sig-name descname"><span class="pre">focusDistance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.focusDistance" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">focusDistance</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.focusDistance" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.horizontalAperture">
-<span class="sig-name descname"><span class="pre">horizontalAperture</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20.954999923706055</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.horizontalAperture" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">horizontalAperture</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20.954999923706055</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.horizontalAperture" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.horizontalApertureOffset">
-<span class="sig-name descname"><span class="pre">horizontalApertureOffset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.horizontalApertureOffset" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">horizontalApertureOffset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.horizontalApertureOffset" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.projection">
-<span class="sig-name descname"><span class="pre">projection</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'perspective'</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.projection" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">projection</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'perspective'</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.projection" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.purpose">
-<span class="sig-name descname"><span class="pre">purpose</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.purpose" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">purpose</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.purpose" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.radius">
-<span class="sig-name descname"><span class="pre">radius</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">10000.0)</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.radius" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">radius</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1.0,</span> <span class="pre">10000.0)</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.radius" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.stereoRole">
-<span class="sig-name descname"><span class="pre">stereoRole</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mono'</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.stereoRole" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stereoRole</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mono'</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.stereoRole" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.update" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.update" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>dict</em>) – </p>
+<dd class="field-odd"><p><strong>value</strong> (<em>dict</em>)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.verticalAperture">
-<span class="sig-name descname"><span class="pre">verticalAperture</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15.290800094604492</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.verticalAperture" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">verticalAperture</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15.290800094604492</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.verticalAperture" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.CameraProperties.verticalApertureOffset">
-<span class="sig-name descname"><span class="pre">verticalApertureOffset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.verticalApertureOffset" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">verticalApertureOffset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.CameraProperties.verticalApertureOffset" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.DEFAULT_CAMERA_NAME">
-<span class="sig-name descname"><span class="pre">DEFAULT_CAMERA_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'camera'</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.DEFAULT_CAMERA_NAME" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_CAMERA_NAME</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'camera'</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.DEFAULT_CAMERA_NAME" title="Link to this definition"></a></dt>
 <dd><p>Framed cameras group default name and current index</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.DEFAULT_FRAMED_CAMERAS_GRP_NAME">
-<span class="sig-name descname"><span class="pre">DEFAULT_FRAMED_CAMERAS_GRP_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'framed_cameras_grp'</span></em><a class="headerlink" href="#substance3d.api.camera.camera_properties.DEFAULT_FRAMED_CAMERAS_GRP_NAME" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_FRAMED_CAMERAS_GRP_NAME</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'framed_cameras_grp'</span></span><a class="headerlink" href="#substance3d.api.camera.camera_properties.DEFAULT_FRAMED_CAMERAS_GRP_NAME" title="Link to this definition"></a></dt>
 <dd><p>Views cameras group default name and current index</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.properties">
-<span class="sig-name descname"><span class="pre">properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.properties" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.properties" title="Link to this definition"></a></dt>
 <dd><p>Return a CameraProperties object from a given camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -533,18 +563,14 @@ Only available with Eclair delegate.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera_properties.update_properties">
-<span class="sig-name descname"><span class="pre">update_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.update_properties" title="Permalink to this definition"></a></dt>
-<dd><p>Update the properties of a camera
-:param camera_object: the camera object to be updated
-:param properties: Optional, if no properties are passed in the default values will be used. Properties can</p>
-<blockquote>
-<div><p>be a dict</p>
-</div></blockquote>
+<span class="sig-name descname"><span class="pre">update_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera_properties.update_properties" title="Link to this definition"></a></dt>
+<dd><p>Update the properties of a camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>camera_object</strong> (<em>PrimHandler</em>) – </p></li>
-<li><p><strong>properties</strong> (<a class="reference internal" href="#substance3d.api.camera.camera_properties.CameraProperties" title="substance3d.api.camera.camera_properties.CameraProperties"><em>substance3d.api.camera.camera_properties.CameraProperties</em></a><em> | </em><em>dict</em>) – </p></li>
+<li><p><strong>camera_object</strong> (<em>PrimHandler</em>) – the camera object to be updated</p></li>
+<li><p><strong>properties</strong> (<a class="reference internal" href="#substance3d.api.camera.camera_properties.CameraProperties" title="substance3d.api.camera.camera_properties.CameraProperties"><em>CameraProperties</em></a><em> | </em><em>dict</em>) – Optional, if no properties are passed in the default values will be used. Properties can
+be a dict</p></li>
 </ul>
 </dd>
 </dl>
@@ -552,7 +578,7 @@ Only available with Eclair delegate.</p>
 
 </section>
 <section id="module-substance3d.api.camera">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.camera" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.camera" title="Link to this heading"></a></h2>
 </section>
 </section>
 

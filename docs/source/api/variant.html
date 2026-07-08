@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.variant &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -58,14 +55,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.variant.variant.get_selection"><code class="docutils literal notranslate"><span class="pre">get_selection()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.variant.variant.set"><code class="docutils literal notranslate"><span class="pre">set()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.variant.variant.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.variant.variant.get_primary_variant_set"><code class="docutils literal notranslate"><span class="pre">get_primary_variant_set()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.variant.variant.set_primary_variant_set"><code class="docutils literal notranslate"><span class="pre">set_primary_variant_set()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
@@ -80,7 +81,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -112,10 +114,10 @@
            <div itemprop="articleBody">
              
   <section id="module-substance3d.api.variant.variant">
-<span id="substance3d-api-variant"></span><h1>substance3d.api.variant<a class="headerlink" href="#module-substance3d.api.variant.variant" title="Permalink to this heading"></a></h1>
+<span id="substance3d-api-variant"></span><h1>substance3d.api.variant<a class="headerlink" href="#module-substance3d.api.variant.variant" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.create" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.create" title="Link to this definition"></a></dt>
 <dd><p>Create a new Variant on this object into the given VariantSet (by default <cite>DEFAULT_VS_NAME</cite>). Enter with
 key word <cite>with</cite> in the variant edit context to create variation, the given object and all its children
 are include in the variation, if an object outside the given object hierarchy is edited it will not be
@@ -153,7 +155,7 @@ taken into account in the variant, it will modify in a classic way.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get" title="Link to this definition"></a></dt>
 <dd><p>Get the Variant of the given object corresponding to the given name. By default the Variant will
 be search into <cite>DEFAULT_VS_NAME</cite> variant set.</p>
 <dl class="field-list simple">
@@ -172,7 +174,7 @@ be search into <cite>DEFAULT_VS_NAME</cite> variant set.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.get_identifiers">
-<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get_identifiers" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get_identifiers" title="Link to this definition"></a></dt>
 <dd><p>Return a list of Variant’s identifier/name for the given VariantSet (by default <cite>DEFAULT_VS_NAME</cite>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -189,7 +191,7 @@ be search into <cite>DEFAULT_VS_NAME</cite> variant set.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.get_selection">
-<span class="sig-name descname"><span class="pre">get_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get_selection" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get_selection" title="Link to this definition"></a></dt>
 <dd><p>Return the identifier / name of the selected variant for the given VariantSet (by default <cite>DEFAULT_VS_NAME</cite>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -206,7 +208,7 @@ be search into <cite>DEFAULT_VS_NAME</cite> variant set.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.set" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.set" title="Link to this definition"></a></dt>
 <dd><p>Set the given Variant as active variant selection on the given object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -221,13 +223,45 @@ be search into <cite>DEFAULT_VS_NAME</cite> variant set.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.variant.variant.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.clear" title="Permalink to this definition"></a></dt>
-<dd><p>Clear the variant selection for the given object</p>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the variant selection for the given object. If no selection is active for
+the given variant set (or the variant set does not exist on the prim), this is a no-op.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>obj</strong> (<em>PrimHandler</em>) – the object on which is applied the variants</p></li>
 <li><p><strong>variant_set</strong> (<em>str</em>) – the variant set identifier in which the variants are created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.variant.variant.get_primary_variant_set">
+<span class="sig-name descname"><span class="pre">get_primary_variant_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.get_primary_variant_set" title="Link to this definition"></a></dt>
+<dd><p>Get the value of <cite>primaryVariantSet</cite> from PrimaryVariantSetAPI on the given object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>PrimHandler</em>) – object on which the PrimaryVariantSetAPI schema is queried</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>authored primary variant set name or None when not authored</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.variant.variant.set_primary_variant_set">
+<span class="sig-name descname"><span class="pre">set_primary_variant_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_variant_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.variant.variant.set_primary_variant_set" title="Link to this definition"></a></dt>
+<dd><p>Set <cite>primaryVariantSet</cite> through PrimaryVariantSetAPI on the given object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>PrimHandler</em>) – object on which the PrimaryVariantSetAPI schema is authored</p></li>
+<li><p><strong>primary_variant_set</strong> (<em>str</em>) – variant set name to set as primary</p></li>
 </ul>
 </dd>
 </dl>

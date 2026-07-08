@@ -12,7 +12,7 @@ substance3d.api.material.material module
    :undoc-members:
    :show-inheritance:
 
-substance3d.api.material.sbsar\_utilities module
+substance3d.api.material.sbsar_utilities module
 ------------------------------------------------
 
 .. automodule:: substance3d.api.material.sbsar_utilities
@@ -24,6 +24,14 @@ Module contents
 ---------------
 
 .. automodule:: substance3d.api.material
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.material.material_utilities module
+--------------------------------------------------
+
+.. automodule:: substance3d.api.material.material_utilities
    :members:
    :undoc-members:
    :show-inheritance:

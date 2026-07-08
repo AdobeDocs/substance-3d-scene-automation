@@ -4,7 +4,7 @@ Known Issues
 Pixar and SSCA modules interaction
 ==================================
 
-Pixar (``pxr``) and SSCA (``substance3d.api``) modules may interact with eachother and cause conflicts.
+Pixar (``pxr``) and SSCA (``substance3d.api``) modules may interact with each other and cause conflicts.
 To ensure maximum compatibility between modules, ``substance3d.api`` ones should be loaded first.
 
 Example:

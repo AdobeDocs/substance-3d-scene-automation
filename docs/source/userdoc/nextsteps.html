@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Next Steps &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -53,11 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
@@ -73,7 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#basic-example-create-a-contact-sheet">Basic Example: Create a contact sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scene-branch-management">Scene Branch Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#eclair-usdpreviewsurface-and-adobestandardmaterial">Eclair, USDPreviewSurface and AdobeStandardMaterial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#what-does-that-mean">What does that mean ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-that-mean">What does that mean?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#statistics-collectors">Statistics Collectors</a></li>
@@ -84,13 +83,22 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#activate-displacement">Activate Displacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-import-parameters">File import parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-metadata">Managing Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-local-prim-to-reference">Move local prim to reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-thumbnails-to-your-scene">Add thumbnails to your scene</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-and-render-a-thumbnail">Check and render a thumbnail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attach-an-existing-image">Attach an existing image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-a-thumbnail-without-loading-the-scene">Read a thumbnail without loading the scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render-with-a-custom-lighting-template">Render with a custom lighting template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thumbnail-an-individual-prim">Thumbnail an individual prim</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -122,9 +130,9 @@
            <div itemprop="articleBody">
              
   <section id="next-steps">
-<h1>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading"></a></h1>
+<h1>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h1>
 <section id="basic-example-create-a-contact-sheet">
-<h2>Basic Example: Create a contact sheet<a class="headerlink" href="#basic-example-create-a-contact-sheet" title="Permalink to this heading"></a></h2>
+<h2>Basic Example: Create a contact sheet<a class="headerlink" href="#basic-example-create-a-contact-sheet" title="Link to this heading"></a></h2>
 <p>API Modules : <a class="reference internal" href="../api/image.html#module-substance3d.api.image.image"><span class="std std-ref">image</span></a>, <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a>,
 <a class="reference internal" href="../api/renderer.html#module-substance3d.api.renderer.renderer"><span class="std std-ref">renderer</span></a>, <a class="reference internal" href="../api/transform.html#module-substance3d.api.transform.transform"><span class="std std-ref">transform</span></a>,
 <a class="reference internal" href="../api/camera.html#module-substance3d.api.camera.camera"><span class="std std-ref">camera</span></a>, <a class="reference internal" href="../api/light.html#module-substance3d.api.light.light"><span class="std std-ref">light</span></a></p>
@@ -179,12 +187,12 @@ render images and save them as contact-sheet:</p>
 <img alt="../../_images/contact-sheet.png" src="../../_images/contact-sheet.png" />
 </section>
 <section id="scene-branch-management">
-<h2>Scene Branch Management<a class="headerlink" href="#scene-branch-management" title="Permalink to this heading"></a></h2>
-<p>What is the a scene branch?
+<h2>Scene Branch Management<a class="headerlink" href="#scene-branch-management" title="Link to this heading"></a></h2>
+<p>What is a scene branch?
 A scene branch is a way to edit your current scene in a defined context without impacting the current state of your scene.
 Similar to code development with git, you can create a branch to modify your scene without affecting the main branch.
-This branch system can be used to save several states of your scene or used as session layers</p>
-<p>Let’s see it in actions with an example.
+This branch system can be used to save several states of your scene or be used as session layers.</p>
+<p>Let’s see it in action with an example.
 Branch Schema</p>
 <img alt="../../_images/scene_branch_documentation.jpg" src="../../_images/scene_branch_documentation.jpg" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">camera</span><span class="p">,</span> <span class="n">primitive</span>
@@ -241,16 +249,16 @@ Branch Schema</p>
 </div>
 </section>
 <section id="eclair-usdpreviewsurface-and-adobestandardmaterial">
-<h2>Eclair, USDPreviewSurface and AdobeStandardMaterial<a class="headerlink" href="#eclair-usdpreviewsurface-and-adobestandardmaterial" title="Permalink to this heading"></a></h2>
+<h2>Eclair, USDPreviewSurface and AdobeStandardMaterial<a class="headerlink" href="#eclair-usdpreviewsurface-and-adobestandardmaterial" title="Link to this heading"></a></h2>
 <p>API Modules : <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a></p>
 <p>Eclair is a renderer developed by Adobe and shipped with SSCA. SSCA integrates the hydra-delegate version of
 Eclair to easily use and render any USD scene.</p>
 <p>When creating a material with SSCA, an <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> shader is created that Eclair
-will primarly use if available. <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> has more features and can carry more informations, notably
+will primarily use if available. <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> has more features and can carry more information, notably
 when using SBSAR materials and other Substance files in your workflow.</p>
 <section id="what-does-that-mean">
-<h3>What does that mean ?<a class="headerlink" href="#what-does-that-mean" title="Permalink to this heading"></a></h3>
-<p>Natively, USD features a shader called <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code>, that has several inputs values and that can be rendered with all Hydra-based renderers (more informations on <a class="reference external" href="https://openusd.org/release/spec_usdpreviewsurface.html">Pixar’s USD Documentation</a>).
+<h3>What does that mean?<a class="headerlink" href="#what-does-that-mean" title="Link to this heading"></a></h3>
+<p>Natively, USD features a shader called <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code>, that has several inputs values and that can be rendered with all Hydra-based renderers (more information on <a class="reference external" href="https://openusd.org/release/spec_usdpreviewsurface.html">Pixar’s USD Documentation</a>).
 While Eclair can also render <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code>, it will prioritize <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> if available, meaning
 users must be aware of the renderer used, the shader used, and consequently, the inputs that will be used, should they wish to manipulate them.</p>
 <p>For example, let’s create a scene with a simple yellow color :</p>
@@ -281,7 +289,7 @@ users must be aware of the renderer used, the shader used, and consequently, the
 <p>We can notice there’s a <code class="docutils literal notranslate"><span class="pre">.baseColor</span></code> input and a <code class="docutils literal notranslate"><span class="pre">.diffuseColor</span></code> input.
 <code class="docutils literal notranslate"><span class="pre">.diffuseColor</span></code> is used to change the material color within an <code class="docutils literal notranslate"><span class="pre">USDPreviewSurface</span></code> workflow, while
 <code class="docutils literal notranslate"><span class="pre">.baseColor</span></code> is used within an <code class="docutils literal notranslate"><span class="pre">AdobeStandardMaterial</span></code> workflow.</p>
-<p>Without explaining further those workflows and shaders, what we must remind here is that there are common and specific inputs for both of them.
+<p>Without going into further detail about these workflows and shaders, what we should keep in mind here is that there are common and specific inputs for both of them.
 If you work mainly with Eclair, you may want to primarily use ASM inputs, while if you
 use primarily PreviewSurface, you’ll want to use those inputs instead.</p>
 <p>Below stands a list of those specificities. It also features the usages when using <code class="docutils literal notranslate"><span class="pre">material.create_from_inputs()</span></code>
@@ -356,7 +364,7 @@ or <code class="docutils literal notranslate"><span class="pre">material.create_
 </section>
 </section>
 <section id="statistics-collectors">
-<h2>Statistics Collectors<a class="headerlink" href="#statistics-collectors" title="Permalink to this heading"></a></h2>
+<h2>Statistics Collectors<a class="headerlink" href="#statistics-collectors" title="Link to this heading"></a></h2>
 <p>API Modules : <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">stats</span></a></p>
 <p><code class="docutils literal notranslate"><span class="pre">stats.collect_stats()</span></code> from the <code class="docutils literal notranslate"><span class="pre">stats</span></code> module allows you to quickly get native statistics of any scene/object/list of objects, like the number of triangles or the bounding box size.</p>
 <p>Example :</p>
@@ -457,13 +465,13 @@ Simple collector to collect meshes smaller than one (1) unit on every dimension<
 </div>
 </section>
 <section id="render-settings">
-<h2>Render Settings<a class="headerlink" href="#render-settings" title="Permalink to this heading"></a></h2>
+<h2>Render Settings<a class="headerlink" href="#render-settings" title="Link to this heading"></a></h2>
 <p><cite>RenderSettings</cite> is a prim that centralizes render parameters in your scene.
 They will be used by <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code> and <code class="docutils literal notranslate"><span class="pre">renderer.init()</span></code> when corresponding arguments aren’t set.
 When a parameter is set on the <cite>RenderSettings</cite> prim, it will be saved in the stage and
-in the resulting USD files, making it a good way to share render informations.</p>
-<p><code class="docutils literal notranslate"><span class="pre">renderer.get_render_settings(scene)</span></code> is used to get the current render settings of the scene.
-If they don’t exist yet, this function will create them. Only one <cite>RenderSettings</cite> prim can be created per scene.</p>
+in the resulting USD files, making it a good way to share render information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">renderer.get_render_settings(scn)</span></code> is used to get the current render settings of the scene.
+If they don’t exist yet, this function will create it. Only one <cite>RenderSettings</cite> prim can be created per scene.</p>
 <p>When rendering, arguments given in <code class="docutils literal notranslate"><span class="pre">renderer.init()</span></code> and <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code> will take precedence
 over the <cite>RenderSettings</cite> corresponding parameters, but remember that only the latter will be saved in the scene and USD files.</p>
 <p>Render settings use example:</p>
@@ -497,7 +505,7 @@ each parameter.</p>
 For example, to only show groundplane related parameters, you can use <code class="docutils literal notranslate"><span class="pre">filter=*groundplane*</span></code> .</p>
 </div>
 <section id="missing-parameters-in-rendersettings">
-<h3>Missing parameters in RenderSettings<a class="headerlink" href="#missing-parameters-in-rendersettings" title="Permalink to this heading"></a></h3>
+<h3>Missing parameters in RenderSettings<a class="headerlink" href="#missing-parameters-in-rendersettings" title="Link to this heading"></a></h3>
 <p>Some render arguments aren’t available in <cite>RenderSettings</cite> and still must be passed in <code class="docutils literal notranslate"><span class="pre">renderer.render()</span></code>.
 You will find them below :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default_light</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -509,7 +517,7 @@ You will find them below :</p>
 </div>
 </section>
 <section id="render-settings-override">
-<h3>Render settings override<a class="headerlink" href="#render-settings-override" title="Permalink to this heading"></a></h3>
+<h3>Render settings override<a class="headerlink" href="#render-settings-override" title="Link to this heading"></a></h3>
 <p>While <cite>RenderSettings</cite> is convenient to set render parameters,
 they don’t have the highest priority, and there are several cases
 where some parameters will be overridden.</p>
@@ -545,7 +553,7 @@ If this prim exists in the scene, its <code class="docutils literal notranslate"
 </section>
 </section>
 <section id="activate-displacement">
-<h2>Activate Displacement<a class="headerlink" href="#activate-displacement" title="Permalink to this heading"></a></h2>
+<h2>Activate Displacement<a class="headerlink" href="#activate-displacement" title="Link to this heading"></a></h2>
 <p>Displacement is deactivated by default in SSCA. To activate it, you must get
 render settings and set <code class="docutils literal notranslate"><span class="pre">.adobe.displacementEnabled.set</span></code> parameter to True.
 This will allow displacement for the whole scene. You can control the intensity of
@@ -560,7 +568,7 @@ displacement for each of your materials with their <code class="docutils literal
 </div>
 </section>
 <section id="file-import-parameters">
-<h2>File import parameters<a class="headerlink" href="#file-import-parameters" title="Permalink to this heading"></a></h2>
+<h2>File import parameters<a class="headerlink" href="#file-import-parameters" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">scene.load()</span></code>, <code class="docutils literal notranslate"><span class="pre">scene.add_reference()</span></code> and <code class="docutils literal notranslate"><span class="pre">scene.add_layer()</span></code> all possess a <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> argument.
 These additional keys let you add import parameters when importing a file in your scene.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example - Choosing the tesseleation level of an imported CAD file</span>
@@ -688,9 +696,9 @@ These additional keys let you add import parameters when importing a file in you
 </tbody>
 </table>
 </section>
-<section id="managing-metadatas">
-<h2>Managing metadatas<a class="headerlink" href="#managing-metadatas" title="Permalink to this heading"></a></h2>
-<p>SSCA includes a methods to get, modify and add metadata.</p>
+<section id="managing-metadata">
+<h2>Managing Metadata<a class="headerlink" href="#managing-metadata" title="Link to this heading"></a></h2>
+<p>SSCA includes methods to get, modify and add metadata.</p>
 <p>You can read the metadata of an image with <code class="docutils literal notranslate"><span class="pre">image.metadata()</span></code> and add or modify metadata with <code class="docutils literal notranslate"><span class="pre">image.add_metadata()</span></code>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -715,7 +723,7 @@ We recommend to always test and verify keywords beforehand, with a function like
 </div>
 </section>
 <section id="move-local-prim-to-reference">
-<h2>Move local prim to reference<a class="headerlink" href="#move-local-prim-to-reference" title="Permalink to this heading"></a></h2>
+<h2>Move local prim to reference<a class="headerlink" href="#move-local-prim-to-reference" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can find more information about strength ordering and <strong>LIVRPS</strong> in <a class="reference external" href="https://openusd.org/release/glossary.html#usdglossary-livrps-strength-ordering">openUSD documentation</a>.</p>
@@ -735,7 +743,7 @@ and such, allows variants to operate changes on the prim.</p>
 
 <span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">sphere</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;light1&quot;</span><span class="p">)</span> <span class="c1"># Create a light (L composition arc)</span>
 
-<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediatly show its value</span>
+<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediately show its value</span>
 <span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;intensity1&quot;</span><span class="p">,</span> <span class="s2">&quot;light1_intensities&quot;</span><span class="p">):</span>
     <span class="n">light1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">)</span>
     <span class="n">light1</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">display_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;*intensity*&quot;</span><span class="p">)</span>
@@ -753,7 +761,7 @@ Now let’s use <code class="docutils literal notranslate"><span class="pre">sce
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="n">scene</span><span class="o">.</span><span class="n">move_to_reference</span><span class="p">(</span><span class="n">light1</span><span class="p">)</span> <span class="c1"># Moving light1 from local (L) to reference (R) arc</span>
 
-<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediatly show its value</span>
+<span class="c1"># Change intensity on the light with a variant (V composition arc) and immediately show its value</span>
 <span class="k">with</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;intensity1&quot;</span><span class="p">,</span> <span class="s2">&quot;light1_intensities&quot;</span><span class="p">):</span>
     <span class="n">light1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">)</span>
     <span class="n">light1</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">display_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;*intensity*&quot;</span><span class="p">)</span>
@@ -767,6 +775,110 @@ Now let’s use <code class="docutils literal notranslate"><span class="pre">sce
 </pre></div>
 </div>
 <p>As light1 is now in reference arc, variant changes are taken into account as expected.</p>
+</section>
+<section id="add-thumbnails-to-your-scene">
+<h2>Add thumbnails to your scene<a class="headerlink" href="#add-thumbnails-to-your-scene" title="Link to this heading"></a></h2>
+<p>API Modules : <a class="reference internal" href="../api/thumbnails.html#module-substance3d.api.thumbnails.thumbnails"><span class="std std-ref">thumbnails</span></a>, <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a></p>
+<p>Thumbnails provide visual previews for USD assets, making them easier to browse and identify
+in asset catalogs, DCC integrations, and automation pipelines. The <code class="docutils literal notranslate"><span class="pre">thumbnails</span></code> module lets
+you render, attach, retrieve, and remove thumbnail images for scenes and individual prims.</p>
+<section id="check-and-render-a-thumbnail">
+<h3>Check and render a thumbnail<a class="headerlink" href="#check-and-render-a-thumbnail" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">thumbnails.get()</span></code> to check whether a scene already has a thumbnail. If it does not,
+render one with <code class="docutils literal notranslate"><span class="pre">thumbnails.render()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">thumbnails</span><span class="p">,</span> <span class="n">scene</span>
+
+<span class="n">thumbnail_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output/thumbnails/MeetMat_thumb.png&quot;</span><span class="p">)</span>
+<span class="n">mesh_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/meshes/MeetMat.obj&quot;</span><span class="p">)</span>
+
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">mesh_file_path</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">thumb</span> <span class="o">:=</span> <span class="n">thumbnails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No thumbnail found. Rendering one...&quot;</span><span class="p">)</span>
+    <span class="n">thumbnails</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">thumbnail_path</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+    <span class="n">thumb</span> <span class="o">=</span> <span class="n">thumbnails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thumbnail:&quot;</span><span class="p">,</span> <span class="n">thumb</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">thumbnails.render()</span></code> references the rendered image on the stage’s <code class="docutils literal notranslate"><span class="pre">defaultPrim</span></code>
+by default (<code class="docutils literal notranslate"><span class="pre">reference_result=True</span></code>), so calling <code class="docutils literal notranslate"><span class="pre">thumbnails.set()</span></code> afterwards
+is not required in this case.</p>
+</div>
+</section>
+<section id="attach-an-existing-image">
+<h3>Attach an existing image<a class="headerlink" href="#attach-an-existing-image" title="Link to this heading"></a></h3>
+<p>If you already have a thumbnail (from a pre-existing render or an external tool), use
+<code class="docutils literal notranslate"><span class="pre">thumbnails.set()</span></code> to associate it directly with the scene. This decouples thumbnail
+creation from embedding, which is useful when images are produced by a separate pipeline step:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thumbnails</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">thumbnail_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also render without auto-referencing and attach the result manually by combining
+<code class="docutils literal notranslate"><span class="pre">reference_result=False</span></code> with an explicit <code class="docutils literal notranslate"><span class="pre">thumbnails.set()</span></code> call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thumbnails</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">thumbnail_path</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">reference_result</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">thumbnails</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">thumbnail_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read-a-thumbnail-without-loading-the-scene">
+<h3>Read a thumbnail without loading the scene<a class="headerlink" href="#read-a-thumbnail-without-loading-the-scene" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">thumbnails.get_from_filepath()</span></code> to inspect the thumbnail stored in a USD file on
+disk without loading the full scene into memory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thumb</span> <span class="o">=</span> <span class="n">thumbnails</span><span class="o">.</span><span class="n">get_from_filepath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/meshes/MeetMat.usda&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">thumb</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Embedded thumbnail:&quot;</span><span class="p">,</span> <span class="n">thumb</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="render-with-a-custom-lighting-template">
+<h3>Render with a custom lighting template<a class="headerlink" href="#render-with-a-custom-lighting-template" title="Link to this heading"></a></h3>
+<p>For full control over lighting, camera, and background, pass a USD template file to
+<code class="docutils literal notranslate"><span class="pre">thumbnails.render()</span></code>. The template must contain lights, a cyclorama, and a camera.
+The asset is automatically referenced into the first xform prim matching <code class="docutils literal notranslate"><span class="pre">*asset*</span></code>, aligned
+to the template’s up-axis, placed at ground level, and the camera is framed on it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">thumbnails</span><span class="p">,</span> <span class="n">scene</span>
+
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/meshes/MeetMat.obj&quot;</span><span class="p">))</span>
+<span class="n">thumbnails</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span>
+                  <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output/thumbnails/MeetMat_thumb.png&quot;</span><span class="p">),</span>
+                  <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+                  <span class="n">custom_template</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;templates/thumbnail_studio.usda&quot;</span><span class="p">)</span>
+                  <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="thumbnail-an-individual-prim">
+<h3>Thumbnail an individual prim<a class="headerlink" href="#thumbnail-an-individual-prim" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">thumbnails.get()</span></code>, <code class="docutils literal notranslate"><span class="pre">thumbnails.set()</span></code>, and <code class="docutils literal notranslate"><span class="pre">thumbnails.remove()</span></code> also work on
+individual prims via a <code class="docutils literal notranslate"><span class="pre">PrimHandler</span></code>. This is useful when a single USD file contains
+multiple assets that each need their own preview:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">thumbnails</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">primitive</span>
+
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;my_cube&quot;</span><span class="p">)</span>
+
+<span class="n">thumbnails</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;assets/previews/cube_thumb.png&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thumbnails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cube</span><span class="p">))</span>
+<span class="c1"># &gt;&gt; assets/previews/cube_thumb.png</span>
+
+<span class="n">thumbnails</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thumbnails</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cube</span><span class="p">))</span>
+<span class="c1"># &gt;&gt; None</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a <code class="docutils literal notranslate"><span class="pre">StageHandler</span></code> is passed to <code class="docutils literal notranslate"><span class="pre">thumbnails.get()</span></code>, <code class="docutils literal notranslate"><span class="pre">thumbnails.set()</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">thumbnails.remove()</span></code>, the operation targets the stage’s <code class="docutils literal notranslate"><span class="pre">defaultPrim</span></code>.</p>
+<p>Calling these functions with a <code class="docutils literal notranslate"><span class="pre">StageHandler</span></code> that has no <code class="docutils literal notranslate"><span class="pre">defaultPrim</span></code> raises a
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>—set one first (e.g. with <code class="docutils literal notranslate"><span class="pre">scene.set_default()</span></code>).</p>
+</div>
+</section>
 </section>
 </section>
 

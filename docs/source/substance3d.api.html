@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api package &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -51,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
@@ -70,7 +69,8 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -102,9 +102,9 @@
            <div itemprop="articleBody">
              
   <section id="substance3d-api-package">
-<h1>substance3d.api package<a class="headerlink" href="#substance3d-api-package" title="Permalink to this heading"></a></h1>
+<h1>substance3d.api package<a class="headerlink" href="#substance3d-api-package" title="Link to this heading"></a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="substance3d.api.camera.html">substance3d.api.camera package</a><ul>
@@ -134,6 +134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.create_framed_cameras"><code class="docutils literal notranslate"><span class="pre">create_framed_cameras()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.create_view"><code class="docutils literal notranslate"><span class="pre">create_view()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.frame"><code class="docutils literal notranslate"><span class="pre">frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.frame_turntable"><code class="docutils literal notranslate"><span class="pre">frame_turntable()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.look_at"><code class="docutils literal notranslate"><span class="pre">look_at()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.match_image_perspective"><code class="docutils literal notranslate"><span class="pre">match_image_perspective()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.camera.html#substance3d.api.camera.camera.set_backplate"><code class="docutils literal notranslate"><span class="pre">set_backplate()</span></code></a></li>
@@ -175,7 +176,7 @@
 <li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-callbacks-module">substance3d.api.core.callbacks module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-containers-module">substance3d.api.core.containers module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-core-module">substance3d.api.core.core module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#substance3d-api-core-exceptions-module">substance3d.api.core.exceptions module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.core.html#module-substance3d.api.core.exceptions">substance3d.api.core.exceptions module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ArchiveCreationFailed"><code class="docutils literal notranslate"><span class="pre">ArchiveCreationFailed</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ArchiveCreationFailed.__init__"><code class="docutils literal notranslate"><span class="pre">ArchiveCreationFailed.__init__()</span></code></a></li>
 </ul>
@@ -222,6 +223,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PropertyFnError"><code class="docutils literal notranslate"><span class="pre">PropertyFnError</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.PropertyFnError.__init__"><code class="docutils literal notranslate"><span class="pre">PropertyFnError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ReferenceNotFound"><code class="docutils literal notranslate"><span class="pre">ReferenceNotFound</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.ReferenceNotFound.__init__"><code class="docutils literal notranslate"><span class="pre">ReferenceNotFound.__init__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized"><code class="docutils literal notranslate"><span class="pre">RendererUninitialized</span></code></a><ul>
@@ -639,6 +644,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#module-substance3d.api.material">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substance3d.api.material.html#module-substance3d.api.material.material_utilities">substance3d.api.material.material_utilities module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material_utilities.Definitions"><code class="docutils literal notranslate"><span class="pre">Definitions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material_utilities.add_definition_from_existing"><code class="docutils literal notranslate"><span class="pre">add_definition_from_existing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material_utilities.bake_connections"><code class="docutils literal notranslate"><span class="pre">bake_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material_utilities.convert_vertex_colors_to_materials"><code class="docutils literal notranslate"><span class="pre">convert_vertex_colors_to_materials()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.material.html#substance3d.api.material.material_utilities.find_material_path_from_file"><code class="docutils literal notranslate"><span class="pre">find_material_path_from_file()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="substance3d.api.primitive.html">substance3d.api.primitive package</a><ul>
@@ -675,6 +688,7 @@
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_product"><code class="docutils literal notranslate"><span class="pre">get_render_product()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_settings"><code class="docutils literal notranslate"><span class="pre">get_render_settings()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.print_gpu_info"><code class="docutils literal notranslate"><span class="pre">print_gpu_info()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.render"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.scene_resolution"><code class="docutils literal notranslate"><span class="pre">scene_resolution()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="substance3d.api.renderer.html#substance3d.api.renderer.renderer.set_background_color"><code class="docutils literal notranslate"><span class="pre">set_background_color()</span></code></a></li>
@@ -824,118 +838,114 @@
 </div>
 </section>
 <section id="module-substance3d.api">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api" title="Link to this heading"></a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.ALLOW_CREATION_AT_ROOT_STAGE">
-<span class="sig-name descname"><span class="pre">ALLOW_CREATION_AT_ROOT_STAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.ALLOW_CREATION_AT_ROOT_STAGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ALLOW_CREATION_AT_ROOT_STAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#substance3d.api.ALLOW_CREATION_AT_ROOT_STAGE" title="Link to this definition"></a></dt>
 <dd><p>Allow prim creation at the root level, outside the defaultPrim</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.ANCHOR_REFERENCE_TO_STAGE">
-<span class="sig-name descname"><span class="pre">ANCHOR_REFERENCE_TO_STAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.ANCHOR_REFERENCE_TO_STAGE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ANCHOR_REFERENCE_TO_STAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#substance3d.api.ANCHOR_REFERENCE_TO_STAGE" title="Link to this definition"></a></dt>
 <dd><p>Relative reference path can be anchor to stage or layer (prefix ‘./’)</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.AUTO_FIX_IDENTIFIER">
-<span class="sig-name descname"><span class="pre">AUTO_FIX_IDENTIFIER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.AUTO_FIX_IDENTIFIER" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUTO_FIX_IDENTIFIER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#substance3d.api.AUTO_FIX_IDENTIFIER" title="Link to this definition"></a></dt>
 <dd><p>If True invalid identifier will be fixed by replacing invalid chars by an underscore</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.CONVERT_PATH_TO_RELATIVE">
-<span class="sig-name descname"><span class="pre">CONVERT_PATH_TO_RELATIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.CONVERT_PATH_TO_RELATIVE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONVERT_PATH_TO_RELATIVE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#substance3d.api.CONVERT_PATH_TO_RELATIVE" title="Link to this definition"></a></dt>
 <dd><p>If True, a given absolute path will be converted to a relative path if it shares the same parent</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_END_TIMECODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_END_TIMECODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_END_TIMECODE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_END_TIMECODE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_END_TIMECODE" title="Link to this definition"></a></dt>
 <dd><p>Default end frame for scene creation</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_ENV_TEXTURE">
-<span class="sig-name descname"><span class="pre">DEFAULT_ENV_TEXTURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/home/jenkins/slave/workspace/ya-build_laya_release_ssca_1.5.0/build-Release/laya/automation/substance3d/resources/studio_black_soft_light.hdr'</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_ENV_TEXTURE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_ENV_TEXTURE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/home/jenkins/slave/workspace/ya-build_laya_release_ssca_1.6.0/build-Release/laya/automation/substance3d/resources/studio_black_soft_light.hdr'</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_ENV_TEXTURE" title="Link to this definition"></a></dt>
 <dd><p>Default environment texture file used by hydra renderer</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_RESOLUTION">
-<span class="sig-name descname"><span class="pre">DEFAULT_RESOLUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1024,</span> <span class="pre">1024)</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_RESOLUTION" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_RESOLUTION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1024,</span> <span class="pre">1024)</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_RESOLUTION" title="Link to this definition"></a></dt>
 <dd><p>Default resolution, environment value must be two int with coma separation</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_SCENE_UPAXIS">
-<span class="sig-name descname"><span class="pre">DEFAULT_SCENE_UPAXIS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Y'</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_SCENE_UPAXIS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_SCENE_UPAXIS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Y'</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_SCENE_UPAXIS" title="Link to this definition"></a></dt>
 <dd><p>Default scene’s up axis value</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_START_TIMECODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_START_TIMECODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_START_TIMECODE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_START_TIMECODE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_START_TIMECODE" title="Link to this definition"></a></dt>
 <dd><p>Default start frame for scene creation</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEFAULT_TIMECODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_TIMECODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></em><a class="headerlink" href="#substance3d.api.DEFAULT_TIMECODE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEFAULT_TIMECODE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span><a class="headerlink" href="#substance3d.api.DEFAULT_TIMECODE" title="Link to this definition"></a></dt>
 <dd><p>Use the pxr default timecode by default</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DEPRECATED_FEATURES">
-<span class="sig-name descname"><span class="pre">DEPRECATED_FEATURES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.DEPRECATED_FEATURES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DEPRECATED_FEATURES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#substance3d.api.DEPRECATED_FEATURES" title="Link to this definition"></a></dt>
 <dd><p>Use deprecated features</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DISABLED_PLUGIN_NAMES">
-<span class="sig-name descname"><span class="pre">DISABLED_PLUGIN_NAMES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['hdStorm']</span></em><a class="headerlink" href="#substance3d.api.DISABLED_PLUGIN_NAMES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DISABLED_PLUGIN_NAMES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['hdStorm']</span></span><a class="headerlink" href="#substance3d.api.DISABLED_PLUGIN_NAMES" title="Link to this definition"></a></dt>
 <dd><p>Disabled plugin names
 (setting only effective through environment variable ‘SBS3D_DISABLED_PLUGIN_NAMES’)</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.DISABLE_LOG_FORWARDING">
-<span class="sig-name descname"><span class="pre">DISABLE_LOG_FORWARDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.DISABLE_LOG_FORWARDING" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DISABLE_LOG_FORWARDING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#substance3d.api.DISABLE_LOG_FORWARDING" title="Link to this definition"></a></dt>
 <dd><p>Disable log forwarding from C++ wrappers to Python SSCA logger</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.ENABLE_DEBUG_LOG">
-<span class="sig-name descname"><span class="pre">ENABLE_DEBUG_LOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#substance3d.api.ENABLE_DEBUG_LOG" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ENABLE_DEBUG_LOG</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#substance3d.api.ENABLE_DEBUG_LOG" title="Link to this definition"></a></dt>
 <dd><p>If True the log level will be DEBUG</p>
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="substance3d.api.GPUSettings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GPUSettings</span></span><a class="headerlink" href="#substance3d.api.GPUSettings" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="substance3d.api.GPUSettings.index">
-<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4294967295</span></em><a class="headerlink" href="#substance3d.api.GPUSettings.index" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="substance3d.api.GPUSettings.print_info">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.GPUSettings.print_info" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.GPU_INDEX">
+<span class="sig-name descname"><span class="pre">GPU_INDEX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#substance3d.api.GPU_INDEX" title="Link to this definition"></a></dt>
+<dd><p>Give the GPU index that Eclair render will try to use</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.ML_MODEL_DIRECTORY">
-<span class="sig-name descname"><span class="pre">ML_MODEL_DIRECTORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#substance3d.api.ML_MODEL_DIRECTORY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ML_MODEL_DIRECTORY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#substance3d.api.ML_MODEL_DIRECTORY" title="Link to this definition"></a></dt>
 <dd><p>ML models directory path</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.PATH_AS_POSIX">
-<span class="sig-name descname"><span class="pre">PATH_AS_POSIX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#substance3d.api.PATH_AS_POSIX" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PATH_AS_POSIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#substance3d.api.PATH_AS_POSIX" title="Link to this definition"></a></dt>
 <dd><p>Paths are always referenced as posix/linux path in USD stage</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.USE_SPECIALIZED_RAYTRACING_PIPELINES">
+<span class="sig-name descname"><span class="pre">USE_SPECIALIZED_RAYTRACING_PIPELINES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#substance3d.api.USE_SPECIALIZED_RAYTRACING_PIPELINES" title="Link to this definition"></a></dt>
+<dd><p>If True, hdEclair builds specialized raytracing pipelines per material at renderer creation</p>
 </dd></dl>
 
 </section>

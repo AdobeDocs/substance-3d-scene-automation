@@ -12,7 +12,7 @@ substance3d.api.export.export module
    :undoc-members:
    :show-inheritance:
 
-substance3d.api.export.export\_utilities module
+substance3d.api.export.export_utilities module
 -----------------------------------------------
 
 .. automodule:: substance3d.api.export.export_utilities

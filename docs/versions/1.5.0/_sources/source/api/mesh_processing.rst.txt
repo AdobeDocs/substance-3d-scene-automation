@@ -1,0 +1,368 @@
+substance3d.api.mesh_processing
+-------------------------------
+.. automodule:: substance3d.api.mesh_processing.mesh_processing
+    :members:
+    :show-inheritance:
+    :member-order: bysource
+
+
+.. class:: UnwrapOp
+
+   Seam, parameterize and pack all meshes in the given subtree into a single UV tile.
+
+    .. rubric:: Attributes
+
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **mode**                                         | enum     | UnwrapMode.Default | Mode of the unwrap driver (see note below).                   |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **input_normal_attribute_name**                  | str      | ""                 | Optional input normals attribute name to segment hard edges.  |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **enable_sharing_uvs_between_instances**         | bool     | False              | Share generated UVs between instances of the scene?           |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **output_attribute_name**                        | str      | "primvars:st"      | Output UV attribute name.                                     |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **packing.padding_size**                         | float    | 0.001              | Padding size around each island.                              |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **packing.max_num_uv_tiles**                     | int      | 1                  | Maximum number of UV tiles to generate.                       |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **packing.num_island_rotations**                 | int      | 4                  | Number of possible rotation for every island.                 |
+    +----------------------------------------+---------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.enable_partition_chart**          | bool     | True               | Enable chart splitting algorithm.                             |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.enable_elongated_islands**        | bool     | True               | Enable elongated island detection.                            |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.elongation_threshold**            | float    | 20.0               | Threshold to consider a chart elongated.                      |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.chunks_elongation**               | float    | 10.0               | Max elongation for segmented chunks of elongated islands.     |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.max_cluster_confidence**          | float    | 0.97               | Threshold for the dot product between face and plane normals. |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.max_num_iterations**              | int      | 7                  | Maximum number of iterations for the post process.            |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.max_num_outliers**                | int      | 1                  | Maximum number of clustering outliers in the face one ring .  |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+    | **segmentation.input_uv_attribute_name**         | str      | ""                 | Use input UVs for seams instead of computing them.            |
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
+
+    .. note::
+
+       Possible values for the ``mode`` attribute:
+
+       - ``UnwrapMode.Default``: The default workflow. Offers overlap-free UV layouts of high quality, especially suited for organic meshes.
+       - ``UnwrapMode.Fast``: Fast organic workflow. Allows to get the UV layout of desired distortion quality relatively fast, at expense of more cuts and possible self-overlaps.
+       - ``UnwrapMode.HardEdge``: Fast workflow for non-organic meshes. The workflow is based on improved triplanar algorithm that yields good results for axis-aligned models.
+
+
+.. class:: RepackOp
+
+   Pack all meshes in the given subtree into a single UV tile.
+
+    .. rubric:: Attributes
+
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **input_attribute_name**         | str     | "primvars:st"     | Input UV attribute name.                                                                   |
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **output_attribute_name**        | str     | "primvars:st"     | Output UV attribute name. Output UV will have the same value type as the input UV.         |
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **packing.padding_size**         | float   | 0.001             | Padding size around each island.                                                           |
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **packing.max_num_uv_tiles**     | int     | 1                 | Maximum number of UV tiles to generate.                                                    |
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+    | **packing.num_island_rotations** | int     | 4                 | Number of possible rotation for every island.                                              |
+    +----------------------------------+---------+-------------------+--------------------------------------------------------------------------------------------+
+
+.. class:: TriangulateOp
+
+   Triangulate all meshes in the given subtree.
+
+
+.. class:: RemoveIsolatedVerticesOp
+
+   Remove isolated vertices for all meshes in the given subtree.
+
+
+.. class:: DecimationOp
+
+   Decimate all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **max_facets**        | int     | 10000        | Target maximum number of faces for either a single mesh or the entire scene (sum total of  |
+    |                       |         |              | all mesh face counts).                                                                     |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **decimation_ratio**  | float   | 0.0          | A ratio for the target number of faces. Overrides max_facets for a single mesh if between  |
+    |                       |         |              | 0.001 and 0.999 (inclusive). Ignored when decimating a scene.                              |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **preserve_topology** | bool    | True         | Preserve topology of the input mesh. If false, connected components can disappear during   |
+    |                       |         |              | edge collapses, among other topological changes.                                           |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+    | **angle_threshold**   | float   | 1e-8         | Maximum cos for the angle between two vectors for them to be considered collinear.         |
+    +-----------------------+---------+--------------+--------------------------------------------------------------------------------------------+
+
+
+.. class:: RemeshOp
+
+   Remesh all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **target_num_vertices**   | int     | 4096         | Number of sites to generate for the Lloyd algorithm. Also the number of output vertices in the remeshed surface.|
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **remesh_coefficient**    | float   | 0.0          | Coefficient for the target number of vertices. If set between 0.01 and 10.0, target_num_vertices is computed    |
+    |                           |         |              | relative to current vertex count.                                                                               |
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+    | **abs_noise_level**       | float   | 1e-5         | Max noise added to input vertices to ensure triangulation properties.                                           |
+    +---------------------------+---------+--------------+-----------------------------------------------------------------------------------------------------------------+
+
+
+.. class:: SubdivisionOp
+
+   Subdivide all meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **num_levels**         | int     | 1                             | Number of subdivision levels requested.     |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **use_limit_surface**  | bool    | False                         | Interpolate all data to the limit surface.  |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+    | **scheme**             | str     | SubdivisionScheme.Automatic   | Subdivision scheme to use.                  |
+    +------------------------+---------+-------------------------------+---------------------------------------------+
+
+    .. note::
+
+       Possible values for the ``scheme`` attribute:
+
+       - ``SubdivisionScheme.Bilinear``: Useful to subdivide a mesh prior to applying a displacement map.
+       - ``SubdivisionScheme.CatmullClark``: More widely used and suited to quad-dominant meshes.
+       - ``SubdivisionScheme.Loop``: For (and requires) purely triangulated meshes.
+       - ``SubdivisionScheme.Automatic``: Chooses between Catmull-Clark for quad-dominant meshes.
+
+
+.. class:: CloseSmallHolesOp
+
+   Close small holes for all the meshes in the given subtree.
+
+    .. rubric:: Attributes
+
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+    | **max_hole_size**       | int     | 16           | Maximum number of vertices in a hole to be closed.               |
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+    | **triangulate_holes**   | bool    | True         | Whether to triangulate holes. If false, holes filled by polygons.|
+    +-------------------------+---------+--------------+------------------------------------------------------------------+
+
+
+.. class:: OrientOutwardOp
+
+   Orient the mesh faces so that the signed volume of each connected component is consistent and either positive or negative.
+
+    .. rubric:: Attributes
+
+    +----------------+---------+--------------+------------------------------------------------------------------------------+
+    | **positive**   | bool    | True         | Should the signed volume of each connected component be positive or negative?|
+    +----------------+---------+--------------+------------------------------------------------------------------------------+
+
+
+.. class:: NormalizationOp
+
+   Normalize a single mesh in its local coordinate system in-place.
+   The mesh is resized so it fits in a unit bounding box centered at the origin.
+
+    .. rubric:: Attributes
+
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **normalize_normals**             | bool    | True    | If enabled, normals are normalized after transformation.                                |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **normalize_tangents_bitangents** | bool    | True    | If enabled, tangents and bitangents are normalized after transformation.                |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+    | **reorient**                      |         | False   | If enabled, when applying a transform with negative determinant:\n                      |
+    |                                   |         |         | 1. Normals, tangents and bitangents are flipped.\n                                      |
+    |                                   |         |         | 2. Facet orientations are reversed.                                                     |
+    +-----------------------------------+---------+---------+-----------------------------------------------------------------------------------------+
+
+
+.. class:: RemoveDegenerateFacesOp
+
+   Remove degenerate faces from each mesh in the scene, in-place.
+   The current method assumes input mesh is triangular.
+   Non-degenerate facets adjacent to degenerate facets may be
+   re-triangulated as a result of the removal.
+
+
+.. class:: RemoveDuplicateFacesOp
+
+   Remove duplicate faces from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +------------------------------+---------+---------+-------------------------------------------------------------+
+    | **consider_orientation**     | bool    | False   | If true, faces with opposite orientations (e.g. (0,1,2)     |
+    |                              |         |         | and (2,1,0)) are considered non-duplicates.                 |
+    +------------------------------+---------+---------+-------------------------------------------------------------+
+
+
+.. class:: RemoveDuplicateVerticesOp
+
+   Remove duplicate vertices from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +--------------------+---------+---------+-------------------------------------------------+
+    | **boundary_only**  | bool    | False   | Only remove duplicate vertices on the boundary. |
+    +--------------------+---------+---------+-------------------------------------------------+
+
+
+.. class:: RemoveTinyFacesOp
+
+   Remove zero-area faces from each mesh in the given subtree,
+   zero-area threshold can be adjusted.
+
+    .. rubric:: Attributes
+
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+    | **null_area_threshold**      | float   | 0.0     | Faces with area <= null_area_threshold will be removed.                 |
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+    | **remove_isolated_vertices** | bool    | False   | If true, also remove isolated vertices after removing null area faces.  |
+    +------------------------------+---------+---------+-------------------------------------------------------------------------+
+
+
+.. class:: RemoveShortEdgesOp
+
+   Remove short edges from each mesh in the given subtree.
+
+    .. rubric:: Attributes
+
+    +--------------------+---------+---------+-------------------------------------------------+
+    | **threshold**      | float   | 0.0     | Edges with length <= threshold will be removed. |
+    +--------------------+---------+---------+-------------------------------------------------+
+
+
+.. class:: ResolveNonmanifoldnessOp
+
+   Resolve non-manifold edges AND vertices for each mesh in the given subtree.
+
+
+.. class:: ResolveVertexNonmanifoldnessOp
+
+   Resolve non-manifold vertices for each mesh in the given subtree.
+
+
+.. class:: ComputeMeshAreaOp
+
+  Return the combined area of all meshes.
+
+
+.. class:: ComputeUVAreaOp
+
+  Return the combined UV area of all meshes.
+
+
+.. class:: ComputeEdgeLengthsOp
+
+  Create or update the mesh attribute containing edge lengths.
+
+   .. rubric:: Attributes
+
+   +----------------------------------+---------+------------------------+--------------------------------------------------------------------------------------------+
+   | **output_attribute_name**        | str     | "primvars:edgeLengths" | Name of the mesh attribute containing edge lengths.                                        |
+   +----------------------------------+---------+------------------------+--------------------------------------------------------------------------------------------+
+
+
+.. class:: ComputeFaceNormalsOp
+
+  Create or update the mesh attribute containing face normals.
+
+   .. rubric:: Attributes
+
+   +----------------------------------+---------+------------------------+--------------------------------------------------------------------------------------------+
+   | **output_attribute_name**        | str     | "primvars:normals"     | Name of the mesh attribute containing face normals.                                        |
+   +----------------------------------+---------+------------------------+--------------------------------------------------------------------------------------------+
+
+
+.. class:: ComputeVertexNormalsOp
+
+  Create or update the mesh attribute containing vertex normals.
+
+   .. rubric:: Attributes
+
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+   | **output_attribute_name**                 | str                 | "primvars:normals"                   | Name of the mesh attribute containing face normals.                 |
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+   | **weight_type**                           | NormalWeightingType | NormalWeightingType.Angle            | Per-vertex normal averaging weighting type.                         |
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+   | **weighted_corner_normal_attribute_name** | str                 | "primvars:weightedCornerNormals"     | Precomputed weighted corner attribute name.                         |
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+   | **recompute_weighted_corner_normals**     | bool                | False                                | Whether to recompute the weighted corner normal attribute.          |
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+   | **keep_weighted_corner_normals**          | bool                | False                                | Whether to keep any newly added weighted corner normal attribute.   |
+   +-------------------------------------------+---------------------+--------------------------------------+---------------------------------------------------------------------+
+
+    .. note::
+
+       Possible values for the ``weight_type`` attribute:
+
+       - ``NormalWeightingType.Angle``: Incident face normals are averaged weighted by incident angle of vertex.
+       - ``NormalWeightingType.Uniform``: Incident face normals have uniform influence on vertex normal.
+       - ``NormalWeightingType.Area``: Incident face normals are averaged weighted by area of the corner triangle.
+
+
+.. class:: ComputeNormalsOp
+
+  Create or update the mesh attribute containing indexed normals.
+
+   .. rubric:: Attributes
+
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **output_attribute_name**       | str                 | "primvars:normals"        | Name of the mesh attribute containing face normals.                       |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **weight_type**                 | NormalWeightingType | NormalWeightingType.Angle | Per-vertex normal averaging weighting type.                               |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **facet_normal_attribute_name** | str                 | "primvars:faceNormals"    | Precomputed facet normal attribute name.                                  |
+   |                                 |                     |                           | Used to determine the orientation of accumulated corner normals.          |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **recompute_facet_normals**     | bool                | False                     | Whether to recompute the facet normal attribute.                          |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **keep_facet_normals**          | bool                | False                     | Whether to keep any newly added facet normal attribute.                   |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **feature_angle_threshold**     | float               | 30.0                      | Maximum dihedral angle (in degrees) of "smooth" (non-feature) edges.      |
+   |                                 |                     |                           | Edges with larger dihedral angles are considered "sharp" (feature) edges. |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+   | **cone_vertices**               | list                | []                        | Indices of mesh vertices that are considered "sharp".                     |
+   +---------------------------------+---------------------+---------------------------+---------------------------------------------------------------------------+
+
+
+.. class:: ComputeTangentsAndBitangentsOp
+
+  Compute mesh tangents and bitangents in local coordinate system.
+  Create or update related mesh attributes, the new/updated tangent (first) and bitangent (second) attributes.
+
+   .. rubric:: Attributes
+
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **tangent_attribute_name**      | str                 | "primvars:tangents"           | Name of the mesh attribute containing tangents.                                                               |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **bitangent_attribute_name**    | str                 | "primvars:bitangents"         | Name of the mesh attribute containing bitangents.                                                             |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **output_element_type**         | MeshAttributeElement| MeshAttributeElement.Indexed  | Output element type. Can be either `MeshAttributeElement.Corner` or `MeshAttributeElement.Indexed`.           |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **pad_with_sign**               | bool                | False                         | Whether to pad the tangent/bitangent vectors with a 4th coordinate indicating the sign of the UV triangle     |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **orthogonalize_bitangent**     | bool                | False                         | Whether to compute the bitangent as sign * cross(normal, tangent)                                             |
+   |                                 |                     |                               | If false, the bitangent is computed as the derivative of v-coordinate                                         |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+   | **keep_existing_tangent**       | bool                | False                         | Whether to recompute tangent if the tangent attribute (specified by tangent_attribute_name) already exists    |
+   |                                 |                     |                               |                                                                                                               |
+   |                                 |                     |                               | - If true, bitangent will be computed by `sign * normalized(cross(normal, existing_tangent))`,                |
+   |                                 |                     |                               |   `orthogonalize_bitangent` must be true                                                                      |
+   |                                 |                     |                               |                                                                                                               |
+   |                                 |                     |                               | - If false, the tangent will be recomputed and potentially overwritten.                                       |
+   +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
+
+
+
+
+
+
+

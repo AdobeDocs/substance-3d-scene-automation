@@ -1,0 +1,7 @@
+substance3d.api.thumbnails
+--------------------------
+.. automodule:: substance3d.api.thumbnails.thumbnails
+    :members:
+    :show-inheritance:
+    :member-order: bysource
+

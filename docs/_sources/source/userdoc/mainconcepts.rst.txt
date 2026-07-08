@@ -39,4 +39,4 @@ Like Prim for USD, PrimHandler represents all the objects in a scene, and StageH
 
 Most of the time the API functions will ask for either a PrimHandler or StageHandler as an argument and most of the time they will return either a PrimHandler or a StageHandler.
 
-Handler objects acts as intermediate objects with USD data. They store no direct data but query the USD data correctly for each Handler's property, metadata, attributes. They behave the same for the settings.
+Handler objects act as intermediate objects with USD data. They store no direct data but query the USD data correctly for each Handler's property, metadata, attributes. They behave the same for the settings.

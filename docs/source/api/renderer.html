@@ -1,29 +1,26 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.renderer &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="substance3d.api.image" href="image.html" />
-    <link rel="prev" title="substance3d.api.material" href="material.html" /> 
+    <link rel="prev" title="substance3d.api.material.material_utilities" href="material_utilities.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,11 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.renderer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.renderer.renderer.RenderRequest"><code class="docutils literal notranslate"><span class="pre">RenderRequest</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.renderer.renderer.RenderingTechnique"><code class="docutils literal notranslate"><span class="pre">RenderingTechnique</span></code></a></li>
@@ -89,7 +88,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -121,16 +121,16 @@
            <div itemprop="articleBody">
              
   <section id="module-substance3d.api.renderer.renderer">
-<span id="substance3d-api-renderer"></span><h1>substance3d.api.renderer<a class="headerlink" href="#module-substance3d.api.renderer.renderer" title="Permalink to this heading"></a></h1>
+<span id="substance3d-api-renderer"></span><h1>substance3d.api.renderer<a class="headerlink" href="#module-substance3d.api.renderer.renderer" title="Link to this heading"></a></h1>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.RenderRequest">
-<span class="sig-name descname"><span class="pre">RenderRequest</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.RenderRequest" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RenderRequest</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.RenderRequest" title="Link to this definition"></a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.RenderingTechnique">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RenderingTechnique</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.RenderingTechnique" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RenderingTechnique</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.RenderingTechnique" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Only works with Eclair renderer</p>
 <p>CPUPathTracing : Use only CPU device for path tracer rendering technique
@@ -140,7 +140,7 @@ GPURasterization : Use GPU for rasterizer rendering technique</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.HydraImplementation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HydraImplementation</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.HydraImplementation" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">HydraImplementation</span></span><a class="headerlink" href="#substance3d.api.renderer.renderer.HydraImplementation" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>SBS3D custom hydra engine implementation OpenGL free
 PXR based on the pxr’s UsdImagingGLEngine</p>
@@ -148,43 +148,45 @@ PXR based on the pxr’s UsdImagingGLEngine</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.get_render_settings">
-<span class="sig-name descname"><span class="pre">get_render_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_render_settings" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_render_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_render_settings" title="Link to this definition"></a></dt>
 <dd><p>Get render settings,
-If no RenderSettings is found in the scene a new one will be created
-:param scn: the scene for these settings
-:param create_new: create a new RenderSettings prim if it doesn’t exist in the scene</p>
+If no RenderSettings is found in the scene a new one will be created</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>PrimHandler of type RenderSettings</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scn</strong> (<em>StageHandler</em>) – the scene for these settings</p></li>
+<li><p><strong>create_new</strong> – create a new RenderSettings prim if it doesn’t exist in the scene</p></li>
+</ul>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>scn</strong> (<em>StageHandler</em>) – </p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PrimHandler of type RenderSettings</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>substance3d.api.core.prim_handler.PrimHandler | None</p>
+<dd class="field-odd"><p><em>PrimHandler</em> | None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.get_render_product">
-<span class="sig-name descname"><span class="pre">get_render_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_render_product" title="Permalink to this definition"></a></dt>
-<dd><p>Return the first RenderProduct if it is present in RenderSettings()
-:param scn: the scene for these settings
-:return: PrimHandler of type RenderProduct</p>
+<span class="sig-name descname"><span class="pre">get_render_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_render_product" title="Link to this definition"></a></dt>
+<dd><p>Return the first RenderProduct if it is present in RenderSettings()</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scn</strong> (<em>StageHandler</em>) – </p>
+<dd class="field-odd"><p><strong>scn</strong> (<em>StageHandler</em>) – the scene for these settings</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>PrimHandler</em></p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PrimHandler of type RenderProduct</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.init">
-<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Eclair'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implementation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">substance3d.usd.hydra_renderer.RendererImplementation.CustomHydraEngineCpu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.init" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Eclair'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implementation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">substance3d.usd.hydra_renderer.RendererImplementation.CustomHydraEngineCpu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.init" title="Link to this definition"></a></dt>
 <dd><p>Initialize the renderer and its context for the given scene.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -207,7 +209,7 @@ RenderSettings value <cite>adobe.threadLimit</cite>.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.render">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_resize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pxr.Usd.TimeCode.EarliestTime.GetValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environment_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoiser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.render" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_resize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pxr.Usd.TimeCode.EarliestTime.GetValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environment_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denoiser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.render" title="Link to this definition"></a></dt>
 <dd><p>Render the given scene and store the rendering into the render buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -216,35 +218,36 @@ RenderSettings value <cite>adobe.threadLimit</cite>.</p></li>
 <li><p><strong>resolution</strong> (<em>tuple</em><em> | </em><em>None</em>) – The resolution of the rendering. If set, override the scene’s RenderSettings value <cite>resolution</cite>.</p></li>
 <li><p><strong>default_light</strong> (<em>bool</em><em> | </em><em>None</em>) – if True the renderer will use the default lights setup instead of the scene’s lights.
 If None, it will use the scene’s lights if they exist, and the default lights setup otherwise.</p></li>
-<li><p><strong>camera</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>None</em>) – The camera to use for the rendering. If set, override the scene’s RenderSettings or RenderProduct
+<li><p><strong>camera</strong> (<em>PrimHandler</em><em> | </em><em>None</em>) – The camera to use for the rendering. If set, override the scene’s RenderSettings or RenderProduct
 <cite>camera</cite> if no camera is found a default one will be used by framing the scene.</p></li>
-<li><p><strong>background_image</strong> (<em>str</em><em> | </em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>substance3d.api.image.image.Image</em></a><em> | </em><em>pathlib.Path</em><em> | </em><em>None</em>) – file path of a valid background image or a valid Image object.</p></li>
+<li><p><strong>background_image</strong> (<em>str</em><em> | </em><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a><em> | </em><em>Path</em><em> | </em><em>None</em>) – file path of a valid background image or a valid Image object.</p></li>
 <li><p><strong>background_resize</strong> (<em>bool</em>) – If True the given background image will be resized to the render resolution.</p></li>
 <li><p><strong>timecode</strong> (<em>float</em><em> | </em><em>int</em>) – the timecode to render the scene.</p></li>
 <li><p><strong>time_limit</strong> (<em>float</em>) – Time limit to stop rendering if the convergence takes longer than the given limit,
 value in seconds. If 0.0 or less the rendering will stop when it has converged.</p></li>
 <li><p><strong>samples</strong> (<em>int</em><em> | </em><em>None</em>) – Rendering quality. If set, override the scene’s RenderSettings value <cite>adobe.convergedPixelSamples</cite>.</p></li>
-<li><p><strong>environment_background</strong> (<em>bool</em>) – If True, display the environment dome light background.
-If set, override the scene’s RenderSettings value <cite>adobe.envLightCameraVisibility</cite>.</p></li>
-<li><p><strong>passes</strong> (<em>list</em><em>[</em><em>substance3d.api.renderer.renderer_passes.Pass</em><em>] </em><em>| </em><em>None</em>) – A list of passes available in <cite>renderer.passes</cite> to render, if nothing if given the BEAUTY pass will be
+<li><p><strong>environment_background</strong> (<em>bool</em><em> | </em><em>None</em>) – If True, display the environment dome light background; if False, hide it.
+If set, override the scene’s RenderSettings values <cite>adobe.envLightCameraVisibility</cite> and
+<cite>adobe.compositingEnabled</cite>. If None (default), preserve the scene’s existing values; if the scene
+has no RenderSettings opinion for those attributes, the schema default (False) applies.</p></li>
+<li><p><strong>passes</strong> (<em>list</em><em>[</em><em>Pass</em><em>] </em><em>| </em><em>None</em>) – A list of passes available in <cite>renderer.passes</cite> to render, if nothing if given the BEAUTY pass will be
 returned otherwise a dict of form <cite>{pass_name: image.Image}</cite></p></li>
 <li><p><strong>denoiser</strong> (<em>bool</em>) – Enable denoiser.  If set, override the scene’s RenderSettings value <cite>adobe.denoiserEnabled</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image">substance3d.api.image.image.Image</a> | dict[str, <a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image">substance3d.api.image.image.Image</a>]</p>
+<dd class="field-even"><p><a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a> | dict[str, <a class="reference internal" href="../substance3d.api.image.html#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.get_aov_list">
-<span class="sig-name descname"><span class="pre">get_aov_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_aov_list" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the list of available AOVs for the given rendered scene
-:param scene: The scene that has already been rendered</p>
+<span class="sig-name descname"><span class="pre">get_aov_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_aov_list" title="Link to this definition"></a></dt>
+<dd><p>Returns the list of available AOVs for the given rendered scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>scene</strong> (<em>StageHandler</em>) – </p>
+<dd class="field-odd"><p><strong>scene</strong> (<em>StageHandler</em>) – The scene that has already been rendered</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str]</p>
@@ -254,7 +257,7 @@ returned otherwise a dict of form <cite>{pass_name: image.Image}</cite></p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.get_passes_list">
-<span class="sig-name descname"><span class="pre">get_passes_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_passes_list" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_passes_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_passes_list" title="Link to this definition"></a></dt>
 <dd><p>Return list of all available passes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -265,15 +268,13 @@ returned otherwise a dict of form <cite>{pass_name: image.Image}</cite></p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.get_image_from_aov">
-<span class="sig-name descname"><span class="pre">get_image_from_aov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aov</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_image_from_aov" title="Permalink to this definition"></a></dt>
-<dd><p>Get an Image object, corresponding to the given aov, from a scene already rendered
-:param scene: The scene that has already been rendered
-:param aov: Name of the aov buffer to return</p>
+<span class="sig-name descname"><span class="pre">get_image_from_aov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aov</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.get_image_from_aov" title="Link to this definition"></a></dt>
+<dd><p>Get an Image object, corresponding to the given aov, from a scene already rendered</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>scene</strong> (<em>StageHandler</em>) – </p></li>
-<li><p><strong>aov</strong> (<em>str</em>) – </p></li>
+<li><p><strong>scene</strong> (<em>StageHandler</em>) – The scene that has already been rendered</p></li>
+<li><p><strong>aov</strong> (<em>str</em>) – Name of the aov buffer to return</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -284,7 +285,7 @@ returned otherwise a dict of form <cite>{pass_name: image.Image}</cite></p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.available_renderer_names">
-<span class="sig-name descname"><span class="pre">available_renderer_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.available_renderer_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">available_renderer_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.available_renderer_names" title="Link to this definition"></a></dt>
 <dd><p>Return the name of available renderer, a name can be pass to renderer.init(renderer_name)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -295,7 +296,7 @@ returned otherwise a dict of form <cite>{pass_name: image.Image}</cite></p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.set_groundplane">
-<span class="sig-name descname"><span class="pre">set_groundplane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections_roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadows_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_groundplane" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_groundplane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reflections_roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadows_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_groundplane" title="Link to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Set the groundplane feature for the renderer with the given arguments. If a groundplane already exist it will be</dt><dd><p>modified otherwise it will be created</p>
 </dd>
@@ -322,7 +323,7 @@ are in the range 0-1.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.scene_resolution">
-<span class="sig-name descname"><span class="pre">scene_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.scene_resolution" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">scene_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.scene_resolution" title="Link to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Search for en existing resolution attribute present in RenderSettings or a RenderProducts prim, return empty</dt><dd><p>tuple if nothing is found</p>
 </dd>
@@ -339,7 +340,7 @@ are in the range 0-1.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.set_scene_resolution">
-<span class="sig-name descname"><span class="pre">set_scene_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_scene_resolution" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_scene_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_scene_resolution" title="Link to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Set render resolution in RenderSettings prim or in RenderProduct if it exists. By settings the resolution in the</dt><dd><p>given scene it will be saved in the usd file</p>
 </dd>
@@ -358,17 +359,14 @@ for the RenderProduct</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.renderer.renderer.set_background_color">
-<span class="sig-name descname"><span class="pre">set_background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_background_color" title="Permalink to this definition"></a></dt>
-<dd><p>Set render color background. By settings the background color in the given scene it will be saved in the usd file
-:param scene: the scene in which to set the background color
-:param color: the color value, must be float4 (R, G, B, A)
-:param enabled: composite background color with the beauty render</p>
+<span class="sig-name descname"><span class="pre">set_background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.renderer.renderer.set_background_color" title="Link to this definition"></a></dt>
+<dd><p>Set render color background. By settings the background color in the given scene it will be saved in the usd file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>scene</strong> (<em>StageHandler</em>) – </p></li>
-<li><p><strong>color</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – </p></li>
-<li><p><strong>enabled</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>scene</strong> (<em>StageHandler</em>) – the scene in which to set the background color</p></li>
+<li><p><strong>color</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – the color value, must be float4 (R, G, B, A)</p></li>
+<li><p><strong>enabled</strong> (<em>bool</em>) – composite background color with the beauty render</p></li>
 </ul>
 </dd>
 </dl>
@@ -380,7 +378,7 @@ for the RenderProduct</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="material.html" class="btn btn-neutral float-left" title="substance3d.api.material" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="material_utilities.html" class="btn btn-neutral float-left" title="substance3d.api.material.material_utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="image.html" class="btn btn-neutral float-right" title="substance3d.api.image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

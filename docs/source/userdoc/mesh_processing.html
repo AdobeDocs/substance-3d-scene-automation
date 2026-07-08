@@ -1,28 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mesh Processing &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+  <title>CAD &amp; Mesh Processing &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Substance3d Release Notes" href="../release.html" />
+    <link rel="next" title="Variant Compiler Guide" href="workflow_variant_compiler.html" />
     <link rel="prev" title="Known Issues" href="knownissues.html" /> 
 </head>
 
@@ -53,11 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
@@ -72,14 +71,38 @@
 <li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Mesh Processing</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CAD &amp; Mesh Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cad-file-processing">CAD File Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mesh-processing-results">Mesh Processing results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-a-production-ready-digital-twin-from-a-cad-file">Build a production-ready Digital Twin from a CAD file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clean-mesh-and-optimize-it-for-further-processing">Clean mesh and optimize it for further processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recover-quads-from-triangulated-meshes">Recover Quads from triangulated meshes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unwrap-mesh-uvs">Unwrap mesh UVs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compute-mesh-processing-operators-on-the-scene">Compute mesh processing operators on the scene.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#cad-files-import-options">CAD Files Import Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parametrictessellationlevel">parametricTessellationLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prchoopsaccuratetessellation">prcHoopsAccurateTessellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prchoopsaccuratetessellationwithgrid">prcHoopsAccurateTessellationWithGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prchoopsaccuratetessellationwithgridmaximumstitchlength">prcHoopsAccurateTessellationWithGridMaximumStitchLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prchoopsaccuratesurfacecurvatures">prcHoopsAccurateSurfaceCurvatures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalrunmeshcleanup">generalRunMeshCleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalrunuvcorrection">generalRunUvCorrection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalreadhiddenobjects">generalReadHiddenObjects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricmaximaltriangleedgelength">parametricMaximalTriangleEdgeLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricautomaticallyretrytessellationonfailure">parametricAutomaticallyRetryTessellationOnFailure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricprefergridstyletessellation">parametricPreferGridStyleTessellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prchoopsuseheightinsteadofratio">prcHoopsUseHeightInsteadOfRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricangletolerancedeg">parametricAngleToleranceDeg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricmaxchordheight">parametricMaxChordHeight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametricchordheightratio">parametricChordHeightRatio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -100,7 +123,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Mesh Processing</li>
+      <li class="breadcrumb-item active">CAD &amp; Mesh Processing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/userdoc/mesh_processing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -110,14 +133,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="mesh-processing">
-<h1>Mesh Processing<a class="headerlink" href="#mesh-processing" title="Permalink to this heading"></a></h1>
+  <section id="cad-mesh-processing">
+<h1>CAD &amp; Mesh Processing<a class="headerlink" href="#cad-mesh-processing" title="Link to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
-<p><strong>SSCA</strong> <code class="docutils literal notranslate"><span class="pre">mesh_processing</span></code> module contains a list of operators that can be applied to a given target, such as a StageHandler or PrimHandler.
-These operators can be chained in any order to build relevant and adapted processing workflow.</p>
-<p>In industries involving 3d content, assets need to be prepared to fit pipelines requirements.
-With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and repack <strong>SSCA</strong> provides the advantage to automatize asset optimization.</p>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The <strong>SSCA</strong> Mesh Processing module contains a list of operators that can be applied to a given target, such as a StageHandler or PrimHandler.
+Processing on a target will apply the operator on all meshes of the target subtree.</p>
+<p>These operators can be chained in any order to build relevant and adapted processing workflow.</p>
+<p>In industries involving 3D content, assets need to be prepared to fit pipeline requirements.
+With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and repack <strong>SSCA</strong> provides the advantage to automate asset optimization.</p>
 <p><strong>Simple Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">mesh_processing</span> <span class="k">as</span> <span class="n">mp</span>
@@ -139,13 +163,13 @@ With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and 
 <p class="admonition-title">Note</p>
 <p>Operators process the given prim and its sub-tree.
 Run it on a Stagehandler to process all meshes of the scene.</p>
+<p>Mesh Processing works the same way on <strong>CAD</strong> and <strong>3D</strong> files.</p>
 </div>
+<p>Let’s see, step by step, how to optimize CAD files such as <em>.step</em> files.</p>
 </section>
-<section id="cad-file-processing">
-<h2>CAD File Processing<a class="headerlink" href="#cad-file-processing" title="Permalink to this heading"></a></h2>
-<p>Lets see, step by step, now how to optimize CAD files like <em>.step</em> ones.</p>
-<p><strong>1/ Build a scene from a CAD file</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">export</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">mesh_processing</span> <span class="k">as</span> <span class="n">mp</span>
+<section id="build-a-production-ready-digital-twin-from-a-cad-file">
+<h2>Build a production-ready Digital Twin from a CAD file<a class="headerlink" href="#build-a-production-ready-digital-twin-from-a-cad-file" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">export</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span> <span class="n">mesh_processing</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Path to the CAD file</span>
@@ -158,90 +182,77 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;mesh_grp&quot;</span><span class="p">)</span>
 
 <span class="c1"># Import cad file and set the tessellation level at &#39;medium&#39;.</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">my_cad_file</span><span class="p">,</span> <span class="n">prcTessLevel</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">my_cad_file</span><span class="p">,</span> <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>At this point, it is important to remember that, for CAD files import, <a class="reference internal" href="nextsteps.html#file-import-parameters"><span class="std std-ref">prcTessLevel</span></a> argument gives you the opportunity to set a tessellation level at import.
-CAD files tessellation level (‘prcTessLevel’) string arguments options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
-<p>Here are some visual examples of the different tessellation levels:</p>
+<p>At this point, it is important to remember that, for CAD files import, the <a class="reference internal" href="#cad-files-import-options"><span class="std std-ref">parametricTessellationLevel</span></a> argument gives you the opportunity to set a tessellation level at import.
+<cite>parametricTessellationLevel</cite> string argument options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
 </div>
-<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_low.png"><img alt="extraLow" src="../../_images/mp_cad_import_tesselation_extra_low.png" style="width: 135.0px; height: 360.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_low.png"><img alt="low" src="../../_images/mp_cad_import_tesselation_low.png" style="width: 135.0px; height: 360.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_medium.png"><img alt="medium" src="../../_images/mp_cad_import_tesselation_medium.png" style="width: 135.0px; height: 360.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_high.png"><img alt="high" src="../../_images/mp_cad_import_tesselation_high.png" style="width: 135.0px; height: 360.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_high.png"><img alt="extraHigh" src="../../_images/mp_cad_import_tesselation_extra_high.png" style="width: 135.0px; height: 360.0px;" /></a>
-<p><strong>2/ Clean mesh and optimize it for further processing</strong></p>
+<section id="clean-mesh-and-optimize-it-for-further-processing">
+<h3>Clean mesh and optimize it for further processing<a class="headerlink" href="#clean-mesh-and-optimize-it-for-further-processing" title="Link to this heading"></a></h3>
 <p>Now we have our StageHandler scene lets load some of the cleaning operators:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
-<span class="n">verts_weld_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">RemoveDuplicateVerticesOp</span><span class="p">()</span>
-
-<span class="c1"># Fill potential mesh holes</span>
-<span class="n">close_mesh_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">CloseSmallHolesOp</span><span class="p">()</span>
-<span class="c1"># Refine CloseSmallHolesOp attribute</span>
-<span class="n">close_mesh_op</span><span class="o">.</span><span class="n">max_hole_size</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># max hole&#39;s boundary vertices number to fill</span>
+<span class="n">verts_weld_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveDuplicateVerticesOp</span><span class="p">()</span>
 
 <span class="c1"># Fix potential non-manifold edges and vertices</span>
-<span class="n">manifoldness_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">ResolveNonmanifoldnessOp</span><span class="p">()</span>
+<span class="n">manifoldness_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ResolveNonmanifoldnessOp</span><span class="p">()</span>
+
+<span class="c1"># Fill potential mesh holes</span>
+<span class="n">close_mesh_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">CloseSmallHolesOp</span><span class="p">()</span>
+<span class="c1"># Refine CloseSmallHolesOp attribute</span>
+<span class="n">close_mesh_op</span><span class="o">.</span><span class="n">max_hole_size</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># max hole&#39;s boundary vertices number to fill</span>
 </pre></div>
 </div>
-<p><strong>3/ Optimize mesh with decimation</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">decimate_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">DecimationOp</span><span class="p">()</span>
-<span class="c1"># Refine DecimationOp attributes</span>
-<span class="n">decimate_op</span><span class="o">.</span><span class="n">max_facets</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># target number of facets in the decimated mesh</span>
+</section>
+<section id="recover-quads-from-triangulated-meshes">
+<h3>Recover Quads from triangulated meshes<a class="headerlink" href="#recover-quads-from-triangulated-meshes" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quad_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">QuadRecoverOp</span><span class="p">()</span>
+<span class="n">quad_op</span><span class="o">.</span><span class="n">max_corner_angular_deviation_degrees</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">quad_op</span><span class="o">.</span><span class="n">max_planarity_angular_deviation_degrees</span> <span class="o">=</span> <span class="mf">10.0</span>
 </pre></div>
 </div>
-<p><strong>4/ Unwrap mesh UVs</strong></p>
-<p>The Unwrap operator has two main modes: <code class="docutils literal notranslate"><span class="pre">Default</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
-<p>While both modes perform well in most scenarios, the <code class="docutils literal notranslate"><span class="pre">Default</span></code> mode is generally better suited for organic meshes, whereas the <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> mode is optimized for hard-surface geometry.</p>
-<p><em>- Unwrapping using Default mode:</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seam and unwrap UVs</span>
-<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
-<span class="c1"># Refine UnwrapOp attributes</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># padding between islands in UV space</span>
-<span class="c1"># Make sure islands are not too much elongated (specific options for Default mode)</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">elongation_threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="../../_images/meetmat_default.png"><img alt="Imported" src="../../_images/meetmat_default.png" style="width: 227.48px; height: 227.26px;" /></a>
-<a class="reference internal image-reference" href="../../_images/meetmat_default_uvs.png"><img alt="Unwrapped UVs Default Mode" src="../../_images/meetmat_default_uvs.png" style="width: 229.0px; height: 229.25px;" /></a>
-<p><em>- Or Unwrapping using HardEdge mode:</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seam and unwrap UVs</span>
-<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
+<a class="reference internal image-reference" href="../../_images/CAD_wire_triangles.jpg"><img alt="Imported" height="205" src="../../_images/CAD_wire_triangles.jpg" width="205" />
+</a>
+<a class="reference internal image-reference" href="../../_images/CAD_wire_quads.jpg"><img alt="Unwrapped UVs HardEdge Mode" height="205" src="../../_images/CAD_wire_quads.jpg" width="205" />
+</a>
+</section>
+<section id="unwrap-mesh-uvs">
+<h3>Unwrap mesh UVs<a class="headerlink" href="#unwrap-mesh-uvs" title="Link to this heading"></a></h3>
+<p>The Unwrap operator works with three <a class="reference internal" href="../api/mesh_processing.html#module-substance3d.api.mesh_processing.mesh_processing"><span class="std std-ref">Modes</span></a>: <code class="docutils literal notranslate"><span class="pre">Default</span></code>, <code class="docutils literal notranslate"><span class="pre">Fast</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
+<p>All three modes perform well in most scenarios. The <code class="docutils literal notranslate"><span class="pre">Default</span></code> mode is generally better suited for organic meshes, the <code class="docutils literal notranslate"><span class="pre">Fast</span></code> mode prioritizes speed, and the <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> mode is optimized for hard-surface geometry.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Unwrap operator for HardEdge mode</span>
+<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
+
 <span class="c1"># Set Unwrap mode to HardEdge</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">HardEdge</span>
-<span class="c1"># Refine UnwrapOp attributes</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">HardEdge</span>
+
+<span class="c1"># Refine Packing attributes</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># padding between islands in UV space</span>
-<span class="c1"># Setting Hard Edge mode&#39;s specific segmentation options:</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">max_num_uv_tiles</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># maximum number of UV tiles to use when packing islands.</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">num_island_rotations</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># number of rotations to try when packing islands.</span>
+
+<span class="c1"># Setting segmentation options:</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_cluster_confidence</span> <span class="o">=</span> <span class="mf">0.97</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_iterations</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_outliers</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">elongation_threshold</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">1.0</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/meetmat_triplanar.png"><img alt="Imported" src="../../_images/meetmat_triplanar.png" style="width: 226.38px; height: 226.38px;" /></a>
-<a class="reference internal image-reference" href="../../_images/meetmat_triplanar_uvs.png"><img alt="Unwrapped UVs HardEdge Mode" src="../../_images/meetmat_triplanar_uvs.png" style="width: 228.5px; height: 228.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/CAD_triplanar_uvs_render.jpg"><img alt="Imported" height="205" src="../../_images/CAD_triplanar_uvs_render.jpg" width="205" />
+</a>
+<a class="reference internal image-reference" href="../../_images/CAD_triplanar_uvs.jpg"><img alt="Unwrapped UVs HardEdge Mode" height="205" src="../../_images/CAD_triplanar_uvs.jpg" width="819" />
+</a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unwrap Operator automatically packs UV after Unwrap.</p>
-<p>You may also have noticed above that the “default” and “hard edge” modes expose their own dedicated segmentation parameters:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">Default</span></code>:</dt><dd><ul class="simple">
-<li><p>segmentation.chunks_elongation</p></li>
-<li><p>segmentation.elongation_threshold</p></li>
-</ul>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>:</dt><dd><ul class="simple">
-<li><p>segmentation.max_cluster_confidence</p></li>
-<li><p>segmentation.max_num_iterations</p></li>
-<li><p>segmentation.max_num_outliers</p></li>
-</ul>
-</dd>
-</dl>
+<p>Unwrap Operator automatically packs UV after Unwrap. You can refine packing results with the packing attributes of the Unwrap operator.</p>
 </div>
-<p><strong>5/ Compute mesh processing operators on the scene.</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">[</span><span class="n">verts_weld_op</span><span class="p">,</span> <span class="n">close_mesh_op</span><span class="p">,</span> <span class="n">manifoldness_op</span><span class="p">,</span> <span class="n">decimate_op</span><span class="p">,</span> <span class="n">unwrap_op</span><span class="p">])</span>
+</section>
+<section id="compute-mesh-processing-operators-on-the-scene">
+<h3>Compute mesh processing operators on the scene.<a class="headerlink" href="#compute-mesh-processing-operators-on-the-scene" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">[</span><span class="n">verts_weld_op</span><span class="p">,</span> <span class="n">manifoldness_op</span><span class="p">,</span> <span class="n">close_mesh_op</span><span class="p">,</span> <span class="n">quad_op</span><span class="p">,</span> <span class="n">unwrap_op</span><span class="p">])</span>
 
 <span class="c1"># Export the processed asset scene to a new file</span>
 <span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mesh_output/processed_cad_file.fbx&quot;</span><span class="p">))</span>
@@ -252,16 +263,8 @@ CAD files tessellation level (‘prcTessLevel’) string arguments options are: 
 <p>Each operator is executed one after the other, following the specified order.</p>
 </div>
 </section>
-<section id="mesh-processing-results">
-<h2>Mesh Processing results<a class="headerlink" href="#mesh-processing-results" title="Permalink to this heading"></a></h2>
-<p><strong>Decimation (right image) on the imported CAD file (left image):</strong></p>
-<a class="reference internal image-reference" href="../../_images/grid_import.png"><img alt="Imported" src="../../_images/grid_import.png" style="width: 256.0px; height: 256.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/grid_decimation.png"><img alt="Decimated" src="../../_images/grid_decimation.png" style="width: 256.0px; height: 256.0px;" /></a>
-<p><strong>Unwrapped UVs after mesh decimation:</strong></p>
-<a class="reference internal image-reference" href="../../_images/grid_unwrapped_uvs.jpg"><img alt="Unwrapped UVs" src="../../_images/grid_unwrapped_uvs.jpg" style="width: 256.0px; height: 256.0px;" /></a>
-</section>
 <section id="processing-mesh-attributes-and-mesh-subtree-values">
-<h2>Processing Mesh Attributes and Mesh/Subtree Values<a class="headerlink" href="#processing-mesh-attributes-and-mesh-subtree-values" title="Permalink to this heading"></a></h2>
+<h3>Processing Mesh Attributes and Mesh/Subtree Values<a class="headerlink" href="#processing-mesh-attributes-and-mesh-subtree-values" title="Link to this heading"></a></h3>
 <p>SSCA provides access to mesh and scene hierarchy values, including mesh and/or UV surface areas and edge length metrics.</p>
 <p>These operators are divided into two categories:</p>
 <ul class="simple">
@@ -304,7 +307,7 @@ CAD files tessellation level (‘prcTessLevel’) string arguments options are: 
 </div>
 </section>
 <section id="best-practices">
-<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this heading"></a></h2>
+<h3>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Chain <strong>cleanup</strong> operators (duplicates / degenerates / short edges) <strong>before</strong>
 algorithms sensitive to topology (<code class="docutils literal notranslate"><span class="pre">decimation</span></code>, <code class="docutils literal notranslate"><span class="pre">remeshing</span></code>, <code class="docutils literal notranslate"><span class="pre">subdivision</span></code>).</p></li>
@@ -315,13 +318,232 @@ mesh review and then edit operators attributes value as needed.</p></li>
 </ul>
 </section>
 </section>
+<hr class="docutils" />
+<section id="cad-files-import-options">
+<h2>CAD Files Import Options<a class="headerlink" href="#cad-files-import-options" title="Link to this heading"></a></h2>
+<p><strong>SSCA</strong> <code class="docutils literal notranslate"><span class="pre">scene.add_reference()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">scene.load()</span></code> modules allow you to respectively import or create scene from a <a class="reference internal" href="nextsteps.html#file-import-parameters"><span class="std std-ref">CAD files</span></a>.
+Through these modules, you can set arguments like:</p>
+<ul class="simple">
+<li><p>Tessellation level</p></li>
+<li><p>Tessellation algorithms</p></li>
+<li><p>Tessellation quality checks &amp; fixes.</p></li>
+</ul>
+<p><strong>CAD import example using scene.load() module:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
+
+<span class="c1"># Path to the CAD file</span>
+<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/cad_file.iges&quot;</span><span class="p">)</span>
+
+<span class="c1"># Build a scene from tessellated CAD file</span>
+<span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_cad_file</span><span class="p">,</span>
+                 <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>  <span class="c1"># Set tessellation level at import.</span>
+                 <span class="n">generalRunMeshCleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set post cleanup operations after import.</span>
+                 <span class="n">generalReadHiddenObjects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Read hidden objects from the CAD file as well.</span>
+                 <span class="n">generalRunUvCorrection</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Run UV correction, repack UVs into 0-1 space.</span>
+                 <span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<section id="parametrictessellationlevel">
+<h3>parametricTessellationLevel<a class="headerlink" href="#parametrictessellationlevel" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies the tessellation level (<code class="docutils literal notranslate"><span class="pre">&quot;ExtraLow&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Low&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Medium&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;High&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ExtraHigh&quot;</span></code>).</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">&quot;medium&quot;</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_low.png"><img alt="extraLow" height="216" src="../../_images/mp_cad_import_tesselation_extra_low.png" width="81" />
+</a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_low.png"><img alt="low" height="216" src="../../_images/mp_cad_import_tesselation_low.png" width="81" />
+</a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_medium.png"><img alt="medium" height="216" src="../../_images/mp_cad_import_tesselation_medium.png" width="81" />
+</a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_high.png"><img alt="high" height="216" src="../../_images/mp_cad_import_tesselation_high.png" width="81" />
+</a>
+<a class="reference internal image-reference" href="../../_images/mp_cad_import_tesselation_extra_high.png"><img alt="extraHigh" height="216" src="../../_images/mp_cad_import_tesselation_extra_high.png" width="81" />
+</a>
+</section>
+<hr class="docutils" />
+<section id="prchoopsaccuratetessellation">
+<h3>prcHoopsAccurateTessellation<a class="headerlink" href="#prchoopsaccuratetessellation" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to use the accurate tessellation algorithm.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prchoopsaccuratetessellationwithgrid">
+<h3>prcHoopsAccurateTessellationWithGrid<a class="headerlink" href="#prchoopsaccuratetessellationwithgrid" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to improves tessellation accuracy by using a grid-based method.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prchoopsaccuratetessellationwithgridmaximumstitchlength">
+<h3>prcHoopsAccurateTessellationWithGridMaximumStitchLength<a class="headerlink" href="#prchoopsaccuratetessellationwithgridmaximumstitchlength" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Maximal grid stitch length.</div>
+<div class="line">Disabled if value is 0.</div>
+<div class="line">Be careful, a too small value can generate a huge tessellation.</div>
+<div class="line">Given in model units multiplied by the net scale of the Representation Item.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prchoopsaccuratesurfacecurvatures">
+<h3>prcHoopsAccurateSurfaceCurvatures<a class="headerlink" href="#prchoopsaccuratesurfacecurvatures" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to use the surface curvatures option as part of Accurate tessellation algorithms.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="generalrunmeshcleanup">
+<h3>generalRunMeshCleanup<a class="headerlink" href="#generalrunmeshcleanup" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to run mesh cleanup on imported meshes.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="generalrunuvcorrection">
+<h3>generalRunUvCorrection<a class="headerlink" href="#generalrunuvcorrection" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to run UV correction on imported meshes.</div>
+<div class="line">This option repack each mesh UVs into a 0-1 UV tile.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/CAD_UV_correction.jpg"><img alt="CAD UV correction" height="205" src="../../_images/CAD_UV_correction.jpg" width="205" />
+</a>
+</section>
+<hr class="docutils" />
+<section id="generalreadhiddenobjects">
+<h3>generalReadHiddenObjects<a class="headerlink" href="#generalreadhiddenobjects" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to read objects marked as hidden in their metadata.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricmaximaltriangleedgelength">
+<h3>parametricMaximalTriangleEdgeLength<a class="headerlink" href="#parametricmaximaltriangleedgelength" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Maximal length of the edges of triangles.</div>
+<div class="line">Disabled if value is <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</div>
+<div class="line">Be careful, a too small value can generate a huge tessellation.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricautomaticallyretrytessellationonfailure">
+<h3>parametricAutomaticallyRetryTessellationOnFailure<a class="headerlink" href="#parametricautomaticallyretrytessellationonfailure" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies whether to automatically retry tessellation with different parameters on failure.</div>
+<div class="line">This can disable the multi-attempt queue, giving you direct control via <code class="docutils literal notranslate"><span class="pre">&quot;prc...&quot;</span></code> options.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricprefergridstyletessellation">
+<h3>parametricPreferGridStyleTessellation<a class="headerlink" href="#parametricprefergridstyletessellation" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Whether to prefer grid-style tessellation.</div>
+<div class="line">This will reorder the multi-attempt queue to move grid-like results to the first attempts.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prchoopsuseheightinsteadofratio">
+<h3>prcHoopsUseHeightInsteadOfRatio<a class="headerlink" href="#prchoopsuseheightinsteadofratio" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Use MaxChordHeight instead of ChordHeightRatio.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricangletolerancedeg">
+<h3>parametricAngleToleranceDeg<a class="headerlink" href="#parametricangletolerancedeg" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies the maximum angle between two contiguous tessellation segments</div>
+<div class="line">describing the curve of a topological edge for every face.</div>
+<div class="line">Allowable values range from 10 to 40. Lower values will result in greater accuracy.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricmaxchordheight">
+<h3>parametricMaxChordHeight<a class="headerlink" href="#parametricmaxchordheight" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies the maximum distance between the original geometric surface specified in the CAD file</div>
+<div class="line">and the resulting tessellation.</div>
+<div class="line">Be careful, very small values can generate very large tessellation files.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parametricchordheightratio">
+<h3>parametricChordHeightRatio<a class="headerlink" href="#parametricchordheightratio" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Specifies the ratio of the diagonal length of the bounding box to the chord height.</div>
+<div class="line">A value of 50 means that the diagonal of the bounding box is 50 times greater than the chord height.</div>
+<div class="line">Values can range from 50 to 10,000. Higher values will generate more accurate tessellation.</div>
+</div>
+<ul class="simple">
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="knownissues.html" class="btn btn-neutral float-left" title="Known Issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../release.html" class="btn btn-neutral float-right" title="Substance3d Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="workflow_variant_compiler.html" class="btn btn-neutral float-right" title="Variant Compiler Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

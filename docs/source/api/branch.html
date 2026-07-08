@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.scene.branch &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -60,11 +57,13 @@
 <li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
@@ -79,7 +78,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -111,10 +111,10 @@
            <div itemprop="articleBody">
              
   <section id="module-substance3d.api.scene.branch">
-<span id="substance3d-api-scene-branch"></span><h1>substance3d.api.scene.branch<a class="headerlink" href="#module-substance3d.api.scene.branch" title="Permalink to this heading"></a></h1>
+<span id="substance3d-api-scene-branch"></span><h1>substance3d.api.scene.branch<a class="headerlink" href="#module-substance3d.api.scene.branch" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.create" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.create" title="Link to this definition"></a></dt>
 <dd><p>Create a SceneBranch context object. A scene branch is a way to edit and modify the current scene
 in a defined context without impacting it like a session layer. Enter a scene branch with the keyword <cite>with</cite>,
 and all the instructions will be applied on this specific branch layer on top of the current scene,
@@ -157,7 +157,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get" title="Link to this definition"></a></dt>
 <dd><p>Get an existing scene branch by giving a scene and an identifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -174,14 +174,14 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.save" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.save" title="Link to this definition"></a></dt>
 <dd><p>Save an existing scene branch by giving a scene and an identifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>StageHandler</em>) – the scene where the branch is applied</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the branch’s identifier</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
 <li><p><strong>apply</strong> (<em>bool</em>) – if True the saved file will be added to the current scene layer stack</p></li>
 </ul>
 </dd>
@@ -190,7 +190,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get_identifiers">
-<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_identifiers" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_identifiers" title="Link to this definition"></a></dt>
 <dd><p>Get a list of scene branch identifiers for the given scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -204,7 +204,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get_target_handler">
-<span class="sig-name descname"><span class="pre">get_target_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_target_handler" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_target_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_target_handler" title="Link to this definition"></a></dt>
 <dd><p>Get the StageHandler of the scene branch’s stage current target</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

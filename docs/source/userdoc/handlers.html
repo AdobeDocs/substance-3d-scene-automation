@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How to use Handlers &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -53,11 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
@@ -97,7 +96,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -129,15 +129,15 @@
            <div itemprop="articleBody">
              
   <section id="how-to-use-handlers">
-<h1>How to use Handlers<a class="headerlink" href="#how-to-use-handlers" title="Permalink to this heading"></a></h1>
+<h1>How to use Handlers<a class="headerlink" href="#how-to-use-handlers" title="Link to this heading"></a></h1>
 <p>We introduced the <cite>PrimHandler</cite> and <cite>StageHandler</cite> objects in the
 <a class="reference internal" href="mainconcepts.html#understand-the-ssca-s-handler-objects"><span class="std std-ref">Main Concepts</span></a> chapter, now we will see how
 to edit their properties like attributes and metadata.</p>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
-<p>Properties are dispatched in four different categories, depending on their uses : Attributes, Metadata, Aliases and Relationships.</p>
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<p>Properties are divided into four categories based on their purpose: Attributes, Metadata, Aliases and Relationships.</p>
 <section id="inspect-object-properties">
-<h3>Inspect object properties<a class="headerlink" href="#inspect-object-properties" title="Permalink to this heading"></a></h3>
+<h3>Inspect object properties<a class="headerlink" href="#inspect-object-properties" title="Link to this heading"></a></h3>
 <p>Inspecting a Prim is the first thing you may want to do if you want to know its properties.
 <code class="docutils literal notranslate"><span class="pre">PrimHandler.inspect()</span></code> lists all the different properties of a PrimHandler and group them by property type.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect the material properties</span>
@@ -182,7 +182,7 @@ to edit their properties like attributes and metadata.</p>
 <p class="admonition-title">Note</p>
 <p>You can also display the properties values with <code class="docutils literal notranslate"><span class="pre">PrimHandler.inspect(display_values=True)</span></code></p>
 </div>
-<p>Similarily to <cite>PrimHandler</cite>, you can also inspect scene properties with <code class="docutils literal notranslate"><span class="pre">StageHandler.inspect()</span></code> and display values with <code class="docutils literal notranslate"><span class="pre">StageHandler.inspect(display_values=True)</span></code>.</p>
+<p>Similarly to <cite>PrimHandler</cite>, you can also inspect scene properties with <code class="docutils literal notranslate"><span class="pre">StageHandler.inspect()</span></code> and display values with <code class="docutils literal notranslate"><span class="pre">StageHandler.inspect(display_values=True)</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect the shader attribute</span>
 <span class="n">my_scn</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
 </pre></div>
@@ -197,7 +197,7 @@ to edit their properties like attributes and metadata.</p>
 </div>
 </section>
 <section id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
 <p>In SSCA, each attribute of an object is an <cite>AttrHandler</cite> which holds a value.
 You can access an attribute handler by using the dot “.” operator of the <cite>PrimHandler</cite> or <cite>StageHandler</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a solid color material</span>
@@ -227,7 +227,7 @@ Consider it like a “group name” that regroup attributes sharing a common con
 <p class="admonition-title">Warning</p>
 <p>The given value type must be compatible with the attribute. An error will be raised if the value is not compatible.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">.set_default()</span></code> and <code class="docutils literal notranslate"><span class="pre">.get_default()</span></code> can get an set values at the default timecode, i.e, outside any sampled values / animation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.set_default()</span></code> and <code class="docutils literal notranslate"><span class="pre">.get_default()</span></code> can get and set values at the default timecode, i.e, outside any sampled values / animation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_obj</span><span class="o">.</span><span class="n">displayColor</span><span class="o">.</span><span class="n">set_default</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 <span class="n">default_color</span> <span class="o">=</span> <span class="n">my_obj</span><span class="o">.</span><span class="n">displayColor</span><span class="o">.</span><span class="n">get_default</span><span class="p">()</span>
 </pre></div>
@@ -241,10 +241,11 @@ Consider it like a “group name” that regroup attributes sharing a common con
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><cite>StageHandler</cite> doesn’t have USD attributes but have Metadata, we will see in another chapter how to handle Metadata edition.</p>
+<p><cite>StageHandler</cite> doesn’t have USD attributes, but it does have metadata.
+We will see in another chapter how to handle metadata editing.</p>
 </div>
 <section id="user-properties">
-<h4>User Properties<a class="headerlink" href="#user-properties" title="Permalink to this heading"></a></h4>
+<h4>User Properties<a class="headerlink" href="#user-properties" title="Link to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">.create_user_property(name,</span> <span class="pre">type_mapping)</span></code> allows users to add custom attributes to an object.
 As the created property is an <cite>AttrHandler</cite>, you can access the new attribute with all the methods mentionned above.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">type_mapping</span>
@@ -262,14 +263,14 @@ As the created property is an <cite>AttrHandler</cite>, you can access the new a
 </div>
 </section>
 <section id="properties-without-attrhandler">
-<h4>Properties without <cite>AttrHandler</cite><a class="headerlink" href="#properties-without-attrhandler" title="Permalink to this heading"></a></h4>
-<p>Only attributes use <cite>AttrHandler</cite>. Other properties like aliases (e.g :<code class="docutils literal notranslate"><span class="pre">.custom_data</span></code>) or metadata (e.g :<code class="docutils literal notranslate"><span class="pre">.documentation</span></code>) are accessed differently. We’ll discuss further about those properties in the next sections.</p>
+<h4>Properties without <cite>AttrHandler</cite><a class="headerlink" href="#properties-without-attrhandler" title="Link to this heading"></a></h4>
+<p>Only attributes use <cite>AttrHandler</cite>. Other properties like aliases (e.g., <code class="docutils literal notranslate"><span class="pre">.custom_data</span></code>) or metadata (e.g., <code class="docutils literal notranslate"><span class="pre">.documentation</span></code>) are accessed differently. We’ll discuss further about those properties in the next sections.</p>
 </section>
 </section>
 <section id="metadata">
-<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading"></a></h3>
-<p><cite>StageHandler</cite> and <cite>PrimHandler</cite> can have metadata. Unlike attributes, metadata values are obtained using directly the dot “.” operator of the handler.
-Available metada can always be checked with <code class="docutils literal notranslate"><span class="pre">.inspect()</span></code>.</p>
+<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h3>
+<p><cite>StageHandler</cite> and <cite>PrimHandler</cite> can have metadata. Unlike attributes, metadata values are obtained directly using the dot “.” operator of the handler.
+Available metadata can always be checked with <code class="docutils literal notranslate"><span class="pre">.inspect()</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a cube</span>
 <span class="n">my_cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scn</span><span class="p">)</span>
 
@@ -297,14 +298,14 @@ in the USD document (see example below).</p>
 as described in the next chapter.</p>
 </section>
 <section id="aliases">
-<h3>Aliases<a class="headerlink" href="#aliases" title="Permalink to this heading"></a></h3>
+<h3>Aliases<a class="headerlink" href="#aliases" title="Link to this heading"></a></h3>
 <p>Aliases are properties that can’t be assigned a new value. However, even though mutables like <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> and
 <code class="docutils literal notranslate"><span class="pre">variant_selections</span></code> can’t be re-assigned a new value, they are still editable, and SSCA modules
 like <code class="docutils literal notranslate"><span class="pre">variant</span></code> and <code class="docutils literal notranslate"><span class="pre">scene</span></code> will facilitate those edits.</p>
 <section id="custom-data">
-<h4>Custom Data<a class="headerlink" href="#custom-data" title="Permalink to this heading"></a></h4>
+<h4>Custom Data<a class="headerlink" href="#custom-data" title="Link to this heading"></a></h4>
 <p>Custom data can be added using <cite>PrimHandler</cite> and <cite>StageHandler</cite> <code class="docutils literal notranslate"><span class="pre">.custom_data</span></code> alias (dict).
-As Custom Data are saved within the usd file, this is a convenient way to share informations between softwares.</p>
+As Custom Data are saved within the USD file, this is a convenient way to share information between software.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add a new key value to the customData of my_cube</span>
 <span class="n">my_cube</span><span class="o">.</span><span class="n">custom_data</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
 
@@ -315,14 +316,14 @@ As Custom Data are saved within the usd file, this is a convenient way to share 
 </section>
 </section>
 <section id="relationships">
-<h3>Relationships<a class="headerlink" href="#relationships" title="Permalink to this heading"></a></h3>
+<h3>Relationships<a class="headerlink" href="#relationships" title="Link to this heading"></a></h3>
 <p>Relationships are attributes that have connections with other Prims.
 The most used relationship is <code class="docutils literal notranslate"><span class="pre">.material.binding</span></code> that, as its name suggests, indicates with what materials the Prim is bound.</p>
 <p><code class="docutils literal notranslate"><span class="pre">.add()</span></code> adds a single object to the Relationship list.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">card</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sphere_ball_mat</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">.set()</span></code> sets the Relationship list with the mentionned object list.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.set()</span></code> sets the Relationship list with the mentioned object list.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">card</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="n">sphere_ball_mat</span><span class="p">,</span> <span class="n">rect_mat</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -347,10 +348,10 @@ The most used relationship is <code class="docutils literal notranslate"><span c
 </section>
 </section>
 <section id="attribute-connection">
-<h2>Attribute Connection<a class="headerlink" href="#attribute-connection" title="Permalink to this heading"></a></h2>
+<h2>Attribute Connection<a class="headerlink" href="#attribute-connection" title="Link to this heading"></a></h2>
 <p>Attribute connections are used to bind an attribute with the value of another attribute of the same <cite>PrimHandler</cite> or another.</p>
 <section id="example-scene">
-<h3>Example Scene<a class="headerlink" href="#example-scene" title="Permalink to this heading"></a></h3>
+<h3>Example Scene<a class="headerlink" href="#example-scene" title="Link to this heading"></a></h3>
 <p>We’ll start from the scene below and use it in the next sections to explain the use of attribute connections.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scene Creation</span>
 <span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
@@ -378,7 +379,7 @@ The most used relationship is <code class="docutils literal notranslate"><span c
 <img alt="../../_images/colored_spheres_01.png" src="../../_images/colored_spheres_01.png" />
 </section>
 <section id="making-connections">
-<h3>Making connections<a class="headerlink" href="#making-connections" title="Permalink to this heading"></a></h3>
+<h3>Making connections<a class="headerlink" href="#making-connections" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">.connect()</span></code> links the current <cite>AttrHandler</cite> value to the value of the <cite>AttrHandler</cite> passed in arguments.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connecting blue and green material basecolor to red material basecolor</span>
 <span class="n">blue_mat</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">red_mat</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span><span class="p">)</span>
@@ -417,7 +418,7 @@ which can lead to confusion.</p>
 </div>
 </section>
 <section id="getting-connected-value">
-<h3>Getting connected value<a class="headerlink" href="#getting-connected-value" title="Permalink to this heading"></a></h3>
+<h3>Getting connected value<a class="headerlink" href="#getting-connected-value" title="Link to this heading"></a></h3>
 <p>We saw earlier that <code class="docutils literal notranslate"><span class="pre">.get()</span></code> returns the actual value of an attribute, even if a connection to another <cite>AttrHandler</cite> exists.
 In order to get the connected <cite>AttrHandler</cite> value, we will use <code class="docutils literal notranslate"><span class="pre">.get_connected_value()</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking connections on the blue material baseColor attribute</span>
@@ -447,7 +448,7 @@ In order to get the connected <cite>AttrHandler</cite> value, we will use <code 
 </div>
 </section>
 <section id="clearing-a-connection">
-<h3>Clearing a connection<a class="headerlink" href="#clearing-a-connection" title="Permalink to this heading"></a></h3>
+<h3>Clearing a connection<a class="headerlink" href="#clearing-a-connection" title="Link to this heading"></a></h3>
 <p>A connection can be cleared using <code class="docutils literal notranslate"><span class="pre">.clear_connection()</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clears the green material color connection</span>
 <span class="n">green_mat</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span><span class="o">.</span><span class="n">clear_connection</span><span class="p">()</span>
@@ -457,7 +458,7 @@ In order to get the connected <cite>AttrHandler</cite> value, we will use <code 
 </section>
 </section>
 <section id="inspect-scene-trees">
-<h2>Inspect scene trees<a class="headerlink" href="#inspect-scene-trees" title="Permalink to this heading"></a></h2>
+<h2>Inspect scene trees<a class="headerlink" href="#inspect-scene-trees" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">.tree()</span></code> is another helpful Handler’s method that will allow you to quickly print a scene hierarchy tree :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect the scene tree</span>
 <span class="n">my_scn</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>

@@ -1,23 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Index &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -50,11 +47,13 @@
 <li class="toctree-l1"><a class="reference internal" href="source/api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/utility.html">substance3d.api.utility</a></li>
@@ -69,7 +68,8 @@
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -118,6 +118,7 @@
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
@@ -163,6 +164,8 @@
 </li>
         <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.PropertyFnError.__init__">(PropertyFnError method)</a>
 </li>
+        <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.ReferenceNotFound.__init__">(ReferenceNotFound method)</a>
+</li>
         <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized.__init__">(RendererUninitialized method)</a>
 </li>
         <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.RenderingNotDone.__init__">(RenderingNotDone method)</a>
@@ -202,6 +205,8 @@
 </li>
       <li><a href="source/substance3d.api.scene.html#substance3d.api.scene.animation.ActiveTimecode">ActiveTimecode (class in substance3d.api.scene.animation)</a>
 </li>
+      <li><a href="source/api/material_utilities.html#substance3d.api.material.material_utilities.add_definition_from_existing">add_definition_from_existing() (in module substance3d.api.material.material_utilities)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material_utilities.add_definition_from_existing">[1]</a>
+</li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.log.Logger.add_file_sink">add_file_sink() (Logger method)</a>
 </li>
       <li><a href="source/api/scene.html#substance3d.api.scene.scene.add_layer">add_layer() (in module substance3d.api.scene.scene)</a>, <a href="source/substance3d.api.scene.html#substance3d.api.scene.scene.add_layer">[1]</a>
@@ -224,10 +229,10 @@
 </li>
       <li><a href="source/substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.ANGLE">ANGLE (SbsarWidget attribute)</a>
 </li>
-      <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.apply_deprecated_switch">apply_deprecated_switch() (in module substance3d.api.core.utilities)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.apply_deprecated_switch">apply_deprecated_switch() (in module substance3d.api.core.utilities)</a>
+</li>
       <li><a href="source/api/export.html#substance3d.api.export.export.archive">archive() (in module substance3d.api.export.export)</a>, <a href="source/substance3d.api.export.html#substance3d.api.export.export.archive">[1]</a>
 </li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.ArchiveCreationFailed">ArchiveCreationFailed</a>
@@ -274,16 +279,18 @@
       </ul></li>
       <li><a href="source/substance3d.api.camera.html#substance3d.api.camera.camera.BackplateFitTechnique">BackplateFitTechnique (class in substance3d.api.camera.camera)</a>
 </li>
+      <li><a href="source/api/material_utilities.html#substance3d.api.material.material_utilities.bake_connections">bake_connections() (in module substance3d.api.material.material_utilities)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material_utilities.bake_connections">[1]</a>
+</li>
       <li><a href="source/substance3d.api.material.html#substance3d.api.material.sbsar_utilities.bake_sbsar">bake_sbsar() (in module substance3d.api.material.sbsar_utilities)</a>
 </li>
       <li><a href="source/substance3d.api.material.html#substance3d.api.material.sbsar_utilities.bake_scene_sbsar">bake_scene_sbsar() (in module substance3d.api.material.sbsar_utilities)</a>
 </li>
       <li><a href="source/api/transform.html#substance3d.api.transform.transform.bake_transforms">bake_transforms() (in module substance3d.api.transform.transform)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform.bake_transforms">[1]</a>
 </li>
-      <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.BasePropertiesRepr">BasePropertiesRepr (class in substance3d.api.core.utilities)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.BasePropertiesRepr">BasePropertiesRepr (class in substance3d.api.core.utilities)</a>
+</li>
       <li><a href="source/api/transform_utilities.html#substance3d.api.transform.transform_utilities.bbox_anchor_midpoint">bbox_anchor_midpoint() (in module substance3d.api.transform.transform_utilities)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform_utilities.bbox_anchor_midpoint">[1]</a>
 </li>
       <li><a href="source/api/transform_utilities.html#substance3d.api.transform.transform_utilities.bbox_info">bbox_info() (in module substance3d.api.transform.transform_utilities)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform_utilities.bbox_info">[1]</a>
@@ -388,10 +395,10 @@
 </li>
       <li><a href="source/substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.colorTemperature">colorTemperature (LightProperties attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarWidget.COMBOBOX">COMBOBOX (SbsarWidget attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/api/camera.html#substance3d.api.camera.camera.compute_clipping_range">compute_clipping_range() (in module substance3d.api.camera.camera)</a>, <a href="source/substance3d.api.camera.html#substance3d.api.camera.camera.compute_clipping_range">[1]</a>
 </li>
       <li><a href="source/api/mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.ComputeEdgeLengthsOp">ComputeEdgeLengthsOp (class in substance3d.api.mesh_processing.mesh_processing)</a>
@@ -415,6 +422,8 @@
       <li><a href="source/substance3d.api.html#substance3d.api.CONVERT_PATH_TO_RELATIVE">CONVERT_PATH_TO_RELATIVE (in module substance3d.api)</a>
 </li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.convert_path_to_relative">convert_path_to_relative() (in module substance3d.api.core.utilities)</a>
+</li>
+      <li><a href="source/api/material_utilities.html#substance3d.api.material.material_utilities.convert_vertex_colors_to_materials">convert_vertex_colors_to_materials() (in module substance3d.api.material.material_utilities)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material_utilities.convert_vertex_colors_to_materials">[1]</a>
 </li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.type_mapping.ConverterBase">ConverterBase (class in substance3d.api.core.type_mapping)</a>
 </li>
@@ -500,6 +509,8 @@
 </li>
       <li><a href="source/substance3d.api.html#substance3d.api.DEFAULT_TIMECODE">DEFAULT_TIMECODE (in module substance3d.api)</a>
 </li>
+      <li><a href="source/api/material_utilities.html#substance3d.api.material.material_utilities.Definitions">Definitions (class in substance3d.api.material.material_utilities)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material_utilities.Definitions">[1]</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.del_files">del_files() (in module substance3d.api.core.utilities)</a>
@@ -570,6 +581,8 @@
 </li>
       <li><a href="source/api/utility.html#substance3d.api.utility.utility.find_available_path">find_available_path() (in module substance3d.api.utility.utility)</a>, <a href="source/substance3d.api.utility.html#substance3d.api.utility.utility.find_available_path">[1]</a>
 </li>
+      <li><a href="source/api/material_utilities.html#substance3d.api.material.material_utilities.find_material_path_from_file">find_material_path_from_file() (in module substance3d.api.material.material_utilities)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material_utilities.find_material_path_from_file">[1]</a>
+</li>
       <li><a href="source/api/transform_utilities.html#substance3d.api.transform.transform_utilities.find_most_distant_positions">find_most_distant_positions() (in module substance3d.api.transform.transform_utilities)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform_utilities.find_most_distant_positions">[1]</a>
 </li>
       <li><a href="source/api/scene.html#substance3d.api.scene.scene.flatten_references">flatten_references() (in module substance3d.api.scene.scene)</a>, <a href="source/substance3d.api.scene.html#substance3d.api.scene.scene.flatten_references">[1]</a>
@@ -598,6 +611,8 @@
 </li>
       <li><a href="source/api/camera.html#substance3d.api.camera.camera.frame">frame() (in module substance3d.api.camera.camera)</a>, <a href="source/substance3d.api.camera.html#substance3d.api.camera.camera.frame">[1]</a>
 </li>
+      <li><a href="source/api/camera.html#substance3d.api.camera.camera.frame_turntable">frame_turntable() (in module substance3d.api.camera.camera)</a>, <a href="source/substance3d.api.camera.html#substance3d.api.camera.camera.frame_turntable">[1]</a>
+</li>
       <li><a href="source/api/image.html#substance3d.api.image.image.Image.from_asset_attr">from_asset_attr() (Image class method)</a>, <a href="source/substance3d.api.image.html#substance3d.api.image.image.Image.from_asset_attr">[1]</a>
 </li>
       <li><a href="source/api/image.html#substance3d.api.image.image.Image.from_assetpath">from_assetpath() (Image class method)</a>, <a href="source/substance3d.api.image.html#substance3d.api.image.image.Image.from_assetpath">[1]</a>
@@ -621,6 +636,8 @@
       <li><a href="source/api/branch.html#substance3d.api.scene.branch.get">get() (in module substance3d.api.scene.branch)</a>, <a href="source/substance3d.api.scene.html#substance3d.api.scene.branch.get">[1]</a>
 
       <ul>
+        <li><a href="source/api/thumbnails.html#substance3d.api.thumbnails.thumbnails.get">(in module substance3d.api.thumbnails.thumbnails)</a>, <a href="source/substance3d.api.thumbnails.html#substance3d.api.thumbnails.thumbnails.get">[1]</a>
+</li>
         <li><a href="source/api/variant.html#substance3d.api.variant.variant.get">(in module substance3d.api.variant.variant)</a>
 </li>
         <li><a href="source/substance3d.api.core.html#substance3d.api.core.log.ScopedLog.get">(ScopedLog method)</a>
@@ -637,6 +654,8 @@
       <li><a href="source/api/material.html#substance3d.api.material.material.get_assigned_material">get_assigned_material() (in module substance3d.api.material.material)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material.get_assigned_material">[1]</a>
 </li>
       <li><a href="source/api/scene.html#substance3d.api.scene.scene.get_default">get_default() (in module substance3d.api.scene.scene)</a>, <a href="source/substance3d.api.scene.html#substance3d.api.scene.scene.get_default">[1]</a>
+</li>
+      <li><a href="source/api/thumbnails.html#substance3d.api.thumbnails.thumbnails.get_from_filepath">get_from_filepath() (in module substance3d.api.thumbnails.thumbnails)</a>, <a href="source/substance3d.api.thumbnails.html#substance3d.api.thumbnails.thumbnails.get_from_filepath">[1]</a>
 </li>
       <li><a href="source/api/branch.html#substance3d.api.scene.branch.get_identifiers">get_identifiers() (in module substance3d.api.scene.branch)</a>, <a href="source/substance3d.api.scene.html#substance3d.api.scene.branch.get_identifiers">[1]</a>
 
@@ -656,14 +675,16 @@
 </li>
       <li><a href="source/api/utility.html#substance3d.api.utility.utility.get_plugins_sdfmetadata">get_plugins_sdfmetadata() (in module substance3d.api.utility.utility)</a>, <a href="source/substance3d.api.utility.html#substance3d.api.utility.utility.get_plugins_sdfmetadata">[1]</a>
 </li>
+      <li><a href="source/api/variant.html#substance3d.api.variant.variant.get_primary_variant_set">get_primary_variant_set() (in module substance3d.api.variant.variant)</a>
+</li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.get_public_attr">get_public_attr() (in module substance3d.api.core.utilities)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/api/renderer.html#substance3d.api.renderer.renderer.get_render_product">get_render_product() (in module substance3d.api.renderer.renderer)</a>, <a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_product">[1]</a>
 </li>
       <li><a href="source/api/renderer.html#substance3d.api.renderer.renderer.get_render_settings">get_render_settings() (in module substance3d.api.renderer.renderer)</a>, <a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.get_render_settings">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/api/transform.html#substance3d.api.transform.transform.get_rotate">get_rotate() (in module substance3d.api.transform.transform)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform.get_rotate">[1]</a>
 </li>
       <li><a href="source/api/transform.html#substance3d.api.transform.transform.get_rotate_pivot">get_rotate_pivot() (in module substance3d.api.transform.transform)</a>, <a href="source/substance3d.api.transform.html#substance3d.api.transform.transform.get_rotate_pivot">[1]</a>
@@ -698,11 +719,11 @@
 </li>
       <li><a href="source/api/export.html#substance3d.api.export.export.gltf">gltf() (in module substance3d.api.export.export)</a>, <a href="source/substance3d.api.export.html#substance3d.api.export.export.gltf">[1]</a>
 </li>
+      <li><a href="source/substance3d.api.html#substance3d.api.GPU_INDEX">GPU_INDEX (in module substance3d.api)</a>
+</li>
       <li><a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.GPUPathTracing">GPUPathTracing (RenderingTechnique attribute)</a>
 </li>
       <li><a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique.GPURasterization">GPURasterization (RenderingTechnique attribute)</a>
-</li>
-      <li><a href="source/substance3d.api.html#substance3d.api.GPUSettings">GPUSettings (class in substance3d.api)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -736,8 +757,6 @@
       </ul></li>
       <li><a href="source/api/light.html#substance3d.api.light.light.import_environment_texture">import_environment_texture() (in module substance3d.api.light.light)</a>, <a href="source/substance3d.api.light.html#substance3d.api.light.light.import_environment_texture">[1]</a>
 </li>
-      <li><a href="source/substance3d.api.html#substance3d.api.GPUSettings.index">index (GPUSettings attribute)</a>
-</li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.log.Channel.INFO">INFO (Channel attribute)</a>
 </li>
       <li><a href="source/api/renderer.html#substance3d.api.renderer.renderer.init">init() (in module substance3d.api.renderer.renderer)</a>, <a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.init">[1]</a>
@@ -756,10 +775,10 @@
 </li>
       <li><a href="source/substance3d.api.material.html#substance3d.api.material.sbsar_utilities.SbsarType.INTEGER4">INTEGER4 (SbsarType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/substance3d.api.light.html#substance3d.api.light.light_properties.LightProperties.intensity">intensity (LightProperties attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="source/api/image.html#substance3d.api.image.image.invert_channel">invert_channel() (in module substance3d.api.image.image)</a>, <a href="source/substance3d.api.image.html#substance3d.api.image.image.invert_channel">[1]</a>
 </li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.utilities.is_local_prim">is_local_prim() (in module substance3d.api.core.utilities)</a>
@@ -902,6 +921,8 @@
 </li>
         <li><a href="source/api/material.html#module-substance3d.api.material.material">substance3d.api.material.material</a>, <a href="source/substance3d.api.material.html#module-substance3d.api.material.material">[1]</a>
 </li>
+        <li><a href="source/api/material_utilities.html#module-substance3d.api.material.material_utilities">substance3d.api.material.material_utilities</a>, <a href="source/substance3d.api.material.html#module-substance3d.api.material.material_utilities">[1]</a>
+</li>
         <li><a href="source/substance3d.api.material.html#module-substance3d.api.material.sbsar_utilities">substance3d.api.material.sbsar_utilities</a>
 </li>
         <li><a href="source/substance3d.api.mesh_processing.html#module-substance3d.api.mesh_processing">substance3d.api.mesh_processing</a>
@@ -927,6 +948,10 @@
         <li><a href="source/substance3d.api.stats.html#module-substance3d.api.stats">substance3d.api.stats</a>
 </li>
         <li><a href="source/api/stats.html#module-substance3d.api.stats.stats">substance3d.api.stats.stats</a>, <a href="source/substance3d.api.stats.html#module-substance3d.api.stats.stats">[1]</a>
+</li>
+        <li><a href="source/substance3d.api.thumbnails.html#module-substance3d.api.thumbnails">substance3d.api.thumbnails</a>
+</li>
+        <li><a href="source/api/thumbnails.html#module-substance3d.api.thumbnails.thumbnails">substance3d.api.thumbnails.thumbnails</a>, <a href="source/substance3d.api.thumbnails.html#module-substance3d.api.thumbnails.thumbnails">[1]</a>
 </li>
         <li><a href="source/substance3d.api.transform.html#module-substance3d.api.transform">substance3d.api.transform</a>
 </li>
@@ -1027,7 +1052,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="source/substance3d.api.html#substance3d.api.GPUSettings.print_info">print_info() (GPUSettings static method)</a>
+      <li><a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.print_gpu_info">print_gpu_info() (in module substance3d.api.renderer.renderer)</a>
 </li>
       <li><a href="source/api/mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.process">process() (in module substance3d.api.mesh_processing.mesh_processing)</a>, <a href="source/substance3d.api.mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.process">[1]</a>
 </li>
@@ -1046,6 +1071,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/api/mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.QuadRecoverOp">QuadRecoverOp (class in substance3d.api.mesh_processing.mesh_processing)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -1057,7 +1090,11 @@
       </ul></li>
       <li><a href="source/api/light.html#substance3d.api.light.light.rect">rect() (in module substance3d.api.light.light)</a>, <a href="source/substance3d.api.light.html#substance3d.api.light.light.rect">[1]</a>
 </li>
+      <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.ReferenceNotFound">ReferenceNotFound</a>
+</li>
       <li><a href="source/api/mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.RemeshOp">RemeshOp (class in substance3d.api.mesh_processing.mesh_processing)</a>
+</li>
+      <li><a href="source/api/thumbnails.html#substance3d.api.thumbnails.thumbnails.remove">remove() (in module substance3d.api.thumbnails.thumbnails)</a>, <a href="source/substance3d.api.thumbnails.html#substance3d.api.thumbnails.thumbnails.remove">[1]</a>
 </li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.log.Logger.remove_console_sink">remove_console_sink() (Logger method)</a>
 </li>
@@ -1076,11 +1113,15 @@
       <li><a href="source/api/mesh_processing.html#substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp">RemoveTinyFacesOp (class in substance3d.api.mesh_processing.mesh_processing)</a>
 </li>
       <li><a href="source/api/renderer.html#substance3d.api.renderer.renderer.render">render() (in module substance3d.api.renderer.renderer)</a>, <a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.render">[1]</a>
+
+      <ul>
+        <li><a href="source/api/thumbnails.html#substance3d.api.thumbnails.thumbnails.render">(in module substance3d.api.thumbnails.thumbnails)</a>, <a href="source/substance3d.api.thumbnails.html#substance3d.api.thumbnails.thumbnails.render">[1]</a>
 </li>
-      <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized">RendererUninitialized</a>
-</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.RendererUninitialized">RendererUninitialized</a>
+</li>
       <li><a href="source/substance3d.api.core.html#substance3d.api.core.exceptions.RenderingNotDone">RenderingNotDone</a>
 </li>
       <li><a href="source/api/renderer.html#substance3d.api.renderer.renderer.RenderingTechnique">RenderingTechnique (class in substance3d.api.renderer.renderer)</a>, <a href="source/substance3d.api.renderer.html#substance3d.api.renderer.renderer.RenderingTechnique">[1]</a>
@@ -1171,9 +1212,11 @@
 </li>
       <li><a href="source/api/utility.html#substance3d.api.utility.utility.session_editing">session_editing() (in module substance3d.api.utility.utility)</a>, <a href="source/substance3d.api.utility.html#substance3d.api.utility.utility.session_editing">[1]</a>
 </li>
-      <li><a href="source/api/variant.html#substance3d.api.variant.variant.set">set() (in module substance3d.api.variant.variant)</a>
+      <li><a href="source/api/thumbnails.html#substance3d.api.thumbnails.thumbnails.set">set() (in module substance3d.api.thumbnails.thumbnails)</a>, <a href="source/substance3d.api.thumbnails.html#substance3d.api.thumbnails.thumbnails.set">[1]</a>
 
       <ul>
+        <li><a href="source/api/variant.html#substance3d.api.variant.variant.set">(in module substance3d.api.variant.variant)</a>
+</li>
         <li><a href="source/substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.Rotate.set">(Transformer.Rotate method)</a>
 </li>
         <li><a href="source/substance3d.api.transform.html#substance3d.api.transform.transform.Transformer.Scale.set">(Transformer.Scale method)</a>
@@ -1194,6 +1237,8 @@
       <li><a href="source/api/material.html#substance3d.api.material.material.set_input">set_input() (in module substance3d.api.material.material)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material.set_input">[1]</a>
 </li>
       <li><a href="source/api/material.html#substance3d.api.material.material.set_normal_format">set_normal_format() (in module substance3d.api.material.material)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material.set_normal_format">[1]</a>
+</li>
+      <li><a href="source/api/variant.html#substance3d.api.variant.variant.set_primary_variant_set">set_primary_variant_set() (in module substance3d.api.variant.variant)</a>
 </li>
       <li><a href="source/api/material.html#substance3d.api.material.material.set_rotate">set_rotate() (in module substance3d.api.material.material)</a>, <a href="source/substance3d.api.material.html#substance3d.api.material.material.set_rotate">[1]</a>
 
@@ -1295,8 +1340,6 @@
         <li><a href="source/substance3d.api.core.html#module-substance3d.api.core">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     substance3d.api.core.exceptions
 
@@ -1304,6 +1347,8 @@
         <li><a href="source/substance3d.api.core.html#module-substance3d.api.core.exceptions">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     substance3d.api.core.log
 
@@ -1396,6 +1441,13 @@
 </li>
       </ul></li>
       <li>
+    substance3d.api.material.material_utilities
+
+      <ul>
+        <li><a href="source/api/material_utilities.html#module-substance3d.api.material.material_utilities">module</a>, <a href="source/substance3d.api.material.html#module-substance3d.api.material.material_utilities">[1]</a>
+</li>
+      </ul></li>
+      <li>
     substance3d.api.material.sbsar_utilities
 
       <ul>
@@ -1484,6 +1536,20 @@
 
       <ul>
         <li><a href="source/api/stats.html#module-substance3d.api.stats.stats">module</a>, <a href="source/substance3d.api.stats.html#module-substance3d.api.stats.stats">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    substance3d.api.thumbnails
+
+      <ul>
+        <li><a href="source/substance3d.api.thumbnails.html#module-substance3d.api.thumbnails">module</a>
+</li>
+      </ul></li>
+      <li>
+    substance3d.api.thumbnails.thumbnails
+
+      <ul>
+        <li><a href="source/api/thumbnails.html#module-substance3d.api.thumbnails.thumbnails">module</a>, <a href="source/substance3d.api.thumbnails.html#module-substance3d.api.thumbnails.thumbnails">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1710,6 +1776,10 @@
         <li><a href="source/substance3d.api.core.html#substance3d.api.core.type_mapping.VectorStr.usd_types">(VectorStr attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/substance3d.api.html#substance3d.api.USE_SPECIALIZED_RAYTRACING_PIPELINES">USE_SPECIALIZED_RAYTRACING_PIPELINES (in module substance3d.api)</a>
+</li>
   </ul></td>
 </tr></table>
 

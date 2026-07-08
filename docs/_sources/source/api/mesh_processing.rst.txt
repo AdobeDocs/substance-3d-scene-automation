@@ -361,6 +361,17 @@ substance3d.api.mesh_processing
    +---------------------------------+---------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------+
 
 
+.. class:: QuadRecoverOp
+
+  Recovers quads from pairs of adjacent triangles in a mesh if they satisfy the input parameters defining the shape of a valid quad.
+
+   .. rubric:: Attributes
+
+   +---------------------------------------------+------------+----------------+---------------------------------------------------------------------------------------------------------------+
+   | **max_corner_angular_deviation_degrees**    | float      | 20.0           | Maximum allowed absolute deviation from 90 degrees for a corner of a quad.                                    |
+   +---------------------------------------------+------------+----------------+---------------------------------------------------------------------------------------------------------------+
+   | **max_planarity_angular_deviation_degrees** | float      | 10.0           | Maximum allowed absolute angle in degrees between 2 adjacent triangles forming a quad.                        |
+   +---------------------------------------------+------------+----------------+---------------------------------------------------------------------------------------------------------------+
 
 
 

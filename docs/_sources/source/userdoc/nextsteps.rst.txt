@@ -66,12 +66,12 @@ render images and save them as contact-sheet:
 Scene Branch Management
 =======================
 
-What is the a scene branch?
+What is a scene branch?
 A scene branch is a way to edit your current scene in a defined context without impacting the current state of your scene.
 Similar to code development with git, you can create a branch to modify your scene without affecting the main branch.
-This branch system can be used to save several states of your scene or used as session layers
+This branch system can be used to save several states of your scene or be used as session layers.
 
-Let's see it in actions with an example.
+Let's see it in action with an example.
 Branch Schema
 
 .. image:: /source/static/scene_branch_documentation.jpg
@@ -138,13 +138,13 @@ Eclair is a renderer developed by Adobe and shipped with SSCA. SSCA integrates t
 Eclair to easily use and render any USD scene.
 
 When creating a material with SSCA, an ``AdobeStandardMaterial`` shader is created that Eclair 
-will primarly use if available. ``AdobeStandardMaterial`` has more features and can carry more informations, notably
+will primarily use if available. ``AdobeStandardMaterial`` has more features and can carry more information, notably
 when using SBSAR materials and other Substance files in your workflow.
 
-What does that mean ?
+What does that mean?
 *********************
 
-Natively, USD features a shader called ``USDPreviewSurface``, that has several inputs values and that can be rendered with all Hydra-based renderers (more informations on `Pixar's USD Documentation <https://openusd.org/release/spec_usdpreviewsurface.html>`_).
+Natively, USD features a shader called ``USDPreviewSurface``, that has several inputs values and that can be rendered with all Hydra-based renderers (more information on `Pixar's USD Documentation <https://openusd.org/release/spec_usdpreviewsurface.html>`_).
 While Eclair can also render ``USDPreviewSurface``, it will prioritize ``AdobeStandardMaterial`` if available, meaning
 users must be aware of the renderer used, the shader used, and consequently, the inputs that will be used, should they wish to manipulate them.
 
@@ -183,7 +183,7 @@ We can notice there's a ``.baseColor`` input and a ``.diffuseColor`` input.
 ``.diffuseColor`` is used to change the material color within an ``USDPreviewSurface`` workflow, while 
 ``.baseColor`` is used within an ``AdobeStandardMaterial`` workflow.
 
-Without explaining further those workflows and shaders, what we must remind here is that there are common and specific inputs for both of them. 
+Without going into further detail about these workflows and shaders, what we should keep in mind here is that there are common and specific inputs for both of them. 
 If you work mainly with Eclair, you may want to primarily use ASM inputs, while if you 
 use primarily PreviewSurface, you'll want to use those inputs instead.
 
@@ -376,10 +376,10 @@ Render Settings
 `RenderSettings` is a prim that centralizes render parameters in your scene.
 They will be used by ``renderer.render()`` and ``renderer.init()`` when corresponding arguments aren't set.
 When a parameter is set on the `RenderSettings` prim, it will be saved in the stage and
-in the resulting USD files, making it a good way to share render informations. 
+in the resulting USD files, making it a good way to share render information. 
 
-``renderer.get_render_settings(scene)`` is used to get the current render settings of the scene.
-If they don't exist yet, this function will create them. Only one `RenderSettings` prim can be created per scene.
+``renderer.get_render_settings(scn)`` is used to get the current render settings of the scene.
+If they don't exist yet, this function will create it. Only one `RenderSettings` prim can be created per scene.
 
 When rendering, arguments given in ``renderer.init()`` and ``renderer.render()`` will take precedence
 over the `RenderSettings` corresponding parameters, but remember that only the latter will be saved in the scene and USD files.
@@ -509,10 +509,10 @@ You will find below the supported parameters for the following extensions :
     :file: /source/static/import_params_table.csv
     :header-rows: 1
 
-Managing metadatas
+Managing Metadata
 ==================
 
-SSCA includes a methods to get, modify and add metadata.
+SSCA includes methods to get, modify and add metadata.
 
 You can read the metadata of an image with ``image.metadata()`` and add or modify metadata with ``image.add_metadata()``.
 
@@ -566,7 +566,7 @@ Example:
 
     light1 = light.sphere(root, "light1") # Create a light (L composition arc)
 
-    # Change intensity on the light with a variant (V composition arc) and immediatly show its value
+    # Change intensity on the light with a variant (V composition arc) and immediately show its value
     with variant.create(root, "intensity1", "light1_intensities"):
         light1.inputs.intensity.set(1000.0)
         light1.inspect(display_values=True, filter="*intensity*")
@@ -588,7 +588,7 @@ Now let's use ``scene.move_to_reference()`` to move the light to reference arc.
     # ...
     scene.move_to_reference(light1) # Moving light1 from local (L) to reference (R) arc
 
-    # Change intensity on the light with a variant (V composition arc) and immediatly show its value
+    # Change intensity on the light with a variant (V composition arc) and immediately show its value
     with variant.create(root, "intensity1", "light1_intensities"):
         light1.inputs.intensity.set(1000.0)
         light1.inspect(display_values=True, filter="*intensity*")
@@ -603,3 +603,122 @@ Result :
     ...
 
 As light1 is now in reference arc, variant changes are taken into account as expected.
+
+Add thumbnails to your scene
+============================
+
+API Modules : :ref:`thumbnails<substance3d.api.thumbnails>`, :ref:`scene<substance3d.api.scene>`
+
+Thumbnails provide visual previews for USD assets, making them easier to browse and identify
+in asset catalogs, DCC integrations, and automation pipelines. The ``thumbnails`` module lets
+you render, attach, retrieve, and remove thumbnail images for scenes and individual prims.
+
+Check and render a thumbnail
+*****************************
+
+Use ``thumbnails.get()`` to check whether a scene already has a thumbnail. If it does not,
+render one with ``thumbnails.render()``:
+
+.. code-block:: python
+
+    from pathlib import Path
+    from substance3d.api import thumbnails, scene
+
+    thumbnail_path = Path("output/thumbnails/MeetMat_thumb.png")
+    mesh_file_path = Path("data/meshes/MeetMat.obj")
+    
+    my_scene = scene.load(mesh_file_path)
+
+    if not (thumb := thumbnails.get(my_scene)):
+        print("No thumbnail found. Rendering one...")
+        thumbnails.render(my_scene, thumbnail_path, resolution=(256, 256))
+        thumb = thumbnails.get(my_scene)
+
+    print("Thumbnail:", thumb)
+
+.. note::
+
+    ``thumbnails.render()`` references the rendered image on the stage's ``defaultPrim``
+    by default (``reference_result=True``), so calling ``thumbnails.set()`` afterwards
+    is not required in this case.
+
+Attach an existing image
+*************************
+
+If you already have a thumbnail (from a pre-existing render or an external tool), use
+``thumbnails.set()`` to associate it directly with the scene. This decouples thumbnail
+creation from embedding, which is useful when images are produced by a separate pipeline step:
+
+.. code-block:: python
+
+    thumbnails.set(my_scene, thumbnail_path)
+
+You can also render without auto-referencing and attach the result manually by combining
+``reference_result=False`` with an explicit ``thumbnails.set()`` call:
+
+.. code-block:: python
+
+    thumbnails.render(my_scene, thumbnail_path, resolution=(512, 512), reference_result=False)
+    thumbnails.set(my_scene, thumbnail_path)
+
+Read a thumbnail without loading the scene
+*******************************************
+
+Use ``thumbnails.get_from_filepath()`` to inspect the thumbnail stored in a USD file on
+disk without loading the full scene into memory:
+
+.. code-block:: python
+
+    thumb = thumbnails.get_from_filepath(Path("data/meshes/MeetMat.usda"))
+    if thumb:
+        print("Embedded thumbnail:", thumb)
+
+Render with a custom lighting template
+***************************************
+
+For full control over lighting, camera, and background, pass a USD template file to
+``thumbnails.render()``. The template must contain lights, a cyclorama, and a camera.
+The asset is automatically referenced into the first xform prim matching ``*asset*``, aligned
+to the template's up-axis, placed at ground level, and the camera is framed on it:
+
+.. code-block:: python
+
+    from pathlib import Path
+    from substance3d.api import thumbnails, scene
+
+    my_scene = scene.load(Path("data/meshes/MeetMat.obj"))
+    thumbnails.render(my_scene,
+                      Path("output/thumbnails/MeetMat_thumb.png"),
+                      resolution=(512, 512),
+                      custom_template=Path("templates/thumbnail_studio.usda")
+                      )
+
+Thumbnail an individual prim
+*****************************
+
+``thumbnails.get()``, ``thumbnails.set()``, and ``thumbnails.remove()`` also work on
+individual prims via a ``PrimHandler``. This is useful when a single USD file contains
+multiple assets that each need their own preview:
+
+.. code-block:: python
+
+    from substance3d.api import thumbnails, scene, primitive
+
+    my_scene = scene.new()
+    cube = primitive.cube(my_scene, "my_cube")
+
+    thumbnails.set(cube, "assets/previews/cube_thumb.png")
+    print(thumbnails.get(cube))
+    # >> assets/previews/cube_thumb.png
+
+    thumbnails.remove(cube)
+    print(thumbnails.get(cube))
+    # >> None
+
+.. note::
+
+    When a ``StageHandler`` is passed to ``thumbnails.get()``, ``thumbnails.set()``, or
+    ``thumbnails.remove()``, the operation targets the stage's ``defaultPrim``.
+
+    Calling these functions with a ``StageHandler`` that has no ``defaultPrim`` raises a
+    ``ValueError``—set one first (e.g. with ``scene.set_default()``).

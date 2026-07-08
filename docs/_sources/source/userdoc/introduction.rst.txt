@@ -14,7 +14,7 @@ or create hundreds of variations of a product during the design phase.
 .. important::
 
     SSCA is also designed to be as easy to use as possible -
-    it doesn't require USD specific knowledge or extensive programming experience.
+    it doesn't require USD-specific knowledge or extensive programming experience.
     Users with basic Python skills should be able to easily pick up and use SSCA.
 
 
@@ -31,7 +31,7 @@ How to install and configure SSCA
 SSCA Environment
 #################
 
-In order to use SSCA modules, the user must run their scripts with the ``python.exe`` provided in SSCA package.  
+In order to use SSCA modules, the user must run their scripts with the ``python.exe`` provided in the SSCA package.  
 
 Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.
 
@@ -66,7 +66,7 @@ Set up new project
 
 #. Expand the project folder in the explorer of VS Code UI
 
-#. Create a Python file clicking on the project folder "New File..." icon and give the file a name including the '.py' extension.
+#. Create a Python file by clicking on the project folder "New File..." icon and give the file a name including the '.py' extension.
     
     * In our example the script will be named: ``main.py``
 
@@ -80,19 +80,19 @@ Set up the Python interpreter
 """""""""""""""""""""""""""""
 
 Visual Studio Code allows the user to set the python interpreter for a specific project. 
-Since VS Code takes the default system version of Python we installed, to work in a virtual environment, we will need to create it.
+Since VS Code uses the system Python by default, we need to create a virtual environment to work with SSCA.
 
-#. With your project opended, click on the Python interpreter version in the very bottom right of the VS Code interface.
+#. With your project opened, click on the Python interpreter version in the very bottom right of the VS Code interface.
 
-#. A drop down menu will appear at the top where we have few options.
+#. A drop down menu will appear at the top where we have a few options.
 
 #. Click on "**Create Virtual Environment**"
 
     .. image:: /source/static/introduction_ide_setup/vscode_04_create_venv.png
 
-#. On next list click on "**Venv**"
+#. On the next list, click on "**Venv**"
 
-#. The application will ask you now to chose from a list of interpreters, click on "**Enter interpreter path...**"
+#. The application will now ask you to choose from a list of interpreters, click on "**Enter interpreter path...**"
 
     .. image:: /source/static/introduction_ide_setup/vscode_03_add_interpreter_path.png
 
@@ -112,7 +112,7 @@ Since VS Code takes the default system version of Python we installed, to work i
 
 Run your first script
 """""""""""""""""""""
-#. With the file we created in the precedent chapter "Set up new project" opened.
+#. With the file we created in the previous chapter "Set up new project" opened.
 #. Copy the code below into the file. This script creates a simple scene with a light and a cube. 
 
     .. code-block:: python
@@ -139,7 +139,7 @@ Run your first script
 #. To confirm the script ran successfully, a file called TestScene.usda should have been created in the same folder as your script.
 
 .. warning::
-    If the test script fails to find the SSCA modules, there could  be a conflict in the environment. 
+    If the test script fails to find the SSCA modules, there could be a conflict in the environment.
     Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
 
 PyCharm Instructions (version 2024.2.3)
@@ -243,14 +243,14 @@ Run your first script
 
     .. image:: /source/static/run_script.png
 
-#. Run the current script with shortcut ctrl + Shift + F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.
+#. Run the current script with shortcut Ctrl+Shift+F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.
 
-#. To confirm the script ran successfully, check the console at the bottom of the Pycharm window. The last line should say "Process finished with exit code 0".
+#. To confirm the script ran successfully, check the console at the bottom of the PyCharm window. The last line should say "Process finished with exit code 0".
 
     * Additionally, a file called TestScene.usda should have been created in the same folder as your script.
 
 .. warning::
-    If the test script fails to find the SSCA modules, there could  be a conflict in the environment. 
+    If the test script fails to find the SSCA modules, there could be a conflict in the environment.
     Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
 
 Configure your environment for Linux with NVIDIA GPU

@@ -68,7 +68,7 @@ API Modules : :ref:`scene<substance3d.api.scene>`, :ref:`transform<substance3d.a
 While you can create scenes from scratch, it's often useful to load existing 3D files.
 
 SSCA can load multiple different 3D filetypes beyond USD to modify and then save as USD,
-call ``scene.ALLOWED_EXTENSIONS`` variable to have the list.
+use the ``scene.ALLOWED_EXTENSIONS`` variable to get the full list.
 
 The script below loads the USDA file created in the "Create and build a scene" section.
 First the script adds a camera, then it searches the file for an existing cube object and
@@ -97,12 +97,12 @@ The image below shows the resulting scene after being modified by the script abo
 
 .. image:: /source/static/scene_camera_cube.jpg
 
-Although we transform (move) the cube in the script above, we won't cover that in this article.
-Instead, you can learn more about moving objects in the scene in this article about the transform module, :ref:`Move objects<Move objects>`.
+Although we transform (move) the cube in the script above, we won't cover that in this section.
+Instead, you can learn more about moving objects in the scene in this section about the transform module, :ref:`Move objects<Move objects>`.
 
-You can also learn more about using the ``scene.search()`` function in this article, :ref:`Search the scene<Search the scene for objects>`.
+You can also learn more about using the ``scene.search()`` function in this section, :ref:`Search the scene<Search the scene for objects>`.
 
-Currently supported tesselated files formats :
+Currently supported tessellated file formats:
 
 .. code-block::
 
@@ -171,7 +171,7 @@ Use ``scene.ALLOWED_EXTENSIONS`` to get a list of all of them.
 Import as reference
 ##################################
 
-``scene.add_reference()`` allows to select content from an other file and import it in the current scene.
+``scene.add_reference()`` allows to select content from another file and import it in the current scene.
 The imported content will replace the content of the selected PrimHandler (usually an XForm Prim) into which it is imported.
 
 `References` are mainly used to import assets from different files in a main scene to do, for example, set dressing. 
@@ -223,11 +223,19 @@ API Modules : :ref:`scene<substance3d.api.scene>`
 
 After loading a scene or appending a file to your scene, you may need to modify objects for which you don't yet have a variable.
 
-You can look for objects in your scene with the ``scene.search()`` function or iterate through all of them with special iterators like ``scene.objects``.
-If performance is required and you don't need the filters, prefer ``scene.objects`` and ``prim.children``.
+Consider the following variables :
 
-Get objects with scene.search()
-###############################
+.. code-block:: python
+
+    my_scene = scene.new()
+    prim = scene.get_default(my_scene) # Gets the default prim
+
+You can look for objects in your scene with the ``my_scene.search()`` function or iterate through all of them with special iterators like ``my_scene.objects``.
+
+If performance is required and you don't need the filters, to find a single prim for example, or if you just want to access an object you know the path of, prefer ``my_scene.objects`` and ``prim.children``. See the :ref:`section below<Get objects with special iterators>` for more.
+
+Get objects with my_scene.search()
+##################################
 
 .. code-block:: python
 
@@ -325,51 +333,42 @@ Get objects with special iterators
 There are two other ways to access objects, by using `special iterators`.
 Scene's ``.objects`` iterator and object's ``.children`` iterator.
 
-We will see the different features of them:
+They are more efficient than ``.search()`` if you don't need to filter your search and want to access all the objects of the scene or all the children of an object, for example.
 
-- Iterate through the scene's objects:
+It should be the preferred way to access individual objects if you know their name or path in the scene tree.
+
+Scene objects :
 
 .. code-block:: python
 
-    objects = my_scene.objects
-    for obj in objects:
+    objs = my_scene.objects
+    for obj in objs:
         print(obj.path)
 
-- Get an object by giving an index:
+    # Get an object by index
+    obj = my_scene.objects[0]
+
+    # Get an object by object path
+    obj = my_scene.objects["/Cube1/Sphere3"]
+
+Object's children :
 
 .. code-block:: python
 
-    object = my_scene.objects[1]
+    for child in obj.children:
+        print(child.path)
 
-- Get object by giving an object path:
+    # Get a child by index
+    child = obj.children[0]
 
-.. code-block:: python
-
-    object = my_scene.objects["/Cube1/Sphere3"]
-
-- From an object, iterate its children:
-
-.. code-block:: python
-
-    for obj in my_cube.children:
-        print(obj.path)
-
-- From object, get a child by index:
-
-.. code-block:: python
-
-    child = my_cube.children[0]
-
-- From object, get a child by name:
-
-.. code-block:: python
-
-    child = my_cube.children["Sphere3"]
+    # Get a child by name
+    child = obj.children["Sphere3"]
+    
 
 Advanced : Improving performance even more while iterating through the scene
 ##################################################################
 
-The most efficient way to iterate through all objects in the scene is using the ``scene.objects`` iterator.
+The most efficient way to iterate through all objects in the scene is using the ``.objects`` iterator.
 
 However, you may have thousands of objects and iterating through all of them may be costly if you're only checking for
 aliases like *variant sets* or *custom_data*.
@@ -457,13 +456,13 @@ Material
 ========
 API Modules : :ref:`material<substance3d.api.material>`
 
-SSCA includes several options to create a material. They can be created from an SBSAR files, texture directories, or with a set of inputs. 
+SSCA includes several options to create a material. They can be created from SBSAR files, texture directories, or with a set of inputs. 
 
 
 .. note:: 
 
     For the following sections, keep in mind that created materials are put under ``/{defaultPrim}/materials`` Prim by default.
-    You can set another parent by passing a Primhandler of type `Scope` to ``materials_root_path`` argument in any of the functions mentionned below. 
+    You can set another parent by passing a Primhandler of type `Scope` to ``materials_root_path`` argument in any of the functions mentioned below. 
 
 .. important:: 
 
@@ -492,10 +491,10 @@ The code below shows how to create a simple PBR material by pointing to a collec
     # create the material from the texture dictionary
     cubes_material = material.create_from_inputs(my_scene, texture_dictionary, 'cubes_material')
 
-To gain time, it is also possible to create a PBR material by pointing to a textures directory that
-follows the Substance usages convention.
+To save time, it is also possible to create a PBR material by pointing to a texture directory that
+follows the Substance usage naming convention.
 
-If textures contains one of this usage names in their file name they will be automatically matched
+If a texture's file name contains one of these usage names, it will be automatically matched
 with the correct input:
 
 .. code-block:: python
@@ -573,7 +572,7 @@ and how to tweak them.
     all_parameters = material.get_sbsar_parameters(sbsar_material)
     print(all_parameters)
 
-    # it prints a dictionnary with the following information per parameter
+    # it prints a dictionary with the following information per parameter
     { 'parameter_identifier' : {
         'guiDescription': 'description of the parameter',
         'guiGroup': 'group of the parameter',
@@ -609,7 +608,7 @@ Assign a material to an object
 ##############################
 
 Materials won't do much if they aren't used in your scene.
-The code below shows how to assign a the SBSAR material created above to your objects:
+The code below shows how to assign the SBSAR material created above to your objects:
 
 .. code-block:: python
 
@@ -618,10 +617,10 @@ The code below shows how to assign a the SBSAR material created above to your ob
 Note that ``objects`` in this case can be a single object or a list of objects.
 
 .. note::
-    If you assign a material to a unique object, like a parent xform, the material will be mapped to all its
+    If you assign a material to a single object, like a parent xform, the material will be mapped to all its
     children.
 
-When assigning a material to a object or a list of objects, you can automatically scale them based on the physical size of material and objects.
+When assigning a material to an object or a list of objects, you can automatically scale them based on the physical size of material and objects.
 
 .. code-block:: python
 
@@ -635,7 +634,7 @@ Transform a material
 ####################
 
 Materials are currently projected on UVs.
-The code belows shows how to transform a material in the UV space.
+The code below shows how to transform a material in the UV space.
 
 .. code-block:: python
 
@@ -652,7 +651,7 @@ Lights
 ======
 API Modules : :ref:`light<substance3d.api.light>`
 
-The USD format has a large range of lights available, but by default some of their names may be unfamiliar. `This video <https://www.youtube.com/watch?v=c7qyI8pZvF4&t=172s>`_ created by Nvidia covers the lights available with USD and explains how lights can behave differently with the USD format. The table below shows the USD equivalent of common light types:
+The USD format has a wide range of lights available, but by default some of their names may be unfamiliar. `This video <https://www.youtube.com/watch?v=c7qyI8pZvF4&t=172s>`_ created by Nvidia covers the lights available with USD and explains how lights can behave differently with the USD format. The table below shows the USD equivalent of common light types:
 
 +-----------------------------+-----------------------------+
 | Common name                 | USD equivalent              |
@@ -694,7 +693,7 @@ API Modules : :ref:`camera<substance3d.api.camera>`
 Create cameras
 ####################
 
-Cameras are necessary to create renders with SSCA. There are 3 ways to create a camera with the ``camera`` module :
+Cameras are necessary to create renders with SSCA. There are 3 ways to create a camera with the ``camera`` module:
 
 * A simple default camera with ``camera.create()``
 
@@ -750,7 +749,7 @@ Rendering
 =========
 API Modules : :ref:`renderer<substance3d.api.renderer>`
 
-SSCA includes an easy 3-steps process for rendering using the ``renderer`` module :
+SSCA includes an easy 3-step process for rendering using the ``renderer`` module:
 
 
 .. code-block:: python
@@ -841,10 +840,10 @@ API Modules : :ref:`image<substance3d.api.image>`
 
 
 It's time to finalize your workflow by gathering your renders into images.
-As you may have noticed into previous render section, ``renderer.render()`` returns an ``Image`` object
+As you may have noticed in the previous render section, ``renderer.render()`` returns an ``Image`` object
 that you can save by calling ``my_render.save('./my_render.png')``.
 
-Let's see how to use ``Image`` object and ``image`` module.
+Let's see how to use the ``Image`` object and the ``image`` module.
 
 The ``image`` module provides several features to manipulate and create image. 
 
@@ -866,7 +865,7 @@ The ``image`` module provides several features to manipulate and create image.
 
 
 
-Use ``image.over()`` function to compose an image. For example, this can be used to add an image background behind an image with transparency.
+Use the ``image.over()`` function to compose an image. For example, this can be used to add an image background behind an image with transparency.
 
 .. code-block:: python
 
@@ -907,7 +906,7 @@ Variants
 
 Variants are used to save several variations of a scene, object, material, etc. that you can modify on the fly.
 
-Each variant must have an unique identifier ``variant_identifier`` and be regrouped under 
+Each variant must have a unique identifier ``variant_identifier`` and be regrouped under 
 a common variant set ``variant_set``. You can make as many sets and as many variants as you like.
 
 
@@ -955,7 +954,7 @@ Example :
 
 At this point, you will have different options to render all your variants.
 The first way of doing it is by using variant selection. 
-Note that you will have to manually clear the selection if you wish to switch back to default cube.
+Note that you will have to manually clear the selection if you wish to switch back to the default cube.
 
 .. code-block:: python
 
@@ -981,7 +980,7 @@ Note that you will have to manually clear the selection if you wish to switch ba
     rendered_img = renderer.render(my_scene, (512, 512), False, cam, samples=20)
     rendered_img.save('./default.png')
 
-The other way is to render variants using context, avoiding the necessity of using variant selection.
+The other way is to render variants using context, avoiding the need for variant selection.
 
 .. code-block:: python
 
@@ -1011,7 +1010,7 @@ Animation
 =========
 With SSCA, you can easily render animated scenes and also animate properties.
 
-How to render a serie of frames:
+How to render a series of frames:
 
 .. code-block:: python
 

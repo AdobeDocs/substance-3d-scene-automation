@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.mesh_processing &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -53,11 +50,13 @@
 <li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
@@ -87,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.ComputeVertexNormalsOp"><code class="docutils literal notranslate"><span class="pre">ComputeVertexNormalsOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.ComputeNormalsOp"><code class="docutils literal notranslate"><span class="pre">ComputeNormalsOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.ComputeTangentsAndBitangentsOp"><code class="docutils literal notranslate"><span class="pre">ComputeTangentsAndBitangentsOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.QuadRecoverOp"><code class="docutils literal notranslate"><span class="pre">QuadRecoverOp</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
@@ -99,7 +99,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -131,15 +132,15 @@
            <div itemprop="articleBody">
              
   <section id="module-substance3d.api.mesh_processing.mesh_processing">
-<span id="substance3d-api-mesh-processing"></span><h1>substance3d.api.mesh_processing<a class="headerlink" href="#module-substance3d.api.mesh_processing.mesh_processing" title="Permalink to this heading"></a></h1>
+<span id="substance3d-api-mesh-processing"></span><h1>substance3d.api.mesh_processing<a class="headerlink" href="#module-substance3d.api.mesh_processing.mesh_processing" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.process" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.process" title="Link to this definition"></a></dt>
 <dd><p>Process a list of mesh operators on the given target and its subtree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>substance3d.api.core.prim_handler.PrimHandler</em><em> | </em><em>substance3d.api.core.stage_handler.StageHandler</em>) – Given targen can be a scene or an object</p></li>
+<li><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>StageHandler</em>) – Given targen can be a scene or an object</p></li>
 <li><p><strong>operators</strong> (<em>list</em><em>[</em><em>substance3d.api.mesh_processing.operators.MeshOperator</em><em>]</em>) – A list of mesh operators</p></li>
 </ul>
 </dd>
@@ -148,7 +149,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.UnwrapOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnwrapOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.UnwrapOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">UnwrapOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.UnwrapOp" title="Link to this definition"></a></dt>
 <dd><p>Seam, parameterize and pack all meshes in the given subtree into a single UV tile.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -245,7 +246,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RepackOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RepackOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RepackOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RepackOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RepackOp" title="Link to this definition"></a></dt>
 <dd><p>Pack all meshes in the given subtree into a single UV tile.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -283,19 +284,19 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.TriangulateOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TriangulateOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.TriangulateOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">TriangulateOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.TriangulateOp" title="Link to this definition"></a></dt>
 <dd><p>Triangulate all meshes in the given subtree.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveIsolatedVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveIsolatedVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveIsolatedVerticesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove isolated vertices for all meshes in the given subtree.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.DecimationOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DecimationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.DecimationOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DecimationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.DecimationOp" title="Link to this definition"></a></dt>
 <dd><p>Decimate all meshes in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -331,7 +332,7 @@ edge collapses, among other topological changes.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemeshOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemeshOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemeshOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemeshOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemeshOp" title="Link to this definition"></a></dt>
 <dd><p>Remesh all meshes in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -360,7 +361,7 @@ relative to current vertex count.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.SubdivisionOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SubdivisionOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.SubdivisionOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SubdivisionOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.SubdivisionOp" title="Link to this definition"></a></dt>
 <dd><p>Subdivide all meshes in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -398,7 +399,7 @@ relative to current vertex count.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CloseSmallHolesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CloseSmallHolesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.CloseSmallHolesOp" title="Link to this definition"></a></dt>
 <dd><p>Close small holes for all the meshes in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -421,7 +422,7 @@ relative to current vertex count.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.OrientOutwardOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OrientOutwardOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.OrientOutwardOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">OrientOutwardOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.OrientOutwardOp" title="Link to this definition"></a></dt>
 <dd><p>Orient the mesh faces so that the signed volume of each connected component is consistent and either positive or negative.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -439,7 +440,7 @@ relative to current vertex count.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.NormalizationOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NormalizationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.NormalizationOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">NormalizationOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.NormalizationOp" title="Link to this definition"></a></dt>
 <dd><p>Normalize a single mesh in its local coordinate system in-place.
 The mesh is resized so it fits in a unit bounding box centered at the origin.</p>
 <blockquote>
@@ -470,7 +471,7 @@ The mesh is resized so it fits in a unit bounding box centered at the origin.</p
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDegenerateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveDegenerateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove degenerate faces from each mesh in the scene, in-place.
 The current method assumes input mesh is triangular.
 Non-degenerate facets adjacent to degenerate facets may be
@@ -479,7 +480,7 @@ re-triangulated as a result of the removal.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDuplicateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveDuplicateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove duplicate faces from each mesh in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -498,7 +499,7 @@ and (2,1,0)) are considered non-duplicates.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveDuplicateVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveDuplicateVerticesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove duplicate vertices from each mesh in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -516,7 +517,7 @@ and (2,1,0)) are considered non-duplicates.</p></td>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveTinyFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveTinyFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTinyFacesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove zero-area faces from each mesh in the given subtree,
 zero-area threshold can be adjusted.</p>
 <blockquote>
@@ -540,7 +541,7 @@ zero-area threshold can be adjusted.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RemoveShortEdgesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveShortEdgesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveShortEdgesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove short edges from each mesh in the given subtree.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -558,31 +559,31 @@ zero-area threshold can be adjusted.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResolveNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ResolveNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveNonmanifoldnessOp" title="Link to this definition"></a></dt>
 <dd><p>Resolve non-manifold edges AND vertices for each mesh in the given subtree.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResolveVertexNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ResolveVertexNonmanifoldnessOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ResolveVertexNonmanifoldnessOp" title="Link to this definition"></a></dt>
 <dd><p>Resolve non-manifold vertices for each mesh in the given subtree.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeMeshAreaOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeMeshAreaOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeMeshAreaOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeMeshAreaOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeMeshAreaOp" title="Link to this definition"></a></dt>
 <dd><p>Return the combined area of all meshes.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeUVAreaOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeUVAreaOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeUVAreaOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeUVAreaOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeUVAreaOp" title="Link to this definition"></a></dt>
 <dd><p>Return the combined UV area of all meshes.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeEdgeLengthsOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeEdgeLengthsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeEdgeLengthsOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeEdgeLengthsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeEdgeLengthsOp" title="Link to this definition"></a></dt>
 <dd><p>Create or update the mesh attribute containing edge lengths.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -600,7 +601,7 @@ zero-area threshold can be adjusted.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeFaceNormalsOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeFaceNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeFaceNormalsOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeFaceNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeFaceNormalsOp" title="Link to this definition"></a></dt>
 <dd><p>Create or update the mesh attribute containing face normals.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -618,7 +619,7 @@ zero-area threshold can be adjusted.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeVertexNormalsOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeVertexNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeVertexNormalsOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeVertexNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeVertexNormalsOp" title="Link to this definition"></a></dt>
 <dd><p>Create or update the mesh attribute containing vertex normals.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -667,7 +668,7 @@ zero-area threshold can be adjusted.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeNormalsOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeNormalsOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeNormalsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeNormalsOp" title="Link to this definition"></a></dt>
 <dd><p>Create or update the mesh attribute containing indexed normals.</p>
 <blockquote>
 <div><p class="rubric">Attributes</p>
@@ -717,7 +718,7 @@ Edges with larger dihedral angles are considered “sharp” (feature) edges.</p
 
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.ComputeTangentsAndBitangentsOp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ComputeTangentsAndBitangentsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeTangentsAndBitangentsOp" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ComputeTangentsAndBitangentsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.ComputeTangentsAndBitangentsOp" title="Link to this definition"></a></dt>
 <dd><p>Compute mesh tangents and bitangents in local coordinate system.
 Create or update related mesh attributes, the new/updated tangent (first) and bitangent (second) attributes.</p>
 <blockquote>
@@ -760,6 +761,29 @@ If false, the bitangent is computed as the derivative of v-coordinate</p></td>
 <li><p>If false, the tangent will be recomputed and potentially overwritten.</p></li>
 </ul>
 </td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.QuadRecoverOp">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">QuadRecoverOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.QuadRecoverOp" title="Link to this definition"></a></dt>
+<dd><p>Recovers quads from pairs of adjacent triangles in a mesh if they satisfy the input parameters defining the shape of a valid quad.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>max_corner_angular_deviation_degrees</strong></p></td>
+<td><p>float</p></td>
+<td><p>20.0</p></td>
+<td><p>Maximum allowed absolute deviation from 90 degrees for a corner of a quad.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>max_planarity_angular_deviation_degrees</strong></p></td>
+<td><p>float</p></td>
+<td><p>10.0</p></td>
+<td><p>Maximum allowed absolute angle in degrees between 2 adjacent triangles forming a quad.</p></td>
 </tr>
 </tbody>
 </table>

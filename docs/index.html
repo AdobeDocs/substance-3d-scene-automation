@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -52,11 +49,13 @@
 <li class="toctree-l1"><a class="reference internal" href="source/api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/utility.html">substance3d.api.utility</a></li>
@@ -71,7 +70,8 @@
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -103,9 +103,9 @@
            <div itemprop="articleBody">
              
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <section id="what-is-substance-3d-scene-automation">
-<h2>What is Substance 3D Scene Automation?<a class="headerlink" href="#what-is-substance-3d-scene-automation" title="Permalink to this heading"></a></h2>
+<h2>What is Substance 3D Scene Automation?<a class="headerlink" href="#what-is-substance-3d-scene-automation" title="Link to this heading"></a></h2>
 <p>Substance 3D Scene Automation (SSCA) is a set of APIs that allows you to create workflows to automate pipelines to create and
 process 3D assets at scale. SSCA uses USD to allow for format and visual consistency as well
 as performance optimization across the workflow.</p>
@@ -115,7 +115,7 @@ or create hundreds of variations of a product during the design phase.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>SSCA is also designed to be as easy to use as possible -
-it doesn’t require USD specific knowledge or extensive programming experience.
+it doesn’t require USD-specific knowledge or extensive programming experience.
 Users with basic Python skills should be able to easily pick up and use SSCA.</p>
 </div>
 <p>While SSCA is built on USD, we developed several plugins to support multiple filetypes:
@@ -127,10 +127,10 @@ Screenshots in this user guide were taken from Omniverse Create,
 an application created by Nvidia for building and working with USD scenes.</p>
 </section>
 <section id="how-to-install-and-configure-ssca">
-<h2>How to install and configure SSCA<a class="headerlink" href="#how-to-install-and-configure-ssca" title="Permalink to this heading"></a></h2>
+<h2>How to install and configure SSCA<a class="headerlink" href="#how-to-install-and-configure-ssca" title="Link to this heading"></a></h2>
 <section id="ssca-environment">
-<h3>SSCA Environment<a class="headerlink" href="#ssca-environment" title="Permalink to this heading"></a></h3>
-<p>In order to use SSCA modules, the user must run their scripts with the <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> provided in SSCA package.</p>
+<h3>SSCA Environment<a class="headerlink" href="#ssca-environment" title="Link to this heading"></a></h3>
+<p>In order to use SSCA modules, the user must run their scripts with the <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> provided in the SSCA package.</p>
 <p>Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -140,9 +140,9 @@ This can be done by removing USD/bin and USD/lib from your PATH.</p>
 Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could also conflict with SSCA.</p>
 </div>
 <section id="visual-studio-code-instructions-version-1-99-2">
-<h4>Visual Studio Code Instructions (version 1.99.2)<a class="headerlink" href="#visual-studio-code-instructions-version-1-99-2" title="Permalink to this heading"></a></h4>
+<h4>Visual Studio Code Instructions (version 1.99.2)<a class="headerlink" href="#visual-studio-code-instructions-version-1-99-2" title="Link to this heading"></a></h4>
 <section id="set-up-new-project">
-<h5>Set up new project<a class="headerlink" href="#set-up-new-project" title="Permalink to this heading"></a></h5>
+<h5>Set up new project<a class="headerlink" href="#set-up-new-project" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Download and install the free version of <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p></li>
 <li><p>Download and unzip the Substance 3D SSCA package.</p></li>
@@ -163,7 +163,7 @@ Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME o
 </div></blockquote>
 </li>
 <li><p>Expand the project folder in the explorer of VS Code UI</p></li>
-<li><p>Create a Python file clicking on the project folder “New File…” icon and give the file a name including the ‘.py’ extension.</p>
+<li><p>Create a Python file by clicking on the project folder “New File…” icon and give the file a name including the ‘.py’ extension.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>In our example the script will be named: <code class="docutils literal notranslate"><span class="pre">main.py</span></code></p></li>
@@ -179,19 +179,19 @@ Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME o
 </ol>
 </section>
 <section id="set-up-the-python-interpreter">
-<h5>Set up the Python interpreter<a class="headerlink" href="#set-up-the-python-interpreter" title="Permalink to this heading"></a></h5>
+<h5>Set up the Python interpreter<a class="headerlink" href="#set-up-the-python-interpreter" title="Link to this heading"></a></h5>
 <p>Visual Studio Code allows the user to set the python interpreter for a specific project.
-Since VS Code takes the default system version of Python we installed, to work in a virtual environment, we will need to create it.</p>
+Since VS Code uses the system Python by default, we need to create a virtual environment to work with SSCA.</p>
 <ol class="arabic">
-<li><p>With your project opended, click on the Python interpreter version in the very bottom right of the VS Code interface.</p></li>
-<li><p>A drop down menu will appear at the top where we have few options.</p></li>
+<li><p>With your project opened, click on the Python interpreter version in the very bottom right of the VS Code interface.</p></li>
+<li><p>A drop down menu will appear at the top where we have a few options.</p></li>
 <li><p>Click on “<strong>Create Virtual Environment</strong>”</p>
 <blockquote>
 <div><img alt="_images/vscode_04_create_venv.png" src="_images/vscode_04_create_venv.png" />
 </div></blockquote>
 </li>
-<li><p>On next list click on “<strong>Venv</strong>”</p></li>
-<li><p>The application will ask you now to chose from a list of interpreters, click on “<strong>Enter interpreter path…</strong>”</p>
+<li><p>On the next list, click on “<strong>Venv</strong>”</p></li>
+<li><p>The application will now ask you to choose from a list of interpreters, click on “<strong>Enter interpreter path…</strong>”</p>
 <blockquote>
 <div><img alt="_images/vscode_03_add_interpreter_path.png" src="_images/vscode_03_add_interpreter_path.png" />
 </div></blockquote>
@@ -214,9 +214,9 @@ Since VS Code takes the default system version of Python we installed, to work i
 </ol>
 </section>
 <section id="run-your-first-script">
-<h5>Run your first script<a class="headerlink" href="#run-your-first-script" title="Permalink to this heading"></a></h5>
+<h5>Run your first script<a class="headerlink" href="#run-your-first-script" title="Link to this heading"></a></h5>
 <ol class="arabic">
-<li><p>With the file we created in the precedent chapter “Set up new project” opened.</p></li>
+<li><p>With the file we created in the previous chapter “Set up new project” opened.</p></li>
 <li><p>Copy the code below into the file. This script creates a simple scene with a light and a cube.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
@@ -243,15 +243,15 @@ Since VS Code takes the default system version of Python we installed, to work i
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If the test script fails to find the SSCA modules, there could  be a conflict in the environment.
+<p>If the test script fails to find the SSCA modules, there could be a conflict in the environment.
 Check your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PXR_PLUGINPATH_NAME</span></code> environment variables and clean them if needed.</p>
 </div>
 </section>
 </section>
 <section id="pycharm-instructions-version-2024-2-3">
-<h4>PyCharm Instructions (version 2024.2.3)<a class="headerlink" href="#pycharm-instructions-version-2024-2-3" title="Permalink to this heading"></a></h4>
+<h4>PyCharm Instructions (version 2024.2.3)<a class="headerlink" href="#pycharm-instructions-version-2024-2-3" title="Link to this heading"></a></h4>
 <section id="set-up-new-project-with-virtual-environment">
-<h5>Set up new project with virtual environment<a class="headerlink" href="#set-up-new-project-with-virtual-environment" title="Permalink to this heading"></a></h5>
+<h5>Set up new project with virtual environment<a class="headerlink" href="#set-up-new-project-with-virtual-environment" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Download and install the community version of <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">PyCharm</a>.</p></li>
 <li><p>Download and unzip the Substance 3D SSCA package.</p></li>
@@ -294,7 +294,7 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </ol>
 </section>
 <section id="set-up-a-local-ssca-python-interpreter">
-<h5>Set up a local SSCA Python interpreter<a class="headerlink" href="#set-up-a-local-ssca-python-interpreter" title="Permalink to this heading"></a></h5>
+<h5>Set up a local SSCA Python interpreter<a class="headerlink" href="#set-up-a-local-ssca-python-interpreter" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Once your project is open.</p></li>
 <li><p>Expand PyCharm top menu bar clicking on the “Main Menu” icon.</p>
@@ -331,7 +331,7 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </ol>
 </section>
 <section id="id1">
-<h5>Run your first script<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h5>
+<h5>Run your first script<a class="headerlink" href="#id1" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Open/Create a Python script file into your project.</p>
 <blockquote>
@@ -361,8 +361,8 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <img alt="_images/run_script.png" src="_images/run_script.png" />
 </div></blockquote>
 </li>
-<li><p>Run the current script with shortcut ctrl + Shift + F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.</p></li>
-<li><p>To confirm the script ran successfully, check the console at the bottom of the Pycharm window. The last line should say “Process finished with exit code 0”.</p>
+<li><p>Run the current script with shortcut Ctrl+Shift+F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.</p></li>
+<li><p>To confirm the script ran successfully, check the console at the bottom of the PyCharm window. The last line should say “Process finished with exit code 0”.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Additionally, a file called TestScene.usda should have been created in the same folder as your script.</p></li>
@@ -372,14 +372,14 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If the test script fails to find the SSCA modules, there could  be a conflict in the environment.
+<p>If the test script fails to find the SSCA modules, there could be a conflict in the environment.
 Check your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PXR_PLUGINPATH_NAME</span></code> environment variables and clean them if needed.</p>
 </div>
 </section>
 </section>
 </section>
 <section id="configure-your-environment-for-linux-with-nvidia-gpu">
-<h3>Configure your environment for Linux with NVIDIA GPU<a class="headerlink" href="#configure-your-environment-for-linux-with-nvidia-gpu" title="Permalink to this heading"></a></h3>
+<h3>Configure your environment for Linux with NVIDIA GPU<a class="headerlink" href="#configure-your-environment-for-linux-with-nvidia-gpu" title="Link to this heading"></a></h3>
 <p>On Linux, running machine learning features (e.g., denoiser, match image, etc.) on GPU requires additional setup.
 Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones with <code class="docutils literal notranslate"><span class="pre">compute</span> <span class="pre">capability</span> <span class="pre">&gt;=</span> <span class="pre">8.6</span></code> are tested.</p>
 <p>Follow the steps below to configure your environment:</p>
@@ -391,7 +391,7 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 </section>
 </section>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading"></a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
@@ -401,11 +401,13 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 <li class="toctree-l1"><a class="reference internal" href="source/api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source/api/utility.html">substance3d.api.utility</a></li>
@@ -441,7 +443,7 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/gettingstarted.html#search-the-scene-for-objects">Search the scene for objects</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="source/userdoc/gettingstarted.html#get-objects-with-scene-search">Get objects with scene.search()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/gettingstarted.html#get-objects-with-my-scene-search">Get objects with my_scene.search()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source/userdoc/gettingstarted.html#get-objects-with-special-iterators">Get objects with special iterators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source/userdoc/gettingstarted.html#advanced-improving-performance-even-more-while-iterating-through-the-scene">Advanced : Improving performance even more while iterating through the scene</a></li>
 </ul>
@@ -477,7 +479,7 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#basic-example-create-a-contact-sheet">Basic Example: Create a contact sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#scene-branch-management">Scene Branch Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#eclair-usdpreviewsurface-and-adobestandardmaterial">Eclair, USDPreviewSurface and AdobeStandardMaterial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#what-does-that-mean">What does that mean ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#what-does-that-mean">What does that mean?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#statistics-collectors">Statistics Collectors</a></li>
@@ -488,8 +490,16 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 </li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#activate-displacement">Activate Displacement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#file-import-parameters">File import parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#managing-metadatas">Managing metadatas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#managing-metadata">Managing Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#move-local-prim-to-reference">Move local prim to reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/nextsteps.html#add-thumbnails-to-your-scene">Add thumbnails to your scene</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#check-and-render-a-thumbnail">Check and render a thumbnail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#attach-an-existing-image">Attach an existing image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#read-a-thumbnail-without-loading-the-scene">Read a thumbnail without loading the scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#render-with-a-custom-lighting-template">Render with a custom lighting template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/nextsteps.html#thumbnail-an-individual-prim">Thumbnail an individual prim</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="source/userdoc/handlers.html">How to use Handlers</a><ul>
@@ -515,12 +525,99 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/knownissues.html#pixar-and-ssca-modules-interaction">Pixar and SSCA modules interaction</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">Mesh Processing</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#cad-file-processing">CAD File Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#mesh-processing-results">Mesh Processing results</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#build-a-production-ready-digital-twin-from-a-cad-file">Build a production-ready Digital Twin from a CAD file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#clean-mesh-and-optimize-it-for-further-processing">Clean mesh and optimize it for further processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#recover-quads-from-triangulated-meshes">Recover Quads from triangulated meshes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#unwrap-mesh-uvs">Unwrap mesh UVs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#compute-mesh-processing-operators-on-the-scene">Compute mesh processing operators on the scene.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/mesh_processing.html#cad-files-import-options">CAD Files Import Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametrictessellationlevel">parametricTessellationLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#prchoopsaccuratetessellation">prcHoopsAccurateTessellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#prchoopsaccuratetessellationwithgrid">prcHoopsAccurateTessellationWithGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#prchoopsaccuratetessellationwithgridmaximumstitchlength">prcHoopsAccurateTessellationWithGridMaximumStitchLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#prchoopsaccuratesurfacecurvatures">prcHoopsAccurateSurfaceCurvatures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#generalrunmeshcleanup">generalRunMeshCleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#generalrunuvcorrection">generalRunUvCorrection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#generalreadhiddenobjects">generalReadHiddenObjects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricmaximaltriangleedgelength">parametricMaximalTriangleEdgeLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricautomaticallyretrytessellationonfailure">parametricAutomaticallyRetryTessellationOnFailure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricprefergridstyletessellation">parametricPreferGridStyleTessellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#prchoopsuseheightinsteadofratio">prcHoopsUseHeightInsteadOfRatio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricangletolerancedeg">parametricAngleToleranceDeg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricmaxchordheight">parametricMaxChordHeight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/mesh_processing.html#parametricchordheightratio">parametricChordHeightRatio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#starting-the-ui">Starting the UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#ui-layout">UI Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#menu-bar">Menu Bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#file-menu">File Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#import-menu">Import Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#export-menu">Export Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#preview-menu">Preview Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#scene-hierarchy-panel">Scene Hierarchy Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#loading-a-scene">Loading a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#navigating-the-tree">Navigating the Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#searching-and-filtering">Searching and Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#prim-details-sub-panel">Prim Details Sub-panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#prim-indicators">Prim Indicators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#variant-sets-panel">Variant Sets Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#creating-a-variant-set">Creating a Variant Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#variant-set-list-items">Variant Set List Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#id1">Searching and Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#nested-variant-sets-child-sets">Nested Variant Sets (Child Sets)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#variant-set-details-panel">Variant Set Details Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#header-fields">Header Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#variants-list">Variants List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#adding-and-editing-opinions">Adding and Editing Opinions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#bulk-import">Bulk Import</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#logs-panel">Logs Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#typical-workflow">Typical Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#start-the-ui">1. Start the UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#create-or-open-a-workspace">2. Create or Open a Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#import-a-scene">3. Import a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#create-a-variant-set">4. Create a Variant Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#add-variants">5. Add Variants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#add-opinions-to-each-variant">6. Add Opinions to Each Variant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#set-a-default-selection">7. Set a Default Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#save-the-workspace">8. Save the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#export-the-scene">9. Export the Scene</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#id3">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#command-syntax">Command Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#quick-examples">Quick Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#configuration-file">Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#opinion-type-examples">Opinion Type Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#path-resolution">Path Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#nested-variant-sets">Nested Variant Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#full-config-examples">Full Config Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/userdoc/workflow_variant_compiler.html#relationship-to-the-ui">Relationship to the UI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -529,8 +626,9 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="source/release.html">Substance3d Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/release.html#tbd">1.6.0 (TBD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/release.html#id1">1.5.0 (2026/01/29)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source/release.html#id2">1.4.0 (2025/09/23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/release.html#id4">1.4.0 (2025/09/23)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/release.html#april-17-2025">1.3.1 (April, 17 2025)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/release.html#march-25th-2025">1.3.0 (March, 25th 2025)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/release.html#december-3rd-2024">1.2.0 (December, 3rd 2024)</a></li>
@@ -552,7 +650,7 @@ Only NVIDIA GPUs with Ampere or newer architecture are supported and the ones wi
 </div>
 </section>
 <section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h2>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>

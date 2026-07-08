@@ -1,24 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>substance3d.api.scene package &mdash; Substance3d API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -51,11 +48,13 @@
 <li class="toctree-l1"><a class="reference internal" href="api/primitive.html">substance3d.api.primitive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/variant.html">substance3d.api.variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/thumbnails.html">substance3d.api.thumbnails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform.html">substance3d.api.transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/light.html">substance3d.api.light</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/camera.html">substance3d.api.camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/renderer.html">substance3d.api.renderer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/image.html">substance3d.api.image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utility.html">substance3d.api.utility</a></li>
@@ -70,7 +69,8 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/nextsteps.html">Next Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/handlers.html">How to use Handlers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -102,33 +102,33 @@
            <div itemprop="articleBody">
              
   <section id="substance3d-api-scene-package">
-<h1>substance3d.api.scene package<a class="headerlink" href="#substance3d-api-scene-package" title="Permalink to this heading"></a></h1>
+<h1>substance3d.api.scene package<a class="headerlink" href="#substance3d-api-scene-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-substance3d.api.scene.scene">
-<span id="substance3d-api-scene-scene-module"></span><h2>substance3d.api.scene.scene module<a class="headerlink" href="#module-substance3d.api.scene.scene" title="Permalink to this heading"></a></h2>
+<span id="substance3d-api-scene-scene-module"></span><h2>substance3d.api.scene.scene module<a class="headerlink" href="#module-substance3d.api.scene.scene" title="Link to this heading"></a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.AVAILABLE_OBJECT_TYPES">
-<span class="sig-name descname"><span class="pre">AVAILABLE_OBJECT_TYPES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#substance3d.api.scene.scene.AVAILABLE_OBJECT_TYPES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AVAILABLE_OBJECT_TYPES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#substance3d.api.scene.scene.AVAILABLE_OBJECT_TYPES" title="Link to this definition"></a></dt>
 <dd><p>non-transformable format</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.PLUGINS_SDFMETADATA">
-<span class="sig-name descname"><span class="pre">PLUGINS_SDFMETADATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#substance3d.api.scene.scene.PLUGINS_SDFMETADATA" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PLUGINS_SDFMETADATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></span><a class="headerlink" href="#substance3d.api.scene.scene.PLUGINS_SDFMETADATA" title="Link to this definition"></a></dt>
 <dd><p>Extensions supported by the api</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.VISIBLE_VALUES">
-<span class="sig-name descname"><span class="pre">VISIBLE_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['visible',</span> <span class="pre">'invisible',</span> <span class="pre">'inherited']</span></em><a class="headerlink" href="#substance3d.api.scene.scene.VISIBLE_VALUES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">VISIBLE_VALUES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['visible',</span> <span class="pre">'invisible',</span> <span class="pre">'inherited']</span></span><a class="headerlink" href="#substance3d.api.scene.scene.VISIBLE_VALUES" title="Link to this definition"></a></dt>
 <dd><p>All the available object types for this runtime session, these types can be used as type filter in search method</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.add_layer">
-<span class="sig-name descname"><span class="pre">add_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.add_layer" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.add_layer" title="Link to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>The content of the file will be added as a layer onto the given scene.</dt><dd><p>Add content by layer is commonly used to layering content by tasks or departments, like lighting, cameras,
 animation… on top of the existing scene content. A bit like layers in photoshop, Each layer can have an
@@ -140,7 +140,7 @@ To add an asset into a scene it’s more convenient to use a reference with <cit
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>StageHandler</em>) – The scene on which the layer will be added</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – A valid file path, supported extensions: <cite>.ALLOWED_EXTENSIONS</cite></p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – A valid file path, supported extensions: <cite>.ALLOWED_EXTENSIONS</cite></p></li>
 <li><p><strong>kwargs</strong> – Give plugin specific arguments, call <cite>utility.get_plugins_sdfmetadata()</cite> to get more info</p></li>
 </ul>
 </dd>
@@ -152,7 +152,7 @@ To add an asset into a scene it’s more convenient to use a reference with <cit
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.add_reference">
-<span class="sig-name descname"><span class="pre">add_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_scene_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.add_reference" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_scene_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.add_reference" title="Link to this definition"></a></dt>
 <dd><dl class="simple">
 <dt>Reference an object and all its descendants under the given object. By default the object will be selected</dt><dd><p>accordingly to the file’s default object (defaultPrim) value. Add a reference is commonly used to add an
 asset to the given scene. As opposed to a layer, a reference allows to add the same asset multiple times by
@@ -163,7 +163,7 @@ referencing it under different objects.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>PrimHandler</em>) – The object on which the default file referenced object and its descendants will be added.</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – A valid file path, supported extensions: <cite>.ALLOWED_EXTENSIONS</cite></p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – A valid file path, supported extensions: <cite>.ALLOWED_EXTENSIONS</cite></p></li>
 <li><p><strong>default_object</strong> (<em>str</em><em> | </em><em>None</em>) – Give a file referenced object other than the default one (it must be at the root level)</p></li>
 <li><p><strong>scale_to_scene_unit</strong> (<em>bool</em>) – if True the referenced layer will be scaled to fit the parent scene unit</p></li>
 <li><p><strong>adjust_orientation</strong> (<em>bool</em>) – if True the referenced layer will be oriented accordingly to the scene up axis</p></li>
@@ -178,13 +178,13 @@ referencing it under different objects.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.delete" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.delete" title="Link to this definition"></a></dt>
 <dd><p>Delete the primHandlers passed in from the scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – The scene the prims belong to</p></li>
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – The primHandlers to be deleted</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em>) – The primHandlers to be deleted</p></li>
 </ul>
 </dd>
 </dl>
@@ -192,7 +192,7 @@ referencing it under different objects.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.flatten_references">
-<span class="sig-name descname"><span class="pre">flatten_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.flatten_references" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">flatten_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.flatten_references" title="Link to this definition"></a></dt>
 <dd><p>Flatten and transfer all external references for the given prim into the current scene.
 Textures are exported in a ‘dependencies’ folder next to the scene path.</p>
 <dl class="field-list simple">
@@ -204,7 +204,7 @@ Textures are exported in a ‘dependencies’ folder next to the scene path.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.get_default">
-<span class="sig-name descname"><span class="pre">get_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.get_default" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.get_default" title="Link to this definition"></a></dt>
 <dd><p>Get scene’s default prim as PrimHandler obejct</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -214,19 +214,19 @@ Textures are exported in a ‘dependencies’ folder next to the scene path.</p>
 <dd class="field-even"><p><cite>class .PrimHandler</cite> | None</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>substance3d.api.core.prim_handler.PrimHandler | None</p>
+<dd class="field-odd"><p><em>PrimHandler</em> | None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.load" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.load" title="Link to this definition"></a></dt>
 <dd><p>Load a supported file as a scene object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a valid file path, extension must be <cite>.ALLOWED_EXTENSIONS</cite></p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – a valid file path, extension must be <cite>.ALLOWED_EXTENSIONS</cite></p></li>
 <li><p><strong>use_cache</strong> (<em>bool</em>) – if True, check the USD global layer cache if this filename already exist as layer and use it instead of crate a new one.
 Warning this can lead to conflicts if you use a scene more than once as a base, for example for unittests, in this case turn it to False</p></li>
 <li><p><strong>kwargs</strong> – Give plugin specific arguments, call <cite>utility.get_plugins_sdfmetadata()</cite> to get more info</p></li>
@@ -243,7 +243,7 @@ Warning this can lead to conflicts if you use a scene more than once as a base, 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.local_to_reference">
-<span class="sig-name descname"><span class="pre">local_to_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.local_to_reference" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">local_to_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.local_to_reference" title="Link to this definition"></a></dt>
 <dd><p>Demote a local object into a local reference from a given object,
 In the LIVERPS USD’s context, the object will be weakened from a local (L) to a reference (R). Can be useful to
 create and authoring variants on top of a formerly Local object.</p>
@@ -262,18 +262,18 @@ create and authoring variants on top of a formerly Local object.</p>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.logger">
-<span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">substance3d.api.scene.scene</span> <span class="pre">(Level</span> <span class="pre">1)&gt;</span></em><a class="headerlink" href="#substance3d.api.scene.scene.logger" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">logger</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">substance3d.api.scene.scene</span> <span class="pre">(Level</span> <span class="pre">1)&gt;</span></span><a class="headerlink" href="#substance3d.api.scene.scene.logger" title="Link to this definition"></a></dt>
 <dd><p>Plugin’s metadata useful to get specific arguments</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.new">
-<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_prim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.new" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_prim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.new" title="Link to this definition"></a></dt>
 <dd><p>Create an empty scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em><em> | </em><em>None</em>) – a valid file path used as identifier and as default value if the scene is saved,
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>None</em>) – a valid file path used as identifier and as default value if the scene is saved,
 extension must be <code class="xref py py-const docutils literal notranslate"><span class="pre">ALLOWED_EXTENSIONS</span></code></p></li>
 <li><p><strong>force</strong> (<em>bool</em>) – if the filepath already exists and force is True the file will be overwritten otherwise an exception
 is raise</p></li>
@@ -292,13 +292,13 @@ is True (default value is False) it’s up to the user to create and set the def
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.new_from_object">
-<span class="sig-name descname"><span class="pre">new_from_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_scene_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten_parent_scene</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.new_from_object" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">new_from_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_scene_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten_parent_scene</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.new_from_object" title="Link to this definition"></a></dt>
 <dd><p>Create a new scene in memory with only the selected object(s) and its children</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parents</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – the parent object(s) to “copy” into this new scene</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em><em> | </em><em>None</em>) – <p>a valid file name used as identifier and as default value if the scene is saved,
+<li><p><strong>parents</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em>) – the parent object(s) to “copy” into this new scene</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>None</em>) – <p>a valid file name used as identifier and as default value if the scene is saved,
 extension must be <code class="xref py py-const docutils literal notranslate"><span class="pre">ALLOWED_EXTENSIONS</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -323,20 +323,15 @@ objects are in variants or with opinions from different targets</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.replace_reference">
-<span class="sig-name descname"><span class="pre">replace_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_reference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_default_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.replace_reference" title="Permalink to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Reference an object and all its descendants under the given object. By default the object will be selected</dt><dd><p>accordingly to the file’s default object (defaultPrim) value. Add a reference is commonly used to add an
-asset to the given scene. As opposed to a layer, a reference allows to add the same asset multiple times by
-referencing it under different objects.</p>
-</dd>
-</dl>
+<span class="sig-name descname"><span class="pre">replace_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_reference_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_reference_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.replace_reference" title="Link to this definition"></a></dt>
+<dd><p>Replace asset references with a new source path within the given hierarchy, if <cite>recursive=True</cite> otherwise in the given object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>PrimHandler</em>) – The object on which the default file referenced object and its descendants will be added.</p></li>
-<li><p><strong>previous_reference</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – The reference to be replaced</p></li>
-<li><p><strong>new_reference</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – The new reference which will replace the previous_reference</p></li>
-<li><p><strong>new_default_object</strong> (<em>str</em><em> | </em><em>None</em>) – Give a file referenced object other than the default one (it must be at the root level)</p></li>
+<li><p><strong>parent</strong> (<em>PrimHandler</em>) – The object where the search begins</p></li>
+<li><p><strong>previous_reference_filename</strong> (<em>str</em><em> | </em><em>Path</em>) – The reference to be replaced</p></li>
+<li><p><strong>new_reference_filename</strong> (<em>str</em><em> | </em><em>Path</em>) – The new reference which will be replaced the previous_reference, must exist and valid</p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – If True, iterates through all children to apply the replacement. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -347,14 +342,14 @@ referencing it under different objects.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.save" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.save" title="Link to this definition"></a></dt>
 <dd><p>Save the given scene into a valid file
 if filename is given the scene will be written here otherwise the value of scene.path will be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>scene</strong> (<em>StageHandler</em>) – The scene to be saved on file</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em><em> | </em><em>None</em>) – a valid file path</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>None</em>) – a valid file path</p></li>
 <li><p><strong>flat</strong> (<em>bool</em>) – if flat is True, the scene will be saved with all references or layers into the same file,
 There will be no more references to other files</p></li>
 <li><p><strong>export_params</strong> (<em>dict</em><em> | </em><em>None</em>) – Export parameters for specific plugins</p></li>
@@ -373,7 +368,7 @@ the input layer it was generated from.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.set_default">
-<span class="sig-name descname"><span class="pre">set_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_default" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_default" title="Link to this definition"></a></dt>
 <dd><p>Set the defaultPrim value which will be the default “root” object when this scene is used as reference</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -393,7 +388,7 @@ the input layer it was generated from.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.set_upaxis">
-<span class="sig-name descname"><span class="pre">set_upaxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upaxis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_upaxis" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_upaxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upaxis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_upaxis" title="Link to this definition"></a></dt>
 <dd><p>Set scene upAxis metadata</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -413,12 +408,12 @@ the input layer it was generated from.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.scene.set_visibility">
-<span class="sig-name descname"><span class="pre">set_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_visibility" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.scene.set_visibility" title="Link to this definition"></a></dt>
 <dd><p>Set the visibilty of the primHandlers passed in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>substance3d.api.core.prim_handler.PrimHandler</em><em>] </em><em>| </em><em>substance3d.api.core.prim_handler.PrimHandler</em>) – The prims to set visibility on</p></li>
+<li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em>) – The prims to set visibility on</p></li>
 <li><p><strong>value</strong> (<em>bool</em>) – The visibility value, should be a member of utilities.VISIBILITY_VALUES</p></li>
 </ul>
 </dd>
@@ -427,38 +422,38 @@ the input layer it was generated from.</p></li>
 
 </section>
 <section id="module-substance3d.api.scene">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.scene" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.scene" title="Link to this heading"></a></h2>
 </section>
 <section id="module-substance3d.api.scene.branch">
-<span id="substance3d-api-scene-branch-module"></span><h2>substance3d.api.scene.branch module<a class="headerlink" href="#module-substance3d.api.scene.branch" title="Permalink to this heading"></a></h2>
+<span id="substance3d-api-scene-branch-module"></span><h2>substance3d.api.scene.branch module<a class="headerlink" href="#module-substance3d.api.scene.branch" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.SceneBranch">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SceneBranch</span></span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SceneBranch</span></span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.SceneBranch.PREFIX">
-<span class="sig-name descname"><span class="pre">PREFIX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'branch'</span></em><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.PREFIX" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PREFIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'branch'</span></span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.PREFIX" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.SceneBranch.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_stage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_stage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.__init__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.SceneBranch.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.clear" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.clear" title="Link to this definition"></a></dt>
 <dd><p>Clear the content of the current scene branch</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.SceneBranch.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.save" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.SceneBranch.save" title="Link to this definition"></a></dt>
 <dd><p>Save a scene branch as an override USD layer file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
 <li><p><strong>flat</strong> (<em>bool</em>) – if the branch’s layer include other layers they will be flattened</p></li>
 </ul>
 </dd>
@@ -469,7 +464,7 @@ the input layer it was generated from.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.create">
-<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.create" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.create" title="Link to this definition"></a></dt>
 <dd><p>Create a SceneBranch context object. A scene branch is a way to edit and modify the current scene
 in a defined context without impacting it like a session layer. Enter a scene branch with the keyword <cite>with</cite>,
 and all the instructions will be applied on this specific branch layer on top of the current scene,
@@ -512,7 +507,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get" title="Link to this definition"></a></dt>
 <dd><p>Get an existing scene branch by giving a scene and an identifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -529,7 +524,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get_identifiers">
-<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_identifiers" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_identifiers" title="Link to this definition"></a></dt>
 <dd><p>Get a list of scene branch identifiers for the given scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -543,7 +538,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.get_target_handler">
-<span class="sig-name descname"><span class="pre">get_target_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_target_handler" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_target_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.get_target_handler" title="Link to this definition"></a></dt>
 <dd><p>Get the StageHandler of the scene branch’s stage current target</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -554,14 +549,14 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.branch.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.save" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.branch.save" title="Link to this definition"></a></dt>
 <dd><p>Save an existing scene branch by giving a scene and an identifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>StageHandler</em>) – the scene where the branch is applied</p></li>
 <li><p><strong>identifier</strong> (<em>str</em>) – the branch’s identifier</p></li>
-<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – a correct filename, supported extension usd, usdc, usda</p></li>
 <li><p><strong>apply</strong> (<em>bool</em>) – if True the saved file will be added to the current scene layer stack</p></li>
 </ul>
 </dd>
@@ -570,21 +565,21 @@ will be applied on the current scene’s layer.</p>
 
 </section>
 <section id="module-substance3d.api.scene.animation">
-<span id="substance3d-api-scene-animation-module"></span><h2>substance3d.api.scene.animation module<a class="headerlink" href="#module-substance3d.api.scene.animation" title="Permalink to this heading"></a></h2>
+<span id="substance3d-api-scene-animation-module"></span><h2>substance3d.api.scene.animation module<a class="headerlink" href="#module-substance3d.api.scene.animation" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.scene.animation.ActiveTimecode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ActiveTimecode</span></span><a class="headerlink" href="#substance3d.api.scene.animation.ActiveTimecode" title="Permalink to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ActiveTimecode</span></span><a class="headerlink" href="#substance3d.api.scene.animation.ActiveTimecode" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="substance3d.api.scene.animation.ActiveTimecode.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.ActiveTimecode.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.ActiveTimecode.__init__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.animation.activate_timecode">
-<span class="sig-name descname"><span class="pre">activate_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.activate_timecode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">activate_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.activate_timecode" title="Link to this definition"></a></dt>
 <dd><p>Create a key context to add a keyed/sampled value for all prims transformed in the <cite>with</cite> block</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -602,7 +597,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.animation.create_timecode_label">
-<span class="sig-name descname"><span class="pre">create_timecode_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.create_timecode_label" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_timecode_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.create_timecode_label" title="Link to this definition"></a></dt>
 <dd><p>Create a label for a timecode that can be used by other animation’s functions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -620,7 +615,7 @@ will be applied on the current scene’s layer.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.scene.animation.set_time_range">
-<span class="sig-name descname"><span class="pre">set_time_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.set_time_range" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_time_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.scene.animation.set_time_range" title="Link to this definition"></a></dt>
 <dd><p>Set the start and end timecode for the given scene</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

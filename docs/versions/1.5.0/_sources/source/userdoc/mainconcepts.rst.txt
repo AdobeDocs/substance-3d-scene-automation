@@ -1,0 +1,42 @@
+Main Concepts
+-------------
+
+How does SSCA work?
+===================
+SSCA is a functional oriented API, rather than object oriented.
+SSCA only has 3 objects as a result, `StageHandler`, `PrimHandler`, and Image.
+`StageHandler` and `PrimHandler` act as intermediaries between SSCA and the USD file format
+to edit objects in the USD without requiring intimate knowledge of how USD works.
+
+.. note::
+
+    More about `Handler` in chapters:
+
+    - :ref:`Understand the SSCA's Handler objects<Understand the SSCA's Handler objects>`
+    - :ref:`How to use Handler objects<How to use Handlers>`
+
+
+What are USDA, USDC, and USDZ?
+==============================
+USD, USDA, USDC, and USDZ are all USD files, and should be readable by any application that can open USD files. The extension used determines the formatting of the file internally.
+
+* USD files can be either ASCII or binary files.
+
+* USDA files are always ASCII. This means that they are human readable which can be useful for debugging.
+
+* USDC files are always Binary. This allows them to be loaded faster and have smaller file sizes than USDA.
+
+* USDZ files are zip files that can contain other USD files, images, and audio.
+
+* USDZ files are uncompressed and are primarily used as a convenient way to organize and transfer content, not as a way to decrease file sizes.
+
+Pixar, the creators of the USD format, have made more information on the format available `here <https://graphics.pixar.com/usd/release/intro.html>`_.
+
+
+Understand the SSCA's Handler objects
+=====================================
+Like Prim for USD, PrimHandler represents all the objects in a scene, and StageHandler represents the scene itself. These two objects are the only ones manipulated by the SSCA python API.
+
+Most of the time the API functions will ask for either a PrimHandler or StageHandler as an argument and most of the time they will return either a PrimHandler or a StageHandler.
+
+Handler objects acts as intermediate objects with USD data. They store no direct data but query the USD data correctly for each Handler's property, metadata, attributes. They behave the same for the settings.
