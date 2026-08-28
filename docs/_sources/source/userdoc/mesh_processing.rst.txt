@@ -71,10 +71,45 @@ Build a production-ready Digital Twin from a CAD file
     `parametricTessellationLevel` string argument options are: **"extraLow", "low", "medium", "high", "extraHigh"**
 
 
+Remove occluded meshes
+**********************
+
+CAD files often contain meshes or parts that are inside the main asset shape like electrical circuits, or internal mechanical components. These objects are not visible, and removing them can help optimize the mesh processing and the work load for downstream tasks and steps like texturing, staging, etc.
+
+.. code-block:: python
+    
+    # Make sure vertices of every mesh are welded
+    remove_occluded_op = mesh_processing.RemoveOccludedInstancesOp()
+
+    # Default precision is set to 'Medium', but you can set it to 'Low' or 'High' depending on your needs.
+    remove_occluded_op.precision = mesh_processing.presets.RemoveOccludedInstancesPrecision.Medium
+
+The ``Precision`` attribute controls how many rays are cast to detect occluded meshes. Higher precision casts more rays, so more meshes are considered visible and preserved. For a hermetic shell, precision has no effect, so set it to 'Low' to save processing time.
+
+The following illustrations show the effect of the ``Precision`` setting on a slightly open mesh with nested internal meshes:
+
+Low:
+
+.. image:: /source/static/mesh_processing/mp_occluded_meshes_low.jpg
+    :scale: 30 %
+    :alt: Precision: LOW
+
+Medium:
+
+.. image:: /source/static/mesh_processing/mp_occluded_meshes_medium.jpg
+    :scale: 30 %
+    :alt: Precision: MEDIUM
+
+High:
+
+.. image:: /source/static/mesh_processing/mp_occluded_meshes_high.jpg
+    :scale: 30 %
+    :alt: Precision: HIGH
+
 Clean mesh and optimize it for further processing
 *************************************************
 
-Now we have our StageHandler scene lets load some of the cleaning operators:
+Let's now load some of the cleaning operators:
 
 .. code-block:: python
     
@@ -159,7 +194,13 @@ Compute mesh processing operators on the scene.
     export.fbx(my_scene, Path("mesh_output/processed_cad_file.fbx"))
 
 .. note::
-    Each operator is executed one after the other, following the specified order. 
+    Each operator is executed one after the other, following the specified order.
+
+.. note::
+    ``parent`` can also be a list of objects (``list[PrimHandler]``), in which case every operator
+    is applied to all the given objects and their subtrees in a single call, e.g.
+    ``mesh_processing.process([obj_a, obj_b], [decimate_op])``. All objects in the list must
+    belong to the same stage.
 
 
 Processing Mesh Attributes and Mesh/Subtree Values

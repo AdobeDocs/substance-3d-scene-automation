@@ -91,6 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#create-a-material-from-an-sbsar-file">Create a material from an SBSAR file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#assign-a-material-to-an-object">Assign a material to an object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#transform-a-material">Transform a material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-a-tri-planar-projection-to-a-material">Apply a tri-planar projection to a material</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lights">Lights</a><ul>
@@ -117,6 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">CAD &amp; Mesh Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_batch_renderer.html">Batch Renderer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -234,11 +237,11 @@ Instead, you can learn more about moving objects in the scene in this section ab
 <span class="o">.</span><span class="n">vrml</span><span class="p">,</span> <span class="o">.</span><span class="n">wrl</span>
 </pre></div>
 </div>
-<p>Other supported CAD formats :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">.3</span><span class="n">dm</span><span class="p">,</span> <span class="mf">.3</span><span class="n">ds</span><span class="p">,</span> <span class="o">.</span> <span class="n">abc</span><span class="p">,</span> <span class="o">.</span><span class="n">arc</span><span class="p">,</span> <span class="o">.</span><span class="n">asm</span><span class="p">,</span> <span class="o">.</span><span class="n">axf</span><span class="p">,</span> <span class="o">.</span><span class="n">catdrawing</span><span class="p">,</span> <span class="o">.</span><span class="n">catpart</span><span class="p">,</span>
+<p>Other supported file formats :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">.3</span><span class="n">dm</span><span class="p">,</span> <span class="mf">.3</span><span class="n">ds</span><span class="p">,</span> <span class="o">.</span><span class="n">abc</span><span class="p">,</span> <span class="o">.</span><span class="n">arc</span><span class="p">,</span> <span class="o">.</span><span class="n">asm</span><span class="p">,</span> <span class="o">.</span><span class="n">axf</span><span class="p">,</span> <span class="o">.</span><span class="n">catdrawing</span><span class="p">,</span> <span class="o">.</span><span class="n">catpart</span><span class="p">,</span>
 <span class="o">.</span><span class="n">catproduct</span><span class="p">,</span> <span class="o">.</span><span class="n">catshape</span><span class="p">,</span> <span class="o">.</span><span class="n">cgr</span><span class="p">,</span> <span class="o">.</span><span class="n">dlv</span><span class="p">,</span> <span class="o">.</span><span class="n">dwf</span><span class="p">,</span> <span class="o">.</span><span class="n">dwfx</span><span class="p">,</span> <span class="o">.</span><span class="n">dxf</span><span class="p">,</span> <span class="o">.</span><span class="n">exp</span><span class="p">,</span>
 <span class="o">.</span><span class="n">iam</span><span class="p">,</span> <span class="o">.</span><span class="n">ifc</span><span class="p">,</span> <span class="o">.</span><span class="n">ifczip</span><span class="p">,</span> <span class="o">.</span><span class="n">iges</span><span class="p">,</span> <span class="o">.</span><span class="n">igs</span><span class="p">,</span> <span class="o">.</span><span class="n">ipt</span><span class="p">,</span> <span class="o">.</span><span class="n">jt</span><span class="p">,</span> <span class="o">.</span><span class="n">mf1</span><span class="p">,</span> <span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="o">.</span><span class="n">neu</span><span class="p">,</span>
-<span class="o">.</span><span class="n">par</span><span class="p">,</span> <span class="o">.</span><span class="n">pkg</span><span class="p">,</span> <span class="o">.</span><span class="n">ply</span><span class="p">,</span> <span class="o">.</span><span class="n">prt</span><span class="p">,</span> <span class="o">.</span><span class="n">psm</span><span class="p">,</span> <span class="o">.</span><span class="n">pwd</span><span class="p">,</span> <span class="o">.</span><span class="n">rfa</span><span class="p">,</span> <span class="o">.</span><span class="n">sab</span><span class="p">,</span> <span class="o">.</span><span class="n">sat</span><span class="p">,</span> <span class="o">.</span><span class="n">sbsar</span><span class="p">,</span>
+<span class="o">.</span><span class="n">par</span><span class="p">,</span> <span class="o">.</span><span class="n">pkg</span><span class="p">,</span> <span class="o">.</span><span class="n">ply</span><span class="p">,</span> <span class="o">.</span><span class="n">prt</span><span class="p">,</span> <span class="o">.</span><span class="n">psm</span><span class="p">,</span> <span class="o">.</span><span class="n">pwd</span><span class="p">,</span> <span class="o">.</span><span class="n">sab</span><span class="p">,</span> <span class="o">.</span><span class="n">sat</span><span class="p">,</span> <span class="o">.</span><span class="n">sbsar</span><span class="p">,</span>
 <span class="o">.</span><span class="n">sdf</span><span class="p">,</span> <span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="o">.</span><span class="n">sldasm</span><span class="p">,</span> <span class="o">.</span><span class="n">sldprt</span><span class="p">,</span> <span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="o">.</span><span class="n">stp</span><span class="p">,</span> <span class="o">.</span><span class="n">stpx</span><span class="p">,</span> <span class="o">.</span><span class="n">stpxz</span><span class="p">,</span>
 <span class="o">.</span><span class="n">stpz</span><span class="p">,</span> <span class="o">.</span><span class="n">u3d</span><span class="p">,</span> <span class="o">.</span><span class="n">unv</span><span class="p">,</span> <span class="o">.</span><span class="n">usd</span><span class="p">,</span> <span class="o">.</span><span class="n">usda</span><span class="p">,</span> <span class="o">.</span><span class="n">usdc</span><span class="p">,</span> <span class="o">.</span><span class="n">usdz</span><span class="p">,</span> <span class="o">.</span><span class="n">vda</span><span class="p">,</span> <span class="o">.</span><span class="n">x_b</span><span class="p">,</span> <span class="o">.</span><span class="n">x_t</span><span class="p">,</span>
 <span class="o">.</span><span class="n">xas</span><span class="p">,</span> <span class="o">.</span><span class="n">xmt</span><span class="p">,</span> <span class="o">.</span><span class="n">xmt_txt</span><span class="p">,</span> <span class="o">.</span><span class="n">xpr</span>
@@ -688,6 +691,21 @@ The code below shows how to transform a material in the UV space.</p>
 
 <span class="c1"># Rotate</span>
 <span class="n">material</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-a-tri-planar-projection-to-a-material">
+<h3>Apply a tri-planar projection to a material<a class="headerlink" href="#apply-a-tri-planar-projection-to-a-material" title="Link to this heading"></a></h3>
+<p>As in <a class="reference external" href="https://experienceleague.adobe.com/en/docs/substance-3d-painter/using/painting/fill-projections/tri-planar-projection">Adobe Substance 3D Painter</a>,
+you can now choose between mapping projection types when applying your material.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set a mapping projection type to the material</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_mapping_type</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="n">material</span><span class="o">.</span><span class="n">MappingType</span><span class="o">.</span><span class="n">TriplanarWorld</span><span class="p">)</span>
+
+<span class="c1"># Use the previously set projection type to apply transforms to the triplanar projection</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_triplanar_transform</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span>
+                                 <span class="n">scale</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span>
+                                 <span class="n">offset</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+                                 <span class="n">rotation</span><span class="o">=</span><span class="mf">45.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

@@ -71,6 +71,8 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_batch_renderer.html">Batch Renderer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -112,6 +114,27 @@
 <dt class="sig sig-object py" id="substance3d.api.material.material.MATERIAL_REFERENCE_FORMATS">
 <span class="sig-name descname"><span class="pre">MATERIAL_REFERENCE_FORMATS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['usd',</span> <span class="pre">'usda',</span> <span class="pre">'usdc',</span> <span class="pre">'usdz']</span></span><a class="headerlink" href="#substance3d.api.material.material.MATERIAL_REFERENCE_FORMATS" title="Link to this definition"></a></dt>
 <dd><p>Supported object type to assign a material on it</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.material.material.MappingType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MappingType</span></span><a class="headerlink" href="#substance3d.api.material.material.MappingType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.MappingType.TriplanarObject">
+<span class="sig-name descname"><span class="pre">TriplanarObject</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'triplanarObject'</span></span><a class="headerlink" href="#substance3d.api.material.material.MappingType.TriplanarObject" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.MappingType.TriplanarWorld">
+<span class="sig-name descname"><span class="pre">TriplanarWorld</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'triplanarWorld'</span></span><a class="headerlink" href="#substance3d.api.material.material.MappingType.TriplanarWorld" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="substance3d.api.material.material.MappingType.Uv">
+<span class="sig-name descname"><span class="pre">Uv</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'uv'</span></span><a class="headerlink" href="#substance3d.api.material.material.MappingType.Uv" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -403,6 +426,28 @@ Local reference can allows override and variant creation easier for this materia
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material.get_assigned_objects">
+<span class="sig-name descname"><span class="pre">get_assigned_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.get_assigned_objects" title="Link to this definition"></a></dt>
+<dd><p>Return all objects the given material is assigned to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>material</strong> (<em>PrimHandler</em>) – The material object to query</p></li>
+<li><p><strong>root</strong> (<em>StageHandler</em><em> | </em><em>PrimHandler</em><em> | </em><em>None</em>) – The scope to search under, a StageHandler or PrimHandler. Defaults to the whole stage.
+If a PrimHandler is given, it is itself included in the search (<cite>search()</cite> only covers its
+descendants).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of PrimHandler objects the material is assigned to</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<em>PrimHandler</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.material.material.get_sbsar_parameters">
 <span class="sig-name descname"><span class="pre">get_sbsar_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_regexp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.get_sbsar_parameters" title="Link to this definition"></a></dt>
 <dd><p>Get sbsar parameters with all their data, result can be filtered by name and/or by widget type : <cite>SbsarWidget</cite> enum</p>
@@ -573,6 +618,29 @@ This accepts only shader input names based on Substance usages.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material.set_mapping_type">
+<span class="sig-name descname"><span class="pre">set_mapping_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.set_mapping_type" title="Link to this definition"></a></dt>
+<dd><p>Set the UV/triplanar mapping type on the given material’s OpenPBR shader graph.
+Triplanar mapping projects textures from object or world space instead of using UVs,
+avoiding seams and stretching on procedural or unwrapped geometry. Has no effect on
+non-MaterialX materials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>material</strong> (<em>PrimHandler</em>) – The material object</p></li>
+<li><p><strong>mapping_type</strong> (<a class="reference internal" href="#substance3d.api.material.material.MappingType" title="substance3d.api.material.material.MappingType"><em>MappingType</em></a><em> | </em><em>str</em>) – <cite>MappingType</cite> value, or one of “uv”, “triplanarObject”, “triplanarWorld”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The material object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.material.material.set_normal_format">
 <span class="sig-name descname"><span class="pre">set_normal_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalFormat.DirectX</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.set_normal_format" title="Link to this definition"></a></dt>
 <dd><p>Change normal texture format of the given material into the given format.</p>
@@ -679,6 +747,31 @@ This accepts only shader input names based on Substance usages.</p>
 <li><p><strong>material</strong> (<em>PrimHandler</em>) – The material object</p></li>
 <li><p><strong>values</strong> (<em>list</em><em>[</em><em>float</em><em>] </em><em>| </em><em>tuple</em><em>[</em><em>float</em><em>]</em>) – The translate values</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material.set_triplanar_transform">
+<span class="sig-name descname"><span class="pre">set_triplanar_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material.set_triplanar_transform" title="Link to this definition"></a></dt>
+<dd><p>Set the triplanar projection transform on the given material. The material’s mapping type
+must already have been set to a triplanar mode via <cite>set_mapping_type</cite>, which creates the
+inputs this function overrides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>material</strong> (<em>PrimHandler</em>) – The material object</p></li>
+<li><p><strong>scale</strong> (<em>float</em><em> | </em><em>None</em>) – World-space size of the projected texture; larger values give larger, less
+repeated features. Left as None to keep the current value.</p></li>
+<li><p><strong>offset</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>] </em><em>| </em><em>None</em>) – (x, y, z) translation applied to the projection. Left as None to keep the current value.</p></li>
+<li><p><strong>rotation</strong> (<em>float</em><em> | </em><em>None</em>) – Rotation of the projection around the up (Y) axis, in degrees. Left as None to keep the current value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The material object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>PrimHandler</em></p>
 </dd>
 </dl>
 </dd></dl>

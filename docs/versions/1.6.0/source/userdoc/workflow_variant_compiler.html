@@ -1,0 +1,1642 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variant Compiler Guide &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Substance3d Release Notes" href="../release.html" />
+    <link rel="prev" title="CAD &amp; Mesh Processing" href="mesh_processing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/thumbnails.html">substance3d.api.thumbnails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Variant Compiler Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-the-ui">Starting the UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ui-layout">UI Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-bar">Menu Bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-menu">File Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-menu">Import Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-menu">Export Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preview-menu">Preview Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scene-hierarchy-panel">Scene Hierarchy Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-a-scene">Loading a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-the-tree">Navigating the Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-and-filtering">Searching and Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prim-details-sub-panel">Prim Details Sub-panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prim-indicators">Prim Indicators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variant-sets-panel">Variant Sets Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-variant-set">Creating a Variant Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variant-set-list-items">Variant Set List Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Searching and Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nested-variant-sets-child-sets">Nested Variant Sets (Child Sets)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variant-set-details-panel">Variant Set Details Panel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#header-fields">Header Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variants-list">Variants List</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-variants">Adding Variants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variant-card-editable-sets">Variant Card (Editable Sets)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variant-card-read-only-sets">Variant Card (Read-only Sets)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-editing-opinions">Adding and Editing Opinions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geometry">GEOMETRY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometry-file">GEOMETRY (FILE)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#material">MATERIAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#material-file">MATERIAL (FILE)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attribute">ATTRIBUTE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controller">CONTROLLER</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bulk-import">Bulk Import</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#logs-panel">Logs Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-ui">1. Start the UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-or-open-a-workspace">2. Create or Open a Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-a-scene">3. Import a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-variant-set">4. Create a Variant Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-variants">5. Add Variants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-opinions-to-each-variant">6. Add Opinions to Each Variant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-a-default-selection">7. Set a Default Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-the-workspace">8. Save the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-the-scene">9. Export the Scene</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-syntax">Command Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verbosity-levels">Verbosity Levels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exit-codes">Exit Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-examples">Quick Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variantset-object">VariantSet Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variant-object">Variant Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opinion-object">Opinion Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attribute-object">Attribute Object</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#opinion-type-examples">Opinion Type Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">GEOMETRY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">MATERIAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">ATTRIBUTE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">CONTROLLER</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#path-resolution">Path Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nested-variant-sets">Nested Variant Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-config-examples">Full Config Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#geometry-swap-vehicle-types">Geometry Swap (vehicle types)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#material-variants-wall-finishes">Material Variants (wall finishes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-set-coordination-with-controller">Cross-set Coordination with CONTROLLER</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#relationship-to-the-ui">Relationship to the UI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Variant Compiler Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/userdoc/workflow_variant_compiler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="variant-compiler-guide">
+<h1>Variant Compiler Guide<a class="headerlink" href="#variant-compiler-guide" title="Link to this heading"></a></h1>
+<p>A comprehensive reference for the graphical interface of the Variant Compiler tool.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">workflow_tools</span></code> folder.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">install.bat</span></code> on Windows or <code class="docutils literal notranslate"><span class="pre">install</span></code> on macOS.</p></li>
+<li><p>Wait for the installation to complete. This may take a few minutes while a Python virtual environment is created and dependencies are installed.</p></li>
+<li><p>Once the installation is complete, the GUI launchers and CLI <code class="docutils literal notranslate"><span class="pre">.bat</span></code> files are available in the <code class="docutils literal notranslate"><span class="pre">workflow_tools</span></code> folder.</p></li>
+</ol>
+</section>
+<section id="starting-the-ui">
+<h2>Starting the UI<a class="headerlink" href="#starting-the-ui" title="Link to this heading"></a></h2>
+<p>Double-click the <code class="docutils literal notranslate"><span class="pre">.bat</span></code> file in the workflow tools folder, run <code class="docutils literal notranslate"><span class="pre">variant-compiler-ui</span></code> from the command line, or run <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with Python (SSCA required).</p>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
+<td><p>Logging level (<code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Logs are written to <code class="docutils literal notranslate"><span class="pre">logs/variant_compiler_ui.log</span></code>.</p>
+</section>
+</section>
+<section id="ui-layout">
+<h2>UI Layout<a class="headerlink" href="#ui-layout" title="Link to this heading"></a></h2>
+<p>The application is organized into four panels + a Log panel:</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../_images/variant_compiler.png"><img alt="Variant Compiler UI layout showing the four panels" src="../../_images/variant_compiler.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><em>Click on the image to view full size</em></span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <strong>menu bar</strong> spans the top. The scene filename is shown in the center of the
+menu bar, and the workspace path (with <code class="docutils literal notranslate"><span class="pre">*</span></code> when unsaved) appears on the right.</p>
+</section>
+<section id="menu-bar">
+<h2>Menu Bar<a class="headerlink" href="#menu-bar" title="Link to this heading"></a></h2>
+<section id="file-menu">
+<h3>File Menu<a class="headerlink" href="#file-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>New Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+N</span></code></p></td>
+<td><p>Clear the workspace and start fresh</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Workspace…</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code></p></td>
+<td><p>Load an existing <code class="docutils literal notranslate"><span class="pre">.vws</span></code> workspace file</p></td>
+</tr>
+<tr class="row-even"><td><p>Save Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code></p></td>
+<td><p>Save the current workspace to its existing path</p></td>
+</tr>
+<tr class="row-odd"><td><p>Save Workspace As…</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+S</span></code></p></td>
+<td><p>Save to a new <code class="docutils literal notranslate"><span class="pre">.vws</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p>Close Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+W</span></code></p></td>
+<td><p>Close the current workspace</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Recent</p></td>
+<td><p>—</p></td>
+<td><p>Reopen a recently used workspace</p></td>
+</tr>
+<tr class="row-even"><td><p>Theme</p></td>
+<td><p>—</p></td>
+<td><p>Switch between available UI themes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Q</span></code></p></td>
+<td><p>Quit the application</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the workspace has unsaved changes, the application will prompt to save before
+closing or opening a new file.</p>
+</section>
+<section id="import-menu">
+<h3>Import Menu<a class="headerlink" href="#import-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Import Scene…</p></td>
+<td><p>Open a USD/USDZ/USDA/FBX scene file into the Scene Hierarchy panel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Import Variant Config (.json)…</p></td>
+<td><p>Populate the Variant Sets panel from an existing JSON config file</p></td>
+</tr>
+<tr class="row-even"><td><p>Import BOM…</p></td>
+<td><p>Import a Bill of Materials file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="export-menu">
+<h3>Export Menu<a class="headerlink" href="#export-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Export Scene…</p></td>
+<td><p>Compile all variant sets and write a USD output file (<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, or <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Export Variant Config (.json)…</p></td>
+<td><p>Save the current variant configuration to a JSON file for use with the CLI</p></td>
+</tr>
+</tbody>
+</table>
+<p>Validation runs automatically before any export. If errors are found, they are logged
+with clickable navigation links and the export is blocked until fixed.</p>
+</section>
+<section id="preview-menu">
+<h3>Preview Menu<a class="headerlink" href="#preview-menu" title="Link to this heading"></a></h3>
+<p>Opens the loaded scene in an external USD viewer for quick inspection.</p>
+</section>
+</section>
+<section id="scene-hierarchy-panel">
+<h2>Scene Hierarchy Panel<a class="headerlink" href="#scene-hierarchy-panel" title="Link to this heading"></a></h2>
+<p>Displays the prim tree of the imported USD scene.</p>
+<section id="loading-a-scene">
+<h3>Loading a Scene<a class="headerlink" href="#loading-a-scene" title="Link to this heading"></a></h3>
+<p>Click <strong>Import Scene</strong> in the panel header, or use <strong>Import → Import Scene…</strong> from
+the menu. A progress dialog appears while the scene loads. The title bar updates to
+show the filename.</p>
+</section>
+<section id="navigating-the-tree">
+<h3>Navigating the Tree<a class="headerlink" href="#navigating-the-tree" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The tree expands one level by default when a scene is loaded.</p></li>
+<li><p>Click any row to select a prim and show its properties in the <strong>Prim Details</strong> sub-panel below.</p></li>
+<li><p>Drag a prim row onto the <strong>Prim Path</strong> field inside <strong>Variant Set Details</strong> to assign that prim’s path to a variant set.</p></li>
+<li><p>Double-click a prim to select it.</p></li>
+</ul>
+</section>
+<section id="searching-and-filtering">
+<h3>Searching and Filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Type in the <strong>Search prims…</strong> field to filter the tree by prim name. The tree expands matching branches automatically.</p></li>
+<li><p>Enable <strong>Match All Keywords</strong> to require every space-separated term to match (AND). By default any term is sufficient (OR).</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> or click away to apply the search immediately; otherwise it applies after a short pause.</p></li>
+<li><p>Click the type tag buttons (<strong>Mesh</strong>, <strong>Material</strong>, <strong>Xform</strong>, <strong>Scope</strong>, <strong>Camera</strong>, <strong>Light</strong>) to show only prims of that type. Multiple tags can be active at once.</p></li>
+<li><p>The search field shows a clear button (×) when a type filter is active, so everything can be reset in one click.</p></li>
+</ul>
+</section>
+<section id="prim-details-sub-panel">
+<h3>Prim Details Sub-panel<a class="headerlink" href="#prim-details-sub-panel" title="Link to this heading"></a></h3>
+<p>Shows the selected prim’s properties (name, type, path, and attributes). Click the
+<strong>▲/▼</strong> button in the Prim Details header to collapse or expand the sub-panel.</p>
+</section>
+<section id="prim-indicators">
+<h3>Prim Indicators<a class="headerlink" href="#prim-indicators" title="Link to this heading"></a></h3>
+<p>Prims that are assigned to one or more variant sets display a blue dot on their row
+in the tree.</p>
+</section>
+</section>
+<section id="variant-sets-panel">
+<h2>Variant Sets Panel<a class="headerlink" href="#variant-sets-panel" title="Link to this heading"></a></h2>
+<p>Lists every variant set in the current workspace.</p>
+<section id="creating-a-variant-set">
+<h3>Creating a Variant Set<a class="headerlink" href="#creating-a-variant-set" title="Link to this heading"></a></h3>
+<p>Click <strong>+ New Variant Set</strong> in the panel header. A new entry appears in the list and
+is selected automatically, with the name field focused and ready to type.</p>
+</section>
+<section id="variant-set-list-items">
+<h3>Variant Set List Items<a class="headerlink" href="#variant-set-list-items" title="Link to this heading"></a></h3>
+<p>Each card shows:</p>
+<ul class="simple">
+<li><p><strong>Lock / Unlock icon</strong> — A padlock icon indicates whether the set is read-only (loaded from the scene) or editable (newly created). Hover for a tooltip.</p></li>
+<li><p><strong>Name</strong> — The variant set name, optionally followed by <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">selected_variant</span></code> when a default variant is active.</p></li>
+<li><p><strong>Prim path</strong> — The USD prim this set is attached to.</p></li>
+<li><p><strong>Types and count</strong> — The opinion types used across variants (e.g. <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span> <span class="pre">-</span> <span class="pre">4</span> <span class="pre">variants</span></code>).</p></li>
+<li><p><strong>Child variant sets</strong> — When nested variant sets exist, a count label and expand/collapse button appear.</p></li>
+<li><p><strong>Error / Warning icons</strong> — Validation problems are shown as alert icons with tooltip details.</p></li>
+<li><p><strong>Duplicate button</strong> — Copies the variant set (and all its variants and opinions) to a new editable set.</p></li>
+<li><p><strong>Delete button</strong> — Removes the set after a confirmation prompt. Only shown for editable sets.</p></li>
+</ul>
+<p>User-created (editable) sets are listed before read-only (existing) sets. Within each
+group, sets are sorted alphabetically by name then by prim path.</p>
+</section>
+<section id="id1">
+<h3>Searching and Filtering<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Type in <strong>Search sets…</strong> to filter by name, prim path, variant names, opinion types, target prims, referenced files, or attribute values.</p></li>
+<li><p>Enable <strong>Match All Keywords</strong> (AND logic) or leave unchecked for OR logic (default).</p></li>
+<li><p>Click <strong>New</strong> to show only user-created sets.</p></li>
+<li><p>Click opinion type tags (<strong>Attribute</strong>, <strong>Controller</strong>, <strong>Geometry</strong>, <strong>Material</strong>, etc.) to filter by type. When multiple tags are selected, all must be present.</p></li>
+<li><p>The search field shows a clear button when any filter is active.</p></li>
+</ul>
+</section>
+<section id="nested-variant-sets-child-sets">
+<h3>Nested Variant Sets (Child Sets)<a class="headerlink" href="#nested-variant-sets-child-sets" title="Link to this heading"></a></h3>
+<p>Variant sets can contain child sets owned by specific variants. Click the
+expand/collapse button on a parent card to show or hide its children inline in the
+list, indented by nesting level. Search auto-expands parents when a matching child
+exists.</p>
+</section>
+</section>
+<section id="variant-set-details-panel">
+<h2>Variant Set Details Panel<a class="headerlink" href="#variant-set-details-panel" title="Link to this heading"></a></h2>
+<p>Shows the full configuration of the selected variant set. Click any variant set in
+the center panel to load it here.</p>
+<section id="header-fields">
+<h3>Header Fields<a class="headerlink" href="#header-fields" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Name</strong></p></td>
+<td><p>Editable name for the variant set. Must be a valid USD identifier (letters, digits, underscores; must start with a letter or underscore).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Prim Path</strong></p></td>
+<td><p>The USD prim path this set is attached to. Type a path directly or drag a prim row from the Scene Hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Variant Path</strong></p></td>
+<td><p>Read-only. Shown only for nested variant sets — the full USD path including parent variant context.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Parent</strong></p></td>
+<td><p>Read-only. Shown only for nested variant sets — which variant owns this set.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Types</strong></p></td>
+<td><p>Read-only. Comma-separated list of opinion types present across all variants.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Fields for read-only (existing) sets are greyed out and non-editable.</p>
+</section>
+<section id="variants-list">
+<h3>Variants List<a class="headerlink" href="#variants-list" title="Link to this heading"></a></h3>
+<p>Each variant in the set is shown as a collapsible card.</p>
+<section id="adding-variants">
+<h4>Adding Variants<a class="headerlink" href="#adding-variants" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Click <strong>New Variant</strong> in the Variants section header to add a blank variant. The name field is focused for immediate renaming.</p></li>
+<li><p>Click <strong>Import</strong> (folder icon) to bulk-import variants from a directory of asset files (see <a class="reference internal" href="#bulk-import"><span class="std std-ref">Bulk Import</span></a> below).</p></li>
+</ul>
+</section>
+<section id="variant-card-editable-sets">
+<h4>Variant Card (Editable Sets)<a class="headerlink" href="#variant-card-editable-sets" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Checkbox</strong> — Marks this variant as the default selected variant. Only one variant can be selected at a time.</p></li>
+<li><p><strong>Name field</strong> — The variant identifier. Must be a valid USD identifier.</p></li>
+<li><p><strong>Expand/Collapse arrow</strong> — Toggles the opinions list for this variant.</p></li>
+<li><p><strong>Duplicate button</strong> — Copies the variant and all its opinions.</p></li>
+<li><p><strong>Delete button</strong> — Removes the variant.</p></li>
+<li><p><strong>Drag handle</strong> — Drag variants to reorder them within the set.</p></li>
+</ul>
+</section>
+<section id="variant-card-read-only-sets">
+<h4>Variant Card (Read-only Sets)<a class="headerlink" href="#variant-card-read-only-sets" title="Link to this heading"></a></h4>
+<p>Name is shown as a label only. No editing controls are visible.</p>
+</section>
+</section>
+<section id="adding-and-editing-opinions">
+<h3>Adding and Editing Opinions<a class="headerlink" href="#adding-and-editing-opinions" title="Link to this heading"></a></h3>
+<p>Expand a variant card to see its opinions. Click <strong>+ Add Opinion</strong> inside the expanded
+card to add a new opinion.</p>
+<p>Each opinion has a <strong>type selector</strong> and type-specific fields:</p>
+<section id="geometry">
+<h4>GEOMETRY<a class="headerlink" href="#geometry" title="Link to this heading"></a></h4>
+<p>Swaps the geometry at the target prim.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>USD prim path to replace (must start with <code class="docutils literal notranslate"><span class="pre">/</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Referenced Prim</p></td>
+<td><p>Path to the specific prim within the referenced file to use</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="geometry-file">
+<h4>GEOMETRY (FILE)<a class="headerlink" href="#geometry-file" title="Link to this heading"></a></h4>
+<p>Swaps the geometry at the target prim.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>USD prim path to replace (must start with <code class="docutils literal notranslate"><span class="pre">/</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Referenced File</p></td>
+<td><p>Path to the replacement USD/FBX/OBJ file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="material">
+<h4>MATERIAL<a class="headerlink" href="#material" title="Link to this heading"></a></h4>
+<p>Assigns a material to the target prim.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>USD prim path to assign the material to. Supports wildcard prefix <code class="docutils literal notranslate"><span class="pre">*</span></code> to match multiple prims.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Referenced Prim</p></td>
+<td><p>Path to an existing material prim already in the scene</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="material-file">
+<h4>MATERIAL (FILE)<a class="headerlink" href="#material-file" title="Link to this heading"></a></h4>
+<p>Assigns a material to the target prim.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>USD prim path to assign the material to. Supports wildcard prefix <code class="docutils literal notranslate"><span class="pre">*</span></code> to match multiple prims.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Referenced File</p></td>
+<td><p>Path to a <code class="docutils literal notranslate"><span class="pre">.sbsar</span></code>, texture directory, or USD material file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attribute">
+<h4>ATTRIBUTE<a class="headerlink" href="#attribute" title="Link to this heading"></a></h4>
+<p>Modifies an attribute value on the target prim.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>USD prim path. Supports wildcard prefix <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Attribute Name</p></td>
+<td><p>The attribute to set (e.g. <code class="docutils literal notranslate"><span class="pre">inputs.baseColor</span></code>, <code class="docutils literal notranslate"><span class="pre">procedural_sbsar.roughness</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Attribute Value</p></td>
+<td><p>The new value</p></td>
+</tr>
+</tbody>
+</table>
+<p>Attribute name prefixes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs.</span></code> — Standard USD material inputs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">procedural_sbsar.</span></code> — SBSAR procedural parameters</p></li>
+</ul>
+</section>
+<section id="controller">
+<h4>CONTROLLER<a class="headerlink" href="#controller" title="Link to this heading"></a></h4>
+<p>Selects a variant in another variant set, enabling cross-set coordination.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target Prim</p></td>
+<td><p>Prim path that owns the target variant set</p></td>
+</tr>
+<tr class="row-odd"><td><p>Variant Set</p></td>
+<td><p>Name of the target variant set to control</p></td>
+</tr>
+<tr class="row-even"><td><p>Selected Variant</p></td>
+<td><p>The variant to activate in that set</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="bulk-import">
+<span id="id2"></span><h3>Bulk Import<a class="headerlink" href="#bulk-import" title="Link to this heading"></a></h3>
+<p>Bulk import allows you to create multiple variants at once by selecting a folder of asset files. Each file generates a new variant with opinions based on the chosen opinion type.</p>
+<p>Click the <strong>Import</strong> (folder icon) button in the Variants section header to open the
+bulk import panel. The variants list is replaced with an import form:</p>
+<a class="reference internal image-reference" href="../../_images/vc_bulk_import.jpg"><img alt="Bulk import button" class="align-center" src="../../_images/vc_bulk_import.jpg" style="width: 80%;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple">
+<li><p>Set the <strong>Target Prim</strong> — the prim path all opinions will point to.</p></li>
+<li><p>Choose <strong>Opinion Type</strong> — <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> or <code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code>.</p></li>
+<li><p>Click <strong>Add Files</strong> to pick individual files, or <strong>Add Directory</strong> to scan a folder. Files can also be dragged directly onto the list.</p></li>
+<li><p>Remove individual files with the x button.</p></li>
+<li><p>Click <strong>Import</strong> to create one variant per file, using the filename (without extension) as the variant identifier.</p></li>
+<li><p>Click <strong>Cancel</strong> to return to the variants list without importing.</p></li>
+</ol>
+</section>
+</section>
+<section id="logs-panel">
+<h2>Logs Panel<a class="headerlink" href="#logs-panel" title="Link to this heading"></a></h2>
+<p>Displays real-time feedback from load, validation, and export operations.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>White</p></td>
+<td><p>Info</p></td>
+<td><p>Normal progress updates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green</p></td>
+<td><p>Success</p></td>
+<td><p>Operations completed successfully</p></td>
+</tr>
+<tr class="row-even"><td><p>Yellow</p></td>
+<td><p>Warning</p></td>
+<td><p>Non-fatal issues that may need attention</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red</p></td>
+<td><p>Error</p></td>
+<td><p>Failures and validation errors</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Clickable log entries</strong> — Validation error messages are links. Clicking one
+navigates the Variant Sets and Variant Set Details panels to the exact variant set,
+variant, or opinion field that caused the error.</p>
+<p><strong>Console</strong> — Opens an embedded Python console for debugging.</p>
+<p><strong>Clear</strong> — Clears all log entries.</p>
+<p>The panel can be collapsed by dragging the splitter handle upward.</p>
+</section>
+<section id="typical-workflow">
+<h2>Typical Workflow<a class="headerlink" href="#typical-workflow" title="Link to this heading"></a></h2>
+<section id="start-the-ui">
+<h3>1. Start the UI<a class="headerlink" href="#start-the-ui" title="Link to this heading"></a></h3>
+<p>Double-click on the <code class="docutils literal notranslate"><span class="pre">.bat</span></code> file in the workflow tools folder, run <code class="docutils literal notranslate"><span class="pre">variant-compiler-ui</span></code> from the command line, or run <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with Python (SSCA required).</p>
+</section>
+<section id="create-or-open-a-workspace">
+<h3>2. Create or Open a Workspace<a class="headerlink" href="#create-or-open-a-workspace" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>File → New Workspace</strong> to start from scratch.</p></li>
+<li><p><strong>File → Open Workspace…</strong> (<code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code>) to reload an existing <code class="docutils literal notranslate"><span class="pre">.vws</span></code> file.</p></li>
+</ul>
+</section>
+<section id="import-a-scene">
+<h3>3. Import a Scene<a class="headerlink" href="#import-a-scene" title="Link to this heading"></a></h3>
+<p>Click <strong>Import Scene</strong> in the Scene Hierarchy panel header and select a
+USD/USDZ/USDA/FBX file. The prim tree populates and the filename appears in the
+menu bar.</p>
+</section>
+<section id="create-a-variant-set">
+<h3>4. Create a Variant Set<a class="headerlink" href="#create-a-variant-set" title="Link to this heading"></a></h3>
+<p>Click <strong>+ New Variant Set</strong> in the Variant Sets panel. Name it (e.g. <code class="docutils literal notranslate"><span class="pre">BodyColor</span></code>)
+and set the <strong>Prim Path</strong> — type it or drag a prim row from the Scene Hierarchy.</p>
+</section>
+<section id="add-variants">
+<h3>5. Add Variants<a class="headerlink" href="#add-variants" title="Link to this heading"></a></h3>
+<p>In the Variant Set Details panel, click <strong>New Variant</strong> for each option (e.g.
+<code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">blue</span></code>, <code class="docutils literal notranslate"><span class="pre">silver</span></code>). Rename each variant as prompted.</p>
+</section>
+<section id="add-opinions-to-each-variant">
+<h3>6. Add Opinions to Each Variant<a class="headerlink" href="#add-opinions-to-each-variant" title="Link to this heading"></a></h3>
+<p>Expand a variant card, click <strong>+ Add Opinion</strong>, choose the opinion type, and fill in
+the required fields. For example, a <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> opinion needs a Target Prim and
+either a Referenced File or Referenced Prim.</p>
+<p>A single variant can have multiple opinions. Common combinations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code> + <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> — Swap geometry and assign matching material.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code> — Chain to another variant set (e.g. selecting <code class="docutils literal notranslate"><span class="pre">large_wheels</span></code> also selects the matching <code class="docutils literal notranslate"><span class="pre">WheelMaterial</span></code> variant).</p></li>
+</ul>
+</section>
+<section id="set-a-default-selection">
+<h3>7. Set a Default Selection<a class="headerlink" href="#set-a-default-selection" title="Link to this heading"></a></h3>
+<p>Check the checkbox next to the variant that should be active by default when the
+USD file is opened.</p>
+</section>
+<section id="save-the-workspace">
+<h3>8. Save the Workspace<a class="headerlink" href="#save-the-workspace" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code> saves to a <code class="docutils literal notranslate"><span class="pre">.vws</span></code> file. The title bar clears the <code class="docutils literal notranslate"><span class="pre">*</span></code> unsaved
+indicator. Workspaces can be reopened via <strong>File → Open Recent</strong>.</p>
+</section>
+<section id="export-the-scene">
+<h3>9. Export the Scene<a class="headerlink" href="#export-the-scene" title="Link to this heading"></a></h3>
+<p><strong>Export → Export Scene…</strong> validates all variant sets, then writes a USD file with
+the compiled variant data. If validation errors exist they are logged as clickable
+links and the export is blocked until corrected.</p>
+</section>
+</section>
+<section id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Drag prim paths</strong> — Any prim path field in Variant Set Details accepts drag-and-drop from the Scene Hierarchy prim tree.</p></li>
+<li><p><strong>Duplicate to iterate</strong> — Use the duplicate button on a variant set or variant to copy a working configuration before making changes.</p></li>
+<li><p><strong>Lock icon = read-only</strong> — Variant sets loaded from the scene are locked (read-only). Duplicate them to create an editable copy.</p></li>
+<li><p><strong>Search is deep</strong> — The Variant Sets search scans names, prim paths, variant identifiers, referenced files, and attribute values, so you can search for a filename or material path to find which set uses it.</p></li>
+<li><p><strong>Validation links</strong> — Clicking a red error in the Logs panel jumps directly to the broken field, saving time hunting for the problem.</p></li>
+<li><p><strong>`.vws` vs `.json`</strong> — A workspace (<code class="docutils literal notranslate"><span class="pre">.vws</span></code>) saves the full UI state including the scene reference. A variant config (<code class="docutils literal notranslate"><span class="pre">.json</span></code>) is portable and works with the CLI. Use <strong>Export → Export Variant Config</strong> to generate a CLI-compatible config from the UI.</p></li>
+</ul>
+</section>
+<section id="cli">
+<h2>CLI<a class="headerlink" href="#cli" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">variant-compiler</span></code> command-line tool runs the same compilation pipeline as the UI,
+without a graphical interface. Use it for headless batch builds, CI pipelines, or
+scripted automation.</p>
+<p>This CLI uses JSON files exported from the UI with <strong>Export → Export Variant Config…</strong>, or created manually from the schema described below.</p>
+<p>After installation, the CLI entrypoint is abailable in the workflow_tools folder as <code class="docutils literal notranslate"><span class="pre">Substance3DVariantCompilerCLI.bat</span></code> on Windows or <code class="docutils literal notranslate"><span class="pre">variant-compiler</span></code> on macOS. You can also run <code class="docutils literal notranslate"><span class="pre">variant_compiler/CLI/main.py</span></code> with Python directly (SSCA required).</p>
+<section id="id3">
+<h3>Environment Variables<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WARNING</span></code></p></td>
+<td><p>Logging level (<code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>). Overridden by <code class="docutils literal notranslate"><span class="pre">-v</span></code> / <code class="docutils literal notranslate"><span class="pre">-vv</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Logs are written to <code class="docutils literal notranslate"><span class="pre">logs/variant_compiler.log</span></code>.</p>
+</section>
+<section id="command-syntax">
+<h3>Command Syntax<a class="headerlink" href="#command-syntax" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>--config<span class="w"> </span>&lt;config.json&gt;<span class="w"> </span>--output<span class="w"> </span>&lt;output.usd&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 10.0%" />
+<col style="width: 12.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--config</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-c</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Path to the variant configuration JSON file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--output</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-o</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Path to the output USD file (<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, or <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--input</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-i</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Path to an existing USD/USDZ/USDA/FBX scene to build on top of</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--working-directory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-w</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Base directory for resolving relative asset paths (default: directory of the input file, or CWD)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Increase log verbosity; use <code class="docutils literal notranslate"><span class="pre">-v</span></code> for info, <code class="docutils literal notranslate"><span class="pre">-vv</span></code> for debug</p></td>
+</tr>
+</tbody>
+</table>
+<section id="verbosity-levels">
+<h4>Verbosity Levels<a class="headerlink" href="#verbosity-levels" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Flag</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>(none)</em></p></td>
+<td><p>Warnings and errors only</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>Info messages + warnings + errors</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code></p></td>
+<td><p>Debug messages + info + warnings + errors</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exit-codes">
+<h4>Exit Codes<a class="headerlink" href="#exit-codes" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 90.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Missing required arguments or CLI parse error</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>File not found or invalid configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>Processing failure (variant creation or export error)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">130</span></code></p></td>
+<td><p>Cancelled by user (<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quick-examples">
+<h3>Quick Examples<a class="headerlink" href="#quick-examples" title="Link to this heading"></a></h3>
+<p>Build from a config alone (no input scene):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>config.json<span class="w"> </span>-o<span class="w"> </span>output.usd
+</pre></div>
+</div>
+<p>Add variants to an existing USD scene:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>config.json<span class="w"> </span>-i<span class="w"> </span>base_scene.usd<span class="w"> </span>-o<span class="w"> </span>output.usd
+</pre></div>
+</div>
+<p>Export as USDZ with verbose logging:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>config.json<span class="w"> </span>-i<span class="w"> </span>scene.usd<span class="w"> </span>-o<span class="w"> </span>output.usdz<span class="w"> </span>-vv
+</pre></div>
+</div>
+<p>Resolve assets relative to a custom directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>config.json<span class="w"> </span>-i<span class="w"> </span>scene.usd<span class="w"> </span>-o<span class="w"> </span>output.usd<span class="w"> </span>-w<span class="w"> </span>./assets
+</pre></div>
+</div>
+</section>
+<section id="configuration-file">
+<h3>Configuration File<a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h3>
+<p>The config is a JSON file with a single top-level key <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> containing an
+array of variant set definitions. For complete working examples, see <a class="reference internal" href="#full-config-examples">Full Config Examples</a> below.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="variantset-object">
+<h4>VariantSet Object<a class="headerlink" href="#variantset-object" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 10.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Unique name for the variant set. Must be a valid USD identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prim_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>USD prim path where this variant set is authored (e.g. <code class="docutils literal notranslate"><span class="pre">/root/vehicle</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">selected_variant</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p>Identifier of the variant to activate by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">variants</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Yes</p></td>
+<td><p>One or more variant definitions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variant-object">
+<h4>Variant Object<a class="headerlink" href="#variant-object" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 10.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Unique name for this variant within the set. Must start with a letter or underscore and contain only letters, digits, or underscores.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opinions</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Yes</p></td>
+<td><p>One or more opinion definitions describing the changes this variant applies.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variant_sets</span></code></p></td>
+<td><p>array</p></td>
+<td><p>No</p></td>
+<td><p>Nested variant sets owned by this variant.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="opinion-object">
+<h4>Opinion Object<a class="headerlink" href="#opinion-object" title="Link to this heading"></a></h4>
+<p>An opinion is a single atomic change that a variant applies. Required fields depend on
+<code class="docutils literal notranslate"><span class="pre">opinion_type</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 10.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_prim</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>USD prim path being modified. Must start with <code class="docutils literal notranslate"><span class="pre">/</span></code>. <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code> and <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> types also accept a wildcard prefix <code class="docutils literal notranslate"><span class="pre">*</span></code> to match multiple prims (e.g. <code class="docutils literal notranslate"><span class="pre">*/Looks/Material</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">opinion_type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>One of: <code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code>, <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code>, <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code>, <code class="docutils literal notranslate"><span class="pre">LIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">CAMERA</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">has_file_reference</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>No</p></td>
+<td><p>Set <code class="docutils literal notranslate"><span class="pre">true</span></code> when the opinion references an external file. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> when <code class="docutils literal notranslate"><span class="pre">referenced_file</span></code> is present.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">referenced_file</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Conditional</p></td>
+<td><p>Path to the external asset. Required when <code class="docutils literal notranslate"><span class="pre">has_file_reference</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">referenced_prim</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Conditional</p></td>
+<td><p>Internal prim reference (material binding path, or specific prim in a referenced file). Must start with <code class="docutils literal notranslate"><span class="pre">/</span></code>. Required for prim-based <code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code> opinions when <code class="docutils literal notranslate"><span class="pre">has_file_reference</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">attribute</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Conditional</p></td>
+<td><p>Attribute definition. Required for <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code> opinions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variant_set</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Conditional</p></td>
+<td><p>Target variant set name. Required for <code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code> opinions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">selected_variant</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Conditional</p></td>
+<td><p>Variant to select in the target set. Required for <code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code> opinions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>Other fields may be present depending on the opinion type. Try exporting from the UI if unsure.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attribute-object">
+<h4>Attribute Object<a class="headerlink" href="#attribute-object" title="Link to this heading"></a></h4>
+<p>Used inside <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code> opinions.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 10.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Attribute name. Use <code class="docutils literal notranslate"><span class="pre">inputs.</span></code> prefix for standard USD inputs or <code class="docutils literal notranslate"><span class="pre">procedural_sbsar.</span></code> for SBSAR parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Attribute value as a string (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;(1,</span> <span class="pre">0,</span> <span class="pre">0)&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;0.5&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;metallic&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p>USD type hint (e.g. <code class="docutils literal notranslate"><span class="pre">color3f</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">float2</span></code>, <code class="docutils literal notranslate"><span class="pre">token</span></code>). Recommended when the type cannot be inferred.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="opinion-type-examples">
+<h3>Opinion Type Examples<a class="headerlink" href="#opinion-type-examples" title="Link to this heading"></a></h3>
+<p>JSON examples for each opinion type. For field descriptions see <a class="reference internal" href="#adding-and-editing-opinions">Adding and Editing Opinions</a> above.</p>
+<section id="id4">
+<h4>GEOMETRY<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><p>File reference:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/hand_hi.usd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Prim reference (binds to an existing prim in the scene):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;has_file_reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/SourceGeometry/hand_hi&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>File reference with a specific internal prim:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/hands.usd&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Hands/HiRes&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="id5">
+<h4>MATERIAL<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<p>Assigns a material to the target prim. Accepts SBSAR procedural materials, texture
+directories, USD material files, and existing scene prims.</p>
+<details>
+<summary>Show / Hide</summary><p>SBSAR material:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/car_paint.sbsar&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>USD material file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/brick_wall/brick_wall.usd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Texture directory:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/prop/surface&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/wood_texture/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Existing prim in the scene:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;has_file_reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/Materials/BrickMaterial&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Wildcard target (applies to every matching prim in the subtree):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/Looks/Material&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/surface.sbsar&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="id6">
+<h4>ATTRIBUTE<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>Modifies an attribute value on the target prim. Commonly used to tune material
+parameters.</p>
+<details>
+<summary>Show / Hide</summary><p>USD material input:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/chair/seat/Looks/Material&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;attribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inputs.baseColor&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(1, 0, 0)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color3f&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>SBSAR procedural parameter:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/floatplane/body&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;attribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;procedural_sbsar.roughness&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;float&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Attribute name prefixes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Prefix</p></th>
+<th class="head"><p>Use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inputs.</span></code></p></td>
+<td><p>Standard USD shader inputs (e.g. <code class="docutils literal notranslate"><span class="pre">inputs.baseColor</span></code>, <code class="docutils literal notranslate"><span class="pre">inputs.uvscale</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">procedural_sbsar.</span></code></p></td>
+<td><p>SBSAR procedural parameters (e.g. <code class="docutils literal notranslate"><span class="pre">procedural_sbsar.roughness</span></code>, <code class="docutils literal notranslate"><span class="pre">procedural_sbsar.paint_color_1</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Common attribute types:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Example value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;0.5&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">float2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;(0.5,</span> <span class="pre">1.0)&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">color3f</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;(1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;[1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0]&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">token</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;metallic&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</details>
+<br></section>
+<section id="id7">
+<h4>CONTROLLER<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p>Selects a variant in another variant set. Use this to synchronize multiple variant
+sets — for example, selecting a wheel size automatically selects a matching wheel
+material.</p>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rubber_large&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<br></section>
+</section>
+<section id="path-resolution">
+<h3>Path Resolution<a class="headerlink" href="#path-resolution" title="Link to this heading"></a></h3>
+<p>Relative paths in <code class="docutils literal notranslate"><span class="pre">referenced_file</span></code> are resolved in this order:</p>
+<ol class="arabic simple">
+<li><p><strong>Absolute path</strong> — used as-is if the path exists on disk.</p></li>
+<li><p><strong>Relative to the input scene</strong> — if <code class="docutils literal notranslate"><span class="pre">--input</span></code> is provided, resolves from that file’s directory.</p></li>
+<li><p><strong>Relative to</strong> <code class="docutils literal notranslate"><span class="pre">--working-directory</span></code> — if provided, resolves from that directory.</p></li>
+<li><p><strong>Project-relative</strong> — paths starting with <code class="docutils literal notranslate"><span class="pre">/</span></code> that do not resolve as absolute are treated as project-relative and resolved against the working directory.</p></li>
+<li><p><strong>Current working directory</strong> — fallback when neither <code class="docutils literal notranslate"><span class="pre">--input</span></code> nor <code class="docutils literal notranslate"><span class="pre">--working-directory</span></code> is supplied.</p></li>
+</ol>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Path example</p></th>
+<th class="head"><p>Resolved as</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;materials/wood.sbsar&quot;</span></code></p></td>
+<td><p>Relative to scene dir (or working dir / CWD as fallback)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;/materials/wood.sbsar&quot;</span></code></p></td>
+<td><p>Project-relative, resolved against working directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;C:/Projects/assets/wood.sbsar&quot;</span></code></p></td>
+<td><p>Absolute (Windows)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;/home/user/assets/wood.sbsar&quot;</span></code></p></td>
+<td><p>Absolute (Linux / macOS)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nested-variant-sets">
+<h3>Nested Variant Sets<a class="headerlink" href="#nested-variant-sets" title="Link to this heading"></a></h3>
+<p>A variant can own its own child variant sets. This lets you express conditional
+configurations — the child sets only appear in the USD when their owning variant is
+selected.</p>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VehicleType&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/car.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CarColor&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                      </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/red_paint.sbsar&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                      </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/blue_paint.sbsar&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bike&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/bike.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="full-config-examples">
+<h3>Full Config Examples<a class="headerlink" href="#full-config-examples" title="Link to this heading"></a></h3>
+<section id="geometry-swap-vehicle-types">
+<h4>Geometry Swap (vehicle types)<a class="headerlink" href="#geometry-swap-vehicle-types" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vehicle_type&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bike&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/bike.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/car.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scooter&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/scooter.fbx&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>vehicle.json<span class="w"> </span>-o<span class="w"> </span>vehicle_variants.usda<span class="w"> </span>-v
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="material-variants-wall-finishes">
+<h4>Material Variants (wall finishes)<a class="headerlink" href="#material-variants-wall-finishes" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WallMaterial&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;brick&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/brick_wall/brick_wall.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wood&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/wood_wall.sbsar&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/concrete_wall/concrete_wall.usd&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>room.json<span class="w"> </span>-i<span class="w"> </span>room.usd<span class="w"> </span>-o<span class="w"> </span>room_variants.usda<span class="w"> </span>-v
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="cross-set-coordination-with-controller">
+<h4>Cross-set Coordination with CONTROLLER<a class="headerlink" href="#cross-set-coordination-with-controller" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelSize&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;small&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/wheel_small.usd&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard_rubber&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;large&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/wheel_large.usd&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sport_rubber&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard_rubber&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/rubber_standard.sbsar&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sport_rubber&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/rubber_sport.sbsar&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>variant-compiler<span class="w"> </span>-c<span class="w"> </span>wheels.json<span class="w"> </span>-i<span class="w"> </span>vehicle.usd<span class="w"> </span>-o<span class="w"> </span>vehicle_wheels.usda<span class="w"> </span>-vv
+</pre></div>
+</div>
+</details>
+<br></section>
+</section>
+<section id="relationship-to-the-ui">
+<h3>Relationship to the UI<a class="headerlink" href="#relationship-to-the-ui" title="Link to this heading"></a></h3>
+<p>The CLI and the UI share the same underlying config format.</p>
+<ul class="simple">
+<li><p><strong>Author in the UI, run in CI</strong> — Use the UI to build and validate a config, then
+export it via <strong>Export → Export Variant Config (.json)</strong>. Pass that file directly to
+the CLI for headless batch builds.</p></li>
+<li><p><strong>Author in JSON, inspect in the UI</strong> — Write a config by hand or generate it
+programmatically, then import it into the UI via <strong>Import → Import Variant Config
+(.json)</strong> to visualize and edit it.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">.vws</span></code> workspace format used by the UI is a superset of the JSON config and also
+stores the associated scene path. The exported <code class="docutils literal notranslate"><span class="pre">.json</span></code> is the portable,
+CLI-compatible subset.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mesh_processing.html" class="btn btn-neutral float-left" title="CAD &amp; Mesh Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../release.html" class="btn btn-neutral float-right" title="Substance3d Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

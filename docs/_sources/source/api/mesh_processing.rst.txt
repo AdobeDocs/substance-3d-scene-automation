@@ -214,6 +214,25 @@ substance3d.api.mesh_processing
     +--------------------+---------+---------+-------------------------------------------------+
 
 
+.. class:: RemoveOccludedInstancesOp
+
+   Remove fully occluded mesh instances from the given subtree.
+
+    .. rubric:: Attributes
+
+    +---------------+------------------------------------------+---------+------------------------------------------------------------+
+    | **precision** | presets.RemoveOccludedInstancesPrecision | Medium  | Detection precision controlling ray budget and batch size. |
+    +---------------+------------------------------------------+---------+------------------------------------------------------------+
+
+    .. note::
+
+       Possible values for the ``precision`` attribute:
+
+       - ``presets.RemoveOccludedInstancesPrecision.Low``: Favor processing speed over detection precision.
+       - ``presets.RemoveOccludedInstancesPrecision.Medium``: Balance processing speed and detection precision.
+       - ``presets.RemoveOccludedInstancesPrecision.High``: Favor detection precision over processing speed.
+
+
 .. class:: RemoveTinyFacesOp
 
    Remove zero-area faces from each mesh in the given subtree,

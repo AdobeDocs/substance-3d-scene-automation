@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.thumbnails &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="substance3d.api.transform" href="transform.html" />
+    <link rel="prev" title="substance3d.api.export" href="export.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.thumbnails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.thumbnails.thumbnails.set"><code class="docutils literal notranslate"><span class="pre">set()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.thumbnails.thumbnails.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.thumbnails.thumbnails.get_from_filepath"><code class="docutils literal notranslate"><span class="pre">get_from_filepath()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.thumbnails.thumbnails.render"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.thumbnails.thumbnails.remove"><code class="docutils literal notranslate"><span class="pre">remove()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material_utilities.html">substance3d.api.material.material_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.thumbnails</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/thumbnails.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-substance3d.api.thumbnails.thumbnails">
+<span id="substance3d-api-thumbnails"></span><h1>substance3d.api.thumbnails<a class="headerlink" href="#module-substance3d.api.thumbnails.thumbnails" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.thumbnails.thumbnails.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.thumbnails.thumbnails.set" title="Link to this definition"></a></dt>
+<dd><p>Set a thumbnail image by referencing an external filepath.
+If a StageHandler is provided, its defaultPrim will be used as the target prim.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>StageHandler</em>) – The target primhandler or stagehandler.</p></li>
+<li><p><strong>filepath</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the thumbnail image file to associate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the StageHandler has no defaultPrim, or if the thumbnail command fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.thumbnails.thumbnails.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.thumbnails.thumbnails.get" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the thumbnail image filepath.
+If a StageHandler is provided, its defaultPrim will be used as the target prim.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>StageHandler</em>) – The target primhandler or stagehandler.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The thumbnail value if found, otherwise None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the StageHandler has no defaultPrim.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.thumbnails.thumbnails.get_from_filepath">
+<span class="sig-name descname"><span class="pre">get_from_filepath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.thumbnails.thumbnails.get_from_filepath" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the thumbnail image filepath in a valid scene file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the valid scene file to read the thumbnail from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The thumbnail value if found, otherwise None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.thumbnails.thumbnails.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(512,</span> <span class="pre">512)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_template</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.thumbnails.thumbnails.render" title="Link to this definition"></a></dt>
+<dd><p>Render a thumbnail image of the given stage and optionally reference it on the default prim.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>StageHandler</em>) – The stage to render.</p></li>
+<li><p><strong>output_filename</strong> (<em>str</em><em> | </em><em>Path</em>) – Output image file path.</p></li>
+<li><p><strong>resolution</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – Thumbnail resolution as (width, height) in pixels. Defaults to (512, 512).</p></li>
+<li><p><strong>reference_result</strong> – When True, references the rendered image on the stage’s default prim.</p></li>
+<li><p><strong>custom_template</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>None</em>) – <p>Optional path to a USD template file containing lights, cyclorama,
+and a camera. The parent stage is referenced into the first xform prim matching <code class="docutils literal notranslate"><span class="pre">*asset*</span></code>.
+When a template is provided, the following adjustments are applied automatically:</p>
+<ul>
+<li><p>The asset is rotated to match the template’s up-axis.</p></li>
+<li><p>The asset is moved to ground level.</p></li>
+<li><p>The first camera found in the template is framed on the asset.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.thumbnails.thumbnails.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.thumbnails.thumbnails.remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the thumbnail reference from the target object if present.
+If a StageHandler is provided, its defaultPrim will be used as the target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>StageHandler</em>) – The target primhandler or stagehandler.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="export.html" class="btn btn-neutral float-left" title="substance3d.api.export" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="transform.html" class="btn btn-neutral float-right" title="substance3d.api.transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

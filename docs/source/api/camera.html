@@ -91,6 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_batch_renderer.html">Batch Renderer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -193,7 +195,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.frame">
-<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame" title="Link to this definition"></a></dt>
 <dd><p>Frame selected objects using an existing camera</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -203,6 +205,9 @@
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to create the GfCamera from the UsdGeomCamera</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – the aspect ratio the camera will be rendered at. When provided, the camera
+aperture is updated to match so the subject is tightly framed in the final render. When
+omitted, the camera’s current aperture aspect ratio is used (unchanged behavior).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -214,7 +219,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.frame_turntable">
-<span class="sig-name descname"><span class="pre">frame_turntable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame_turntable" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">frame_turntable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Usd.TimeCode.Default().GetValue()'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.frame_turntable" title="Link to this definition"></a></dt>
 <dd><p>Frame a camera using the bounding cylinder turntable framing algorithm.</p>
 <p>Unlike frame(), this method computes the minimum bounding cylinder of the objects
 around the Y-axis and frames the camera to fit the cylinder. This produces consistent
@@ -227,6 +232,9 @@ regardless of rotation around the Y-axis.</p>
 <li><p><strong>objects</strong> (<em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>PrimHandler</em><em> | </em><em>StageHandler</em><em> | </em><em>None</em>) – the object(s) the camera should frame</p></li>
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
 <li><p><strong>timecode</strong> (<em>float</em>) – the timecode used to evaluate the geometry</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – the aspect ratio the camera will be rendered at. When provided, the camera
+aperture is updated to match so the subject is tightly framed in the final render. When
+omitted, the camera’s current aperture aspect ratio is used (unchanged behavior).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -302,7 +310,7 @@ regardless of rotation around the Y-axis.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.camera.camera.create_view">
-<span class="sig-name descname"><span class="pre">create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_view" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_precise_mesh_bbox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.camera.camera.create_view" title="Link to this definition"></a></dt>
 <dd><p>Create a camera view oriented by a given vector. <cite>camera.ViewOrientations</cite>’s value can be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -313,6 +321,9 @@ regardless of rotation around the Y-axis.</p>
 <li><p><strong>frame_fit</strong> (<em>float</em>) – 1.0 is a tight fit, increase to add space around the frame</p></li>
 <li><p><strong>orthographic</strong> (<em>bool</em>) – use orthographic projection</p></li>
 <li><p><strong>use_precise_mesh_bbox</strong> (<em>bool</em>) – Use the slower and non-cached version which ensures mesh prims are tight</p></li>
+<li><p><strong>aspect_ratio</strong> (<em>float</em><em> | </em><em>None</em>) – the aspect ratio the camera will be rendered at. When provided, the camera
+aperture is updated to match so the subject is tightly framed in the final render. When
+omitted, the camera’s current aperture aspect ratio is used (unchanged behavior).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

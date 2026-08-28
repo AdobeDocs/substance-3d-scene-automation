@@ -71,6 +71,8 @@
 <li class="toctree-l1"><a class="reference internal" href="userdoc/knownissues.html">Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_batch_renderer.html">Batch Renderer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userdoc/workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -111,11 +113,11 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.process">
 <span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.process" title="Link to this definition"></a></dt>
-<dd><p>Process a list of mesh operators on the given target and its subtree.</p>
+<dd><p>Process a list of mesh operators on the given target(s) and their subtree.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>StageHandler</em>) – Given targen can be a scene or an object</p></li>
+<li><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>StageHandler</em>) – Given target can be a scene, a single object or a list of objects</p></li>
 <li><p><strong>operators</strong> (<em>list</em><em>[</em><em>substance3d.api.mesh_processing.operators.MeshOperator</em><em>]</em>) – A list of mesh operators</p></li>
 </ul>
 </dd>

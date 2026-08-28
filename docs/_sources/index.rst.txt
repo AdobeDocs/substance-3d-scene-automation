@@ -45,6 +45,8 @@ Table of contents
    source/userdoc/knownissues
    source/userdoc/mesh_processing
    source/userdoc/workflow_variant_compiler
+   source/userdoc/workflow_batch_renderer
+   source/userdoc/workflow_bom_material_assignment
 
 .. toctree::
    :maxdepth: 2

@@ -74,6 +74,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CAD &amp; Mesh Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-a-production-ready-digital-twin-from-a-cad-file">Build a production-ready Digital Twin from a CAD file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#remove-occluded-meshes">Remove occluded meshes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clean-mesh-and-optimize-it-for-further-processing">Clean mesh and optimize it for further processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recover-quads-from-triangulated-meshes">Recover Quads from triangulated meshes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unwrap-mesh-uvs">Unwrap mesh UVs</a></li>
@@ -103,6 +104,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_batch_renderer.html">Batch Renderer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
 <ul>
@@ -190,9 +193,31 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <p>At this point, it is important to remember that, for CAD files import, the <a class="reference internal" href="#cad-files-import-options"><span class="std std-ref">parametricTessellationLevel</span></a> argument gives you the opportunity to set a tessellation level at import.
 <cite>parametricTessellationLevel</cite> string argument options are: <strong>“extraLow”, “low”, “medium”, “high”, “extraHigh”</strong></p>
 </div>
+<section id="remove-occluded-meshes">
+<h3>Remove occluded meshes<a class="headerlink" href="#remove-occluded-meshes" title="Link to this heading"></a></h3>
+<p>CAD files often contain meshes or parts that are inside the main asset shape like electrical circuits, or internal mechanical components. These objects are not visible, and removing them can help optimize the mesh processing and the work load for downstream tasks and steps like texturing, staging, etc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
+<span class="n">remove_occluded_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveOccludedInstancesOp</span><span class="p">()</span>
+
+<span class="c1"># Default precision is set to &#39;Medium&#39;, but you can set it to &#39;Low&#39; or &#39;High&#39; depending on your needs.</span>
+<span class="n">remove_occluded_op</span><span class="o">.</span><span class="n">precision</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">presets</span><span class="o">.</span><span class="n">RemoveOccludedInstancesPrecision</span><span class="o">.</span><span class="n">Medium</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Precision</span></code> attribute controls how many rays are cast to detect occluded meshes. Higher precision casts more rays, so more meshes are considered visible and preserved. For a hermetic shell, precision has no effect, so set it to ‘Low’ to save processing time.</p>
+<p>The following illustrations show the effect of the <code class="docutils literal notranslate"><span class="pre">Precision</span></code> setting on a slightly open mesh with nested internal meshes:</p>
+<p>Low:</p>
+<a class="reference internal image-reference" href="../../_images/mp_occluded_meshes_low.jpg"><img alt="Precision: LOW" height="306" src="../../_images/mp_occluded_meshes_low.jpg" width="544" />
+</a>
+<p>Medium:</p>
+<a class="reference internal image-reference" href="../../_images/mp_occluded_meshes_medium.jpg"><img alt="Precision: MEDIUM" height="306" src="../../_images/mp_occluded_meshes_medium.jpg" width="544" />
+</a>
+<p>High:</p>
+<a class="reference internal image-reference" href="../../_images/mp_occluded_meshes_high.jpg"><img alt="Precision: HIGH" height="306" src="../../_images/mp_occluded_meshes_high.jpg" width="544" />
+</a>
+</section>
 <section id="clean-mesh-and-optimize-it-for-further-processing">
 <h3>Clean mesh and optimize it for further processing<a class="headerlink" href="#clean-mesh-and-optimize-it-for-further-processing" title="Link to this heading"></a></h3>
-<p>Now we have our StageHandler scene lets load some of the cleaning operators:</p>
+<p>Let’s now load some of the cleaning operators:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
 <span class="n">verts_weld_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveDuplicateVerticesOp</span><span class="p">()</span>
 
@@ -261,6 +286,13 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Each operator is executed one after the other, following the specified order.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">parent</span></code> can also be a list of objects (<code class="docutils literal notranslate"><span class="pre">list[PrimHandler]</span></code>), in which case every operator
+is applied to all the given objects and their subtrees in a single call, e.g.
+<code class="docutils literal notranslate"><span class="pre">mesh_processing.process([obj_a,</span> <span class="pre">obj_b],</span> <span class="pre">[decimate_op])</span></code>. All objects in the list must
+belong to the same stage.</p>
 </div>
 </section>
 <section id="processing-mesh-attributes-and-mesh-subtree-values">

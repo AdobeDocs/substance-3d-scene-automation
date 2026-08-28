@@ -1,0 +1,1838 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batch Renderer Guide &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BOM Material Assignment Guide" href="workflow_bom_material_assignment.html" />
+    <link rel="prev" title="Variant Compiler Guide" href="workflow_variant_compiler.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/thumbnails.html">substance3d.api.thumbnails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material.html">substance3d.api.material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/material_utilities.html">substance3d.api.material.material_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Batch Renderer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-the-ui">Starting the UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ui-layout">UI Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tab-header">Tab Header</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#menu-bar">Menu Bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-menu">File Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assets-menu">Assets Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#presets-menu">Presets Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preview-menu">Preview Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-scene-setup">Step 1 - Scene Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-assets-panel">3D Assets Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-assets">Adding Assets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importing-assets-from-a-spreadsheet">Importing Assets from a Spreadsheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asset-cards">Asset Cards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variant-sets-and-variants">Variant Sets and Variants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#searching-and-filtering">Searching and Filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#set-scene-configuration-panel">Set Scene Configuration Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-a-scene">Selecting a Scene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-custom-scene">Adding a Custom Scene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cameras">Cameras</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lighting-setup">Lighting Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frame-fit">Frame Fit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-color">Background Color</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-render-options">Step 2 - Render Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#render-options-panel">Render Options Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#static-renders">Static Renders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#turntable-animations">Turntable Animations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usd-export">USD Export</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#output-configuration-panel">Output Configuration Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rendition-device">Rendition Device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-path">Output Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-run-batch">Step 3 - Run Batch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-summary-panel">Output Summary Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render-queue-panel">Render Queue Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-jobs">Running Jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-output">Viewing Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#render-preview">Render Preview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preview-controls">Preview Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#logs-panel">Logs Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#presets">Presets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#session-presets">Session Presets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-render-config">Export Render Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#per-asset-presets">Per-Asset Presets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-ui">1. Start the UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-or-open-a-workspace">2. Create or Open a Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-assets">3. Add Assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-variants">4. Choose Variants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-scenes">5. Configure Scenes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-render-types">6. Choose Render Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-output">7. Configure Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preview-optional">8. Preview (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-the-workspace">9. Save the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-batch">10. Run the Batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collect-the-output">11. Collect the Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli">CLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-syntax">Command Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#run">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generate-template">generate-template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exit-codes">Exit Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-examples">Quick Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#renders">Renders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#templates">Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variant-sets">Variant Sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#full-config-examples">Full Config Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multi-scene-static-turntable-mirrors-the-bundled-default-preset">Multi-Scene Static + Turntable (mirrors the bundled default preset)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selecting-specific-variants-on-an-existing-asset">Selecting Specific Variants on an Existing Asset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#relationship-to-the-ui">Relationship to the UI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_bom_material_assignment.html">BOM Material Assignment Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Batch Renderer Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/userdoc/workflow_batch_renderer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="batch-renderer-guide">
+<h1>Batch Renderer Guide<a class="headerlink" href="#batch-renderer-guide" title="Link to this heading"></a></h1>
+<p>The Batch Renderer lets you queue up one or more 3D assets, choose which of
+their USD variants to render, place them into one or more lighting/camera
+scenes (built-in or your own), and generate static renders, turntable
+animations, and/or USD exports for every asset/scene/camera/variant
+combination as a single batch.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">workflow_tools</span></code> folder.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">install.bat</span></code> on Windows or <code class="docutils literal notranslate"><span class="pre">install</span></code> on macOS.</p></li>
+<li><p>Wait for the installation to complete. This may take a few minutes.</p></li>
+<li><p>Once the installation is complete, the GUI launchers and CLI <code class="docutils literal notranslate"><span class="pre">.bat</span></code> files are available in the <code class="docutils literal notranslate"><span class="pre">workflow_tools</span></code> folder.</p></li>
+</ol>
+</section>
+<section id="starting-the-ui">
+<h2>Starting the UI<a class="headerlink" href="#starting-the-ui" title="Link to this heading"></a></h2>
+<p>Double-click the <code class="docutils literal notranslate"><span class="pre">Substance3DRenderStudio.bat</span></code> file in the workflow tools
+folder, run <code class="docutils literal notranslate"><span class="pre">batch-render-ui</span></code> (or its alias <code class="docutils literal notranslate"><span class="pre">brui</span></code>) from the command
+line, or run <code class="docutils literal notranslate"><span class="pre">batch_rendering/main.py</span></code> with Python (SSCA required).</p>
+<section id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
+<td><p>Logging level (<code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>) for the UI process.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Logs are written to <code class="docutils literal notranslate"><span class="pre">logs/batch_renderer_ui.log</span></code>. The <strong>Console</strong> button in
+the <a class="reference internal" href="#logs-panel">Logs Panel</a> opens this same file in the OS’s default text editor.</p>
+</section>
+</section>
+<section id="ui-layout">
+<h2>UI Layout<a class="headerlink" href="#ui-layout" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/batch_renderer_panels_highlight.jpg"><img alt="Batch Renderer UI layout showing the menu bar, tab header, step content, and footer" src="../../_images/batch_renderer_panels_highlight.jpg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><em>Click on the image to view full size</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The application is a three-step wizard (<strong>01 Scene Setup</strong>, <strong>02 Render
+Options</strong>, <strong>03 Run Batch</strong>) with a menu bar spanning the very top, a
+numbered tab header below it, the current step’s panels in the middle and a
+collapsible Logs panel.</p>
+</section>
+<section id="tab-header">
+<h2>Tab Header<a class="headerlink" href="#tab-header" title="Link to this heading"></a></h2>
+<section id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Link to this heading"></a></h3>
+<p>Each step is shown as a numbered tab with a title and a short subtitle:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 25.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tab</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Subtitle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01</p></td>
+<td><p>Scene Setup</p></td>
+<td><p>Add 3D assets and setup scene configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>02</p></td>
+<td><p>Render Options</p></td>
+<td><p>Choose render types, options and quality</p></td>
+</tr>
+<tr class="row-even"><td><p>03</p></td>
+<td><p>Run Batch</p></td>
+<td><p>Preview and start rendering</p></td>
+</tr>
+</tbody>
+</table>
+<p>Click a tab to jump to it directly, or use <strong>Previous Step</strong> / <strong>Next Step</strong>
+on the top right of the window. If a batch or single job is currently
+rendering or paused, navigating away from <strong>Run Batch</strong> prompts for
+confirmation; confirming cancels the active render (the in-progress job
+becomes Cancelled, jobs that had not started remain Pending, and jobs already
+completed stay Completed (see <a class="reference internal" href="#render-queue-panel">Render Queue Panel</a> for the full cancel
+semantics)).</p>
+</section>
+</section>
+<section id="menu-bar">
+<h2>Menu Bar<a class="headerlink" href="#menu-bar" title="Link to this heading"></a></h2>
+<section id="file-menu">
+<h3>File Menu<a class="headerlink" href="#file-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>New Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+N</span></code></p></td>
+<td><p>Clear the workspace and start fresh</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Workspace…</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code></p></td>
+<td><p>Load an existing <code class="docutils literal notranslate"><span class="pre">.brws</span></code> workspace file</p></td>
+</tr>
+<tr class="row-even"><td><p>Save Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code></p></td>
+<td><p>Save the current workspace to its existing path</p></td>
+</tr>
+<tr class="row-odd"><td><p>Save Workspace As…</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+S</span></code></p></td>
+<td><p>Save to a new <code class="docutils literal notranslate"><span class="pre">.brws</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p>Close Workspace</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+W</span></code></p></td>
+<td><p>Close the current workspace</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Recent</p></td>
+<td><p>/</p></td>
+<td><p>Reopen a recently used workspace</p></td>
+</tr>
+<tr class="row-even"><td><p>Theme</p></td>
+<td><p>/</p></td>
+<td><p>Switch between <strong>Default</strong>, <strong>Dark</strong>, and <strong>Darkest</strong> UI themes (remembered between sessions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Q</span></code></p></td>
+<td><p>Quit the application</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the workspace has unsaved changes, New/Open/Close Workspace all prompt to
+save (or discard) first.</p>
+<p>The workspace filename is shown at the right edge of the menu bar, with a
+trailing <code class="docutils literal notranslate"><span class="pre">*</span></code> while there are unsaved changes, or <strong>No workspace loaded</strong>
+when nothing has been opened yet; hovering it shows the full path as a
+tooltip.</p>
+<p>A workspace (<code class="docutils literal notranslate"><span class="pre">.brws</span></code>) is a JSON file storing the schema version, the full
+session render configuration (renders, scene templates, variant selections,
+output settings), the uploaded asset collection (including each asset’s
+variant selections and any per-asset preset), and the scene camera cache.
+This is a different, broader format than a <a class="reference internal" href="#presets">Presets</a> file, which is a portable alternative.</p>
+</section>
+<section id="assets-menu">
+<h3>Assets Menu<a class="headerlink" href="#assets-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Add Files…</p></td>
+<td><p>Same as the <strong>Add Files</strong> button in the <a class="reference internal" href="#d-assets-panel">3D Assets Panel</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Add Directory…</p></td>
+<td><p>Same as the <strong>Add Directory</strong> button in the <a class="reference internal" href="#d-assets-panel">3D Assets Panel</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Import Spreadsheet…</p></td>
+<td><p>Bulk-import assets from a CSV/XLSX file (see <a class="reference internal" href="#importing-assets-from-a-spreadsheet">Importing Assets from a Spreadsheet</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove All</p></td>
+<td><p>Remove every asset from the batch, after a confirmation dialog</p></td>
+</tr>
+</tbody>
+</table>
+<p>This menu is disabled while a batch render is running.</p>
+</section>
+<section id="presets-menu">
+<h3>Presets Menu<a class="headerlink" href="#presets-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Load Preset…</p></td>
+<td><p>Load a previously saved <code class="docutils literal notranslate"><span class="pre">.json</span></code> preset, replacing the session’s scene/render/output configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>Save Preset…</p></td>
+<td><p>Save the current session configuration to a <code class="docutils literal notranslate"><span class="pre">.json</span></code> preset file</p></td>
+</tr>
+<tr class="row-even"><td><p>Export Render Config…</p></td>
+<td><p>Write the current session configuration in the CLI’s own format, ready for <code class="docutils literal notranslate"><span class="pre">--override-config</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Reset to Defaults</p></td>
+<td><p>Reset the session configuration back to application defaults (uploaded assets are preserved)</p></td>
+</tr>
+</tbody>
+</table>
+<p>This menu is disabled while a batch render is running. See <a class="reference internal" href="#presets">Presets</a> below
+for the file formats.</p>
+</section>
+<section id="preview-menu">
+<h3>Preview Menu<a class="headerlink" href="#preview-menu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Interactive Preview</p></td>
+<td><p>Open the composited render preview (see <a class="reference internal" href="#render-preview">Render Preview</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Validate Workspace</p></td>
+<td><p>Run the same validation checks used before <strong>Run Batch</strong> on demand, logging the result and reporting pass/warning/fail in a dialog</p></td>
+</tr>
+</tbody>
+</table>
+<p>Unlike the Assets and Presets menus, <strong>Preview</strong> stays enabled even while a
+batch is rendering.</p>
+</section>
+</section>
+<section id="step-1-scene-setup">
+<h2>Step 1 - Scene Setup<a class="headerlink" href="#step-1-scene-setup" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/batch_renderer_tab_1.jpg"><img alt="Batch Renderer UI layout showing the menu bar, tab header, step content, and footer" src="../../_images/batch_renderer_tab_1.jpg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><em>Click on the image to view full size</em></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="d-assets-panel">
+<h3>3D Assets Panel<a class="headerlink" href="#d-assets-panel" title="Link to this heading"></a></h3>
+<p>Header reads <strong>3D Assets</strong>, or <strong>3D Assets (N)</strong> once assets are present.</p>
+<section id="adding-assets">
+<h4>Adding Assets<a class="headerlink" href="#adding-assets" title="Link to this heading"></a></h4>
+<p>Click <strong>Add Files</strong> to open a file browser and select one or more asset
+files (<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdc</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>); each becomes a new asset
+card, with a progress dialog while it loads. Click <strong>Add Directory</strong> to
+import every supported USD file at the <strong>top level only</strong> of a chosen folder
+(not recursive). Both actions are duplicated under <strong>Assets</strong> in the menu
+bar.</p>
+</section>
+<section id="importing-assets-from-a-spreadsheet">
+<span id="batch-import"></span><h4>Importing Assets from a Spreadsheet<a class="headerlink" href="#importing-assets-from-a-spreadsheet" title="Link to this heading"></a></h4>
+<p><strong>Assets → Import Spreadsheet…</strong> in the menu bar let’s you bulk import assets. The dialog lets you pick a
+CSV or Excel (<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>) file and, optionally, a working directory used to
+resolve relative asset/preset paths.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model_path</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Path to the asset file. Relative paths are resolved against the dialog’s <strong>working directory</strong> first, then the spreadsheet’s own folder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">variant_set</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Name of a variant set to select a variant in. Used together with <code class="docutils literal notranslate"><span class="pre">variant_name</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variant_name</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Variant identifier to select within <code class="docutils literal notranslate"><span class="pre">variant_set</span></code>. When any rows for an asset specify variant selections, every variant not listed is deselected for that asset, otherwise all variants remain selected (the default).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">preset_path</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Path to a <code class="docutils literal notranslate"><span class="pre">.json</span></code> preset file (see <a class="reference internal" href="#presets">Presets</a>) to use for this asset instead of the session’s scene/render/output configuration. Resolved the same way as <code class="docutils literal notranslate"><span class="pre">model_path</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Rows are grouped by <code class="docutils literal notranslate"><span class="pre">(model_path,</span> <span class="pre">preset_path)</span></code>: multiple rows for the same
+asset (and preset) collapse into one asset with multiple variant selections;
+the same asset file listed twice with two different <code class="docutils literal notranslate"><span class="pre">preset_path</span></code> values
+produces two separate asset entries. A row missing <code class="docutils literal notranslate"><span class="pre">model_path</span></code> is skipped
+with a log warning rather than aborting the whole import. If an asset’s own
+preset file exists but fails to load, the asset is still imported using the
+session configuration, with a warning. After import, a summary dialog reports
+any missing files, unreadable presets, or other warnings.</p>
+<p>For example, a spreadsheet with these rows:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 27.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">model_path</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">variant_set</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">variant_name</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">preset_path</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chair.usd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Material</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Leather</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chair.usd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Material</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Fabric</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chair.usd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Red</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">studio_preset.json</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chair.usd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Blue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">studio_preset.json</span></code></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Material</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Wood</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>produces two separate asset entries for <code class="docutils literal notranslate"><span class="pre">chair.usd</span></code> : one grouping the two <code class="docutils literal notranslate"><span class="pre">Material</span></code>
+selections (no preset), the other grouping the two <code class="docutils literal notranslate"><span class="pre">Color</span></code> selections under <code class="docutils literal notranslate"><span class="pre">studio_preset.json</span></code> ,
+plus a logged warning for the last row, which is skipped because it has no <code class="docutils literal notranslate"><span class="pre">model_path</span></code>.</p>
+</section>
+<section id="asset-cards">
+<h4>Asset Cards<a class="headerlink" href="#asset-cards" title="Link to this heading"></a></h4>
+<p>Each card shows the asset’s icon, filename, format, file size, a <strong>selected
+of total</strong> variant count, a delete button, and (if the asset has variant
+sets) an expand/collapse arrow.</p>
+<ul class="simple">
+<li><p><strong>Preset button</strong> (cog wheel icon) : Assigns or removes a per-asset preset. Assigning opens a dialog that also lets you set a working directory for resolving that preset’s relative scene/lighting paths. Once assigned, the preset’s filename is shown on its own line below the asset name (<code class="docutils literal notranslate"><span class="pre">Preset:</span> <span class="pre">name</span></code>), and the button’s icon/tooltip switches to <strong>Remove Preset</strong>.</p></li>
+<li><p><strong>Delete button</strong> (trash icon, tooltip <em>“Remove Asset”</em>) : Removes the asset from the batch.</p></li>
+<li><p><strong>Error/warning icons</strong> : Shown next to the filename for a missing/invalid asset file, an invalid custom preset, or a controller-conflict warning (see below).</p></li>
+</ul>
+</section>
+<section id="variant-sets-and-variants">
+<h4>Variant Sets and Variants<a class="headerlink" href="#variant-sets-and-variants" title="Link to this heading"></a></h4>
+<p>Expanding an asset card lists its USD variant sets, each headed <strong>Variant
+Set: {name}</strong>, with a <strong>Select All / Deselect All</strong> toggle (shown only when
+the set has more than one variant) and one checkbox per variant. All
+variants are selected by default.</p>
+<p>Selection is genuine multi-select: more than one variant within the same set
+can be checked at once. Variant sets can also be <strong>nested</strong> : selecting a
+variant can reveal child variant sets owned specifically by that variant,
+shown indented beneath it; deselecting a variant (or the whole set)
+recursively clears every descendant selection under it.</p>
+<p>Only <em>selected</em> variants contribute to the render count: each selected
+variant contributes the product of its own nested child-set counts (a
+variant’s children only multiply within that variant’s own branch, never
+against sibling or top-level sets), and a set with nothing selected counts
+as <strong>one</strong> unvaried combination rather than zero.aw</p>
+<p>If a selected variant carries a <code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code> opinion that forces another
+variant set to a specific variant, but that target set also has its own
+independent selection, a warning icon appears on the asset card to warn the user about unexpected
+render output</p>
+</section>
+<section id="searching-and-filtering">
+<h4>Searching and Filtering<a class="headerlink" href="#searching-and-filtering" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Type in <strong>Search assets…</strong> to filter by <strong>filename</strong>, variant set name, or variant identifier. The full file path and preset filenames are not searched.</p></li>
+<li><p>Enable <strong>Match All Keywords</strong> to require every space/comma-separated search term to match (AND). By default any term is sufficient (OR).</p></li>
+<li><p>Click an opinion-type tag (<strong>Attribute</strong>, <strong>Controller</strong>, <strong>Geometry</strong>, <strong>Material</strong>) to only show variant groups containing that opinion type. Selecting multiple tags requires all of them to be present on the same variant.</p></li>
+<li><p>Matching automatically expands an asset card (and its nested variant-set rows) so the matching variant is visible.</p></li>
+</ul>
+</section>
+</section>
+<section id="set-scene-configuration-panel">
+<h3>Set Scene Configuration Panel<a class="headerlink" href="#set-scene-configuration-panel" title="Link to this heading"></a></h3>
+<p>Lists every available scene as an expandable card. Two scenes ship with the
+application by default :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Studio Setup</strong> (“Professional Studio Lighting - White Soft Light”)</p></li>
+<li><p><strong>Indoor Environment</strong> (“Indoor Lighting - Atelier Soft Daylight”)</p></li>
+</ul>
+</div></blockquote>
+<p>They are  defined in the bundled
+<code class="docutils literal notranslate"><span class="pre">batch_rendering/assets/default_scenes.json</span></code> file (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+<code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">file_path</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_asset</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_fit</span></code>,
+<code class="docutils literal notranslate"><span class="pre">can_select_background_color</span></code>, <code class="docutils literal notranslate"><span class="pre">default_background_color</span></code>).</p>
+<section id="selecting-a-scene">
+<h4>Selecting a Scene<a class="headerlink" href="#selecting-a-scene" title="Link to this heading"></a></h4>
+<p>Check a scene’s checkbox to include it in the batch (this also expands the
+card; unchecking collapses it again). At least one scene, with at least one
+camera, must be selected before rendering.</p>
+</section>
+<section id="adding-a-custom-scene">
+<h4>Adding a Custom Scene<a class="headerlink" href="#adding-a-custom-scene" title="Link to this heading"></a></h4>
+<p>Click <strong>Add Custom Scene</strong> in the panel header and select a USD scene file
+(<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdc</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>). The scene is added as a new
+card, named after the file, and is automatically <strong>selected</strong>.
+Custom scenes can be removed via their own <strong>Remove Custom Scene</strong>
+button (with a confirmation prompt); built-in scenes cannot be removed.</p>
+</section>
+<section id="cameras">
+<h4>Cameras<a class="headerlink" href="#cameras" title="Link to this heading"></a></h4>
+<p>Expanding a scene card lists every camera found in its USD file (loaded in
+the background, with a “Loading Scenes…” progress dialog on first use). Check
+the cameras to render from, or use <strong>Select All / Deselect All</strong>.</p>
+</section>
+<section id="lighting-setup">
+<h4>Lighting Setup<a class="headerlink" href="#lighting-setup" title="Link to this heading"></a></h4>
+<p>Click the file field or the folder button (tooltip <em>“Browse for lighting
+file”</em>) to choose a supplemental lighting file (<code class="docutils literal notranslate"><span class="pre">.hdr</span></code>, <code class="docutils literal notranslate"><span class="pre">.exr</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.sbsar</span></code>, <code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>) for the scene, or the trash
+button (<em>“Clear lighting file”</em>) to clear it. A missing file or unsupported
+extension is flagged immediately as an error. A USD
+lighting file that turns out to contain no lights is only caught at render
+time (logged as a warning, not shown in this panel). <code class="docutils literal notranslate"><span class="pre">.hdr</span></code>/<code class="docutils literal notranslate"><span class="pre">.exr</span></code>/
+<code class="docutils literal notranslate"><span class="pre">.sbsar</span></code> environment maps are not checked for this at all. The scene’s own
+lighting is used when no custom file is set.</p>
+</section>
+<section id="frame-fit">
+<h4>Frame Fit<a class="headerlink" href="#frame-fit" title="Link to this heading"></a></h4>
+<p>A numeric field controlling how tightly the camera frames the asset for this
+scene, clamped between <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and <code class="docutils literal notranslate"><span class="pre">10.0</span></code>.
+Frame Fit (and Background Color, below) are
+only shown for <strong>built-in</strong> scenes; a custom scene only gets the Cameras and
+Lighting Setup sections.</p>
+</section>
+<section id="background-color">
+<h4>Background Color<a class="headerlink" href="#background-color" title="Link to this heading"></a></h4>
+<p>Shown only for scenes that support a custom background (both built-in
+scenes do). Check <strong>Use Custom Color</strong>  or
+type in any of the fields to enable the color picker.
+Leaving <strong>Use Custom Color</strong> unchecked uses the scene’s own default background.</p>
+<p>No drag-and-drop is supported anywhere in this step; assets and scene files
+must be added through the file-browser buttons/menu actions above.</p>
+</section>
+</section>
+</section>
+<section id="step-2-render-options">
+<h2>Step 2 - Render Options<a class="headerlink" href="#step-2-render-options" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/batch_renderer_tab_2.jpg"><img alt="Batch Renderer UI layout showing the menu bar, tab header, step content, and footer" src="../../_images/batch_renderer_tab_2.jpg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><em>Click on the image to view full size</em></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The Render Options step shows the <strong>Select Render Types &amp; Options</strong> panel on
+the left (“Select all that apply”) and <strong>Output Configuration</strong> panel on the
+right.</p>
+<section id="render-options-panel">
+<h3>Render Options Panel<a class="headerlink" href="#render-options-panel" title="Link to this heading"></a></h3>
+<p>Each render type is a checkbox card; checking it auto-expands its settings.
+At least one render type must be enabled before rendering.</p>
+<section id="static-renders">
+<h4>Static Renders<a class="headerlink" href="#static-renders" title="Link to this heading"></a></h4>
+<p><em>High quality still image.</em> : Expanding the card shows a grid of renditions
+(<strong>Format</strong>, <strong>Width</strong> (px), <strong>Height</strong> (px), and <strong># of samples</strong>).
+Click <strong>+ Add New</strong> to add another rendition (e.g. a small
+preview alongside a full-resolution final render), or the trash icon to
+remove a row. Every enabled rendition is produced for every
+scene/camera/variant combination.</p>
+</section>
+<section id="turntable-animations">
+<h4>Turntable Animations<a class="headerlink" href="#turntable-animations" title="Link to this heading"></a></h4>
+<p><em>360° Image Capture.</em> : Configure <strong>Format</strong>, <strong>Width</strong>, <strong>Height</strong>, <strong># of
+samples</strong>, and <strong>Frames</strong> (number of images around the full rotation).
+Turntable rendering always uses its own ring of auto-generated cameras framed
+around the asset (one per configured frame) rather than the scene’s
+selected cameras.</p>
+</section>
+<section id="usd-export">
+<h4>USD Export<a class="headerlink" href="#usd-export" title="Link to this heading"></a></h4>
+<p><em>Export asset and scene as USD file.</em> : Choose the output <strong>Format</strong>
+(<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>, or <code class="docutils literal notranslate"><span class="pre">.usdc</span></code>). Unlike static/turntable
+renders, USD export produces exactly one file per selected scene. It does
+not multiply by cameras or variants.</p>
+</section>
+</section>
+<section id="output-configuration-panel">
+<h3>Output Configuration Panel<a class="headerlink" href="#output-configuration-panel" title="Link to this heading"></a></h3>
+<section id="rendition-device">
+<h4>Rendition Device<a class="headerlink" href="#rendition-device" title="Link to this heading"></a></h4>
+<p>The <strong>Processing mode</strong> dropdown (<strong>CPU</strong>, <strong>GPU</strong>, <strong>GPU Rasterization</strong>)
+selects the rendering technique used for every rendition of every render type
+in this configuration.</p>
+</section>
+<section id="output-path">
+<h4>Output Path<a class="headerlink" href="#output-path" title="Link to this heading"></a></h4>
+<p><strong>Base Directory</strong> is the root folder renders are written under. Click the
+folder icon to browse for a directory, or the trash icon to clear it. A
+validation message appears below the field if the path (or its parent
+directory) does not exist or is not writable.</p>
+</section>
+<section id="naming-conventions">
+<h4>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading"></a></h4>
+<p>Build the output <strong>Folder Structure</strong> and <strong>File Naming</strong> patterns from the
+available tokens:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Token</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{asset}</span></code></p></td>
+<td><p>Asset filename without extension</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{type}</span></code></p></td>
+<td><p>Render type (<code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">turntable</span></code>, <code class="docutils literal notranslate"><span class="pre">usd</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{render}</span></code></p></td>
+<td><p>Rendition identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{scene}</span></code></p></td>
+<td><p>Scene/template name</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{camera}</span></code></p></td>
+<td><p>Camera name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{frame}</span></code></p></td>
+<td><p>Frame number (turntable) or <code class="docutils literal notranslate"><span class="pre">0</span></code> for static</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{variant_set}</span></code></p></td>
+<td><p>Variant set name(s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{variant_id}</span></code></p></td>
+<td><p>Selected variant identifier(s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{variant}</span></code></p></td>
+<td><p>Combined variant path/name</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample File Output</strong> shows a live preview of the resulting filename (using
+placeholder demo values) as you edit the naming pattern. The output file
+extension is always added automatically based on the rendition’s format.</p>
+</section>
+</section>
+</section>
+<section id="step-3-run-batch">
+<h2>Step 3 - Run Batch<a class="headerlink" href="#step-3-run-batch" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/batch_renderer_tab_3.jpg"><img alt="Batch Renderer UI layout showing the menu bar, tab header, step content, and footer" src="../../_images/batch_renderer_tab_3.jpg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><em>Click on the image to view full size</em></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The Run Batch step shows the <strong>Output Summary</strong> panel on the left and
+<strong>Render Queue</strong> panel on the right. Opening this step (re)generates the
+render queue (one job per asset) from the current scene, render option, and
+output configuration (or from an asset’s own preset, if it was imported or
+assigned one).</p>
+<section id="output-summary-panel">
+<h3>Output Summary Panel<a class="headerlink" href="#output-summary-panel" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>File Generation</strong> : total number of files that will be produced across the whole queue.</p></li>
+<li><p><strong>Rendering Device</strong> : <strong>Processing Mode</strong> (the currently selected mode).</p></li>
+<li><p><strong>Render Types</strong> : file counts for <strong>Static Renders</strong>, <strong>3D Turntables</strong>, and <strong>USD Exports</strong>, plus a <strong>Total Files</strong> running total.</p></li>
+<li><p><strong>Output Configuration</strong> : <strong>Output Folder</strong>, <strong>Folder Structure</strong>, and <strong>File Naming</strong>.</p></li>
+</ul>
+</section>
+<section id="render-queue-panel">
+<h3>Render Queue Panel<a class="headerlink" href="#render-queue-panel" title="Link to this heading"></a></h3>
+<p>Header reads <strong>Render Queue</strong> with a <strong>View Output Folder</strong> button. One card
+per asset (job) shows the asset’s display name, a description of enabled
+render types, a <strong>Variants</strong> count, a <strong>Files</strong> count (total output files
+for that job), an action icon, and a status icon.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Pending</p></td>
+<td><p>Not yet started. A <strong>Start Render</strong> button starts this job individually.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Processing</p></td>
+<td><p>Currently rendering, with a live progress bar. A <strong>Pause Render</strong> button is available outside of batch mode.</p></td>
+</tr>
+<tr class="row-even"><td><p>Paused</p></td>
+<td><p>Rendering paused mid-job (resumable, already-rendered files are skipped on resume). <strong>Resume Render</strong> and <strong>Cancel Render</strong> buttons appear outside of batch mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Completed</p></td>
+<td><p>Finished successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>Failed</p></td>
+<td><p>Stopped on an error. Clicking the status icon (“Failed - click for details”) opens a <strong>Render Error Details</strong> dialog with the captured error text. A <strong>Retry Render</strong> button resets and re-runs the job.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cancelled</p></td>
+<td><p>Stopped by the user (not resumable). A <strong>Retry Render</strong> button resets and re-runs the job.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Per-job action buttons are only shown while that job is idle or being run
+individually outside a full batch; during a full batch run they are hidden,
+and <strong>Pause Batch</strong> / <strong>Resume Batch</strong> / <strong>Cancel Batch</strong>
+buttons drive the whole run instead.</p>
+<section id="running-jobs">
+<h4>Running Jobs<a class="headerlink" href="#running-jobs" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Run Batch</strong> (top-right) renders every pending job in order, showing overall progress at the top of the panel.</p></li>
+<li><p>Clicking a job’s own <strong>Start Render</strong> button instead starts <strong>only that job</strong>.</p></li>
+<li><p><strong>Pause Batch</strong> requests a pause that takes effect at the render’s next safe checkpoint (so there is a brief transitional “pausing” state before it settles into Paused); <strong>Resume Batch</strong> continues with the remaining pending/paused jobs; <strong>Cancel Batch</strong> stops immediately. A job that was actively rendering or paused becomes <strong>Cancelled</strong> (retryable), any already-<strong>Completed</strong> jobs stay Completed, and jobs that had not started yet remain <strong>Pending</strong> (not reset, they were simply never touched).</p></li>
+<li><p>When a multi-job batch finishes, a summary line is written to the <a class="reference internal" href="#logs-panel">Logs Panel</a> (not a popup dialog): success if every job completed, a warning if only cancellations occurred, or an error breakdown if anything failed, each with the completed/failed/cancelled counts. A single-job run logs no summary.</p></li>
+</ul>
+</section>
+<section id="viewing-output">
+<h4>Viewing Output<a class="headerlink" href="#viewing-output" title="Link to this heading"></a></h4>
+<p>Click <strong>View Output Folder</strong> in the panel header to open the configured
+output directory in the system file browser (the folder is created first if
+it does not yet exist).</p>
+</section>
+</section>
+</section>
+<section id="render-preview">
+<h2>Render Preview<a class="headerlink" href="#render-preview" title="Link to this heading"></a></h2>
+<p>There is a single preview entry point: <strong>Preview → Interactive Preview</strong> in
+the menu bar, usable from any step. It always composites the <strong>first</strong> asset
+in the collection into the session’s currently selected scenes, cameras,
+lighting, and background (i.e. it shows exactly what those combinations will
+look like).</p>
+<section id="preview-controls">
+<h3>Preview Controls<a class="headerlink" href="#preview-controls" title="Link to this heading"></a></h3>
+<p>When an embedded USD/Hydra viewer is available (requires OpenUSD built with
+<code class="docutils literal notranslate"><span class="pre">Usdviewq</span></code> and PySide6; see <code class="docutils literal notranslate"><span class="pre">USD_INSTALL_PATH</span></code>/<code class="docutils literal notranslate"><span class="pre">OPENUSD_PATH</span></code> below),
+the Preview dialog shows the composited scene interactively and offers:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Preview Mode</p></td>
+<td><p><strong>Static Render</strong> (renders a quick preview image using the batch renderer engine) or <strong>usdview</strong> (live interactive viewport navigation with orbit/pan/zoom).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Preview Processing Mode</p></td>
+<td><p>CPU, GPU, or GPU Rasterization. Used only for the <strong>Static Render</strong> preview mode.</p></td>
+</tr>
+<tr class="row-even"><td><p>Preview Quality</p></td>
+<td><p><strong>Static Render</strong> mode only. A named preset. Values are <code class="docutils literal notranslate"><span class="pre">Draft</span></code> (16 samples), <code class="docutils literal notranslate"><span class="pre">Low</span></code> (32), <code class="docutils literal notranslate"><span class="pre">Medium</span></code> (64), <code class="docutils literal notranslate"><span class="pre">High</span></code> (128), or <code class="docutils literal notranslate"><span class="pre">Ultra</span></code> (256).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Refinement Passes</p></td>
+<td><p>Shown only for <strong>CPU</strong> processing in <strong>usdview</strong> mode: <code class="docutils literal notranslate"><span class="pre">32</span> <span class="pre">(Fastest)</span></code>, <code class="docutils literal notranslate"><span class="pre">128</span></code>, <code class="docutils literal notranslate"><span class="pre">256</span></code>, <code class="docutils literal notranslate"><span class="pre">512</span></code>, or <strong>No Limit</strong>.</p></td>
+</tr>
+<tr class="row-even"><td><p>3D Asset / Scene / Camera cyclers</p></td>
+<td><p>Step through every asset, selected scene, and that scene’s selected cameras without closing the dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Variant Set cyclers</p></td>
+<td><p>One row per variant set on the current asset (when it has more than one variant); steps through variant IDs to preview different combinations.</p></td>
+</tr>
+<tr class="row-even"><td><p>Open usdview</p></td>
+<td><p>Launches the current preview stage in external <code class="docutils literal notranslate"><span class="pre">usdview</span></code> as well.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the embedded viewer is unavailable, opening a preview falls
+back directly to launching external <code class="docutils literal notranslate"><span class="pre">usdview</span></code> on the raw asset file (no
+scene/camera/variant composition).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USD_INSTALL_PATH</span></code> / <code class="docutils literal notranslate"><span class="pre">OPENUSD_PATH</span></code></p></td>
+<td><p>Path to an OpenUSD install providing <code class="docutils literal notranslate"><span class="pre">Usdviewq</span></code> with PySide6 support, enabling the embedded preview viewer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USDVIEW_PATH</span></code></p></td>
+<td><p>Direct path to the <code class="docutils literal notranslate"><span class="pre">usdview</span></code> executable, or a directory containing it, used when launching <strong>external</strong> usdview.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USDVIEW_MIN_ENV</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to launch external usdview in a minimal, isolated environment (useful for Qt/Python conflicts on macOS); <code class="docutils literal notranslate"><span class="pre">0</span></code> forces the inherited environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USDVIEW_DEBUG_ENV</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to print environment debugging output when launching external usdview.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preview → Validate Workspace</strong> runs the same validation used before <strong>Run
+Batch</strong> on demand, without needing to open the Run Batch step: it logs the
+result and shows a <em>“Validation Passed”</em> / <em>“Validation Failed”</em> dialog
+pointing you at the <a class="reference internal" href="#logs-panel">Logs Panel</a> for details.</p>
+</section>
+</section>
+<section id="logs-panel">
+<h2>Logs Panel<a class="headerlink" href="#logs-panel" title="Link to this heading"></a></h2>
+<p>A collapsible <strong>Logs</strong> panel spans the bottom of the window, showing
+real-time feedback from scene loading, validation, and render operations.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Blue</p></td>
+<td><p>Info</p></td>
+<td><p>Normal progress updates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green</p></td>
+<td><p>Success</p></td>
+<td><p>Operations completed successfully</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange</p></td>
+<td><p>Warning</p></td>
+<td><p>Non-fatal issues that may need attention</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red</p></td>
+<td><p>Error / Validation Error</p></td>
+<td><p>Failures and validation errors</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Clickable log entries</strong> : Validation messages that reference a specific
+asset or variant set are underlined links; clicking one navigates to the
+related asset or variant set, with the affected asset, variant set, and field
+shown as context beneath the message.</p>
+<p><strong>Console</strong> : Opens <code class="docutils literal notranslate"><span class="pre">logs/batch_renderer_ui.log</span></code> (the application’s own
+log file) in the OS default text editor.</p>
+<p><strong>Clear</strong> : Clears all log entries.</p>
+<p>The panel can be collapsed with the toggle button in its header.</p>
+</section>
+<section id="presets">
+<h2>Presets<a class="headerlink" href="#presets" title="Link to this heading"></a></h2>
+<section id="session-presets">
+<h3>Session Presets<a class="headerlink" href="#session-presets" title="Link to this heading"></a></h3>
+<p><strong>Save Preset</strong> / <strong>Load Preset</strong> (Presets menu) read and write a JSON file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;render_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;renders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;... same shape as the CLI&#39;s renders array ...&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;scenes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;... cached per-scene camera lists, used to redraw the UI without re-reading every scene file ...&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The nested <code class="docutils literal notranslate"><span class="pre">render_config</span></code> block holds the actual render settings:
+<code class="docutils literal notranslate"><span class="pre">renders</span></code> (the enabled render types and their quality settings, from the
+<a class="reference internal" href="#render-options-panel">Render Options Panel</a>), <code class="docutils literal notranslate"><span class="pre">templates</span></code> (the selected scenes, cameras, and
+lighting, from the <a class="reference internal" href="#set-scene-configuration-panel">Set Scene Configuration Panel</a>), <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> (each
+asset’s variant selections), and <code class="docutils literal notranslate"><span class="pre">outputs</span></code> (the output path and naming
+pattern, from the <a class="reference internal" href="#output-configuration-panel">Output Configuration Panel</a>). <strong>Reset to Defaults</strong>
+restores the session configuration to application defaults without touching
+uploaded assets.</p>
+</section>
+<section id="export-render-config">
+<h3>Export Render Config<a class="headerlink" href="#export-render-config" title="Link to this heading"></a></h3>
+<p><strong>Presets → Export Render Config…</strong> writes the current session’s render
+configuration directly in the CLI’s own top-level shape
+(<code class="docutils literal notranslate"><span class="pre">version</span></code>/<code class="docutils literal notranslate"><span class="pre">renders</span></code>/<code class="docutils literal notranslate"><span class="pre">templates</span></code>/<code class="docutils literal notranslate"><span class="pre">variant_sets</span></code>/<code class="docutils literal notranslate"><span class="pre">outputs</span></code>, with no
+wrapping and no scene cache). The file it produces can be passed straight to
+<code class="docutils literal notranslate"><span class="pre">cli_batch_render</span> <span class="pre">run</span> <span class="pre">--override-config</span></code>.</p>
+</section>
+<section id="per-asset-presets">
+<h3>Per-Asset Presets<a class="headerlink" href="#per-asset-presets" title="Link to this heading"></a></h3>
+<p>When importing assets from a spreadsheet (see <a class="reference internal" href="#importing-assets-from-a-spreadsheet">Importing Assets from a
+Spreadsheet</a>), a <code class="docutils literal notranslate"><span class="pre">preset_path</span></code> column (or the per-card <strong>Assign Preset</strong>
+action) can point an individual asset at its own preset JSON file (same
+format as above). That asset renders using its own scene/render/output
+configuration instead of the session’s, letting a single batch mix assets
+that need different scenes, resolutions, or output locations.</p>
+</section>
+</section>
+<section id="typical-workflow">
+<h2>Typical Workflow<a class="headerlink" href="#typical-workflow" title="Link to this heading"></a></h2>
+<section id="start-the-ui">
+<h3>1. Start the UI<a class="headerlink" href="#start-the-ui" title="Link to this heading"></a></h3>
+<p>Double-click the <code class="docutils literal notranslate"><span class="pre">Substance3DRenderStudio</span></code> <code class="docutils literal notranslate"><span class="pre">.bat</span></code> file, run
+<code class="docutils literal notranslate"><span class="pre">batch-render-ui</span></code>, or run <code class="docutils literal notranslate"><span class="pre">batch_rendering/main.py</span></code> with Python.</p>
+</section>
+<section id="create-or-open-a-workspace">
+<h3>2. Create or Open a Workspace<a class="headerlink" href="#create-or-open-a-workspace" title="Link to this heading"></a></h3>
+<p><strong>File → New Workspace</strong> to start from scratch, or <strong>File → Open Workspace…</strong>
+(<code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code>) to reload an existing <code class="docutils literal notranslate"><span class="pre">.brws</span></code> file.</p>
+</section>
+<section id="add-assets">
+<h3>3. Add Assets<a class="headerlink" href="#add-assets" title="Link to this heading"></a></h3>
+<p>On the <strong>Scene Setup</strong> step, click <strong>Add Files</strong> or <strong>Add Directory</strong>, or use
+<strong>Assets → Import Spreadsheet…</strong> to bring in a whole spreadsheet of assets
+and variant selections at once.</p>
+</section>
+<section id="choose-variants">
+<h3>4. Choose Variants<a class="headerlink" href="#choose-variants" title="Link to this heading"></a></h3>
+<p>Expand an asset card and uncheck any variants you do not want rendered.
+Remember that variant sets can nest under a specific variant, and multiple
+variants within one set can be checked at once.</p>
+</section>
+<section id="configure-scenes">
+<h3>5. Configure Scenes<a class="headerlink" href="#configure-scenes" title="Link to this heading"></a></h3>
+<p>In <strong>Set Scene Configuration</strong>, select one or both built-in scenes (or add a
+custom one) and check the cameras to render from .Freshly added and
+built-in scenes alike start with no cameras selected. Optionally set a
+custom background color, lighting file, or frame fit per scene.</p>
+</section>
+<section id="choose-render-types">
+<h3>6. Choose Render Types<a class="headerlink" href="#choose-render-types" title="Link to this heading"></a></h3>
+<p>Move to <strong>Render Options</strong>. Enable <strong>Static Renders</strong> and set a resolution
+and sample count, and/or enable <strong>Turntable Animations</strong> or <strong>USD Export</strong>.</p>
+</section>
+<section id="configure-output">
+<h3>7. Configure Output<a class="headerlink" href="#configure-output" title="Link to this heading"></a></h3>
+<p>In <strong>Output Configuration</strong>, set the processing mode, base output directory,
+and folder/file naming pattern. Check <strong>Sample File Output</strong> to confirm the
+pattern looks right.</p>
+</section>
+<section id="preview-optional">
+<h3>8. Preview (Optional)<a class="headerlink" href="#preview-optional" title="Link to this heading"></a></h3>
+<p>Use <strong>Preview → Interactive Preview</strong> to see the first asset composited into
+the currently selected scenes/cameras before committing to a full batch.</p>
+</section>
+<section id="save-the-workspace">
+<h3>9. Save the Workspace<a class="headerlink" href="#save-the-workspace" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code> saves to a <code class="docutils literal notranslate"><span class="pre">.brws</span></code> file, clearing the unsaved-changes indicator.</p>
+</section>
+<section id="run-the-batch">
+<h3>10. Run the Batch<a class="headerlink" href="#run-the-batch" title="Link to this heading"></a></h3>
+<p>Move to <strong>Run Batch</strong>. Review the <strong>Output Summary</strong> for the total file
+count, then click <strong>Run Batch</strong> and confirm. Watch progress in the
+<strong>Render Queue</strong> panel; use <strong>Pause Batch</strong> / <strong>Cancel Batch</strong> if needed.</p>
+</section>
+<section id="collect-the-output">
+<h3>11. Collect the Output<a class="headerlink" href="#collect-the-output" title="Link to this heading"></a></h3>
+<p>Once the batch completes, click <strong>View Output Folder</strong> to open the rendered
+files in the system file browser.</p>
+</section>
+</section>
+<section id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Nested, multi-select variants</strong> : variant sets can nest under a specific variant, and more than one variant within a set can be checked at once. Watch for the controller-conflict warning icon when a <code class="docutils literal notranslate"><span class="pre">CONTROLLER</span></code> opinion and an independent selection on the target set disagree.</p></li>
+<li><p><strong>New scenes start with no cameras selected</strong> : even the two bundled scenes need their cameras checked (or <strong>Select All</strong>) before they will pass validation; this applies to custom scenes too.</p></li>
+<li><p><strong>Pause is safe, Cancel is not</strong> : pausing preserves already-rendered files and can be resumed; cancelling marks the in-flight job Cancelled (retryable) and leaves not-yet-started jobs Pending, but any partial progress on the cancelled job must be re-rendered.</p></li>
+<li><p><strong>The Processing Mode is global to the session configuration</strong> : switching it on the Output Configuration panel changes it for every rendition (static, turntable, and USD export), not per-rendition.</p></li>
+<li><p><strong>Search is filename-only</strong> : the 3D Assets search matches the filename, variant set names, and variant identifiers, but not the full file path or a preset’s filename.</p></li>
+<li><p><strong>Three different file formats</strong> : a workspace (<code class="docutils literal notranslate"><span class="pre">.brws</span></code>) captures everything (assets, scene/render/output configuration, and the scene camera cache); a preset (<code class="docutils literal notranslate"><span class="pre">.json</span></code>) captures just the scene/render/output configuration (plus camera cache) for reuse across workspaces; a CLI render-configuration file is the streamlined format <code class="docutils literal notranslate"><span class="pre">cli_batch_render</span></code> consumes. Use <strong>Presets → Export Render Config…</strong> to generate the CLI format directly from the current session.</p></li>
+</ul>
+</section>
+<section id="cli">
+<h2>CLI<a class="headerlink" href="#cli" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">cli_batch_render</span></code> command-line tool runs the same batch rendering
+engine as the UI, without a graphical interface. Use it for headless batch
+builds, CI pipelines, or scripted automation.</p>
+<p>After installation, the CLI entrypoint is available in the workflow_tools
+folder as <code class="docutils literal notranslate"><span class="pre">Substance3DRenderStudioCLI.bat</span></code> on Windows or
+<code class="docutils literal notranslate"><span class="pre">Substance3DRenderStudioCLI</span></code> on macOS/Linux. You can also run
+<code class="docutils literal notranslate"><span class="pre">cli_batch_render</span></code> (or its aliases <code class="docutils literal notranslate"><span class="pre">batch-render</span></code>, <code class="docutils literal notranslate"><span class="pre">br</span></code>) from the
+command line after activating the Python environment, or run
+<code class="docutils literal notranslate"><span class="pre">batch_rendering/cli/main.py</span></code> with Python directly (SSCA required).</p>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<p>The CLI has no environment-variable configuration and no file-logging
+option and will always log to the console
+(warnings and errors only by default, info messages with <code class="docutils literal notranslate"><span class="pre">-v</span></code>, debug
+messages with <code class="docutils literal notranslate"><span class="pre">-vv</span></code>).</p>
+</section>
+<section id="command-syntax">
+<h3>Command Syntax<a class="headerlink" href="#command-syntax" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cli_batch_render</span></code> has two subcommands.</p>
+<section id="run">
+<h4>run<a class="headerlink" href="#run" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>--input<span class="w"> </span>&lt;asset_or_directory&gt;<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 51.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Short</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--input</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-i</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Path to a single 3D asset file, <strong>or a directory of assets</strong>, to render (<code class="docutils literal notranslate"><span class="pre">.usd</span></code>, <code class="docutils literal notranslate"><span class="pre">.usda</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdc</span></code>, <code class="docutils literal notranslate"><span class="pre">.usdz</span></code>). A directory is scanned non-recursively for supported files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--override-config</span></code></p></td>
+<td><p>/</p></td>
+<td><p>No</p></td>
+<td><p>Path to a configuration file (<code class="docutils literal notranslate"><span class="pre">.json</span></code> or <code class="docutils literal notranslate"><span class="pre">.jsonc</span></code>). Defaults to the bundled default configuration when omitted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--static</span></code></p></td>
+<td><p>/</p></td>
+<td><p>No</p></td>
+<td><p>Add a static beauty rendition, replacing whatever <code class="docutils literal notranslate"><span class="pre">renders</span></code> the active configuration defines. Its settings always come from the <strong>bundled default preset’s own</strong> static rendition, not from <code class="docutils literal notranslate"><span class="pre">--override-config</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--turntable</span></code></p></td>
+<td><p>/</p></td>
+<td><p>No</p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">--static</span></code>, but for a turntable rendition; can be combined with <code class="docutils literal notranslate"><span class="pre">--static</span></code> (both then replace the configured <code class="docutils literal notranslate"><span class="pre">renders</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--output</span></code></p></td>
+<td><p>/</p></td>
+<td><p>No</p></td>
+<td><p>Output directory, prepended to the configured output path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--working-directory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-w</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Working directory used to resolve relative scene/lighting paths inside the configuration (falls back to the config file’s own directory, then the current directory).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Increase verbosity level (use <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">-vv</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>While rendering, press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> to gracefully pause: the current render
+completes, then rendering stops (the same pause/resume mechanism used by the
+UI’s job pause).</p>
+</section>
+<section id="generate-template">
+<h4>generate-template<a class="headerlink" href="#generate-template" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>generate-template<span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;output.jsonc&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>Writes a copy of the bundled default configuration file (the same one used
+when <code class="docutils literal notranslate"><span class="pre">run</span></code> is called without <code class="docutils literal notranslate"><span class="pre">--override-config</span></code>) to <code class="docutils literal notranslate"><span class="pre">-o</span></code>/<code class="docutils literal notranslate"><span class="pre">--output</span></code>
+(default <code class="docutils literal notranslate"><span class="pre">./batch_render_template.jsonc</span></code>), as a starting point to edit.</p>
+</section>
+</section>
+<section id="exit-codes">
+<h3>Exit Codes<a class="headerlink" href="#exit-codes" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 90.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>File not found, invalid/missing CLI arguments (Click usage errors), or an invalid/unparseable configuration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>Processing failure (rendering, export, or file-system error)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">130</span></code></p></td>
+<td><p>Cancelled by user (<code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quick-examples">
+<h3>Quick Examples<a class="headerlink" href="#quick-examples" title="Link to this heading"></a></h3>
+<p>Render a single asset with the bundled default configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd
+</pre></div>
+</div>
+<p>Render every supported asset file in a directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/
+</pre></div>
+</div>
+<p>Render with a custom config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd<span class="w"> </span>--override-config<span class="w"> </span>./my_config.jsonc
+</pre></div>
+</div>
+<p>Generate only a static render, using the bundled preset’s own static settings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd<span class="w"> </span>--static
+</pre></div>
+</div>
+<p>Generate both static and turntable renders to a specific output directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd<span class="w"> </span>--static<span class="w"> </span>--turntable<span class="w"> </span>--output<span class="w"> </span>./renders
+</pre></div>
+</div>
+<p>Resolve a custom config’s relative scene/lighting paths against a working directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd<span class="w"> </span>--override-config<span class="w"> </span>./my_config.jsonc<span class="w"> </span>-w<span class="w"> </span>./project
+</pre></div>
+</div>
+<p>Generate a template configuration to start customizing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>generate-template<span class="w"> </span>-o<span class="w"> </span>./my_config.jsonc
+</pre></div>
+</div>
+</section>
+<section id="configuration-file">
+<h3>Configuration File<a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h3>
+<p>This is the file passed to <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">--override-config</span></code> (or written by
+<code class="docutils literal notranslate"><span class="pre">generate-template</span></code>): it defines everything the CLI needs to render like
+which render types to produce, which scenes/cameras/lighting to use, which
+USD variants to select, and where to write output files.</p>
+<p>The configuration file (schema <code class="docutils literal notranslate"><span class="pre">version</span></code> <code class="docutils literal notranslate"><span class="pre">0.2</span></code>) is JSON, with support for
+<code class="docutils literal notranslate"><span class="pre">//</span></code> line comments regardless of whether the file uses a <code class="docutils literal notranslate"><span class="pre">.json</span></code> or
+<code class="docutils literal notranslate"><span class="pre">.jsonc</span></code> extension. The bundled default lives at
+<code class="docutils literal notranslate"><span class="pre">config/default_preset.jsonc</span></code>; <code class="docutils literal notranslate"><span class="pre">generate-template</span></code> writes a copy of it,
+and <code class="docutils literal notranslate"><span class="pre">--override-config</span></code> falls back to it.</p>
+<div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
+  &quot;version&quot;: &quot;0.2&quot;,
+  &quot;renders&quot;: [ &quot;... render output types and quality settings ...&quot; ],
+  &quot;templates&quot;: [ &quot;... scene configurations with cameras and lighting ...&quot; ],
+  &quot;variant_sets&quot;: [ &quot;... USD variant selections to render ...&quot; ],
+  &quot;outputs&quot;: { &quot;... output path template ...&quot; }
+}
+</pre></div>
+</div>
+<p>It has four top-level blocks, each covered in its own section below:
+<strong>Renders</strong>, <strong>Templates</strong>, <strong>Variant Sets</strong>, and <strong>Outputs</strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Legacy <code class="docutils literal notranslate"><span class="pre">0.1</span></code> configs are still loaded and converted on the fly: the
+<code class="docutils literal notranslate"><span class="pre">renders</span></code> array was named <code class="docutils literal notranslate"><span class="pre">renditions</span></code>, <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> was named
+<code class="docutils literal notranslate"><span class="pre">variants</span></code> (with <code class="docutils literal notranslate"><span class="pre">variant_set</span></code>/<code class="docutils literal notranslate"><span class="pre">variant_ids</span></code>/<code class="docutils literal notranslate"><span class="pre">variant_loc</span></code> fields
+that become top-level, non-nested, <code class="docutils literal notranslate"><span class="pre">is_existing</span></code> variant sets), and
+output templates used <code class="docutils literal notranslate"><span class="pre">{{rendition_type}}</span></code>/<code class="docutils literal notranslate"><span class="pre">{{rendition_id}}</span></code> (now
+<code class="docutils literal notranslate"><span class="pre">{{render_type}}</span></code>/<code class="docutils literal notranslate"><span class="pre">{{render_id}}</span></code>). The legacy <code class="docutils literal notranslate"><span class="pre">logging</span></code> block has
+no equivalent and is dropped entirely on conversion.</p>
+</div>
+<p>For complete working examples, see <a class="reference internal" href="#full-config-examples">Full Config Examples</a> below.</p>
+<section id="renders">
+<h4>Renders<a class="headerlink" href="#renders" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 51.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>One of: <code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">turntable</span></code>, <code class="docutils literal notranslate"><span class="pre">usd</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resolution</span></code></p></td>
+<td><p>[int, int]</p></td>
+<td><p>Yes</p></td>
+<td><p>Width x height in pixels. Must be two positive integers even for <code class="docutils literal notranslate"><span class="pre">usd</span></code>. The value is unused for USD export, but validation still requires it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Output file format (e.g. <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">exr</span></code> for static/turntable; <code class="docutils literal notranslate"><span class="pre">usd</span></code>, <code class="docutils literal notranslate"><span class="pre">usda</span></code>, <code class="docutils literal notranslate"><span class="pre">usdz</span></code> for USD export).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">samples</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Ray tracing samples, must be greater than zero. Again required (but unused) for <code class="docutils literal notranslate"><span class="pre">usd</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">number_of_frames</span></code></p></td>
+<td><p>int</p></td>
+<td><p>No</p></td>
+<td><p>Number of frames around a full 360° rotation. Required to be greater than zero for <code class="docutils literal notranslate"><span class="pre">turntable</span></code> (default <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">frame_fit</span></code></p></td>
+<td><p>float</p></td>
+<td><p>No</p></td>
+<td><p>Turntable camera framing tightness (default <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rendering_technique</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GPUPathtracing</span></code>, <code class="docutils literal notranslate"><span class="pre">CPUPathtracing</span></code>, or <code class="docutils literal notranslate"><span class="pre">GPURasterization</span></code> (default <code class="docutils literal notranslate"><span class="pre">GPUPathtracing</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aov</span></code></p></td>
+<td><p>list[string]</p></td>
+<td><p>No</p></td>
+<td><p>Render passes to output for <code class="docutils literal notranslate"><span class="pre">static</span></code>/<code class="docutils literal notranslate"><span class="pre">turntable</span></code> (default <code class="docutils literal notranslate"><span class="pre">[&quot;beauty&quot;]</span></code>). Commonly available AOVs include <code class="docutils literal notranslate"><span class="pre">beauty</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, and <code class="docutils literal notranslate"><span class="pre">normal</span></code>. Additional AOVs depend on the renderer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code></p></td>
+<td><p>float</p></td>
+<td><p>No</p></td>
+<td><p>Maximum render time per frame, in seconds (default <code class="docutils literal notranslate"><span class="pre">600.0</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p>Optional identifier used in output filenames; falls back to the render <code class="docutils literal notranslate"><span class="pre">type</span></code> when omitted.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Static rendition example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;static&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3840</span><span class="p">,</span><span class="w"> </span><span class="mi">2160</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rendering_technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GPUPathtracing&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aov&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;beauty&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;depth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">600.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high_quality&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Turntable rendition example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;turntable&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;number_of_frames&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frame_fit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rendering_technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GPUPathtracing&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>USD export rendition example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usd&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usdz&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="templates">
+<h4>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h4>
+<p>Each entry in <code class="docutils literal notranslate"><span class="pre">templates</span></code> is a USD scene the asset is rendered into,
+together with its cameras and lighting.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 51.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scene_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Path to the USD scene file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cameras</span></code></p></td>
+<td><p>list[object]</p></td>
+<td><p>Yes</p></td>
+<td><p>One or more <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;&lt;camera</span> <span class="pre">name&gt;&quot;}</span></code> objects identifying cameras already present in <code class="docutils literal notranslate"><span class="pre">scene_path</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p>Template identifier used in output paths (the <code class="docutils literal notranslate"><span class="pre">{{template}}</span></code> variable). Defaults to the scene file’s stem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">custom_lighting_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.hdr</span></code>, <code class="docutils literal notranslate"><span class="pre">.exr</span></code>, <code class="docutils literal notranslate"><span class="pre">.sbsar</span></code>, or USD lighting file to add. When omitted, the scene’s own lighting is used.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">background_color</span></code></p></td>
+<td><p>[float, float, float, float]</p></td>
+<td><p>No</p></td>
+<td><p>RGBA background color, each component <code class="docutils literal notranslate"><span class="pre">0.0</span></code>-<code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">frame_asset</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>No</p></td>
+<td><p>Auto-frame each camera to the asset’s bounds (default <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">frame_fit</span></code></p></td>
+<td><p>float</p></td>
+<td><p>No</p></td>
+<td><p>Framing tightness when <code class="docutils literal notranslate"><span class="pre">frame_asset</span></code> is true; values below <code class="docutils literal notranslate"><span class="pre">1.0</span></code> add padding (default <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scene_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./scenes/studio_lighting.usda&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cameras&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hero&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;side&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;studio&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;custom_lighting_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./lights/sunset.hdr&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;frame_asset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frame_fit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Multiple templates render the same asset in multiple environments.</p>
+</section>
+<section id="variant-sets">
+<h4>Variant Sets<a class="headerlink" href="#variant-sets" title="Link to this heading"></a></h4>
+<p>Each entry in <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> selects which variants of a USD variant set to
+render.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 51.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>Name of the variant set already present on the asset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prim_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Yes</p></td>
+<td><p>USD prim path that owns the variant set (e.g. <code class="docutils literal notranslate"><span class="pre">/root</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_existing</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>No</p></td>
+<td><p>Whether the variant set already exists on the asset (default <code class="docutils literal notranslate"><span class="pre">false</span></code>; almost always <code class="docutils literal notranslate"><span class="pre">true</span></code> for rendering, since the CLI does not author new variant sets).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">variant_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>No</p></td>
+<td><p>Rarely needed explicit variant-selection path; leave unset unless exported from the UI with one.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variants</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Yes</p></td>
+<td><p>Variants to render. Each one is a <code class="docutils literal notranslate"><span class="pre">{&quot;identifier&quot;:</span> <span class="pre">&quot;...&quot;,</span> <span class="pre">&quot;is_selected&quot;:</span> <span class="pre">true|false}</span></code> object. <code class="docutils literal notranslate"><span class="pre">is_selected</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;material&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wood&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plastic&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>More than one variant in the same set may have <code class="docutils literal notranslate"><span class="pre">&quot;is_selected&quot;:</span> <span class="pre">true</span></code> and
+every selected variant contributes its own branch of combinations (see
+<a class="reference internal" href="#variant-sets-and-variants">Variant Sets and Variants</a> above for the exact counting rules: nested
+child sets multiply only within their own parent variant’s branch, an
+unselected variant contributes nothing, and a set with nothing selected
+counts as one unvaried combination).</p>
+<p><strong>Example with Multiple Variant Sets:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;finish&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matte&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glossy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This selects 6 combinations (3 colors x 2 finishes) per template/camera/rendition.</p>
+<p><strong>Adding a nested variant:</strong> to give a variant its own child variant set,
+add an <code class="docutils literal notranslate"><span class="pre">opinions</span></code> array to that variant, with each entry containing
+<code class="docutils literal notranslate"><span class="pre">target_prim</span></code>, <code class="docutils literal notranslate"><span class="pre">opinion_type</span></code>, and a nested <code class="docutils literal notranslate"><span class="pre">variant_set</span></code> object (same
+shape as above, see the example below). Only opinions that carry a
+<code class="docutils literal notranslate"><span class="pre">variant_set</span></code> matter for rendering; any other opinion type (e.g. a plain
+<code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code> opinion with no nested set) is ignored, and dropped if the UI
+re-saves the configuration.</p>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;finish&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/finish&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matte&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gloss&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="outputs">
+<h4>Outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h4>
+<p>The simplest form is a single combined <code class="docutils literal notranslate"><span class="pre">filepath</span></code> Jinja2 template:</p>
+<div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
+  &quot;filepath&quot;: &quot;./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+}
+</pre></div>
+</div>
+<p>Alternatively, the path may be split into three independently editable
+components that the renderer joins with <code class="docutils literal notranslate"><span class="pre">/</span></code>:</p>
+<div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
+  &quot;output_path&quot;: &quot;./renders&quot;,
+  &quot;structure_template&quot;: &quot;{{template}}/{{render_type}}/{{camera_name}}&quot;,
+  &quot;naming_convention&quot;: &quot;{{asset_filename}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+}
+</pre></div>
+</div>
+<p>When the combined path doesn’t already end in a recognized image extension
+or <code class="docutils literal notranslate"><span class="pre">{{format}}</span></code>, a suffix is appended automatically. If a
+<code class="docutils literal notranslate"><span class="pre">naming_convention</span></code> was set, that suffix is just <code class="docutils literal notranslate"><span class="pre">.{{format}}</span></code>;
+otherwise the tool falls back to its own full default folder-and-filename
+template.</p>
+<p><strong>Available Template Variables:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 55.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{asset_filename}}</span></code></p></td>
+<td><p>Asset file name without extension</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">my_asset</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{render_type}}</span></code></p></td>
+<td><p>Type of render</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">turntable</span></code>, <code class="docutils literal notranslate"><span class="pre">usd</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{render_id}}</span></code></p></td>
+<td><p>Render identifier, or the type if none was set</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">high_quality</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{camera_name}}</span></code></p></td>
+<td><p>Camera name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hero</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{frame}}</span></code></p></td>
+<td><p>Frame number (<code class="docutils literal notranslate"><span class="pre">0</span></code> for static)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">12</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{aov_name}}</span></code></p></td>
+<td><p>AOV/render pass name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">beauty</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{format}}</span></code></p></td>
+<td><p>File extension</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">png</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{template}}</span></code></p></td>
+<td><p>Template/scene name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">studio</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{variant_filepath}}</span></code></p></td>
+<td><p>Path-style variant string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color/red</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{variant_filename}}</span></code></p></td>
+<td><p>Filename-style variant string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color_red</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{{variant_set}}</span></code></p></td>
+<td><p>All variant set names for the current combination</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color_finish</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{{variant_id}}</span></code></p></td>
+<td><p>All variant IDs for the current combination</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">red_glossy</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code> on the CLI prefixes onto <code class="docutils literal notranslate"><span class="pre">outputs.output_path</span></code>; the resolved
+combined <code class="docutils literal notranslate"><span class="pre">filepath</span></code> template is always echoed to the console once before
+rendering starts.</p>
+</section>
+</section>
+<section id="full-config-examples">
+<h3>Full Config Examples<a class="headerlink" href="#full-config-examples" title="Link to this heading"></a></h3>
+<section id="multi-scene-static-turntable-mirrors-the-bundled-default-preset">
+<h4>Multi-Scene Static + Turntable (mirrors the bundled default preset)<a class="headerlink" href="#multi-scene-static-turntable-mirrors-the-bundled-default-preset" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
+  &quot;version&quot;: &quot;0.2&quot;,
+  &quot;renders&quot;: [
+    {
+      &quot;type&quot;: &quot;static&quot;,
+      &quot;resolution&quot;: [192, 108],
+      &quot;format&quot;: &quot;png&quot;,
+      &quot;samples&quot;: 128,
+      &quot;rendering_technique&quot;: &quot;CPUPathtracing&quot;,
+      &quot;aov&quot;: [&quot;beauty&quot;, &quot;depth&quot;, &quot;normal&quot;],
+      &quot;timeout&quot;: 300
+    },
+    {
+      &quot;type&quot;: &quot;turntable&quot;,
+      &quot;number_of_frames&quot;: 6,
+      &quot;frame_fit&quot;: 0.6,
+      &quot;resolution&quot;: [192, 108],
+      &quot;format&quot;: &quot;png&quot;,
+      &quot;samples&quot;: 128,
+      &quot;rendering_technique&quot;: &quot;CPUPathtracing&quot;,
+      &quot;timeout&quot;: 300
+    }
+  ],
+  &quot;templates&quot;: [
+    {
+      &quot;scene_path&quot;: &quot;./tests/sample_scene.usda&quot;,
+      &quot;cameras&quot;: [{ &quot;name&quot;: &quot;hero&quot; }, { &quot;name&quot;: &quot;side&quot; }]
+    },
+    {
+      &quot;scene_path&quot;: &quot;./tests/sample_scene.usda&quot;,
+      &quot;cameras&quot;: [{ &quot;name&quot;: &quot;camera1&quot; }, { &quot;name&quot;: &quot;camera2&quot; }],
+      &quot;name&quot;: &quot;alt_scene&quot;
+    }
+  ],
+  &quot;variant_sets&quot;: [],
+  &quot;outputs&quot;: {
+    &quot;filepath&quot;: &quot;./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+  }
+}
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/my_asset.usd<span class="w"> </span>--override-config<span class="w"> </span>./multi_scene.jsonc<span class="w"> </span>-v
+</pre></div>
+</div>
+</details>
+<br></section>
+<section id="selecting-specific-variants-on-an-existing-asset">
+<h4>Selecting Specific Variants on an Existing Asset<a class="headerlink" href="#selecting-specific-variants-on-an-existing-asset" title="Link to this heading"></a></h4>
+<details>
+<summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;renders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;static&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;scene_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./scenes/studio_lighting.usda&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cameras&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hero&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;filepath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./out/{{variant_id}}.{{format}}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cli_batch_render<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>./assets/car.usd<span class="w"> </span>--override-config<span class="w"> </span>./variants.json
+</pre></div>
+</div>
+</details>
+<br></section>
+</section>
+<section id="relationship-to-the-ui">
+<h3>Relationship to the UI<a class="headerlink" href="#relationship-to-the-ui" title="Link to this heading"></a></h3>
+<p>The CLI and the UI share the same underlying render-configuration schema,
+but the UI never runs it through a separate process:</p>
+<ul class="simple">
+<li><p><strong>Author in the UI, run in CI</strong> : Use the UI to build and preview a session configuration, then export it via <strong>Presets → Export Render Config…</strong>. Pass that file directly to <code class="docutils literal notranslate"><span class="pre">cli_batch_render</span> <span class="pre">run</span> <span class="pre">--override-config</span></code> for headless batch builds.</p></li>
+<li><p><strong>Presets vs. render-config files</strong> : Use <strong>Presets → Export Render Config…</strong> to produce a file for <code class="docutils literal notranslate"><span class="pre">--override-config</span></code>. A saved preset (<strong>Presets → Save Preset…</strong>) is a different, UI-only format (imported back with <strong>Presets → Load Preset…</strong>).</p></li>
+<li><p><strong>Author in JSON, run in the UI</strong> : There is currently no menu action to import a hand-written or <code class="docutils literal notranslate"><span class="pre">generate-template</span></code>-based configuration file back into the UI.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">.brws</span></code> workspace format used by the UI is a superset of both the
+preset and the render-configuration schema, and additionally stores the
+uploaded asset collection. See <a class="reference internal" href="#menu-bar">Menu Bar</a> for the workspace file details and
+<a class="reference internal" href="#presets">Presets</a> for the preset/CLI-config relationship.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workflow_variant_compiler.html" class="btn btn-neutral float-left" title="Variant Compiler Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workflow_bom_material_assignment.html" class="btn btn-neutral float-right" title="BOM Material Assignment Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

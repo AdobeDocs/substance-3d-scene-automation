@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>substance3d.api.material.material_utilities &mdash; Substance3d API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="substance3d.api.renderer" href="renderer.html" />
+    <link rel="prev" title="substance3d.api.material" href="material.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Substance3d API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scene.html">substance3d.api.scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branch.html">substance3d.api.scene.branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">substance3d.api.scene.animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primitive.html">substance3d.api.primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">substance3d.api.variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">substance3d.api.export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thumbnails.html">substance3d.api.thumbnails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">substance3d.api.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform_utilities.html">substance3d.api.transform.transform_utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light.html">substance3d.api.light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">substance3d.api.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material.html">substance3d.api.material</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">substance3d.api.material.material_utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.material.material_utilities.Definitions"><code class="docutils literal notranslate"><span class="pre">Definitions</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.material.material_utilities.find_material_path_from_file"><code class="docutils literal notranslate"><span class="pre">find_material_path_from_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.material.material_utilities.bake_connections"><code class="docutils literal notranslate"><span class="pre">bake_connections()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.material.material_utilities.add_definition_from_existing"><code class="docutils literal notranslate"><span class="pre">add_definition_from_existing()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.material.material_utilities.convert_vertex_colors_to_materials"><code class="docutils literal notranslate"><span class="pre">convert_vertex_colors_to_materials()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="renderer.html">substance3d.api.renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">substance3d.api.image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">substance3d.api.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_processing.html">substance3d.api.mesh_processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">substance3d.api.stats</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Manual:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/nextsteps.html">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/handlers.html">How to use Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/knownissues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/mesh_processing.html">CAD &amp; Mesh Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userdoc/workflow_variant_compiler.html">Variant Compiler Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Note:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Substance3d Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Substance3d API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">substance3d.api.material.material_utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/material_utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-substance3d.api.material.material_utilities">
+<span id="substance3d-api-material-material-utilities"></span><h1>substance3d.api.material.material_utilities<a class="headerlink" href="#module-substance3d.api.material.material_utilities" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.material.material_utilities.Definitions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Definitions</span></span><a class="headerlink" href="#substance3d.api.material.material_utilities.Definitions" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material_utilities.find_material_path_from_file">
+<span class="sig-name descname"><span class="pre">find_material_path_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbsar_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material_utilities.find_material_path_from_file" title="Link to this definition"></a></dt>
+<dd><p>Find the first material prim path, if no filter is given, in the file.
+Can be useful when referencing a file has no defaultPrim or when the desired prim is not at the root level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sbsar_path</strong> (<em>str</em><em> | </em><em>Path</em>) – sbsar filepath</p></li>
+<li><p><strong>filter</strong> (<em>str</em><em> | </em><em>None</em>) – search the prim based on filter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the material object path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material_utilities.bake_connections">
+<span class="sig-name descname"><span class="pre">bake_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material_utilities.bake_connections" title="Link to this definition"></a></dt>
+<dd><p>For each connection present in the children of the material, child type can be defined by the argument ‘type’, the connection
+will be cleared and replaced by the final value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>PrimHandler</em>) – the material</p></li>
+<li><p><strong>type</strong> (<em>str</em>) – bake only prim child connections of the given type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material_utilities.add_definition_from_existing">
+<span class="sig-name descname"><span class="pre">add_definition_from_existing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_definition_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_definition_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material_utilities.add_definition_from_existing" title="Link to this definition"></a></dt>
+<dd><p>Adds a new material definition by converting an existing material definition. Restrictions apply as to which conversions are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>material</strong> (<em>PrimHandler</em>) – A material object</p></li>
+<li><p><strong>existing_definition_type</strong> (<a class="reference internal" href="../substance3d.api.material.html#substance3d.api.material.material_utilities.Definitions" title="substance3d.api.material.material_utilities.Definitions"><em>Definitions</em></a>) – A value from Definitions</p></li>
+<li><p><strong>new_definition_type</strong> (<a class="reference internal" href="../substance3d.api.material.html#substance3d.api.material.material_utilities.Definitions" title="substance3d.api.material.material_utilities.Definitions"><em>Definitions</em></a>) – A value from Definitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated material</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.material.material_utilities.convert_vertex_colors_to_materials">
+<span class="sig-name descname"><span class="pre">convert_vertex_colors_to_materials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_name_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_name_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.material.material_utilities.convert_vertex_colors_to_materials" title="Link to this definition"></a></dt>
+<dd><p>Using the displayColor primvar on the provided meshes, locates faces that have a solid color, creates a single material for each of those colors, and then binds the material to the mesh or to a newly created geomsubset of the mesh.</p>
+<p>When a color covers all faces of a mesh the material for that color is bound directly to the mesh. When a color covers only a subset of faces on a mesh, a geom subset is created on the mesh and the material is bound to that. If a mesh has some non-solid colored faces, the mesh will be skipped.</p>
+<p>Callers may specify either the meshes to operate on, or they may specify a single parent prim that contains the meshes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objects</strong> (<em>PrimHandler</em><em> | </em><em>list</em><em>[</em><em>PrimHandler</em><em>]</em>) – A prim handler or a list of prim handlers to meshes, or a single parent prim</p></li>
+<li><p><strong>material_name_pattern</strong> (<em>str</em>) – The pattern used to name any created materials, it may contain ‘{r}’, ‘{g}’ and ‘{b}’ which will be replaced by the corresponding color channel value of the vertex color (e.g. ‘mat_{r}_{g}_{b}’)</p></li>
+<li><p><strong>subset_name_pattern</strong> (<em>str</em>) – The pattern used to name any created geom subsets, it may contain ‘{r}’, ‘{g}’ and ‘{b}’ which will be replaced by the corresponding color channel value of the vertex color (e.g. ‘subset_{r}_{g}_{b}’)</p></li>
+<li><p><strong>parent</strong> (<em>PrimHandler</em>) – The parent under which the materials will be created</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="material.html" class="btn btn-neutral float-left" title="substance3d.api.material" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="renderer.html" class="btn btn-neutral float-right" title="substance3d.api.renderer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

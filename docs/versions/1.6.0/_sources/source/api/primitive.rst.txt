@@ -1,0 +1,6 @@
+substance3d.api.primitive
+-------------------------
+.. automodule:: substance3d.api.primitive.primitive
+    :members:
+    :show-inheritance:
+    :member-order: bysource

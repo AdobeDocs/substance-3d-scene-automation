@@ -1,0 +1,1344 @@
+Variant Compiler Guide
+-------------------------
+
+A comprehensive reference for the graphical interface of the Variant Compiler tool.
+
+Installation
+============
+
+#. Navigate to the ``workflow_tools`` folder.
+#. Run ``install.bat`` on Windows or ``install`` on macOS.
+#. Wait for the installation to complete. This may take a few minutes while a Python virtual environment is created and dependencies are installed.
+#. Once the installation is complete, the GUI launchers and CLI ``.bat`` files are available in the ``workflow_tools`` folder.
+
+
+Starting the UI
+===============
+
+Double-click the ``.bat`` file in the workflow tools folder, run ``variant-compiler-ui`` from the command line, or run ``main.py`` with Python (SSCA required).
+
+Environment Variables
+#####################
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 60
+
+   * - Variable
+     - Default
+     - Description
+   * - ``LOG_LEVEL``
+     - ``INFO``
+     - Logging level (``DEBUG``, ``INFO``, ``WARNING``, ``ERROR``)
+
+Logs are written to ``logs/variant_compiler_ui.log``.
+
+
+UI Layout
+=========
+
+The application is organized into four panels + a Log panel:
+
+.. figure:: /source/static/workflow_tools/variant_compiler.png
+   :alt: Variant Compiler UI layout showing the four panels
+   :align: center
+   :width: 100%
+
+   *Click on the image to view full size*
+
+
+
+
+The **menu bar** spans the top. The scene filename is shown in the center of the
+menu bar, and the workspace path (with ``*`` when unsaved) appears on the right.
+
+
+Menu Bar
+========
+
+File Menu
+#########
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 20 50
+
+   * - Action
+     - Shortcut
+     - Description
+   * - New Workspace
+     - ``Ctrl+N``
+     - Clear the workspace and start fresh
+   * - Open Workspace…
+     - ``Ctrl+O``
+     - Load an existing ``.vws`` workspace file
+   * - Save Workspace
+     - ``Ctrl+S``
+     - Save the current workspace to its existing path
+   * - Save Workspace As…
+     - ``Ctrl+Shift+S``
+     - Save to a new ``.vws`` file
+   * - Close Workspace
+     - ``Ctrl+W``
+     - Close the current workspace
+   * - Open Recent
+     - —
+     - Reopen a recently used workspace
+   * - Theme
+     - —
+     - Switch between available UI themes
+   * - Exit
+     - ``Ctrl+Q``
+     - Quit the application
+
+If the workspace has unsaved changes, the application will prompt to save before
+closing or opening a new file.
+
+Import Menu
+###########
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - Action
+     - Description
+   * - Import Scene…
+     - Open a USD/USDZ/USDA/FBX scene file into the Scene Hierarchy panel
+   * - Import Variant Config (.json)…
+     - Populate the Variant Sets panel from an existing JSON config file
+   * - Import BOM…
+     - Import a Bill of Materials file
+
+Export Menu
+###########
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - Action
+     - Description
+   * - Export Scene…
+     - Compile all variant sets and write a USD output file (``.usd``, ``.usda``, or ``.usdz``)
+   * - Export Variant Config (.json)…
+     - Save the current variant configuration to a JSON file for use with the CLI
+
+Validation runs automatically before any export. If errors are found, they are logged
+with clickable navigation links and the export is blocked until fixed.
+
+Preview Menu
+############
+
+Opens the loaded scene in an external USD viewer for quick inspection.
+
+
+Scene Hierarchy Panel
+=====================
+
+Displays the prim tree of the imported USD scene.
+
+Loading a Scene
+###############
+
+Click **Import Scene** in the panel header, or use **Import → Import Scene…** from
+the menu. A progress dialog appears while the scene loads. The title bar updates to
+show the filename.
+
+Navigating the Tree
+###################
+
+- The tree expands one level by default when a scene is loaded.
+- Click any row to select a prim and show its properties in the **Prim Details** sub-panel below.
+- Drag a prim row onto the **Prim Path** field inside **Variant Set Details** to assign that prim's path to a variant set.
+- Double-click a prim to select it.
+
+Searching and Filtering
+#######################
+
+- Type in the **Search prims…** field to filter the tree by prim name. The tree expands matching branches automatically.
+- Enable **Match All Keywords** to require every space-separated term to match (AND). By default any term is sufficient (OR).
+- Press ``Enter`` or click away to apply the search immediately; otherwise it applies after a short pause.
+- Click the type tag buttons (**Mesh**, **Material**, **Xform**, **Scope**, **Camera**, **Light**) to show only prims of that type. Multiple tags can be active at once.
+- The search field shows a clear button (×) when a type filter is active, so everything can be reset in one click.
+
+Prim Details Sub-panel
+######################
+
+Shows the selected prim's properties (name, type, path, and attributes). Click the
+**▲/▼** button in the Prim Details header to collapse or expand the sub-panel.
+
+Prim Indicators
+###############
+
+Prims that are assigned to one or more variant sets display a blue dot on their row
+in the tree.
+
+
+Variant Sets Panel
+==================
+
+Lists every variant set in the current workspace.
+
+Creating a Variant Set
+######################
+
+Click **+ New Variant Set** in the panel header. A new entry appears in the list and
+is selected automatically, with the name field focused and ready to type.
+
+Variant Set List Items
+######################
+
+Each card shows:
+
+- **Lock / Unlock icon** — A padlock icon indicates whether the set is read-only (loaded from the scene) or editable (newly created). Hover for a tooltip.
+- **Name** — The variant set name, optionally followed by ``-> selected_variant`` when a default variant is active.
+- **Prim path** — The USD prim this set is attached to.
+- **Types and count** — The opinion types used across variants (e.g. ``ATTRIBUTE - 4 variants``).
+- **Child variant sets** — When nested variant sets exist, a count label and expand/collapse button appear.
+- **Error / Warning icons** — Validation problems are shown as alert icons with tooltip details.
+- **Duplicate button** — Copies the variant set (and all its variants and opinions) to a new editable set.
+- **Delete button** — Removes the set after a confirmation prompt. Only shown for editable sets.
+
+User-created (editable) sets are listed before read-only (existing) sets. Within each
+group, sets are sorted alphabetically by name then by prim path.
+
+Searching and Filtering
+#######################
+
+- Type in **Search sets…** to filter by name, prim path, variant names, opinion types, target prims, referenced files, or attribute values.
+- Enable **Match All Keywords** (AND logic) or leave unchecked for OR logic (default).
+- Click **New** to show only user-created sets.
+- Click opinion type tags (**Attribute**, **Controller**, **Geometry**, **Material**, etc.) to filter by type. When multiple tags are selected, all must be present.
+- The search field shows a clear button when any filter is active.
+
+Nested Variant Sets (Child Sets)
+#################################
+
+Variant sets can contain child sets owned by specific variants. Click the
+expand/collapse button on a parent card to show or hide its children inline in the
+list, indented by nesting level. Search auto-expands parents when a matching child
+exists.
+
+
+Variant Set Details Panel
+=========================
+
+Shows the full configuration of the selected variant set. Click any variant set in
+the center panel to load it here.
+
+Header Fields
+#############
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 75
+
+   * - Field
+     - Description
+   * - **Name**
+     - Editable name for the variant set. Must be a valid USD identifier (letters, digits, underscores; must start with a letter or underscore).
+   * - **Prim Path**
+     - The USD prim path this set is attached to. Type a path directly or drag a prim row from the Scene Hierarchy.
+   * - **Variant Path**
+     - Read-only. Shown only for nested variant sets — the full USD path including parent variant context.
+   * - **Parent**
+     - Read-only. Shown only for nested variant sets — which variant owns this set.
+   * - **Types**
+     - Read-only. Comma-separated list of opinion types present across all variants.
+
+Fields for read-only (existing) sets are greyed out and non-editable.
+
+Variants List
+#############
+
+Each variant in the set is shown as a collapsible card.
+
+Adding Variants
+"""""""""""""""
+
+- Click **New Variant** in the Variants section header to add a blank variant. The name field is focused for immediate renaming.
+- Click **Import** (folder icon) to bulk-import variants from a directory of asset files (see :ref:`bulk-import` below).
+
+Variant Card (Editable Sets)
+"""""""""""""""""""""""""""""
+
+- **Checkbox** — Marks this variant as the default selected variant. Only one variant can be selected at a time.
+- **Name field** — The variant identifier. Must be a valid USD identifier.
+- **Expand/Collapse arrow** — Toggles the opinions list for this variant.
+- **Duplicate button** — Copies the variant and all its opinions.
+- **Delete button** — Removes the variant.
+- **Drag handle** — Drag variants to reorder them within the set.
+
+Variant Card (Read-only Sets)
+""""""""""""""""""""""""""""""
+
+Name is shown as a label only. No editing controls are visible.
+
+Adding and Editing Opinions
+###########################
+
+Expand a variant card to see its opinions. Click **+ Add Opinion** inside the expanded
+card to add a new opinion.
+
+Each opinion has a **type selector** and type-specific fields:
+
+GEOMETRY
+""""""""
+
+Swaps the geometry at the target prim.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - USD prim path to replace (must start with ``/``)
+   * - Referenced Prim
+     - Path to the specific prim within the referenced file to use
+
+GEOMETRY (FILE)
+"""""""""""""""
+
+Swaps the geometry at the target prim.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - USD prim path to replace (must start with ``/``)
+   * - Referenced File
+     - Path to the replacement USD/FBX/OBJ file
+
+MATERIAL
+""""""""
+
+Assigns a material to the target prim.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - USD prim path to assign the material to. Supports wildcard prefix ``*`` to match multiple prims.
+   * - Referenced Prim
+     - Path to an existing material prim already in the scene
+
+MATERIAL (FILE)
+"""""""""""""""
+
+Assigns a material to the target prim.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - USD prim path to assign the material to. Supports wildcard prefix ``*`` to match multiple prims.
+   * - Referenced File
+     - Path to a ``.sbsar``, texture directory, or USD material file
+
+ATTRIBUTE
+"""""""""
+
+Modifies an attribute value on the target prim.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - USD prim path. Supports wildcard prefix ``*``.
+   * - Attribute Name
+     - The attribute to set (e.g. ``inputs.baseColor``, ``procedural_sbsar.roughness``)
+   * - Attribute Value 
+     - The new value
+
+Attribute name prefixes:
+
+- ``inputs.`` — Standard USD material inputs
+- ``procedural_sbsar.`` — SBSAR procedural parameters
+
+CONTROLLER
+""""""""""
+
+Selects a variant in another variant set, enabling cross-set coordination.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field
+     - Description
+   * - Target Prim
+     - Prim path that owns the target variant set
+   * - Variant Set
+     - Name of the target variant set to control
+   * - Selected Variant
+     - The variant to activate in that set
+
+
+.. _bulk-import:
+
+Bulk Import
+###########
+
+Bulk import allows you to create multiple variants at once by selecting a folder of asset files. Each file generates a new variant with opinions based on the chosen opinion type.
+
+Click the **Import** (folder icon) button in the Variants section header to open the
+bulk import panel. The variants list is replaced with an import form:
+
+
+.. image:: /source/static/workflow_tools/vc_bulk_import.jpg
+   :alt: Bulk import button
+   :align: center
+   :width: 80%
+
+|
+#. Set the **Target Prim** — the prim path all opinions will point to.
+#. Choose **Opinion Type** — ``MATERIAL`` or ``GEOMETRY``.
+#. Click **Add Files** to pick individual files, or **Add Directory** to scan a folder. Files can also be dragged directly onto the list.
+#. Remove individual files with the x button.
+#. Click **Import** to create one variant per file, using the filename (without extension) as the variant identifier.
+#. Click **Cancel** to return to the variants list without importing.
+
+
+Logs Panel
+==========
+
+Displays real-time feedback from load, validation, and export operations.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 15 70
+
+   * - Color
+     - Type
+     - Meaning
+   * - White
+     - Info
+     - Normal progress updates
+   * - Green
+     - Success
+     - Operations completed successfully
+   * - Yellow
+     - Warning
+     - Non-fatal issues that may need attention
+   * - Red
+     - Error
+     - Failures and validation errors
+
+**Clickable log entries** — Validation error messages are links. Clicking one
+navigates the Variant Sets and Variant Set Details panels to the exact variant set,
+variant, or opinion field that caused the error.
+
+**Console** — Opens an embedded Python console for debugging.
+
+**Clear** — Clears all log entries.
+
+The panel can be collapsed by dragging the splitter handle upward.
+
+
+Typical Workflow
+================
+
+1. Start the UI
+###############
+
+Double-click on the ``.bat`` file in the workflow tools folder, run ``variant-compiler-ui`` from the command line, or run ``main.py`` with Python (SSCA required).
+
+2. Create or Open a Workspace
+##############################
+
+- **File → New Workspace** to start from scratch.
+- **File → Open Workspace…** (``Ctrl+O``) to reload an existing ``.vws`` file.
+
+3. Import a Scene
+#################
+
+Click **Import Scene** in the Scene Hierarchy panel header and select a
+USD/USDZ/USDA/FBX file. The prim tree populates and the filename appears in the
+menu bar.
+
+4. Create a Variant Set
+########################
+
+Click **+ New Variant Set** in the Variant Sets panel. Name it (e.g. ``BodyColor``)
+and set the **Prim Path** — type it or drag a prim row from the Scene Hierarchy.
+
+5. Add Variants
+###############
+
+In the Variant Set Details panel, click **New Variant** for each option (e.g.
+``red``, ``blue``, ``silver``). Rename each variant as prompted.
+
+6. Add Opinions to Each Variant
+################################
+
+Expand a variant card, click **+ Add Opinion**, choose the opinion type, and fill in
+the required fields. For example, a ``MATERIAL`` opinion needs a Target Prim and
+either a Referenced File or Referenced Prim.
+
+A single variant can have multiple opinions. Common combinations:
+
+- ``GEOMETRY`` + ``MATERIAL`` — Swap geometry and assign matching material.
+- ``CONTROLLER`` — Chain to another variant set (e.g. selecting ``large_wheels`` also selects the matching ``WheelMaterial`` variant).
+
+7. Set a Default Selection
+##########################
+
+Check the checkbox next to the variant that should be active by default when the
+USD file is opened.
+
+8. Save the Workspace
+#####################
+
+``Ctrl+S`` saves to a ``.vws`` file. The title bar clears the ``*`` unsaved
+indicator. Workspaces can be reopened via **File → Open Recent**.
+
+9. Export the Scene
+###################
+
+**Export → Export Scene…** validates all variant sets, then writes a USD file with
+the compiled variant data. If validation errors exist they are logged as clickable
+links and the export is blocked until corrected.
+
+Tips
+====
+
+- **Drag prim paths** — Any prim path field in Variant Set Details accepts drag-and-drop from the Scene Hierarchy prim tree.
+- **Duplicate to iterate** — Use the duplicate button on a variant set or variant to copy a working configuration before making changes.
+- **Lock icon = read-only** — Variant sets loaded from the scene are locked (read-only). Duplicate them to create an editable copy.
+- **Search is deep** — The Variant Sets search scans names, prim paths, variant identifiers, referenced files, and attribute values, so you can search for a filename or material path to find which set uses it.
+- **Validation links** — Clicking a red error in the Logs panel jumps directly to the broken field, saving time hunting for the problem.
+- **`.vws` vs `.json`** — A workspace (``.vws``) saves the full UI state including the scene reference. A variant config (``.json``) is portable and works with the CLI. Use **Export → Export Variant Config** to generate a CLI-compatible config from the UI.
+
+CLI
+===
+
+The ``variant-compiler`` command-line tool runs the same compilation pipeline as the UI,
+without a graphical interface. Use it for headless batch builds, CI pipelines, or
+scripted automation.
+
+This CLI uses JSON files exported from the UI with **Export → Export Variant Config…**, or created manually from the schema described below.
+
+After installation, the CLI entrypoint is abailable in the workflow_tools folder as ``Substance3DVariantCompilerCLI.bat`` on Windows or ``variant-compiler`` on macOS. You can also run ``variant_compiler/CLI/main.py`` with Python directly (SSCA required).
+
+Environment Variables
+#####################
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 60
+
+   * - Variable
+     - Default
+     - Description
+   * - ``LOG_LEVEL``
+     - ``WARNING``
+     - Logging level (``DEBUG``, ``INFO``, ``WARNING``, ``ERROR``). Overridden by ``-v`` / ``-vv``.
+
+Logs are written to ``logs/variant_compiler.log``.
+
+Command Syntax
+##############
+
+.. code-block:: bash
+
+   variant-compiler --config <config.json> --output <output.usd> [OPTIONS]
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 10 12 50
+
+   * - Option
+     - Short
+     - Required
+     - Description
+   * - ``--config``
+     - ``-c``
+     - Yes
+     - Path to the variant configuration JSON file
+   * - ``--output``
+     - ``-o``
+     - Yes
+     - Path to the output USD file (``.usd``, ``.usda``, or ``.usdz``)
+   * - ``--input``
+     - ``-i``
+     - No
+     - Path to an existing USD/USDZ/USDA/FBX scene to build on top of
+   * - ``--working-directory``
+     - ``-w``
+     - No
+     - Base directory for resolving relative asset paths (default: directory of the input file, or CWD)
+   * - ``--verbose``
+     - ``-v``
+     - No
+     - Increase log verbosity; use ``-v`` for info, ``-vv`` for debug
+
+Verbosity Levels
+""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Flag
+     - Output
+   * - *(none)*
+     - Warnings and errors only
+   * - ``-v``
+     - Info messages + warnings + errors
+   * - ``-vv``
+     - Debug messages + info + warnings + errors
+
+Exit Codes
+""""""""""
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 90
+
+   * - Code
+     - Meaning
+   * - ``0``
+     - Success
+   * - ``1``
+     - Missing required arguments or CLI parse error
+   * - ``2``
+     - File not found or invalid configuration
+   * - ``3``
+     - Processing failure (variant creation or export error)
+   * - ``130``
+     - Cancelled by user (``Ctrl+C``)
+
+Quick Examples
+##############
+
+Build from a config alone (no input scene):
+
+.. code-block:: bash
+
+   variant-compiler -c config.json -o output.usd
+
+Add variants to an existing USD scene:
+
+.. code-block:: bash
+
+   variant-compiler -c config.json -i base_scene.usd -o output.usd
+
+Export as USDZ with verbose logging:
+
+.. code-block:: bash
+
+   variant-compiler -c config.json -i scene.usd -o output.usdz -vv
+
+Resolve assets relative to a custom directory:
+
+.. code-block:: bash
+
+   variant-compiler -c config.json -i scene.usd -o output.usd -w ./assets
+
+Configuration File
+##################
+
+The config is a JSON file with a single top-level key ``variant_sets`` containing an
+array of variant set definitions. For complete working examples, see `Full Config Examples`_ below.
+
+.. code-block:: json
+
+   {
+     "variant_sets": [ ... ]
+   }
+
+VariantSet Object
+"""""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 10 50
+
+   * - Field
+     - Type
+     - Required
+     - Description
+   * - ``name``
+     - string
+     - Yes
+     - Unique name for the variant set. Must be a valid USD identifier.
+   * - ``prim_path``
+     - string
+     - Yes
+     - USD prim path where this variant set is authored (e.g. ``/root/vehicle``).
+   * - ``selected_variant``
+     - string
+     - No
+     - Identifier of the variant to activate by default.
+   * - ``variants``
+     - array
+     - Yes
+     - One or more variant definitions.
+
+Variant Object
+""""""""""""""
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 10 50
+
+   * - Field
+     - Type
+     - Required
+     - Description
+   * - ``identifier``
+     - string
+     - Yes
+     - Unique name for this variant within the set. Must start with a letter or underscore and contain only letters, digits, or underscores.
+   * - ``opinions``
+     - array
+     - Yes
+     - One or more opinion definitions describing the changes this variant applies.
+   * - ``variant_sets``
+     - array
+     - No
+     - Nested variant sets owned by this variant.
+
+Opinion Object
+""""""""""""""
+
+An opinion is a single atomic change that a variant applies. Required fields depend on
+``opinion_type``.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 15 10 50
+
+   * - Field
+     - Type
+     - Required
+     - Description
+   * - ``target_prim``
+     - string
+     - Yes
+     - USD prim path being modified. Must start with ``/``. ``ATTRIBUTE`` and ``MATERIAL`` types also accept a wildcard prefix ``*`` to match multiple prims (e.g. ``*/Looks/Material``).
+   * - ``opinion_type``
+     - string
+     - Yes
+     - One of: ``GEOMETRY``, ``MATERIAL``, ``ATTRIBUTE``, ``CONTROLLER``, ``LIGHT``, ``CAMERA``
+   * - ``has_file_reference``
+     - bool
+     - No
+     - Set ``true`` when the opinion references an external file. Defaults to ``true`` when ``referenced_file`` is present.
+   * - ``referenced_file``
+     - string
+     - Conditional
+     - Path to the external asset. Required when ``has_file_reference`` is ``true``.
+   * - ``referenced_prim``
+     - string
+     - Conditional
+     - Internal prim reference (material binding path, or specific prim in a referenced file). Must start with ``/``. Required for prim-based ``MATERIAL`` and ``GEOMETRY`` opinions when ``has_file_reference`` is ``false``.
+   * - ``attribute``
+     - object
+     - Conditional
+     - Attribute definition. Required for ``ATTRIBUTE`` opinions.
+   * - ``variant_set``
+     - string
+     - Conditional
+     - Target variant set name. Required for ``CONTROLLER`` opinions.
+   * - ``selected_variant``
+     - string
+     - Conditional
+     - Variant to select in the target set. Required for ``CONTROLLER`` opinions.
+   * - ``...``
+     - ...
+     - ...
+     - Other fields may be present depending on the opinion type. Try exporting from the UI if unsure.
+
+Attribute Object
+""""""""""""""""
+
+Used inside ``ATTRIBUTE`` opinions.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 15 10 60
+
+   * - Field
+     - Type
+     - Required
+     - Description
+   * - ``name``
+     - string
+     - Yes
+     - Attribute name. Use ``inputs.`` prefix for standard USD inputs or ``procedural_sbsar.`` for SBSAR parameters.
+   * - ``value``
+     - string
+     - Yes
+     - Attribute value as a string (e.g. ``"(1, 0, 0)"``, ``"0.5"``, ``"metallic"``).
+   * - ``type``
+     - string
+     - No
+     - USD type hint (e.g. ``color3f``, ``float``, ``float2``, ``token``). Recommended when the type cannot be inferred.
+
+Opinion Type Examples
+#####################
+
+JSON examples for each opinion type. For field descriptions see `Adding and Editing Opinions`_ above.
+
+GEOMETRY
+""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+File reference:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/robot/arm/hand",
+     "opinion_type": "GEOMETRY",
+     "referenced_file": "models/hand_hi.usd"
+   }
+
+Prim reference (binds to an existing prim in the scene):
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/robot/arm/hand",
+     "opinion_type": "GEOMETRY",
+     "has_file_reference": false,
+     "referenced_prim": "/root/SourceGeometry/hand_hi"
+   }
+
+File reference with a specific internal prim:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/robot/arm/hand",
+     "opinion_type": "GEOMETRY",
+     "referenced_file": "models/hands.usd",
+     "referenced_prim": "/Hands/HiRes"
+   }
+
+.. raw:: html
+
+   </details>
+   <br>
+
+MATERIAL
+""""""""
+
+Assigns a material to the target prim. Accepts SBSAR procedural materials, texture
+directories, USD material files, and existing scene prims.
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+SBSAR material:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/vehicle/body",
+     "opinion_type": "MATERIAL",
+     "referenced_file": "materials/car_paint.sbsar"
+   }
+
+USD material file:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/room/wall",
+     "opinion_type": "MATERIAL",
+     "referenced_file": "materials/brick_wall/brick_wall.usd"
+   }
+
+Texture directory:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/prop/surface",
+     "opinion_type": "MATERIAL",
+     "referenced_file": "materials/wood_texture/"
+   }
+
+Existing prim in the scene:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/room/wall",
+     "opinion_type": "MATERIAL",
+     "has_file_reference": false,
+     "referenced_prim": "/root/Materials/BrickMaterial"
+   }
+
+Wildcard target (applies to every matching prim in the subtree):
+
+.. code-block:: json
+
+   {
+     "target_prim": "*/Looks/Material",
+     "opinion_type": "MATERIAL",
+     "referenced_file": "materials/surface.sbsar"
+   }
+
+.. raw:: html
+
+   </details>
+   <br>
+
+ATTRIBUTE
+"""""""""
+
+Modifies an attribute value on the target prim. Commonly used to tune material
+parameters.
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+USD material input:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/chair/seat/Looks/Material",
+     "opinion_type": "ATTRIBUTE",
+     "attribute": {
+       "name": "inputs.baseColor",
+       "value": "(1, 0, 0)",
+       "type": "color3f"
+     }
+   }
+
+SBSAR procedural parameter:
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/floatplane/body",
+     "opinion_type": "ATTRIBUTE",
+     "attribute": {
+       "name": "procedural_sbsar.roughness",
+       "value": "0.3",
+       "type": "float"
+     }
+   }
+
+Attribute name prefixes:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Prefix
+     - Use
+   * - ``inputs.``
+     - Standard USD shader inputs (e.g. ``inputs.baseColor``, ``inputs.uvscale``)
+   * - ``procedural_sbsar.``
+     - SBSAR procedural parameters (e.g. ``procedural_sbsar.roughness``, ``procedural_sbsar.paint_color_1``)
+
+Common attribute types:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Type
+     - Example value
+   * - ``float``
+     - ``"0.5"``
+   * - ``float2``
+     - ``"(0.5, 1.0)"``
+   * - ``color3f``
+     - ``"(1.0, 0.0, 0.0)"`` or ``"[1.0, 0.0, 0.0]"``
+   * - ``token``
+     - ``"metallic"``
+
+.. raw:: html
+
+   </details>
+   <br>
+
+CONTROLLER
+""""""""""
+
+Selects a variant in another variant set. Use this to synchronize multiple variant
+sets — for example, selecting a wheel size automatically selects a matching wheel
+material.
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: json
+
+   {
+     "target_prim": "/root/vehicle",
+     "opinion_type": "CONTROLLER",
+     "variant_set": "WheelMaterial",
+     "selected_variant": "rubber_large"
+   }
+
+.. raw:: html
+
+   </details>
+   <br>
+
+
+Path Resolution
+###############
+
+Relative paths in ``referenced_file`` are resolved in this order:
+
+1. **Absolute path** — used as-is if the path exists on disk.
+2. **Relative to the input scene** — if ``--input`` is provided, resolves from that file's directory.
+3. **Relative to** ``--working-directory`` — if provided, resolves from that directory.
+4. **Project-relative** — paths starting with ``/`` that do not resolve as absolute are treated as project-relative and resolved against the working directory.
+5. **Current working directory** — fallback when neither ``--input`` nor ``--working-directory`` is supplied.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 45 55
+
+   * - Path example
+     - Resolved as
+   * - ``"materials/wood.sbsar"``
+     - Relative to scene dir (or working dir / CWD as fallback)
+   * - ``"/materials/wood.sbsar"``
+     - Project-relative, resolved against working directory
+   * - ``"C:/Projects/assets/wood.sbsar"``
+     - Absolute (Windows)
+   * - ``"/home/user/assets/wood.sbsar"``
+     - Absolute (Linux / macOS)
+
+
+Nested Variant Sets
+###################
+
+A variant can own its own child variant sets. This lets you express conditional
+configurations — the child sets only appear in the USD when their owning variant is
+selected.
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: json
+
+   {
+     "variant_sets": [
+       {
+         "name": "VehicleType",
+         "prim_path": "/root/vehicle",
+         "variants": [
+           {
+             "identifier": "car",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "models/car.usd"
+               }
+             ],
+             "variant_sets": [
+               {
+                 "name": "CarColor",
+                 "prim_path": "/root/vehicle",
+                 "variants": [
+                   {
+                     "identifier": "red",
+                     "opinions": [
+                       {
+                         "target_prim": "/root/vehicle/body",
+                         "opinion_type": "MATERIAL",
+                         "referenced_file": "materials/red_paint.sbsar"
+                       }
+                     ]
+                   },
+                   {
+                     "identifier": "blue",
+                     "opinions": [
+                       {
+                         "target_prim": "/root/vehicle/body",
+                         "opinion_type": "MATERIAL",
+                         "referenced_file": "materials/blue_paint.sbsar"
+                       }
+                     ]
+                   }
+                 ]
+               }
+             ]
+           },
+           {
+             "identifier": "bike",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "models/bike.usd"
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+
+.. raw:: html
+
+   </details>
+   <br>
+
+Full Config Examples
+####################
+
+Geometry Swap (vehicle types)
+"""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: json
+
+   {
+     "variant_sets": [
+       {
+         "name": "vehicle_type",
+         "prim_path": "/root/vehicle",
+         "selected_variant": "car",
+         "variants": [
+           {
+             "identifier": "bike",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "tests/test_assets/usd/bike.usd"
+               }
+             ]
+           },
+           {
+             "identifier": "car",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "tests/test_assets/usd/car.usd"
+               }
+             ]
+           },
+           {
+             "identifier": "scooter",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "tests/test_assets/usd/scooter.fbx"
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+
+.. code-block:: bash
+
+   variant-compiler -c vehicle.json -o vehicle_variants.usda -v
+
+.. raw:: html
+
+   </details>
+   <br>
+
+
+Material Variants (wall finishes)
+""""""""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: json
+
+   {
+     "variant_sets": [
+       {
+         "name": "WallMaterial",
+         "prim_path": "/root",
+         "variants": [
+           {
+             "identifier": "brick",
+             "opinions": [
+               {
+                 "target_prim": "/root/room/wall",
+                 "opinion_type": "MATERIAL",
+                 "referenced_file": "materials/brick_wall/brick_wall.usd"
+               }
+             ]
+           },
+           {
+             "identifier": "wood",
+             "opinions": [
+               {
+                 "target_prim": "/root/room/wall",
+                 "opinion_type": "MATERIAL",
+                 "referenced_file": "materials/wood_wall.sbsar"
+               }
+             ]
+           },
+           {
+             "identifier": "concrete",
+             "opinions": [
+               {
+                 "target_prim": "/root/room/wall",
+                 "opinion_type": "MATERIAL",
+                 "referenced_file": "materials/concrete_wall/concrete_wall.usd"
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+
+.. code-block:: bash
+
+   variant-compiler -c room.json -i room.usd -o room_variants.usda -v
+
+.. raw:: html
+
+   </details>
+   <br>
+
+Cross-set Coordination with CONTROLLER
+"""""""""""""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: json
+
+   {
+     "variant_sets": [
+       {
+         "name": "WheelSize",
+         "prim_path": "/root/vehicle",
+         "variants": [
+           {
+             "identifier": "small",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle/wheel",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "models/wheel_small.usd"
+               },
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "CONTROLLER",
+                 "variant_set": "WheelMaterial",
+                 "selected_variant": "standard_rubber"
+               }
+             ]
+           },
+           {
+             "identifier": "large",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle/wheel",
+                 "opinion_type": "GEOMETRY",
+                 "referenced_file": "models/wheel_large.usd"
+               },
+               {
+                 "target_prim": "/root/vehicle",
+                 "opinion_type": "CONTROLLER",
+                 "variant_set": "WheelMaterial",
+                 "selected_variant": "sport_rubber"
+               }
+             ]
+           }
+         ]
+       },
+       {
+         "name": "WheelMaterial",
+         "prim_path": "/root/vehicle",
+         "variants": [
+           {
+             "identifier": "standard_rubber",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle/wheel",
+                 "opinion_type": "MATERIAL",
+                 "referenced_file": "materials/rubber_standard.sbsar"
+               }
+             ]
+           },
+           {
+             "identifier": "sport_rubber",
+             "opinions": [
+               {
+                 "target_prim": "/root/vehicle/wheel",
+                 "opinion_type": "MATERIAL",
+                 "referenced_file": "materials/rubber_sport.sbsar"
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+
+.. code-block:: bash
+
+   variant-compiler -c wheels.json -i vehicle.usd -o vehicle_wheels.usda -vv
+
+.. raw:: html
+
+   </details>
+   <br>
+
+Relationship to the UI
+######################
+
+The CLI and the UI share the same underlying config format.
+
+- **Author in the UI, run in CI** — Use the UI to build and validate a config, then
+  export it via **Export → Export Variant Config (.json)**. Pass that file directly to
+  the CLI for headless batch builds.
+- **Author in JSON, inspect in the UI** — Write a config by hand or generate it
+  programmatically, then import it into the UI via **Import → Import Variant Config
+  (.json)** to visualize and edit it.
+
+The ``.vws`` workspace format used by the UI is a superset of the JSON config and also
+stores the associated scene path. The exported ``.json`` is the portable,
+CLI-compatible subset.

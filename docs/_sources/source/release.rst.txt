@@ -1,23 +1,48 @@
 Substance3d Release Notes
 =========================
 
-1.6.0 (TBD)
-++++++++++++
+1.7.0
++++++
+
+Added
+-----
+- [Material] New ``material.set_mapping_type(material, mapping_type)`` and ``material.set_triplanar_transform(material, scale=None, offset=None, rotation=None)`` functions, to drive UV-less triplanar texture projection
+- [Material] New ``material.get_assigned_objects(material, root=None)`` function to get the list of objects a material is assigned to, optionally scoped to a subtree
+- [Mesh Processing] New ``mesh_processing.RemoveOccludedInstancesOp()`` operator to remove mesh instances fully occluded by other geometry, with a ``precision`` attribute to trade off detection precision against processing speed
+- [Mesh Processing] ``mesh_processing.process()`` now accepts a ``list[PrimHandler]`` as parent, applying operators to multiple objects in a single call
+
+Improvements
+------------
+- [Camera] ``camera.frame()``, ``camera.frame_turntable()``, and ``camera.create_view()`` now accept an optional ``aspect_ratio`` argument so the subject is framed tightly to the intended render resolution instead of the camera's own aperture aspect ratio
+
+Fixed
+-----
+- [Variant] ``variant.get_selection()`` and other container-backed reads (custom data, reference/payload/sublayer lists) no longer return a stale value after an out-of-band USD change (controller-driven variant composition, a ``set()`` inside an authoring block, or a prim reload)
+- [Camera] ``camera.frame()`` (and ``create_view()``/``create_framed_cameras()``) no longer raises ``ValueError`` on an empty scene - logs a warning and leaves the camera unchanged
+- [Primitive] ``primitive.cyclo()`` now actually faces the front camera with correctly oriented UVs - the fix listed in the 1.6.0 notes only landed for ``primitive.cube()``
+- [Material] ``material.create_from_reference()`` now correctly exposes ``inputs`` on the returned material
+- [Export] Exporting a scene that references a previously exported/imported scene with a UDIM texture no longer fails with ``ArchiveCreationFailed`` (the UDIM tile pattern is now resolved before being anchored to a path)
+- [Export] ``export.scene_with_dependencies()`` given a bare relative filename (no directory) no longer collapses dependency paths to ``./``, which broke re-referencing and re-exporting the result
+- [File formats] ``.rfa`` is no longer listed as a supported CAD import format - it was never actually functional
+- [Packaging] Windows SSCA package now ships a complete, version-matched MSVC runtime, fixing ``usdview`` launch failures caused by a partial runtime install
+- [Packaging] macOS SSCA package now correctly bundles the Substance GPU SAL engine library, fixing app bundling failures
+
+1.6.0
++++++
 
 Added
 -----
 - [Thumbnails] New ``thumbnails`` module: ``thumbnails.set()``, ``thumbnails.get()``, ``thumbnails.get_from_filepath()``, ``thumbnails.remove()``, and ``thumbnails.render()`` to render a thumbnail image from the scene and reference it on a prim
-- [Camera] New ``camera.frame_turntable()`` function for consistent camera framing during turntable renders, using a bounding cylinder instead of a bounding box — the model occupies the same screen area at every rotation angle
+- [Camera] New ``camera.frame_turntable()`` function for consistent camera framing during turntable renders, using a bounding cylinder instead of a bounding box - the model occupies the same screen area at every rotation angle
 - [Variant] New ``utility.get_variant_data_specs()`` utility to inspect which prims and properties are affected by a variant, without activating it
 - [Material] New ``material.material_utilities.convert_vertex_colors_to_materials()`` function to convert vertex color attributes into materials
 - [Mesh Processing] New ``mesh_processing.QuadRecoverOp()`` operator to recover quad topology from triangle meshes
 - [Mesh Processing] Unwrap parameters are now exposed in ``mesh_processing.UnwrapOp()``
 - [Scene] New ``StageHandler.filename`` property as a convenient alias for ``StageHandler.path``
-- [Workflow Tools] New ``workflow_tools`` package shipped alongside SSCA, providing installable tools built on top of the API. 
+- [Workflow Tools] New ``workflow_tools`` package shipped alongside SSCA, providing installable tools built on top of the API.
 - [Workflow Tools] ``variant_compiler``, GUI and CLI apps to author and preview USD variants (see the Variant Compiler Guide in the documentation)
 - [Workflow Tools] ``batch_renderer``, GUI and CLI apps to render a batch of 3D files with template scenes and presets
 - [Workflow Tools] ``bom_cli``, a CLI app to assign materials to a batch of 3D files based on a bill of materials
-
 
 Improvements
 ------------
@@ -34,7 +59,6 @@ Fixed
 - [Export] Fixed exporting a ``PrimHandler`` via ``export.usdz()`` and ``export.scene_with_dependencies()``
 - [Transform] Fixed ``transform.move_to_ground()`` and ``transform.move_to_origin()`` for certain scene configurations
 - [Light] Fixed ``.sbar`` files not being correctly recognized as dome light texture files
-
 
 1.5.0 (2026/01/29)
 ++++++++++++++++++

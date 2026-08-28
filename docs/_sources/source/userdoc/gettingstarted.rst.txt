@@ -109,16 +109,16 @@ Currently supported tessellated file formats:
     .3dxml, .3mf, .dae, .pdf, .prc, .fbx, .glb, .gltf, .obj, .stl,
     .vrml, .wrl
 
-Other supported CAD formats :
+Other supported file formats :
 
 .. code-block::
 
-    .3dm, .3ds, . abc, .arc, .asm, .axf, .catdrawing, .catpart, 
+    .3dm, .3ds, .abc, .arc, .asm, .axf, .catdrawing, .catpart,
     .catproduct, .catshape, .cgr, .dlv, .dwf, .dwfx, .dxf, .exp,
-    .iam, .ifc, .ifczip, .iges, .igs, .ipt, .jt, .mf1, .model, .neu, 
-    .par, .pkg, .ply, .prt, .psm, .pwd, .rfa, .sab, .sat, .sbsar, 
-    .sdf, .session, .sldasm, .sldprt, .step, .stp, .stpx, .stpxz, 
-    .stpz, .u3d, .unv, .usd, .usda, .usdc, .usdz, .vda, .x_b, .x_t, 
+    .iam, .ifc, .ifczip, .iges, .igs, .ipt, .jt, .mf1, .model, .neu,
+    .par, .pkg, .ply, .prt, .psm, .pwd, .sab, .sat, .sbsar,
+    .sdf, .session, .sldasm, .sldprt, .step, .stp, .stpx, .stpxz,
+    .stpz, .u3d, .unv, .usd, .usda, .usdc, .usdz, .vda, .x_b, .x_t,
     .xas, .xmt, .xmt_txt, .xpr
 
 .. warning:: 
@@ -646,6 +646,24 @@ The code below shows how to transform a material in the UV space.
 
     # Rotate
     material.rotate(sbsar_material, 45.0)
+
+Apply a tri-planar projection to a material
+###########################################
+
+As in `Adobe Substance 3D Painter <https://experienceleague.adobe.com/en/docs/substance-3d-painter/using/painting/fill-projections/tri-planar-projection>`_,
+you can now choose between mapping projection types when applying your material.
+
+.. code-block:: python
+
+    # Set a mapping projection type to the material
+    material.set_mapping_type(sbsar_material, material.MappingType.TriplanarWorld)
+    
+    # Use the previously set projection type to apply transforms to the triplanar projection
+    material.set_triplanar_transform(sbsar_material,
+                                     scale=1.25,
+                                     offset=(0.0, 2.0, 0.0),
+                                     rotation=45.0)
+
 
 Lights
 ======
