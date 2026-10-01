@@ -1,7 +1,21 @@
 Substance3d Release Notes
 =========================
 
-1.7.0
+1.8.0 (2026/09/30)
++++++
+
+Added
+-----
+- [Material] SBSAR baking now supports per-preset variants
+
+Fixed
+-----
+- [Scene] Referencing a material from a scene with a different up axis no longer raises ``TypeError: 'NoneType' object is not iterable``
+- [Material] ``material.create_from_textures_dir()`` no longer skips inputs that are only matched by alias (e.g. ``displacement``, ``absorptionDistance``, ``scatteringRedShift``), and fixed an incorrect key mapping for ``transmissionDispersionScale``
+- [Packaging] Stable Windows releases now include the ``.dist`` folder required by the workflow tools installer
+- [Scene] ``scene.load()`` and ``scene.add_reference()`` no longer apply inconsistent scaling to CAD-ingested assets
+
+1.7.0 (2026/08/28)
 +++++
 
 Added
@@ -27,7 +41,7 @@ Fixed
 - [Packaging] Windows SSCA package now ships a complete, version-matched MSVC runtime, fixing ``usdview`` launch failures caused by a partial runtime install
 - [Packaging] macOS SSCA package now correctly bundles the Substance GPU SAL engine library, fixing app bundling failures
 
-1.6.0
+1.6.0 (2026/07/08)
 +++++
 
 Added

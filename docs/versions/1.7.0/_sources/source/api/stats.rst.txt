@@ -1,0 +1,6 @@
+substance3d.api.stats
+---------------------
+.. automodule:: substance3d.api.stats.stats
+    :members:
+    :show-inheritance:
+    :member-order: bysource

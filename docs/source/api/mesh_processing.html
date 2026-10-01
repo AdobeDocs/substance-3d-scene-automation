@@ -73,6 +73,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.OrientOutwardOp"><code class="docutils literal notranslate"><span class="pre">OrientOutwardOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.NormalizationOp"><code class="docutils literal notranslate"><span class="pre">NormalizationOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDegenerateFacesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDegenerateFacesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTJunctionsOp"><code class="docutils literal notranslate"><span class="pre">RemoveTJunctionsOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.WeldMeshesOp"><code class="docutils literal notranslate"><span class="pre">WeldMeshesOp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.CombineMeshesOp"><code class="docutils literal notranslate"><span class="pre">CombineMeshesOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDuplicateFacesOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateVerticesOp"><code class="docutils literal notranslate"><span class="pre">RemoveDuplicateVerticesOp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#substance3d.api.mesh_processing.mesh_processing.RemoveOccludedInstancesOp"><code class="docutils literal notranslate"><span class="pre">RemoveOccludedInstancesOp</span></code></a></li>
@@ -158,77 +161,77 @@
 <div><p class="rubric">Attributes</p>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td colspan="2"><p><strong>mode</strong></p></td>
+<tr class="row-odd"><td><p><strong>mode</strong></p></td>
 <td><p>enum</p></td>
 <td><p>UnwrapMode.Default</p></td>
 <td><p>Mode of the unwrap driver (see note below).</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>input_normal_attribute_name</strong></p></td>
+<tr class="row-even"><td><p><strong>input_normal_attribute_name</strong></p></td>
 <td><p>str</p></td>
 <td><p>“”</p></td>
 <td><p>Optional input normals attribute name to segment hard edges.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>enable_sharing_uvs_between_instances</strong></p></td>
+<tr class="row-odd"><td><p><strong>enable_sharing_uvs_between_instances</strong></p></td>
 <td><p>bool</p></td>
 <td><p>False</p></td>
 <td><p>Share generated UVs between instances of the scene?</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>output_attribute_name</strong></p></td>
+<tr class="row-even"><td><p><strong>output_attribute_name</strong></p></td>
 <td><p>str</p></td>
 <td><p>“primvars:st”</p></td>
 <td><p>Output UV attribute name.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>packing.padding_size</strong></p></td>
+<tr class="row-odd"><td><p><strong>packing.padding_size</strong></p></td>
 <td><p>float</p></td>
 <td><p>0.001</p></td>
 <td><p>Padding size around each island.</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>packing.max_num_uv_tiles</strong></p></td>
+<tr class="row-even"><td><p><strong>packing.max_num_uv_tiles</strong></p></td>
 <td><p>int</p></td>
 <td><p>1</p></td>
 <td><p>Maximum number of UV tiles to generate.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>packing.num_island_rotations</strong></p></td>
+<tr class="row-odd"><td><p><strong>packing.num_island_rotations</strong></p></td>
 <td><p>int</p></td>
 <td><p>4</p></td>
 <td><p>Number of possible rotation for every island.</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>segmentation.enable_partition_chart</strong></p></td>
+<tr class="row-even"><td><p><strong>segmentation.enable_partition_chart</strong></p></td>
 <td><p>bool</p></td>
 <td><p>True</p></td>
 <td><p>Enable chart splitting algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>segmentation.enable_elongated_islands</strong></p></td>
+<tr class="row-odd"><td><p><strong>segmentation.enable_elongated_islands</strong></p></td>
 <td><p>bool</p></td>
 <td><p>True</p></td>
 <td><p>Enable elongated island detection.</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>segmentation.elongation_threshold</strong></p></td>
+<tr class="row-even"><td><p><strong>segmentation.elongation_threshold</strong></p></td>
 <td><p>float</p></td>
 <td><p>20.0</p></td>
 <td><p>Threshold to consider a chart elongated.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>segmentation.chunks_elongation</strong></p></td>
+<tr class="row-odd"><td><p><strong>segmentation.chunks_elongation</strong></p></td>
 <td><p>float</p></td>
 <td><p>10.0</p></td>
 <td><p>Max elongation for segmented chunks of elongated islands.</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>segmentation.max_cluster_confidence</strong></p></td>
+<tr class="row-even"><td><p><strong>segmentation.max_cluster_confidence</strong></p></td>
 <td><p>float</p></td>
 <td><p>0.97</p></td>
 <td><p>Threshold for the dot product between face and plane normals.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>segmentation.max_num_iterations</strong></p></td>
+<tr class="row-odd"><td><p><strong>segmentation.max_num_iterations</strong></p></td>
 <td><p>int</p></td>
 <td><p>7</p></td>
 <td><p>Maximum number of iterations for the post process.</p></td>
 </tr>
-<tr class="row-even"><td colspan="2"><p><strong>segmentation.max_num_outliers</strong></p></td>
+<tr class="row-even"><td><p><strong>segmentation.max_num_outliers</strong></p></td>
 <td><p>int</p></td>
 <td><p>1</p></td>
 <td><p>Maximum number of clustering outliers in the face one ring .</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2"><p><strong>segmentation.input_uv_attribute_name</strong></p></td>
+<tr class="row-odd"><td><p><strong>segmentation.input_uv_attribute_name</strong></p></td>
 <td><p>str</p></td>
 <td><p>“”</p></td>
 <td><p>Use input UVs for seams instead of computing them.</p></td>
@@ -238,11 +241,14 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Possible values for the <code class="docutils literal notranslate"><span class="pre">mode</span></code> attribute:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">UnwrapMode.Default</span></code>: The default workflow. Offers overlap-free UV layouts of high quality, especially suited for organic meshes.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UnwrapMode.Fast</span></code>: Fast organic workflow. Allows to get the UV layout of desired distortion quality relatively fast, at expense of more cuts and possible self-overlaps.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UnwrapMode.HardEdge</span></code>: Fast workflow for non-organic meshes. The workflow is based on improved triplanar algorithm that yields good results for axis-aligned models.</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_processing.UnwrapMode.Default</span></code>: Triplanar-style hard-edge seaming when no input UV attribute is specified. This has the same underlying behavior as <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_processing.UnwrapMode.Organic</span></code>: The legacy organic-oriented workflow, with segmentation and parameterization intended for varied assets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_processing.UnwrapMode.Fast</span></code>: Favors performance over segmentation and parameterization quality.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_processing.UnwrapMode.HardEdge</span></code>: Explicit triplanar-style hard-edge seaming, equivalent to <code class="docutils literal notranslate"><span class="pre">Default</span></code>.</p></li>
 </ul>
+</div></blockquote>
 </div>
 </div></blockquote>
 </dd></dl>
@@ -482,6 +488,63 @@ re-triangulated as a result of the removal.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveTJunctionsOp">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveTJunctionsOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveTJunctionsOp" title="Link to this definition"></a></dt>
+<dd><p>Remove T-junctions from each mesh in the given subtree by splitting edges at vertices that lie on them without being connected to them.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+</div></blockquote>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>tolerance_relative_to_bounding_box</strong></p></td>
+<td><p>float</p></td>
+<td><p>1e-6</p></td>
+<td><p>Default detection tolerance, expressed as a fraction of the stage bounding-box
+diagonal. Values are clamped to [0, 1]. Ignored when
+<code class="docutils literal notranslate"><span class="pre">tolerance_in_stage_units</span></code> is set.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>tolerance_in_stage_units</strong></p></td>
+<td><p>float</p></td>
+<td><p>None</p></td>
+<td><p>Detection tolerance in stage units. Takes precedence over the relative tolerance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>boundary_only</strong></p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>If true, check only edges incident to a single facet. If false, check all edges.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>triangulate_affected</strong></p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>If true, triangulate facets modified by edge splitting. Otherwise preserve them.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.WeldMeshesOp">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">WeldMeshesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.WeldMeshesOp" title="Link to this definition"></a></dt>
+<dd><p>Combine the selected meshes, weld nearby vertices, and separate the result into connected components. The first component is written to <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, or to the first selected source mesh path when <code class="docutils literal notranslate"><span class="pre">output_path</span></code> is unset. Additional components use available suffixed names next to that path.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<blockquote>
+<div><p>Welding may create non-manifold or degenerate geometry.</p>
+</div></blockquote>
+<p class="rubric">Attributes</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.CombineMeshesOp">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CombineMeshesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.CombineMeshesOp" title="Link to this definition"></a></dt>
+<dd><p>Combine the selected meshes into one mesh. The result is written to <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, or to the first selected source mesh path when <code class="docutils literal notranslate"><span class="pre">output_path</span></code> is unset.</p>
+<blockquote>
+<div><p class="rubric">Attributes</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RemoveDuplicateFacesOp</span></span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.RemoveDuplicateFacesOp" title="Link to this definition"></a></dt>
 <dd><p>Remove duplicate faces from each mesh in the given subtree.</p>
@@ -527,7 +590,7 @@ and (2,1,0)) are considered non-duplicates.</p></td>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>precision</strong></p></td>
-<td><p>presets.RemoveOccludedInstancesPrecision</p></td>
+<td><p>RemoveOccludedInstancesPrecision</p></td>
 <td><p>Medium</p></td>
 <td><p>Detection precision controlling ray budget and batch size.</p></td>
 </tr>
@@ -536,11 +599,13 @@ and (2,1,0)) are considered non-duplicates.</p></td>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Possible values for the <code class="docutils literal notranslate"><span class="pre">precision</span></code> attribute:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">presets.RemoveOccludedInstancesPrecision.Low</span></code>: Favor processing speed over detection precision.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">presets.RemoveOccludedInstancesPrecision.Medium</span></code>: Balance processing speed and detection precision.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">presets.RemoveOccludedInstancesPrecision.High</span></code>: Favor detection precision over processing speed.</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveOccludedInstancesPrecision.Low</span></code>: Favor processing speed over detection precision.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveOccludedInstancesPrecision.Medium</span></code>: Balance processing speed and detection precision.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoveOccludedInstancesPrecision.High</span></code>: Favor detection precision over processing speed.</p></li>
 </ul>
+</div></blockquote>
 </div>
 </div></blockquote>
 </dd></dl>

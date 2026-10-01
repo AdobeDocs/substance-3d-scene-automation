@@ -482,6 +482,32 @@ Returns: A tuple of the translation, rotation and scale</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.move_pivot_to_ground">
+<span class="sig-name descname"><span class="pre">move_pivot_to_ground</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.move_pivot_to_ground" title="Link to this definition"></a></dt>
+<dd><p>Move the given object(s) so the manipulation pivot lands on the ground. A single object
+is anchored on its own pivot; a list is moved as a group anchored on the centroid of the
+objects’ origins (matching the on-screen manipulator), retaining their relative positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>objects</strong> (<em>PrimHandler</em><em> | </em><em>list</em><em>[</em><em>PrimHandler</em><em>]</em>) – A list or a single xformable PrimHandler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.transform.transform.move_pivot_to_origin">
+<span class="sig-name descname"><span class="pre">move_pivot_to_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.move_pivot_to_origin" title="Link to this definition"></a></dt>
+<dd><p>Move the given object(s) so the manipulation pivot lands at the origin. A single object is
+anchored on its own pivot; a list is moved as a group anchored on the centroid of the
+objects’ origins (matching the on-screen manipulator), retaining their relative positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>objects</strong> (<em>PrimHandler</em><em> | </em><em>list</em><em>[</em><em>PrimHandler</em><em>]</em>) – A list or a single xformable PrimHandler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.transform.transform.move_to_ground">
 <span class="sig-name descname"><span class="pre">move_to_ground</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.transform.transform.move_to_ground" title="Link to this definition"></a></dt>
 <dd><p>Move the given object(s) to the ground. If a list of objects is provided

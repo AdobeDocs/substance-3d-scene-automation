@@ -110,6 +110,16 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 
     .. image:: /source/static/introduction_ide_setup/vscode_05_start_coding.png
 
+Set up the license file
+"""""""""""""""""""""""
+
+#. In order to use SSCA, you need to have a valid license file.
+#. Once you have your license.key file, place it in the current working directory of your script.
+#. Or use the environment variable ``SBS3D_LICENSE_FILEPATH`` to point to your license file.
+        * windows cmd: ``set SBS3D_LICENSE_FILEPATH=<SSCA_license_folder>/license.key``
+        * windows powershell: ``$env:SBS3D_LICENSE_FILEPATH="<SSCA_license_folder>/license.key"``
+        * linux/mac ``export SBS3D_LICENSE_FILEPATH=<SSCA_license_folder>/license.key``
+
 Run your first script
 """""""""""""""""""""
 #. With the file we created in the previous chapter "Set up new project" opened.

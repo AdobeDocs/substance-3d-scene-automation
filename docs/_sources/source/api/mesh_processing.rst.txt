@@ -26,7 +26,7 @@ substance3d.api.mesh_processing
     | **packing.max_num_uv_tiles**                     | int      | 1                  | Maximum number of UV tiles to generate.                       |
     +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
     | **packing.num_island_rotations**                 | int      | 4                  | Number of possible rotation for every island.                 |
-    +----------------------------------------+---------+----------+--------------------+---------------------------------------------------------------+
+    +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
     | **segmentation.enable_partition_chart**          | bool     | True               | Enable chart splitting algorithm.                             |
     +--------------------------------------------------+----------+--------------------+---------------------------------------------------------------+
     | **segmentation.enable_elongated_islands**        | bool     | True               | Enable elongated island detection.                            |
@@ -48,9 +48,10 @@ substance3d.api.mesh_processing
 
        Possible values for the ``mode`` attribute:
 
-       - ``UnwrapMode.Default``: The default workflow. Offers overlap-free UV layouts of high quality, especially suited for organic meshes.
-       - ``UnwrapMode.Fast``: Fast organic workflow. Allows to get the UV layout of desired distortion quality relatively fast, at expense of more cuts and possible self-overlaps.
-       - ``UnwrapMode.HardEdge``: Fast workflow for non-organic meshes. The workflow is based on improved triplanar algorithm that yields good results for axis-aligned models.
+          - ``mesh_processing.UnwrapMode.Default``: Triplanar-style hard-edge seaming when no input UV attribute is specified. This has the same underlying behavior as ``HardEdge``.
+          - ``mesh_processing.UnwrapMode.Organic``: The legacy organic-oriented workflow, with segmentation and parameterization intended for varied assets.
+          - ``mesh_processing.UnwrapMode.Fast``: Favors performance over segmentation and parameterization quality.
+          - ``mesh_processing.UnwrapMode.HardEdge``: Explicit triplanar-style hard-edge seaming, equivalent to ``Default``.
 
 
 .. class:: RepackOp
@@ -191,6 +192,63 @@ substance3d.api.mesh_processing
    re-triangulated as a result of the removal.
 
 
+.. class:: RemoveTJunctionsOp
+
+   Remove T-junctions from each mesh in the given subtree by splitting edges at vertices that lie on them without being connected to them.
+
+    .. rubric:: Attributes
+
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **tolerance_relative_to_bounding_box**     | float   | 1e-6    | Default detection tolerance, expressed as a fraction of the stage bounding-box    |
+   |                                            |         |         | diagonal. Values are clamped to [0, 1]. Ignored when                              |
+   |                                            |         |         | ``tolerance_in_stage_units`` is set.                                              |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **tolerance_in_stage_units**               | float   | None    | Detection tolerance in stage units. Takes precedence over the relative tolerance. |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **boundary_only**                          | bool    | False   | If true, check only edges incident to a single facet. If false, check all edges.  |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **triangulate_affected**                   | bool    | True    | If true, triangulate facets modified by edge splitting. Otherwise preserve them.  |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+
+
+.. class:: WeldMeshesOp
+
+   Combine the selected meshes, weld nearby vertices, and separate the result into connected components. The first component is written to ``output_path``, or to the first selected source mesh path when ``output_path`` is unset. Additional components use available suffixed names next to that path.
+
+   .. warning::
+
+      Welding may create non-manifold or degenerate geometry.
+
+    .. rubric:: Attributes
+
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **tolerance_relative_to_bounding_box**     | float   | 1e-6    | Default welding tolerance, expressed as a fraction of the stage bounding-box      |
+   |                                            |         |         | diagonal. Values are clamped to [0, 1]. Ignored when                              |
+   |                                            |         |         | ``tolerance_in_stage_units`` is set.                                              |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **tolerance_in_stage_units**               | float   | None    | Welding tolerance in stage units. Takes precedence over the relative tolerance.   |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **boundary_only**                          | bool    | False   | If true, weld only vertices on an open mesh boundary, meaning they are along      |
+   |                                            |         |         | an edge that is only included in one face.                                        |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **output_path**                            | str     | None    | Base output mesh prim path. Defaults to the first selected source mesh path.       |
+   |                                            |         |         | Additional components use available suffixed names next to this path.             |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+
+
+.. class:: CombineMeshesOp
+
+   Combine the selected meshes into one mesh. The result is written to ``output_path``, or to the first selected source mesh path when ``output_path`` is unset.
+
+    .. rubric:: Attributes
+
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **preserve_attributes**                    | bool    | True    | Preserve shared attributes and map them to the output mesh.                       |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+   | **output_path**                            | str     | None    | Output mesh prim path. Defaults to the first selected source mesh path.            |
+   +--------------------------------------------+---------+---------+-----------------------------------------------------------------------------------+
+
+
 .. class:: RemoveDuplicateFacesOp
 
    Remove duplicate faces from each mesh in the given subtree.
@@ -221,16 +279,16 @@ substance3d.api.mesh_processing
     .. rubric:: Attributes
 
     +---------------+------------------------------------------+---------+------------------------------------------------------------+
-    | **precision** | presets.RemoveOccludedInstancesPrecision | Medium  | Detection precision controlling ray budget and batch size. |
+    | **precision** | RemoveOccludedInstancesPrecision         | Medium  | Detection precision controlling ray budget and batch size. |
     +---------------+------------------------------------------+---------+------------------------------------------------------------+
 
     .. note::
 
        Possible values for the ``precision`` attribute:
 
-       - ``presets.RemoveOccludedInstancesPrecision.Low``: Favor processing speed over detection precision.
-       - ``presets.RemoveOccludedInstancesPrecision.Medium``: Balance processing speed and detection precision.
-       - ``presets.RemoveOccludedInstancesPrecision.High``: Favor detection precision over processing speed.
+         - ``RemoveOccludedInstancesPrecision.Low``: Favor processing speed over detection precision.
+         - ``RemoveOccludedInstancesPrecision.Medium``: Balance processing speed and detection precision.
+         - ``RemoveOccludedInstancesPrecision.High``: Favor detection precision over processing speed.
 
 
 .. class:: RemoveTinyFacesOp

@@ -147,24 +147,23 @@ Recover Quads from triangulated meshes
 Unwrap mesh UVs
 ***************
 
-The Unwrap operator works with three :ref:`Modes<substance3d.api.mesh_processing>`: ``Default``, ``Fast`` and ``HardEdge``.
+The Unwrap operator works with four :ref:`modes<substance3d.api.mesh_processing>`: ``Default``, ``Organic``, ``Fast`` and ``HardEdge``.
 
-All three modes perform well in most scenarios. The ``Default`` mode is generally better suited for organic meshes, the ``Fast`` mode prioritizes speed, and the ``HardEdge`` mode is optimized for hard-surface geometry.
+The ``Default`` and ``HardEdge`` modes use the same triplanar-style hard-edge seaming behavior. Use ``Organic`` for the legacy organic-oriented workflow on varied assets. ``Fast`` prioritizes speed over segmentation and parameterization quality.
 
 .. code-block:: python
 
-    # Set up Unwrap operator for HardEdge mode
+    # Set up Unwrap operator for explicit triplanar-style hard-edge seaming.
     unwrap_op = mesh_processing.UnwrapOp()
 
-    # Set Unwrap mode to HardEdge
-    unwrap_op.mode = mesh_processing.UnwrapOp.Mode.HardEdge
+    unwrap_op.mode = mesh_processing.UnwrapMode.HardEdge
 
-    # Refine Packing attributes
-    unwrap_op.packing.padding_size = 0.002  # padding between islands in UV space
-    unwrap_op.packing.max_num_uv_tiles = 4  # maximum number of UV tiles to use when packing islands.
-    unwrap_op.packing.num_island_rotations = 1  # number of rotations to try when packing islands.
+    # Configure packing options.
+    unwrap_op.packing.padding_size = 0.002  # Padding between islands in UV space.
+    unwrap_op.packing.max_num_uv_tiles = 4  # Maximum number of UV tiles to use when packing islands.
+    unwrap_op.packing.num_island_rotations = 1  # Number of rotations to try when packing islands.
 
-    # Setting segmentation options: 
+    # Configure segmentation options.
     unwrap_op.segmentation.max_cluster_confidence = 0.97
     unwrap_op.segmentation.max_num_iterations = 7
     unwrap_op.segmentation.max_num_outliers = 1

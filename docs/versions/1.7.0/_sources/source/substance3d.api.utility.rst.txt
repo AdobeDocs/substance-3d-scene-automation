@@ -1,0 +1,22 @@
+substance3d.api.utility package
+===============================
+
+Submodules
+----------
+
+substance3d.api.utility.utility module
+--------------------------------------
+
+.. automodule:: substance3d.api.utility.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.utility
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

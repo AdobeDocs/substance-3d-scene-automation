@@ -1,0 +1,508 @@
+BOM Material Assignment Guide
+-------------------------------
+
+The BOM Material Assignment tool turns a Bill of Materials spreadsheet into a
+fully-variant USD asset. It loads a 3D mesh, reads a BOM file (CSV or XLSX)
+whose rows describe which materials go on which geometry, assigns those
+materials (globally and/or per variant) and exports the result as USD, USDA,
+or USDZ. It is a command-line tool only, there is no graphical interface.
+
+Installation
+============
+
+#. Navigate to the ``workflow_tools`` folder.
+#. Run ``install.bat`` on Windows or ``install`` on macOS.
+#. Wait for the installation to complete. This may take a few minutes while a Python virtual environment is created and dependencies are installed.
+#. Once the installation is complete, the CLI ``.bat`` files are available in the ``workflow_tools`` folder.
+
+
+Running the Tool
+================
+
+After installation, the CLI entrypoint is available in the workflow_tools
+folder as ``Substance3DBomMaterialAssignement.bat`` on Windows or
+``Substance3DBomMaterialAssignmentCLI`` on macOS/Linux. You can also run
+``assign-material`` (or its alias ``bom``) from the command line after
+activating the Python environment, or run ``bom_material_assignment/cli/main.py``
+with Python directly (SSCA required).
+
+Logging
+#######
+
+The CLI has no file-logging option;
+it always logs to the console (warnings and errors only by default, info
+messages with ``-v``, debug messages with ``-vv`` (see `Verbosity Levels`_)).
+
+
+Command Syntax
+==============
+
+.. code-block:: bash
+
+   assign-material --mesh <mesh_file> --bom <bom_file> [OPTIONS]
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 10 12 50
+
+   * - Option
+     - Short
+     - Required
+     - Description
+   * - ``--mesh``
+     - ``-m``
+     - Yes
+     - Path to the 3D mesh file (USD and other formats supported by the Substance 3D scene-referencing API).
+   * - ``--bom``
+     - ``-b``
+     - Yes
+     - Path to the BOM file (``.csv`` or ``.xlsx``).
+   * - ``--export``
+     - ``-e``
+     - No
+     - Output directory for the processed asset (default: ``./output``). Created if it does not exist.
+   * - ``--format``
+     - ``-f``
+     - No
+     - Export format: ``usd``, ``usda``, or ``usdz`` (default: ``usdz``).
+   * - ``--materials-root-path``
+     - ``-r``
+     - No
+     - Prim path where materials are placed in the USD scene. When omitted, the tool manages the materials root prim (``Materials``) automatically.
+   * - ``--working-directory``
+     - ``-w``
+     - No
+     - Working directory for resolving relative material paths (default: current directory).
+   * - ``--verbose``
+     - ``-v``
+     - No
+     - Increase log verbosity; use ``-v`` for info, ``-vv`` for debug.
+
+Verbosity Levels
+################
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Flag
+     - Output
+   * - *(none)*
+     - Warnings and errors only
+   * - ``-v``
+     - Info messages + warnings + errors (includes a summary of parsed variant sets)
+   * - ``-vv``
+     - Debug messages + info + warnings + errors (includes per-prim material assignments)
+
+Exit Codes
+##########
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 90
+
+   * - Code
+     - Meaning
+   * - ``0``
+     - Success
+   * - ``1``
+     - Missing required arguments or CLI parse error
+   * - ``2``
+     - File not found or invalid configuration (bad BOM format, validation errors)
+   * - ``3``
+     - Processing failure (reference load, variant creation, export, or file-system error)
+   * - ``130``
+     - Cancelled by user (``Ctrl+C``)
+
+
+Quick Examples
+==============
+
+Assign materials from a CSV BOM and export the default USDZ:
+
+.. code-block:: bash
+
+   assign-material -m model.usd -b materials.csv
+
+Use an Excel BOM instead:
+
+.. code-block:: bash
+
+   assign-material -m model.usd -b materials.xlsx
+
+Export as USDA to a custom directory with verbose logging:
+
+.. code-block:: bash
+
+   assign-material -m model.usd -b materials.csv -f usda -e ./out -v
+
+Resolve relative material paths against a project directory:
+
+.. code-block:: bash
+
+   assign-material -m model.usd -b materials.csv -w ./project
+
+Place materials under a custom scene prim and show maximum detail:
+
+.. code-block:: bash
+
+   assign-material -m model.usd -b materials.csv -r /root/materials -vv
+
+Complete example with every option:
+
+.. code-block:: bash
+
+   assign-material \
+       --mesh ./assets/car.usd \
+       --bom ./assets/car_bom.csv \
+       --working-directory ./assets \
+       --materials-root-path /root/materials \
+       --export ./output \
+       --format usdz \
+       --verbose
+
+
+BOM File
+========
+
+The BOM is a spreadsheet where each **row** is a single material assignment:
+one material, matched to some geometry, optionally scoped to a variant. Rows
+that share the same ``variant_set`` and ``variant_name`` accumulate into the
+same variant, so a variant with several materials is expressed as several
+rows.
+
+Columns
+#######
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 12 60
+
+   * - Column
+     - Required
+     - Description
+   * - ``variant_set``
+     - No
+     - Name of the variant set. Leave blank or set to ``ALL`` to assign the material globally (outside any variant).
+   * - ``variant_name``
+     - No
+     - Name of the variant within the set. Leave blank or set to ``ALL`` to assign the material globally.
+   * - ``material_name``
+     - Yes
+     - Identifier for the material.
+   * - ``material_path``
+     - Yes
+     - Path to the material resource (``.sbsar`` file, USD material file, or texture directory).
+   * - ``assign_by_geo_name``
+     - One of the two
+     - Wildcard pattern matched against **geometry (prim) names** (see `Match Strategies`_).
+   * - ``assign_by_material_assignment``
+     - One of the two
+     - Wildcard pattern matched against the **materials already assigned** in the scene (see `Match Strategies`_).
+   * - ``is_default``
+     - No
+     - ``True``, ``true``, or ``1`` marks the variant as the default (active) selection. Defaults to ``False``.
+   * - ``sbsar_preset``
+     - No
+     - Name of an SBSAR preset to apply. The preset must exist inside the referenced ``.sbsar`` file. Only valid for SBSAR materials.
+   * - ``material_params``
+     - No
+     - Material parameters to set, as ``name:value`` pairs separated by ``;`` (see `Material Parameters`_).
+
+Each row must supply **exactly one** of ``assign_by_geo_name`` or
+``assign_by_material_assignment``. A row with neither is an error and aborts
+the import. ``material_name`` and ``material_path`` are always required.
+
+Global (Non-variant) Materials
+###############################
+
+To assign a material to the whole asset (outside of any variant) leave
+``variant_set`` and/or ``variant_name`` blank, or set either to ``ALL``
+(case-insensitive). Global materials are applied first and are added to every
+variant, so a base material can be laid down before per-variant overrides
+refine it.
+
+Match Strategies
+################
+
+Each row picks the geometry its material lands on with one of two strategies,
+selected by which column is filled in:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Column
+     - Strategy
+   * - ``assign_by_geo_name``
+     - **Geometry name matching.** The pattern is matched against prim names in the scene. Use this to target geometry directly (e.g. ``*rim*`` to hit every wheel rim).
+   * - ``assign_by_material_assignment``
+     - **Material assignment matching.** The pattern is matched against the materials already bound in the scene. Use this to replace or override existing material assignments (e.g. ``*paint*`` to re-skin whatever currently uses a paint material).
+
+Both strategies use ``*`` wildcards that can span multiple path segments:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Pattern
+     - Matches
+   * - ``*rim*``
+     - Any prim whose name contains ``rim`` (e.g. ``/root/geo/wheels/rim``)
+   * - ``*paint*``
+     - Any target containing ``paint``
+   * - ``/root/*/Mesh``
+     - ``Mesh`` under any child of ``/root``, at any depth
+   * - ``bod*``
+     - ``body``, ``bodyA``, ``body/part``, etc.
+
+Default Variant
+###############
+
+Set ``is_default`` to ``True``/``true``/``1`` on any row of a variant to mark
+that variant as the default (active) selection in the exported USD. Only the
+truthy value matters and the column can be left blank (or ``0``) on every other
+row of the variant. If no variant in a set is flagged, the set is exported
+with no default selection.
+
+SBSAR Presets
+#############
+
+For SBSAR (``.sbsar``) materials, ``sbsar_preset`` applies a named preset baked
+into the ``.sbsar`` file. If the named preset is not found inside the file, a
+warning is logged and the material is imported without it. The column is
+ignored for non-SBSAR materials.
+
+Material Parameters
+###################
+
+``material_params`` sets one or more parameters on the imported material,
+written as ``name:value`` pairs separated by semicolons:
+
+.. code-block:: text
+
+   procedural_sbsar.metal_type:2;inputs.roughness:0.3
+
+- Values are preserved as strings, so vector/color values such as ``[0.0, 0.0, 1.0]`` survive intact.
+- Entries without a colon (for example a trailing ``;``) are skipped.
+- Parameter names use the same prefixes as the Variant Compiler's ``ATTRIBUTE`` opinions:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Prefix
+     - Use
+   * - ``inputs.``
+     - Standard USD shader inputs (e.g. ``inputs.baseColor``, ``inputs.roughness``)
+   * - ``procedural_sbsar.``
+     - SBSAR procedural parameters (e.g. ``procedural_sbsar.metal_type``)
+
+Parameters are authored onto the imported material prim itself, so SBSAR
+parameters affect the material rather than the geometry it is bound to.
+
+BOM CSV Example
+###############
+
+.. code-block:: text
+
+   variant_set,variant_name,material_name,material_path,assign_by_geo_name,assign_by_material_assignment,is_default,sbsar_preset,material_params
+   paint_wheels,blue_paint_black_wheels,blue_car_paint,materials/blue_car_paint.sbsar,,*paint*,,Blue_Metallic,
+   paint_wheels,blue_paint_black_wheels,black_gloss_metal,materials/black_gloss_metal,*rim*,,,,
+   paint_wheels,red_paint_black_wheels,red_car_paint,materials/red_car_paint.sbsar,,*paint*,1,Red_Metallic,
+   paint_wheels,red_paint_black_wheels,black_gloss_metal,materials/black_gloss_metal,*rim*,,,,
+   paint_wheels,red_paint_brushed_chrome_wheels,red_car_paint,materials/red_car_paint.sbsar,,*paint*,,,
+   paint_wheels,red_paint_brushed_chrome_wheels,brushed_metal,materials/brushed_metal,*rim*,,,,procedural_sbsar.metal_type:2
+   all,all,black_gloss_metal_global,materials/black_gloss_metal,*rim*,,,,
+
+This BOM builds one variant set (``paint_wheels``) with three variants. Each
+variant assigns a paint material by material assignment (``*paint*``) and a
+wheel material by geometry name (``*rim*``); ``red_paint_black_wheels`` is the
+default. The final ``all,all`` row assigns a global rim material to every
+variant.
+
+Excel (XLSX) Files
+##################
+
+Excel BOMs use the same columns and semantics as CSV. The first row is the
+header; only the first (active) sheet is read. Cell values are read as-is and
+trimmed of surrounding whitespace.
+
+
+Material Path Resolution
+========================
+
+``material_path`` values may be absolute or relative. Relative paths are
+resolved in this order, with the BOM file's own directory used as a fallback:
+
+1. **Absolute path** : used as-is when it exists on disk.
+2. **Relative to** ``--working-directory`` : the primary base for relative paths.
+3. **Project-relative** : a path starting with ``/`` that is not a valid absolute path is treated as project-relative and retried against the working directory.
+4. **Relative to the BOM file** : when the path is not found under the working directory, it is retried relative to the directory containing the BOM file.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 45 55
+
+   * - Path example
+     - Resolved as
+   * - ``"materials/paint.sbsar"``
+     - Relative to the working directory (BOM directory as fallback)
+   * - ``"/materials/paint.sbsar"``
+     - Project-relative, resolved against the working directory
+   * - ``"C:/Projects/assets/paint.sbsar"``
+     - Absolute (Windows)
+   * - ``"/home/user/assets/paint.sbsar"``
+     - Absolute (Linux / macOS)
+
+All material paths are validated for existence before loading; a missing
+material aborts the process with a clear error.
+
+
+Supported Material Types
+========================
+
+The tool loads three kinds of material resource from ``material_path``:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Type
+     - Description
+   * - **SBSAR file** (``.sbsar``)
+     - Substance procedural material, with full support for presets (``sbsar_preset``) and parameters (``material_params``).
+   * - **USD material file**
+     - A USD file containing material definitions, referenced via the Substance 3D API.
+   * - **Texture directory**
+     - A folder of texture maps, automatically assembled into a material.
+
+
+Processing Workflow
+===================
+
+Running the tool performs these steps in order:
+
+#. **Validate files** : confirm the mesh and BOM exist, the BOM extension is supported (``.csv``/``.xlsx``), and the export format is valid.
+#. **Set up the output directory** : create ``--export`` if it does not exist.
+#. **Load the mesh** : reference the mesh file into a USD stage via the Substance 3D scene API. Variant sets are authored on the stage's default prim.
+#. **Parse the BOM** : read the spreadsheet and convert its rows into variant sets, variants, and material opinions (plus global materials applied to every variant).
+#. **Validate the configuration** : run the variant validator. Warnings are logged; any error aborts with exit code ``2``.
+#. **Compile variants** : load each material, assign it to matching prims within its variant context, apply SBSAR presets and material parameters, and mark the default variant.
+#. **Export** : write the final USD scene in the requested format.
+
+During compilation the tool logs its work (material loads, per-prim
+assignments, preset/parameter application) at info and debug verbosity;
+unresolved presets or empty matches surface as warnings or errors.
+
+
+Output Files
+============
+
+- The exported file is named after the mesh: ``{mesh_name}.{format}`` (e.g. ``car.usdz``), written into the ``--export`` directory.
+- All variants are embedded in the single exported file and can be switched in any compatible USD viewer (usdview, Apple Preview for USDZ, etc.).
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Format
+     - Notes
+   * - ``usdz``
+     - Compressed archive, ideal for distribution and viewing (default).
+   * - ``usd``
+     - Binary format, efficient for large scenes.
+   * - ``usda``
+     - ASCII format, human-readable and debuggable.
+
+
+Full BOM Examples
+=================
+
+Single Variant Set (car paint + wheels)
+""""""""""""""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: text
+
+   variant_set,variant_name,material_name,material_path,assign_by_geo_name,assign_by_material_assignment,is_default
+   paint_wheels,blue,blue_car_paint,materials/blue_car_paint.sbsar,,*paint*,
+   paint_wheels,blue,black_wheels,materials/black_gloss_metal,*rim*,,
+   paint_wheels,red,red_car_paint,materials/red_car_paint.sbsar,,*paint*,1
+   paint_wheels,red,chrome_wheels,materials/brushed_metal,*rim*,,
+
+.. code-block:: bash
+
+   assign-material -m car.usd -b car_bom.csv -w ./assets -f usda -v
+
+.. raw:: html
+
+   </details>
+   <br>
+
+Global Material Applied to Every Variant
+""""""""""""""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: text
+
+   variant_set,variant_name,material_name,material_path,assign_by_geo_name,assign_by_material_assignment,is_default
+   ALL,ALL,base_trim,materials/black_gloss_metal,*trim*,,
+   color,red,red_paint,materials/red_car_paint.sbsar,,*paint*,1
+   color,blue,blue_paint,materials/blue_car_paint.sbsar,,*paint*,
+
+The ``ALL,ALL`` row assigns ``base_trim`` to every variant before each
+variant applies its own paint.
+
+.. code-block:: bash
+
+   assign-material -m car.usd -b car_bom.csv
+
+.. raw:: html
+
+   </details>
+   <br>
+
+SBSAR Presets and Parameters
+""""""""""""""""""""""""""""
+
+.. raw:: html
+
+   <details>
+   <summary>Show / Hide</summary>
+
+.. code-block:: text
+
+   variant_set,variant_name,material_name,material_path,assign_by_geo_name,assign_by_material_assignment,is_default,sbsar_preset,material_params
+   finish,metallic,car_paint,materials/car_paint.sbsar,,*paint*,1,Metallic,procedural_sbsar.metal_type:2;inputs.roughness:0.2
+   finish,matte,car_paint,materials/car_paint.sbsar,,*paint*,,Matte,inputs.roughness:0.8
+
+Each variant loads the same ``car_paint.sbsar`` but applies a different baked
+preset and overrides parameters on top of it.
+
+.. code-block:: bash
+
+   assign-material -m car.usd -b finishes.csv -w ./assets -vv
+
+.. raw:: html
+
+   </details>
+   <br>
+
+
+Relationship to the Variant Compiler
+====================================
+
+The BOM tool and the **Variant Compiler** share the same underlying
+material/opinion model. A BOM authored for this CLI can
+also be brought into the Variant Compiler UI via **Import → Import BOM…**, where
+its variant sets appear as editable variants you can inspect, tweak, and export
+as a variant config or ``.vws`` workspace. 

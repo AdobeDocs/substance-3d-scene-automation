@@ -1,0 +1,6 @@
+substance3d.api.transform.transform_utilities
+---------------------------------------------
+.. automodule:: substance3d.api.transform.transform_utilities
+    :members:
+    :show-inheritance:
+    :member-order: bysource

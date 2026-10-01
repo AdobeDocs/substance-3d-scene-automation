@@ -228,6 +228,22 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 </li>
 </ol>
 </section>
+<section id="set-up-the-license-file">
+<h5>Set up the license file<a class="headerlink" href="#set-up-the-license-file" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>In order to use SSCA, you need to have a valid license file.</p></li>
+<li><p>Once you have your license.key file, place it in the current working directory of your script.</p></li>
+<li><dl class="simple">
+<dt>Or use the environment variable <code class="docutils literal notranslate"><span class="pre">SBS3D_LICENSE_FILEPATH</span></code> to point to your license file.</dt><dd><ul class="simple">
+<li><p>windows cmd: <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">SBS3D_LICENSE_FILEPATH=&lt;SSCA_license_folder&gt;/license.key</span></code></p></li>
+<li><p>windows powershell: <code class="docutils literal notranslate"><span class="pre">$env:SBS3D_LICENSE_FILEPATH=&quot;&lt;SSCA_license_folder&gt;/license.key&quot;</span></code></p></li>
+<li><p>linux/mac <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SBS3D_LICENSE_FILEPATH=&lt;SSCA_license_folder&gt;/license.key</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
 <section id="run-your-first-script">
 <h5>Run your first script<a class="headerlink" href="#run-your-first-script" title="Link to this heading"></a></h5>
 <ol class="arabic">

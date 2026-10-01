@@ -1,0 +1,21 @@
+substance3d.api.mesh_processing package
+=======================================
+
+Submodules
+----------
+
+substance3d.api.mesh_processing.mesh_processing module
+------------------------------------------------------
+
+.. automodule:: substance3d.api.mesh_processing.mesh_processing
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.mesh_processing
+   :members:
+   :undoc-members:
+   :show-inheritance:

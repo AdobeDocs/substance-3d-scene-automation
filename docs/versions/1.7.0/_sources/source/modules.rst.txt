@@ -1,0 +1,7 @@
+substance3d
+===========
+
+.. toctree::
+   :maxdepth: 4
+
+   substance3d

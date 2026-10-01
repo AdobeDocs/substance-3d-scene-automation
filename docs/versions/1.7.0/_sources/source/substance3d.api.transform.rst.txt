@@ -1,0 +1,29 @@
+substance3d.api.transform package
+=================================
+
+Submodules
+----------
+
+substance3d.api.transform.transform module
+------------------------------------------
+
+.. automodule:: substance3d.api.transform.transform
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.transform
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+substance3d.api.transform.transform_utilities module
+----------------------------------------------------
+
+.. automodule:: substance3d.api.transform.transform_utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -245,20 +245,19 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 </section>
 <section id="unwrap-mesh-uvs">
 <h3>Unwrap mesh UVs<a class="headerlink" href="#unwrap-mesh-uvs" title="Link to this heading"></a></h3>
-<p>The Unwrap operator works with three <a class="reference internal" href="../api/mesh_processing.html#module-substance3d.api.mesh_processing.mesh_processing"><span class="std std-ref">Modes</span></a>: <code class="docutils literal notranslate"><span class="pre">Default</span></code>, <code class="docutils literal notranslate"><span class="pre">Fast</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
-<p>All three modes perform well in most scenarios. The <code class="docutils literal notranslate"><span class="pre">Default</span></code> mode is generally better suited for organic meshes, the <code class="docutils literal notranslate"><span class="pre">Fast</span></code> mode prioritizes speed, and the <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> mode is optimized for hard-surface geometry.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Unwrap operator for HardEdge mode</span>
+<p>The Unwrap operator works with four <a class="reference internal" href="../api/mesh_processing.html#module-substance3d.api.mesh_processing.mesh_processing"><span class="std std-ref">modes</span></a>: <code class="docutils literal notranslate"><span class="pre">Default</span></code>, <code class="docutils literal notranslate"><span class="pre">Organic</span></code>, <code class="docutils literal notranslate"><span class="pre">Fast</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Default</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> modes use the same triplanar-style hard-edge seaming behavior. Use <code class="docutils literal notranslate"><span class="pre">Organic</span></code> for the legacy organic-oriented workflow on varied assets. <code class="docutils literal notranslate"><span class="pre">Fast</span></code> prioritizes speed over segmentation and parameterization quality.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Unwrap operator for explicit triplanar-style hard-edge seaming.</span>
 <span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
 
-<span class="c1"># Set Unwrap mode to HardEdge</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">HardEdge</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapMode</span><span class="o">.</span><span class="n">HardEdge</span>
 
-<span class="c1"># Refine Packing attributes</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># padding between islands in UV space</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">max_num_uv_tiles</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># maximum number of UV tiles to use when packing islands.</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">num_island_rotations</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># number of rotations to try when packing islands.</span>
+<span class="c1"># Configure packing options.</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># Padding between islands in UV space.</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">max_num_uv_tiles</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Maximum number of UV tiles to use when packing islands.</span>
+<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">num_island_rotations</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Number of rotations to try when packing islands.</span>
 
-<span class="c1"># Setting segmentation options:</span>
+<span class="c1"># Configure segmentation options.</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_cluster_confidence</span> <span class="o">=</span> <span class="mf">0.97</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_iterations</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_outliers</span> <span class="o">=</span> <span class="mi">1</span>
