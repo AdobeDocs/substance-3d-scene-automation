@@ -129,7 +129,7 @@ Branch Schema
         # Save only the content of the branch as an override in an USD file
         scene.branch.save(my_scn, 'blue_branch', './main_scene_with_blue_branch.usda', apply=True)
 
-Eclair, USDPreviewSurface and AdobeStandardMaterial
+Eclair renderer
 ===================================================
 
 API Modules : :ref:`material<substance3d.api.material>`
@@ -137,16 +137,21 @@ API Modules : :ref:`material<substance3d.api.material>`
 Eclair is a renderer developed by Adobe and shipped with SSCA. SSCA integrates the hydra-delegate version of 
 Eclair to easily use and render any USD scene.
 
-When creating a material with SSCA, an ``AdobeStandardMaterial`` shader is created that Eclair 
-will primarily use if available. ``AdobeStandardMaterial`` has more features and can carry more information, notably
+When creating a material with SSCA, an ``OpenPBR`` shader is created that Eclair 
+will primarily use if available. ``OpenPBR`` has more features and can carry more information, notably
 when using SBSAR materials and other Substance files in your workflow.
 
 What does that mean?
-*********************
+********************
 
 Natively, USD features a shader called ``USDPreviewSurface``, that has several inputs values and that can be rendered with all Hydra-based renderers (more information on `Pixar's USD Documentation <https://openusd.org/release/spec_usdpreviewsurface.html>`_).
-While Eclair can also render ``USDPreviewSurface``, it will prioritize ``AdobeStandardMaterial`` if available, meaning
-users must be aware of the renderer used, the shader used, and consequently, the inputs that will be used, should they wish to manipulate them.
+Despite Eclair being able to render ``USDPreviewSurface``, it will prioritize definitions in this order:
+
+* ``OpenPBR``
+* ``AdobeStandardMaterial``
+* ``USDPreviewSurface``
+
+Meaning that users must be aware of the renderer used, the shader used, and consequently, the inputs that will be used, should they wish to manipulate them.
 
 For example, let's create a scene with a simple yellow color :
 
@@ -158,7 +163,7 @@ For example, let's create a scene with a simple yellow color :
     # Create material
     my_mat = material.create_solid_color(main_scene, (1.0, 1.0, 0.0), "yellow")
 
-At this point, SSCA will create a material with ``AdobeStandardMaterial`` and ``USDPreviewSurface`` shaders.
+At this point, SSCA will create a material with ``OpenPBR``, ``AdobeStandardMaterial`` and ``USDPreviewSurface`` definitions.
 
 ``my_mat.inspect()`` shows us the inputs available for change : 
 
@@ -168,96 +173,325 @@ At this point, SSCA will create a material with ``AdobeStandardMaterial`` and ``
     [...]
     Attributes :
             .inputs.baseColor
-            .inputs.diffuseColor
             .inputs.uvrotation
             .inputs.uvscale
+            .inputs.uvscaleinverse
             .inputs.uvtranslation
             .outputs.adobe.surface
             .outputs.displacement
+            .outputs.mtlx.surface
             .outputs.surface
             .outputs.volume
     [...]
 
 
-We can notice there's a ``.baseColor`` input and a ``.diffuseColor`` input. 
-``.diffuseColor`` is used to change the material color within an ``USDPreviewSurface`` workflow, while 
-``.baseColor`` is used within an ``AdobeStandardMaterial`` workflow.
 
-Without going into further detail about these workflows and shaders, what we should keep in mind here is that there are common and specific inputs for both of them. 
-If you work mainly with Eclair, you may want to primarily use ASM inputs, while if you 
-use primarily PreviewSurface, you'll want to use those inputs instead.
+In the list of outputs prints above, we can see three shaders available for this material.
+    
+* ``.outputs.mtlx.surface`` is the ``OpenPBR`` definition.
+* ``.outputs.adobe.surface`` is the ``AdobeStandardMaterial`` definition.
+* ``.outputs.surface`` is the ``USDPreviewSurface`` definition.
 
-Below stands a list of those specificities. It also features the usages when using ``material.create_from_inputs()``
+Without going into further detail about these workflows and shaders, what we should keep in mind here is that there are common and specific inputs for all of them.
+If you work mainly with Eclair, you may want to primarily use ``OpenPBR`` inputs, while if you use primarily ``AdobeStandardMaterial`` or ``USDPreviewSurface``, you'll want to use their corresponding inputs instead.
+
+Below stands lists of those specificities. It also features the usages when using ``material.create_from_inputs()``
 or ``material.create_from_textures_dir()``.
 
-.. code-block:: 
+OpenPBR usages mapping
+**********************
 
-    SUBSTANCE_USAGE_MAPPING = {
+.. raw:: html
 
-        # Common
-        "roughness": ("roughness",),
-        "metallic": ("metallic",),
-        "opacity": ("opacity",),
-        "normal": ("normal",),
+   <details>
+   <summary>Expand / Collapse mapping table</summary>
 
-        # USDPreview specific
-        "diffuseColor": ("baseColor", "Base_Color"),
-        "emissiveColor": ("emissive",),
-        "clearcoat": ("coatWeight",),
-        "clearcoatRoughness": ("coatRoughness",),
-        "occlusion": ("occlusion", "ambientOcclusion", "MixedAO", "Mixed_AO"),
-        "displacement": ("displacement",),
-        "ior": (
-            "IOR",
-            "ior",
-        ),
-        
-        # ASM specific
-        "baseColor": ("baseColor", "Base_Color"),
-        "specularLevel": ("specularLevel",),
-        "specularEdgeColor": ("specularEdgeColor",),
-        "normalScale": ("normalScale",),
 
-        "height": ("height",),
-        "heightScale": ("heightScale",),
-        "heightLevel": ("heightLevel",),
-        "anisotropyLevel": ("anisotropyLevel",),
-        "anisotropyAngle": ("anisotropyAngle",),
-        "emissiveIntensity": ("emissiveIntensity",),
-        "emissive": ("emissive",),
-        "sheenOpacity": ("sheenOpacity",),
-        "sheenColor": ("sheenColor",),
-        "sheenRoughness": ("sheenRoughness",),
-        "translucency": ("translucency",),
-        "IOR": (
-            "IOR",
-            "ior",
-        ),
-        "dispersion": ("dispersion",),
-        "absorptionColor": ("absorptionColor",),
-        "absorptionDistance": ("absorptionDistance",),
+.. list-table::
+   :header-rows: 1
+   :widths: 10 10
 
-        "scatteringColor": ("scatteringColor",),
-        "scatteringDistance": ("scatteringDistance",),
-        "scatteringDistanceScale": ("scatteringDistanceScale",),
-        "scatteringRedShift": ("scatteringRedShift",),
-        "scatteringRayleigh": ("scatteringRayleigh",),
-        "coatOpacity": ("coatOpacity",),
-        "coatColor": ("coatColor",),
-        "coatRoughness": ("coatRoughness",),
-        "coatIOR": ("coatIOR",),
-        "coatSpecularLevel": ("coatSpecularLevel",),
-        "coatNormal": ("coatNormal",),
-        "coatNormalScale": ("coatNormalScale",),
-        "ambientOcclusion": (
-            "ambientOcclusion",
-            "MixedAO",
-            "Mixed_AO",
-        ),
-        "volumeThickness": ("volumeThickness",),
-        "volumeThicknessScale": ("volumeThicknessScale",),
-    }
+   * - SSCA
+     - OpenPBR
+   * - **BASE**
+     - `-`
+   * - baseWeight
+     - ``base_weight``
+   * - baseColor
+     - ``base_color``
+   * - metalness
+     - ``base_metalness``
+   * - baseDiffuseRoughness
+     - ``base_diffuse_roughness``
+   * - **SPECULAR**
+     - `-`
+   * - specularWeight
+     - ``specular_weight``
+   * - specularColor
+     - ``specular_color``
+   * - specularRoughness
+     - ``specular_roughness``
+   * - specularRoughnessAnisotropy
+     - ``specular_roughness_anisotropy``
+   * - specularIOR
+     - ``specular_ior``
+   * - **TRANSMISSION**
+     - `-`
+   * - transmissionWeight
+     - ``transmission_weight``
+   * - transmissionColor
+     - ``transmission_color``
+   * - transmissionDepth
+     - ``transmission_depth``
+   * - transmissionScatter
+     - ``transmission_scatter``
+   * - transmissionScatterAnisotropy
+     - ``transmission_scatter_anisotropy``
+   * - transmissionDispersionScale
+     - ``transmission_dispersion_scale``
+   * - transmissionDispersionAbbeNumber
+     - ``transmission_dispersion_abbe_number``
+   * - **SUBSURFACE**
+     - `-`
+   * - subsurfaceWeight
+     - ``subsurface_weight``
+   * - subsurfaceColor
+     - ``subsurface_color``
+   * - subsurfaceRadius
+     - ``subsurface_radius``
+   * - subsurfaceRadiusScale
+     - ``subsurface_radius_scale``
+   * - subsurfaceScatterAnisotropy
+     - ``subsurface_scatter_anisotropy``
+   * - **COAT**
+     - `-`
+   * - coatColor
+     - ``coat_color``
+   * - coatOpacity
+     - ``coat_weight``
+   * - coatWeight
+     - ``coat_weight``
+   * - coatRoughness
+     - ``coat_roughness``
+   * - coatRoughnessAnisotropy
+     - ``coat_roughness_anisotropy``
+   * - coatIOR
+     - ``coat_ior``
+   * - coatDarkening
+     - ``coat_darkening``
+   * - coatNormal
+     - ``coat_normal``
+   * - coatTangent
+     - ``coat_tangent``
+   * - **FUZZ**
+     - `-`
+   * - fuzzWeight
+     - ``fuzz_weight``
+   * - fuzzColor
+     - ``fuzz_color``
+   * - fuzzRoughness
+     - ``fuzz_roughness``
+   * - **EMISSION**
+     - `-`
+   * - emissionWeight
+     - ``emission_weight``
+   * - emissionLuminance
+     - ``emission_luminance``
+   * - emissionColor
+     - ``emission_color``
+   * - **THIN-FILM**
+     - `-`
+   * - thinFilmWeight
+     - ``thin_film_weight``
+   * - thinFilmThickness
+     - ``thin_film_thickness``
+   * - thinFilmIOR
+     - ``thin_film_ior``
+   * - **GEOMETRY**
+     - `-`
+   * - normal
+     - ``normal``
+   * - tangent
+     - ``tangent``
+   * - opacity
+     - ``opacity``
+   * - thinWalled
+     - ``thin_walled``
+   * - height
+     - Not in spec, use: ``height``
+   * - heightLevel
+     - Not in spec, use: ``heightLevel``
+   * - heightScale
+     - Not in spec, use: ``heightScale``
+   * - ambientOcclusion
+     - Not in spec, use: ``ambientOcclusion`` or ``occlusion``
 
+.. raw:: html
+
+   </details>
+   <br>
+
+AdobeStandardMaterial usages mapping
+************************************
+
+.. raw:: html
+
+   <details>
+   <summary>Expand / Collapse mapping table</summary>
+   <br/>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 10
+
+   * - SSCA
+     - AdobeStandardMaterial
+   * - **BASE**
+     - `-`
+   * - baseColor
+     - ``baseColor``
+   * - roughness
+     - ``roughness``
+   * - metallic
+     - ``metallic``
+   * - **NORMAL**
+     - `-`
+   * - normal
+     - ``normal``
+   * - normalScale
+     - ``normalScale``
+   * - **SPECULAR**
+     - `-`
+   * - specularLevel
+     - ``specularLevel``
+   * - specularEdgeColor
+     - ``specularEdgeColor``
+   * - **HEIGHT**
+     - `-`
+   * - height
+     - ``height``
+   * - heightScale
+     - ``heightScale``
+   * - heightLevel
+     - ``heightLevel``
+   * - **ANISOTROPY**
+     - `-`
+   * - anisotropyLevel
+     - ``anisotropyLevel``
+   * - anisotropyAngle
+     - ``anisotropyAngle``
+   * - **EMISSIVE**
+     - `-`
+   * - emissiveIntensity
+     - ``emissiveIntensity``
+   * - emissive
+     - ``emissive``
+   * - **SHEEN**
+     - `-`
+   * - sheenOpacity
+     - ``sheenOpacity``
+   * - sheenColor
+     - ``sheenColor``
+   * - sheenRoughness
+     - ``sheenRoughness``
+   * - **TRANSLUCENCY**
+     - `-`
+   * - translucency
+     - ``translucency``
+   * - IOR
+     - ``IOR``, ``ior``
+   * - dispersion
+     - ``dispersion``
+   * - absorptionColor
+     - ``absorptionColor``
+   * - absorptionDistance
+     - ``absorptionDistance``
+   * - **SCATTERING**
+     - `-`
+   * - scatteringColor
+     - ``scatteringColor``
+   * - scatteringDistance
+     - ``scatteringDistance``
+   * - scatteringDistanceScale
+     - ``scatteringDistanceScale``
+   * - scatteringRedShift
+     - ``scatteringRedShift``
+   * - scatteringRayleigh
+     - ``scatteringRayleigh``
+   * - **COAT**
+     - `-`
+   * - coatOpacity
+     - ``coatOpacity``
+   * - coatColor
+     - ``coatColor``
+   * - coatRoughness
+     - ``coatRoughness``
+   * - coatIOR
+     - ``coatIOR``
+   * - coatSpecularLevel
+     - ``coatSpecularLevel``
+   * - coatNormal
+     - ``coatNormal``
+   * - coatNormalScale
+     - ``coatNormalScale``
+   * - **OTHERS**
+     - `-`
+   * - opacity
+     - ``opacity``
+   * - ambientOcclusion
+     - ``ambientOcclusion``
+   * - volumeThickness
+     - ``volumeThickness``
+   * - volumeThicknessScale
+     - ``volumeThicknessScale``
+
+.. raw:: html
+
+   </details>
+   <br>
+
+USDPreviewSurface mappings
+**************************
+
+.. raw:: html
+
+   <details>
+   <summary>Expand / Collapse mapping table</summary>
+   <br/>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 10
+
+   * - SSCA
+     - USDPreviewSurface
+   * - baseColor
+     - ``diffuseColor``
+   * - emissive
+     - ``emissiveColor``
+   * - ambientOcclusion
+     - ``occlusion``
+   * - coatWeight
+     - ``clearcoat``
+   * - coatRoughness
+     - ``clearcoatRoughness``
+   * - displacement
+     - ``displacement``
+   * - IOR
+     - ``ior``
+
+.. raw:: html
+
+   </details>
+   <br>
+
+.. note::
+
+    You can find more information about these shader specification here:
+
+    - `OpenPBR <https://experienceleague.adobe.com/en/docs/substance-3d/general-knowledge/openpbr/openpbr-overview>`_.
+    - `AdobeStandardMaterial <https://helpx.adobe.com/content/dam/help/en/substance-3d/documentation/s3d/files/225969597/225969613/1/1647027222890/adobe-standard-material-specification.pdf>`_
+    - `USDPreviewSurface <https://openusd.org/release/spec_usdpreviewsurface.html>`_
 
 Statistics Collectors
 =====================

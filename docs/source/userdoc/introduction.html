@@ -69,6 +69,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-substance-3d-scene-automation">What is Substance 3D Scene Automation?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-install-and-configure-ssca">How to install and configure SSCA</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ssca-environment">SSCA Environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#locate-the-ssca-python-interpreter">Locate the SSCA Python interpreter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visual-studio-code-instructions-version-1-99-2">Visual Studio Code Instructions (version 1.99.2)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pycharm-instructions-version-2024-2-3">PyCharm Instructions (version 2024.2.3)</a></li>
 </ul>
@@ -146,7 +147,7 @@ an application created by Nvidia for building and working with USD scenes.</p>
 <section id="ssca-environment">
 <h3>SSCA Environment<a class="headerlink" href="#ssca-environment" title="Link to this heading"></a></h3>
 <p>In order to use SSCA modules, the user must run their scripts with the <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> provided in the SSCA package.</p>
-<p>Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.</p>
+<p>Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like <a class="reference internal" href="#visual-studio-code-instructions-version-1-99-2">Visual Studio Code</a> or <a class="reference internal" href="#pycharm-instructions-version-2024-2-3">PyCharm</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>If you already developed with USD, be sure you clean your PATH (LD_LIBRARY_PATH for linux/mac) from other USD installation paths before setting up SSCA, as there will be conflicts.
@@ -154,35 +155,81 @@ This can be done by removing USD/bin and USD/lib from your PATH.</p>
 <p>In addition, SSCA has python package and USD plugin dependencies.
 Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could also conflict with SSCA.</p>
 </div>
+<section id="locate-the-ssca-python-interpreter">
+<span id="locate-ssca-python-interpreter"></span><h4>Locate the SSCA Python interpreter<a class="headerlink" href="#locate-the-ssca-python-interpreter" title="Link to this heading"></a></h4>
+<p>SSCA is shipped in two different packages. Both are <code class="docutils literal notranslate"><span class="pre">.zip</span></code> archives, but the SSCA Python interpreter is not located at the same place.
+Use the path matching your package whenever the IDE instructions below ask for the SSCA Python interpreter.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Platform</p></th>
+<th class="head"><p>SSCA Python interpreter path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SSCA package</p></td>
+<td><p>Windows</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SSCA package</p></td>
+<td><p>Mac/Linux</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Developer Sandbox</p></td>
+<td><p>Windows</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;Developer_Sandbox_install_folder&gt;/python/python.exe</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Developer Sandbox</p></td>
+<td><p>Mac/Linux</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">./Developer</span> <span class="pre">Sandbox.app/Contents/Resources/python/python/python3</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>SSCA package unzipped into <code class="docutils literal notranslate"><span class="pre">C:/ssca/</span></code>: the interpreter is <code class="docutils literal notranslate"><span class="pre">C:/ssca/bin/python.exe</span></code></p></li>
+<li><p>Developer Sandbox unzipped into <code class="docutils literal notranslate"><span class="pre">C:/developerSandbox/</span></code>: the interpreter is <code class="docutils literal notranslate"><span class="pre">C:/developerSandbox/python/python.exe</span></code></p></li>
+</ul>
+</div>
+</section>
 <section id="visual-studio-code-instructions-version-1-99-2">
 <h4>Visual Studio Code Instructions (version 1.99.2)<a class="headerlink" href="#visual-studio-code-instructions-version-1-99-2" title="Link to this heading"></a></h4>
 <section id="set-up-new-project">
 <h5>Set up new project<a class="headerlink" href="#set-up-new-project" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Download and install the free version of <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p></li>
-<li><p>Download and unzip the Substance 3D SSCA package.</p></li>
-<li><p>Move the contents of the unzipped SSCA package to your desired installation location.</p>
+<li><p>Download and unzip the Substance 3D SSCA package or the Developer Sandbox package.</p></li>
+<li><p>Move the contents of the unzipped package to your desired installation location.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example SSCA package content will be unzipped into: <code class="docutils literal notranslate"><span class="pre">C:/ssca/</span></code></p></li>
-</ul>
+<div><div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p>Here, the SSCA package content will be unzipped into: <code class="docutils literal notranslate"><span class="pre">C:/ssca/</span></code></p>
+</div>
 </div></blockquote>
 </li>
 <li><p>Open Visual Studio Code.</p></li>
 <li><p>On the Welcome tab click “<strong>Open Folder…</strong>”. In the explorer popup window, create and/or select your project folder.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example, our project folder will be: <code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/</span></code></p></li>
-</ul>
+<div><div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Our project folder: <code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/</span></code></p>
+</div>
 <img alt="../../_images/vscode_01_open_folder.png" src="../../_images/vscode_01_open_folder.png" />
 </div></blockquote>
 </li>
 <li><p>Expand the project folder in the explorer of VS Code UI</p></li>
 <li><p>Create a Python file by clicking on the project folder “New File…” icon and give the file a name including the ‘.py’ extension.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example the script will be named: <code class="docutils literal notranslate"><span class="pre">main.py</span></code></p></li>
-</ul>
+<div><div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Script named: <code class="docutils literal notranslate"><span class="pre">main.py</span></code></p>
+</div>
 <img alt="../../_images/vscode_02_create_file.png" src="../../_images/vscode_02_create_file.png" />
 </div></blockquote>
 </li>
@@ -214,10 +261,11 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 <li><p>Click again on “<strong>Find…</strong>”</p></li>
 <li><p>Navigate to the SSCA Python interpreter.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
-<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
-</ul>
+<div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The interpreter location depends on your package (SSCA package or Developer Sandbox),
+see <a class="reference internal" href="#locate-ssca-python-interpreter"><span class="std std-ref">Locate the SSCA Python interpreter</span></a>.</p>
+</div>
 </div></blockquote>
 </li>
 <li><p>Now the project’s virtual environment based on SSCA Python interpreter is loading all files from the SSCA install folder.</p></li>
@@ -257,13 +305,13 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># create a cube</span>
-<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
+<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
 
 <span class="c1"># create a light</span>
-<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;distant_light&#39;</span><span class="p">)</span>
+<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'distant_light'</span><span class="p">)</span>
 
 <span class="c1"># save the scene with a valid output filepath</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'./TestScene.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
@@ -274,8 +322,10 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If the test script fails to find the SSCA modules, there could be a conflict in the environment.
-Check your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PXR_PLUGINPATH_NAME</span></code> environment variables and clean them if needed.</p>
+<ul class="simple">
+<li><p>If the test script fails to find the SSCA modules, there could be a conflict in the environment.</p></li>
+<li><p>Check your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PXR_PLUGINPATH_NAME</span></code> environment variables and clean them if needed.</p></li>
+</ul>
 </div>
 </section>
 </section>
@@ -285,12 +335,13 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <h5>Set up new project with virtual environment<a class="headerlink" href="#set-up-new-project-with-virtual-environment" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Download and install the community version of <a class="reference external" href="https://www.jetbrains.com/pycharm/download/">PyCharm</a>.</p></li>
-<li><p>Download and unzip the Substance 3D SSCA package.</p></li>
-<li><p>unzip the SSCA package wherever you want SSCA to be installed.</p>
+<li><p>Download the Substance 3D SSCA package or the Developer Sandbox package.</p></li>
+<li><p>Unzip the package wherever you want SSCA to be installed.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example we will unzip the SSCA package content into: <code class="docutils literal notranslate"><span class="pre">&quot;C:/ssca/&quot;</span></code></p></li>
-</ul>
+<div><div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Here, we will unzip the SSCA package content into: <code class="docutils literal notranslate"><span class="pre">&quot;C:/ssca/&quot;</span></code></p>
+</div>
 </div></blockquote>
 </li>
 <li><p>Launch PyCharm or if your project already exists, you can jump to the next chapter “<strong>Set up a local SSCA Python interpreter</strong>”.</p></li>
@@ -302,18 +353,20 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <li><p>In the next setup window, give your project a Name.</p></li>
 <li><p>Enter your project Location.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example, our project folder will be in: <code class="docutils literal notranslate"><span class="pre">C:/projects</span></code></p></li>
-</ul>
+<div><div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Our project folder: <code class="docutils literal notranslate"><span class="pre">C:/projects</span></code></p>
+</div>
 </div></blockquote>
 </li>
 <li><p>In the Interpreter type section, select <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">venv</span></code>.</p></li>
-<li><p>Select SSCA Python version, navigating to your SSCA ‘install’ folder.</p>
+<li><p>Select SSCA Python version, navigating to the SSCA Python interpreter.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
-<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
-</ul>
+<div><div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The interpreter location depends on your package (SSCA package or Developer Sandbox),
+see <a class="reference internal" href="#locate-ssca-python-interpreter"><span class="std std-ref">Locate the SSCA Python interpreter</span></a>.</p>
+</div>
 </div></blockquote>
 </li>
 <li><p>Click on <code class="docutils literal notranslate"><span class="pre">Create</span></code></p>
@@ -345,12 +398,10 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </div></blockquote>
 </li>
 <li><p>In the new window, select “Virtualenv Environment” from the list of options on the left side of the window that appears.</p></li>
-<li><p>Enter the path to the python.exe file included within your SSCA ‘install’ (unzipped) folder.</p>
+<li><p>Enter the path to the SSCA Python interpreter included within your unzipped package.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Windows: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python.exe</span></code></p></li>
-<li><p>Mac/Linux: This should be located in <code class="docutils literal notranslate"><span class="pre">&lt;SSCA_install_folder&gt;/bin/python3</span></code></p></li>
-</ul>
+<div><p>The interpreter location depends on your package (SSCA package or Developer Sandbox),
+see <a class="reference internal" href="#locate-ssca-python-interpreter"><span class="std std-ref">Locate the SSCA Python interpreter</span></a>.</p>
 <img alt="../../_images/pycharm_04_virtual_env.png" src="../../_images/pycharm_04_virtual_env.png" />
 </div></blockquote>
 </li>
@@ -361,14 +412,15 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 </li>
 </ol>
 </section>
-<section id="id1">
-<h5>Run your first script<a class="headerlink" href="#id1" title="Link to this heading"></a></h5>
+<section id="id3">
+<h5>Run your first script<a class="headerlink" href="#id3" title="Link to this heading"></a></h5>
 <ol class="arabic">
 <li><p>Open/Create a Python script file into your project.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>In our example, <code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/main.py</span></code></p></li>
-</ul>
+<div><div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:/projects/myProject/main.py</span></code></p>
+</div>
 </div></blockquote>
 </li>
 <li><p>Copy the code below into the opened file. This script creates a simple scene with a light and a cube.</p>
@@ -380,13 +432,13 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># create a cube</span>
-<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
+<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
 
 <span class="c1"># create a light</span>
-<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;distant_light&#39;</span><span class="p">)</span>
+<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'distant_light'</span><span class="p">)</span>
 
 <span class="c1"># save the scene with a valid output filepath</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'./TestScene.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
@@ -395,9 +447,10 @@ Check your <code class="docutils literal notranslate"><span class="pre">PATH</sp
 <li><p>Run the current script with shortcut Ctrl+Shift+F10 (this will create a run configuration based on your script) or click the arrow at the top right of the Pycharm window.</p></li>
 <li><p>To confirm the script ran successfully, check the console at the bottom of the PyCharm window. The last line should say “Process finished with exit code 0”.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Additionally, a file called TestScene.usda should have been created in the same folder as your script.</p></li>
-</ul>
+<div><div class="admonition-result admonition">
+<p class="admonition-title">Result</p>
+<p>Additionally, a file called TestScene.usda should have been created in the same folder as your script.</p>
+</div>
 </div></blockquote>
 </li>
 </ol>

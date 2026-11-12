@@ -203,7 +203,7 @@ to edit their properties like attributes and metadata.</p>
 <p>In SSCA, each attribute of an object is an <cite>AttrHandler</cite> which holds a value.
 You can access an attribute handler by using the dot “.” operator of the <cite>PrimHandler</cite> or <cite>StageHandler</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a solid color material</span>
-<span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">"red"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="o">&lt;</span><span class="n">AttrHandler</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">baseColor</span><span class="p">)</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2f6e5538970</span><span class="o">&gt;</span>
@@ -252,8 +252,8 @@ We will see in another chapter how to handle metadata editing.</p>
 As the created property is an <cite>AttrHandler</cite>, you can access the new attribute with all the methods mentionned above.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">type_mapping</span>
 
-<span class="n">my_obj</span><span class="o">.</span><span class="n">create_user_property</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>  <span class="n">type_mapping</span><span class="o">.</span><span class="n">Str</span><span class="p">)</span>
-<span class="n">my_obj</span><span class="o">.</span><span class="n">userProperty</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">my_obj</span><span class="o">.</span><span class="n">create_user_property</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span>  <span class="n">type_mapping</span><span class="o">.</span><span class="n">Str</span><span class="p">)</span>
+<span class="n">my_obj</span><span class="o">.</span><span class="n">userProperty</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_obj</span><span class="o">.</span><span class="n">userProperty</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
 <span class="o">&gt;&gt;&gt;</span>
 <span class="n">bar</span>
@@ -276,8 +276,8 @@ Available metadata can always be checked with <code class="docutils literal notr
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a cube</span>
 <span class="n">my_cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scn</span><span class="p">)</span>
 
-<span class="c1"># edit its &quot;kind&quot; metadata</span>
-<span class="n">my_cube</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;group&#39;</span>
+<span class="c1"># edit its "kind" metadata</span>
+<span class="n">my_cube</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">'group'</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -287,7 +287,7 @@ will be logged and the metadata will be treated like a classic python property.
 While this property can still be accessed in the python session, it will NOT be saved
 in the USD document (see example below).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-existing metadata created like this will not be saved into the USD document...</span>
-<span class="n">my_scn</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+<span class="n">my_scn</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="s1">'bar'</span>
 
 <span class="c1"># ...but will still be accessible during the python session.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_scn</span><span class="o">.</span><span class="n">foo</span><span class="p">)</span>
@@ -309,10 +309,10 @@ like <code class="docutils literal notranslate"><span class="pre">variant</span>
 <p>Custom data can be added using <cite>PrimHandler</cite> and <cite>StageHandler</cite> <code class="docutils literal notranslate"><span class="pre">.custom_data</span></code> alias (dict).
 As Custom Data are saved within the USD file, this is a convenient way to share information between software.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add a new key value to the customData of my_cube</span>
-<span class="n">my_cube</span><span class="o">.</span><span class="n">custom_data</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+<span class="n">my_cube</span><span class="o">.</span><span class="n">custom_data</span><span class="p">[</span><span class="s1">'new'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'foo'</span>
 
 <span class="c1"># add a new key value to the customLayerData of my_scene</span>
-<span class="n">my_scene</span><span class="o">.</span><span class="n">custom_data</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+<span class="n">my_scene</span><span class="o">.</span><span class="n">custom_data</span><span class="p">[</span><span class="s1">'new'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'foo'</span>
 </pre></div>
 </div>
 </section>
@@ -339,12 +339,12 @@ The most used relationship is <code class="docutils literal notranslate"><span c
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.get()</span></code> gets the Relationship list with objects as paths.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">card</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;/world/sphere/mat&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">'/world/sphere/mat'</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.get_target_objects()</span></code> gets the list with objects as PrimHandlers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">card</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">get_target_objects</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">PrimHandler</span><span class="o">&lt;</span><span class="s1">&#39;/world/sphere/mat&#39;</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">PrimHandler</span><span class="o">&lt;</span><span class="s1">'/world/sphere/mat'</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -357,7 +357,7 @@ The most used relationship is <code class="docutils literal notranslate"><span c
 <p>We’ll start from the scene below and use it in the next sections to explain the use of attribute connections.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scene Creation</span>
 <span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">root</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">"root"</span><span class="p">)</span>
 <span class="n">my_colored_sphere_01</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">sphere</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 <span class="n">my_colored_sphere_02</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">sphere</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 <span class="n">my_colored_sphere_03</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">sphere</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
@@ -367,9 +367,9 @@ The most used relationship is <code class="docutils literal notranslate"><span c
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">my_colored_sphere_03</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">))</span>
 
 <span class="c1"># Material creation</span>
-<span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-<span class="n">green_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">"red"</span><span class="p">)</span>
+<span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),</span> <span class="s2">"blue"</span><span class="p">)</span>
+<span class="n">green_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="s2">"green"</span><span class="p">)</span>
 
 <span class="c1"># Assign Material on each sphere</span>
 <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">red_mat</span><span class="p">,</span> <span class="n">my_colored_sphere_01</span><span class="p">)</span>

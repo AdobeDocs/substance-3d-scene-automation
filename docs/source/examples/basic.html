@@ -111,26 +111,26 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">To create a new scene simply call `scene.new`, by giving a valid filepath an empty file</span>
 <span class="sd">will be reserved at this path, by giving nothing no file will be reserved until calling</span>
 <span class="sd">a save function.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="c1"># create a new scene without filepath</span>
 <span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># save the scene by giving an valid output filepath</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;empty_scene.usda&#39;</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">'empty_scene.usda'</span><span class="p">)</span>
 
 
 <span class="c1"># create a new scene by giving a filepath</span>
-<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;empty_scene2.usda&#39;</span><span class="p">)</span>
+<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'empty_scene2.usda'</span><span class="p">)</span>
 
 <span class="c1"># no need to give a filepath, it defined during the scene creation</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">)</span>
 
-<span class="c1"># consider the function as &quot;save as&quot; by giving a different filepath</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;empty_scene3.usda&#39;</span><span class="p">)</span>
+<span class="c1"># consider the function as "save as" by giving a different filepath</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">'empty_scene3.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -139,12 +139,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Use `scene.load` by giving a valid filepath to load en existing scene</span>
 <span class="sd">the scene can be in .usda, .usd, .gltf and more, check `scene.ALLOWED_EXTENSIONS` to get</span>
 <span class="sd">the full list</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;park.usda&#39;</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'park.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

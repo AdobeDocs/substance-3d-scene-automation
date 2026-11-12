@@ -28,12 +28,13 @@ an application created by Nvidia for building and working with USD scenes.
 
 How to install and configure SSCA
 =================================
+
 SSCA Environment
 #################
 
 In order to use SSCA modules, the user must run their scripts with the ``python.exe`` provided in the SSCA package.  
 
-Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like Visual Studio Code or PyCharm.
+Due to the system environment restrictions, it is also recommended to install an IDE (Integrated Development Environment) like `Visual Studio Code <Visual Studio Code Instructions (version 1.99.2)_>`_ or `PyCharm <PyCharm Instructions (version 2024.2.3)_>`_.
 
 .. important:: 
     If you already developed with USD, be sure you clean your PATH (LD_LIBRARY_PATH for linux/mac) from other USD installation paths before setting up SSCA, as there will be conflicts.
@@ -42,33 +43,73 @@ Due to the system environment restrictions, it is also recommended to install an
     In addition, SSCA has python package and USD plugin dependencies.  
     Therefore, please be careful when setting values in either PXR_PLUGINPATH_NAME or PYTHONPATH as they could also conflict with SSCA.
 
+
+.. _locate-ssca-python-interpreter:
+
+Locate the SSCA Python interpreter
+**********************************
+
+SSCA is shipped in two different packages. Both are ``.zip`` archives, but the SSCA Python interpreter is not located at the same place.
+Use the path matching your package whenever the IDE instructions below ask for the SSCA Python interpreter.
+
+.. list-table::
+    :header-rows: 1
+    :widths: 25 15 60
+
+    * - Package
+      - Platform
+      - SSCA Python interpreter path
+    * - SSCA package
+      - Windows
+      - ``<SSCA_install_folder>/bin/python.exe``
+    * - SSCA package
+      - Mac/Linux
+      - ``<SSCA_install_folder>/bin/python3``
+    * - Developer Sandbox
+      - Windows
+      - ``<Developer_Sandbox_install_folder>/python/python.exe``
+    * - Developer Sandbox
+      - Mac/Linux
+      - ``./Developer Sandbox.app/Contents/Resources/python/python/python3``
+
+.. admonition:: Exemples
+
+    - SSCA package unzipped into ``C:/ssca/``: the interpreter is ``C:/ssca/bin/python.exe``
+    - Developer Sandbox unzipped into ``C:/developerSandbox/``: the interpreter is ``C:/developerSandbox/python/python.exe``
+
 Visual Studio Code Instructions (version 1.99.2)
 *******************************
 
 Set up new project
-""""""
+""""""""""""""""""
 
 #. Download and install the free version of `Visual Studio Code <https://code.visualstudio.com/download>`_.
 
-#. Download and unzip the Substance 3D SSCA package.
+#. Download and unzip the Substance 3D SSCA package or the Developer Sandbox package.
 
-#. Move the contents of the unzipped SSCA package to your desired installation location. 
-    
-    * In our example SSCA package content will be unzipped into: ``C:/ssca/``
+#. Move the contents of the unzipped package to your desired installation location.
+
+    .. admonition:: Exemples
+
+        Here, the SSCA package content will be unzipped into: ``C:/ssca/``
 
 #. Open Visual Studio Code.
 
 #. On the Welcome tab click "**Open Folder...**". In the explorer popup window, create and/or select your project folder.
 
-    * In our example, our project folder will be: ``C:/projects/myProject/``
+    .. admonition:: Exemple
+
+        Our project folder: ``C:/projects/myProject/``
 
     .. image:: /source/static/introduction_ide_setup/vscode_01_open_folder.png
 
 #. Expand the project folder in the explorer of VS Code UI
 
 #. Create a Python file by clicking on the project folder "New File..." icon and give the file a name including the '.py' extension.
-    
-    * In our example the script will be named: ``main.py``
+
+    .. admonition:: Exemple
+
+        Script named: ``main.py``
 
     .. image:: /source/static/introduction_ide_setup/vscode_02_create_file.png
 
@@ -100,9 +141,10 @@ Since VS Code uses the system Python by default, we need to create a virtual env
 
 #. Navigate to the SSCA Python interpreter.
 
-        * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
+    .. tip:: 
 
-        * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
+        The interpreter location depends on your package (SSCA package or Developer Sandbox),
+        see :ref:`locate-ssca-python-interpreter`.
 
 #. Now the project's virtual environment based on SSCA Python interpreter is loading all files from the SSCA install folder.
 
@@ -149,22 +191,24 @@ Run your first script
 #. To confirm the script ran successfully, a file called TestScene.usda should have been created in the same folder as your script.
 
 .. warning::
-    If the test script fails to find the SSCA modules, there could be a conflict in the environment.
-    Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
+    * If the test script fails to find the SSCA modules, there could be a conflict in the environment.
+    * Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
 
 PyCharm Instructions (version 2024.2.3)
-********************
+***************************************
 
 Set up new project with virtual environment
-""""""
+"""""""""""""""""""""""""""""""""""""""""""
 
 #. Download and install the community version of `PyCharm <https://www.jetbrains.com/pycharm/download/>`_.
 
-#. Download and unzip the Substance 3D SSCA package.
+#. Download the Substance 3D SSCA package or the Developer Sandbox package.
 
-#. unzip the SSCA package wherever you want SSCA to be installed.
+#. Unzip the package wherever you want SSCA to be installed.
 
-    * In our example we will unzip the SSCA package content into: ``"C:/ssca/"``
+    .. admonition:: Exemple
+
+        Here, we will unzip the SSCA package content into: ``"C:/ssca/"``
 
 #. Launch PyCharm or if your project already exists, you can jump to the next chapter "**Set up a local SSCA Python interpreter**".
 
@@ -176,15 +220,18 @@ Set up new project with virtual environment
 
 #. Enter your project Location.
 
-    * In our example, our project folder will be in: ``C:/projects``
+    .. admonition:: Exemple
+
+        Our project folder: ``C:/projects``
 
 #. In the Interpreter type section, select ``Project venv``.
 
-#. Select SSCA Python version, navigating to your SSCA 'install' folder.
+#. Select SSCA Python version, navigating to the SSCA Python interpreter.
 
-        * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
+    .. important::
 
-        * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
+        The interpreter location depends on your package (SSCA package or Developer Sandbox),
+        see :ref:`locate-ssca-python-interpreter`.
 
 #. Click on ``Create``
 
@@ -193,7 +240,7 @@ Set up new project with virtual environment
 #. You are now ready to start coding with Python and SSCA in your virtual environment (venv).
 
 Set up a local SSCA Python interpreter
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 
 #. Once your project is open.
 
@@ -213,11 +260,10 @@ Set up a local SSCA Python interpreter
 
 #. In the new window, select "Virtualenv Environment" from the list of options on the left side of the window that appears.
 
-#. Enter the path to the python.exe file included within your SSCA 'install' (unzipped) folder.
+#. Enter the path to the SSCA Python interpreter included within your unzipped package.
 
-    * Windows: This should be located in ``<SSCA_install_folder>/bin/python.exe``
-
-    * Mac/Linux: This should be located in ``<SSCA_install_folder>/bin/python3``
+    The interpreter location depends on your package (SSCA package or Developer Sandbox),
+    see :ref:`locate-ssca-python-interpreter`.
 
     .. image:: /source/static/introduction_ide_setup/pycharm_04_virtual_env.png
 
@@ -230,7 +276,9 @@ Run your first script
 
 #. Open/Create a Python script file into your project.
 
-    * In our example, ``C:/projects/myProject/main.py``
+    .. admonition:: Exemple
+
+        ``C:/projects/myProject/main.py``
 
 #. Copy the code below into the opened file. This script creates a simple scene with a light and a cube.
 
@@ -257,11 +305,17 @@ Run your first script
 
 #. To confirm the script ran successfully, check the console at the bottom of the PyCharm window. The last line should say "Process finished with exit code 0".
 
-    * Additionally, a file called TestScene.usda should have been created in the same folder as your script.
+    .. admonition:: Result
+
+        Additionally, a file called TestScene.usda should have been created in the same folder as your script.
 
 .. warning::
     If the test script fails to find the SSCA modules, there could be a conflict in the environment.
     Check your ``PATH`` and ``PXR_PLUGINPATH_NAME`` environment variables and clean them if needed.
+
+
+
+
 
 Configure your environment for Linux with NVIDIA GPU
 ####################################################

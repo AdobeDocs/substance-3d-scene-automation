@@ -127,11 +127,11 @@ taken into account in the variant, it will modify in a classic way.</p>
 <blockquote>
 <div><dl class="field-list">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;simple_scene.usda&#39;</span><span class="p">)</span>
-<span class="n">a_cube</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s1">&#39;/root/cube&#39;</span><span class="p">]</span>
+<dd class="field-odd"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'simple_scene.usda'</span><span class="p">)</span>
+<span class="n">a_cube</span> <span class="o">=</span> <span class="n">scn</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s1">'/root/cube'</span><span class="p">]</span>
 
-<span class="c1"># create a variant for cube into the default variant set &quot;variants&quot;</span>
-<span class="n">cube_var</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">a_cube</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="c1"># create a variant for cube into the default variant set "variants"</span>
+<span class="n">cube_var</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">a_cube</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">)</span>
 <span class="c1"># enter in the variant edit context:</span>
 <span class="c1"># all modification on the cube or its children will be applied in the variant</span>
 <span class="k">with</span> <span class="n">cube_var</span><span class="p">:</span>

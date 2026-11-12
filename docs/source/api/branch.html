@@ -128,17 +128,17 @@ will be applied on the current scene’s layer.</p>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">&#39;shoes.fbx&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">'shoes.fbx'</span><span class="p">)</span>
 
 <span class="c1"># create a scene branch</span>
-<span class="n">sb_green</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">sb_green</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">branch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">sb_green</span><span class="p">:</span>
   <span class="c1"># in this block all the modification will be done only for this scene branch</span>
-  <span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-  <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">scn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">))</span>
+  <span class="n">mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+  <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">scn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">'mesh'</span><span class="p">))</span>
 
-<span class="c1"># back to the current scene, all the modifications done into the &#39;green&#39; scene branch are not applied here</span>
-<span class="c1"># but they still exist in the &#39;green&#39; scene branch</span>
+<span class="c1"># back to the current scene, all the modifications done into the 'green' scene branch are not applied here</span>
+<span class="c1"># but they still exist in the 'green' scene branch</span>
 </pre></div>
 </div>
 </div></blockquote>

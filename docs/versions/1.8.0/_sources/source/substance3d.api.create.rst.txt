@@ -1,0 +1,21 @@
+substance3d.api.create package
+==============================
+
+Submodules
+----------
+
+substance3d.api.create.create module
+------------------------------------
+
+.. automodule:: substance3d.api.create.create
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: substance3d.api.create
+   :members:
+   :undoc-members:
+   :show-inheritance:

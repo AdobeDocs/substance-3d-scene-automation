@@ -105,28 +105,17 @@
              
   <section id="substance3d-api-mesh-processing-package">
 <h1>substance3d.api.mesh_processing package<a class="headerlink" href="#substance3d-api-mesh-processing-package" title="Link to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<section id="legacy-operator-api">
+<h2>Legacy operator API<a class="headerlink" href="#legacy-operator-api" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">*Op</span></code> classes and <code class="docutils literal notranslate"><span class="pre">process()</span></code> compatibility API will be deprecated in favor of the
+direct functions below.</p>
+</div>
 </section>
-<section id="module-substance3d.api.mesh_processing.mesh_processing">
-<span id="substance3d-api-mesh-processing-mesh-processing-module"></span><h2>substance3d.api.mesh_processing.mesh_processing module<a class="headerlink" href="#module-substance3d.api.mesh_processing.mesh_processing" title="Link to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="substance3d.api.mesh_processing.mesh_processing.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.mesh_processing.mesh_processing.process" title="Link to this definition"></a></dt>
-<dd><p>Process a list of mesh operators on the given target(s) and their subtree.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>parent</strong> (<em>PrimHandler</em><em> | </em><em>list</em><em>[</em><em>PrimHandler</em><em>] </em><em>| </em><em>StageHandler</em>) – Given target can be a scene, a single object or a list of objects</p></li>
-<li><p><strong>operators</strong> (<em>list</em><em>[</em><em>substance3d.api.mesh_processing.operators.MeshOperator</em><em>]</em>) – A list of mesh operators</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-substance3d.api.mesh_processing">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-substance3d.api.mesh_processing" title="Link to this heading"></a></h2>
+<section id="functional-api">
+<h2>Functional API<a class="headerlink" href="#functional-api" title="Link to this heading"></a></h2>
+<p>These functions are exported directly from <code class="docutils literal notranslate"><span class="pre">substance3d.api.mesh_processing</span></code>.</p>
 </section>
 </section>
 

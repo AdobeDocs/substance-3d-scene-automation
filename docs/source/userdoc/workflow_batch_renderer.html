@@ -1002,15 +1002,15 @@ log file) in the OS default text editor.</p>
 <h3>Session Presets<a class="headerlink" href="#session-presets" title="Link to this heading"></a></h3>
 <p><strong>Save Preset</strong> / <strong>Load Preset</strong> (Presets menu) read and write a JSON file:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;render_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;renders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;... same shape as the CLI&#39;s renders array ...&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"render_config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"renders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"... same shape as the CLI's renders array ..."</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"..."</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"..."</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"..."</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;scenes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;... cached per-scene camera lists, used to redraw the UI without re-reading every scene file ...&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"scenes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"... cached per-scene camera lists, used to redraw the UI without re-reading every scene file ..."</span><span class="w"> </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1278,11 +1278,11 @@ USD variants to select, and where to write output files.</p>
 <code class="docutils literal notranslate"><span class="pre">config/default_preset.jsonc</span></code>; <code class="docutils literal notranslate"><span class="pre">generate-template</span></code> writes a copy of it,
 and <code class="docutils literal notranslate"><span class="pre">--override-config</span></code> falls back to it.</p>
 <div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
-  &quot;version&quot;: &quot;0.2&quot;,
-  &quot;renders&quot;: [ &quot;... render output types and quality settings ...&quot; ],
-  &quot;templates&quot;: [ &quot;... scene configurations with cameras and lighting ...&quot; ],
-  &quot;variant_sets&quot;: [ &quot;... USD variant selections to render ...&quot; ],
-  &quot;outputs&quot;: { &quot;... output path template ...&quot; }
+  "version": "0.2",
+  "renders": [ "... render output types and quality settings ..." ],
+  "templates": [ "... scene configurations with cameras and lighting ..." ],
+  "variant_sets": [ "... USD variant selections to render ..." ],
+  "outputs": { "... output path template ..." }
 }
 </pre></div>
 </div>
@@ -1370,36 +1370,36 @@ no equivalent and is dropped entirely on conversion.</p>
 </table>
 <p>Static rendition example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;static&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3840</span><span class="p">,</span><span class="w"> </span><span class="mi">2160</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rendering_technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GPUPathtracing&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;aov&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;beauty&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;depth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">600.0</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high_quality&quot;</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3840</span><span class="p">,</span><span class="w"> </span><span class="mi">2160</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"png"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"rendering_technique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPUPathtracing"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"aov"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"beauty"</span><span class="p">,</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="mf">600.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high_quality"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Turntable rendition example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;turntable&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;number_of_frames&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frame_fit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rendering_technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GPUPathtracing&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turntable"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"number_of_frames"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"frame_fit"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"png"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"rendering_technique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPUPathtracing"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>USD export rendition example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usd&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usdz&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdz"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1461,16 +1461,16 @@ together with its cameras and lighting.</p>
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;scene_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./scenes/studio_lighting.usda&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cameras&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hero&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;side&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"scene_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./scenes/studio_lighting.usda"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"cameras"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hero"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"side"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;studio&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;custom_lighting_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./lights/sunset.hdr&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;frame_asset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frame_fit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"studio"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"custom_lighting_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./lights/sunset.hdr"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"frame_asset"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"frame_fit"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1523,13 +1523,13 @@ render.</p>
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;material&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wood&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plastic&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"material"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wood"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metal"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plastic"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -1543,22 +1543,22 @@ counts as one unvaried combination).</p>
 <p><strong>Example with Multiple Variant Sets:</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;finish&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matte&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glossy&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finish"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matte"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"glossy"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
@@ -1574,30 +1574,30 @@ shape as above, see the example below). Only opinions that carry a
 re-saves the configuration.</p>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;finish&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/finish&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matte&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gloss&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"variant_set"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"finish"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/finish"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matte"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">              </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gloss"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span>
+<span class="w">      </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -1609,16 +1609,16 @@ re-saves the configuration.</p>
 <h4>Outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h4>
 <p>The simplest form is a single combined <code class="docutils literal notranslate"><span class="pre">filepath</span></code> Jinja2 template:</p>
 <div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
-  &quot;filepath&quot;: &quot;./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+  "filepath": "./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}"
 }
 </pre></div>
 </div>
 <p>Alternatively, the path may be split into three independently editable
 components that the renderer joins with <code class="docutils literal notranslate"><span class="pre">/</span></code>:</p>
 <div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
-  &quot;output_path&quot;: &quot;./renders&quot;,
-  &quot;structure_template&quot;: &quot;{{template}}/{{render_type}}/{{camera_name}}&quot;,
-  &quot;naming_convention&quot;: &quot;{{asset_filename}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+  "output_path": "./renders",
+  "structure_template": "{{template}}/{{render_type}}/{{camera_name}}",
+  "naming_convention": "{{asset_filename}}_{{frame}}_{{aov_name}}.{{format}}"
 }
 </pre></div>
 </div>
@@ -1702,42 +1702,42 @@ rendering starts.</p>
 <h4>Multi-Scene Static + Turntable (mirrors the bundled default preset)<a class="headerlink" href="#multi-scene-static-turntable-mirrors-the-bundled-default-preset" title="Link to this heading"></a></h4>
 <details>
 <summary>Show / Hide</summary><div class="highlight-jsonc notranslate"><div class="highlight"><pre><span></span>{
-  &quot;version&quot;: &quot;0.2&quot;,
-  &quot;renders&quot;: [
+  "version": "0.2",
+  "renders": [
     {
-      &quot;type&quot;: &quot;static&quot;,
-      &quot;resolution&quot;: [192, 108],
-      &quot;format&quot;: &quot;png&quot;,
-      &quot;samples&quot;: 128,
-      &quot;rendering_technique&quot;: &quot;CPUPathtracing&quot;,
-      &quot;aov&quot;: [&quot;beauty&quot;, &quot;depth&quot;, &quot;normal&quot;],
-      &quot;timeout&quot;: 300
+      "type": "static",
+      "resolution": [192, 108],
+      "format": "png",
+      "samples": 128,
+      "rendering_technique": "CPUPathtracing",
+      "aov": ["beauty", "depth", "normal"],
+      "timeout": 300
     },
     {
-      &quot;type&quot;: &quot;turntable&quot;,
-      &quot;number_of_frames&quot;: 6,
-      &quot;frame_fit&quot;: 0.6,
-      &quot;resolution&quot;: [192, 108],
-      &quot;format&quot;: &quot;png&quot;,
-      &quot;samples&quot;: 128,
-      &quot;rendering_technique&quot;: &quot;CPUPathtracing&quot;,
-      &quot;timeout&quot;: 300
+      "type": "turntable",
+      "number_of_frames": 6,
+      "frame_fit": 0.6,
+      "resolution": [192, 108],
+      "format": "png",
+      "samples": 128,
+      "rendering_technique": "CPUPathtracing",
+      "timeout": 300
     }
   ],
-  &quot;templates&quot;: [
+  "templates": [
     {
-      &quot;scene_path&quot;: &quot;./tests/sample_scene.usda&quot;,
-      &quot;cameras&quot;: [{ &quot;name&quot;: &quot;hero&quot; }, { &quot;name&quot;: &quot;side&quot; }]
+      "scene_path": "./tests/sample_scene.usda",
+      "cameras": [{ "name": "hero" }, { "name": "side" }]
     },
     {
-      &quot;scene_path&quot;: &quot;./tests/sample_scene.usda&quot;,
-      &quot;cameras&quot;: [{ &quot;name&quot;: &quot;camera1&quot; }, { &quot;name&quot;: &quot;camera2&quot; }],
-      &quot;name&quot;: &quot;alt_scene&quot;
+      "scene_path": "./tests/sample_scene.usda",
+      "cameras": [{ "name": "camera1" }, { "name": "camera2" }],
+      "name": "alt_scene"
     }
   ],
-  &quot;variant_sets&quot;: [],
-  &quot;outputs&quot;: {
-    &quot;filepath&quot;: &quot;./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}&quot;
+  "variant_sets": [],
+  "outputs": {
+    "filepath": "./{{template}}/{{render_type}}/{{variant_filepath}}/{{camera_name}}/{{asset_filename}}_{{variant_filename}}_{{render_type}}_{{camera_name}}_{{frame}}_{{aov_name}}.{{format}}"
   }
 }
 </pre></div>
@@ -1751,33 +1751,33 @@ rendering starts.</p>
 <h4>Selecting Specific Variants on an Existing Asset<a class="headerlink" href="#selecting-specific-variants-on-an-existing-asset" title="Link to this heading"></a></h4>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;renders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"renders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;static&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"png"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"samples"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;scene_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./scenes/studio_lighting.usda&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;cameras&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hero&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="nt">"scene_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./scenes/studio_lighting.usda"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"cameras"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hero"</span><span class="w"> </span><span class="p">}]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;is_existing&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_selected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"is_existing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="nt">"is_selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;filepath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./out/{{variant_id}}.{{format}}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"filepath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./out/{{variant_id}}.{{format}}"</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>

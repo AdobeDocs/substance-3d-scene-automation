@@ -1,0 +1,6 @@
+substance3d.api.scene
+---------------------
+.. automodule:: substance3d.api.scene.scene
+    :members:
+    :show-inheritance:
+    :member-order: bysource

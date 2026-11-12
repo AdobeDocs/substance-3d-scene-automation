@@ -200,8 +200,7 @@ Members:
 <li><p><strong>filename</strong> – A valid file path</p></li>
 <li><p><strong>aov_best_format</strong> – Some AOVs are valid only if they are saved in a specific format, if True the best
 extension will be used in filename. If the given filename already has an extension it will be replaced</p></li>
-<li><p><strong>force_color_space</strong> – Takes no account of color configuration and applies the given value in all cases. Value
-must be a valid string color space, for now values are ‘sRGB’ and ‘linear’</p></li>
+<li><p><strong>force_color_space</strong> – Output color-space name, alias, or role recognized by the active configuration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -213,6 +212,12 @@ must be a valid string color space, for now values are ‘sRGB’ and ‘linear�
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="substance3d.api.image.image.LINEAR_COLOR_SPACE">
+<span class="sig-name descname"><span class="pre">LINEAR_COLOR_SPACE</span></span><a class="headerlink" href="#substance3d.api.image.image.LINEAR_COLOR_SPACE" title="Link to this definition"></a></dt>
+<dd><p>Supported image extensions</p>
 </dd></dl>
 
 <dl class="py function">
@@ -232,6 +237,28 @@ Supported types : str for the keys, str, int, float for the values</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.image.image.are_color_spaces_equivalent">
+<span class="sig-name descname"><span class="pre">are_color_spaces_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.are_color_spaces_equivalent" title="Link to this definition"></a></dt>
+<dd><p>Compare color-space names, aliases, and roles through the active configuration.</p>
+<p>Raises an exception if either name is empty or unrecognized, or the active
+configuration is unusable. Different linear spaces are not necessarily equivalent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first</strong> (<em>str</em>) – First color-space name, alias, role, or universal name</p></li>
+<li><p><strong>second</strong> (<em>str</em>) – Second color-space name, alias, role, or universal name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the recognized spaces are equivalent</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -257,13 +284,18 @@ Supported types : str for the keys, str, int, float for the values</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.image.image.color_space">
 <span class="sig-name descname"><span class="pre">color_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.image.image.color_space" title="Link to this definition"></a></dt>
-<dd><p>Get the color space of the specified image</p>
+<dd><p>Get the raw color-space metadata of the specified image.</p>
+<p>Names are not canonicalized. Use are_color_spaces_equivalent() to compare
+decoded metadata with a requested space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference internal" href="#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a><em> | </em><em>str</em><em> | </em><em>Path</em>) – Image or filepath</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Raw color-space metadata, or an empty string if unavailable</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -351,12 +383,6 @@ the given width and height of the given images.</p></li>
 <dd class="field-even"><p><a class="reference internal" href="#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="substance3d.api.image.image.logger">
-<span class="sig-name descname"><span class="pre">logger</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">substance3d.api.image.image</span> <span class="pre">(Level</span> <span class="pre">1)&gt;</span></span><a class="headerlink" href="#substance3d.api.image.image.logger" title="Link to this definition"></a></dt>
-<dd><p>Supported image extensions</p>
 </dd></dl>
 
 <dl class="py function">
@@ -498,8 +524,7 @@ The first Image will be considered as the default one channels RGBA</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>images</strong> (<em>list</em><em>[</em><a class="reference internal" href="#substance3d.api.image.image.Image" title="substance3d.api.image.image.Image"><em>Image</em></a><em>] </em><em>| </em><em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>list</em><em>[</em><em>Path</em><em>]</em>) – Image list or filepath list</p></li>
 <li><p><strong>filename</strong> (<em>str</em><em> | </em><em>Path</em>) – A valid filename to save the exr</p></li>
-<li><p><strong>force_color_space</strong> (<em>str</em>) – Takes no account of color configuration and applies the given value in all cases. Value
-must be a valid string color space, for now values are ‘sRGB’ and ‘linear’</p></li>
+<li><p><strong>force_color_space</strong> (<em>str</em>) – Output color-space name, alias, or role recognized by the active configuration.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

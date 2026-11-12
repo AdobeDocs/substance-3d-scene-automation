@@ -154,8 +154,8 @@
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <section id="create-and-build-a-scene">
 <h2>Create and build a scene<a class="headerlink" href="#create-and-build-a-scene" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a>,
-<a class="reference internal" href="../api/primitive.html#module-substance3d.api.primitive.primitive"><span class="std std-ref">primitive</span></a>, <a class="reference internal" href="../api/light.html#module-substance3d.api.light.light"><span class="std std-ref">light</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/material.html#substance3d-api-material"><span class="std std-ref">material</span></a>,
+<a class="reference internal" href="../api/primitive.html#substance3d-api-primitive"><span class="std std-ref">primitive</span></a>, <a class="reference internal" href="../api/light.html#substance3d-api-light"><span class="std std-ref">light</span></a></p>
 <p>Substance 3D Scene Automation (SSCA) projects require a scene in which to work. The scene acts like a canvas for a painter : without the canvas, the painter has nowhere to use their paint, just as without a scene, SSCA has no space in which to operate.</p>
 <p>The script below shows how to create a scene, add a cube and a light to it, and then save the scene.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the scene module from the api package</span>
@@ -165,13 +165,13 @@
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># create a cube</span>
-<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
+<span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
 
 <span class="c1"># create a light</span>
-<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;distant_light&#39;</span><span class="p">)</span>
+<span class="n">light1</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'distant_light'</span><span class="p">)</span>
 
 <span class="c1"># save the scene with a valid output filepath</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'./TestScene.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Notice how the cube and light both need to reference <code class="docutils literal notranslate"><span class="pre">my_scene</span></code> object as a parent. Without a parent, these objects can’t be created, hence why we need the scene.</p>
@@ -202,7 +202,7 @@ As a result, the above scene tree is actually looking like this:</p>
 </section>
 <section id="load-and-edit-a-scene">
 <h2>Load and edit a scene<a class="headerlink" href="#load-and-edit-a-scene" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/transform.html#module-substance3d.api.transform.transform"><span class="std std-ref">transform</span></a>, <a class="reference internal" href="../api/camera.html#module-substance3d.api.camera.camera"><span class="std std-ref">camera</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/scene.html#module-substance3d.api.scene.scene"><span class="std std-ref">scene</span></a>, <a class="reference internal" href="../api/transform.html#module-substance3d.api.transform.transform"><span class="std std-ref">transform</span></a>, <a class="reference internal" href="../api/camera.html#substance3d-api-camera"><span class="std std-ref">camera</span></a></p>
 <p>While you can create scenes from scratch, it’s often useful to load existing 3D files.</p>
 <p>SSCA can load multiple different 3D filetypes beyond USD to modify and then save as USD,
 use the <code class="docutils literal notranslate"><span class="pre">scene.ALLOWED_EXTENSIONS</span></code> variable to get the full list.</p>
@@ -213,18 +213,18 @@ to avoid overwriting the original USD file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">camera</span>
 
 <span class="c1"># load existing scene</span>
-<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./TestScene.usda&#39;</span><span class="p">)</span>
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'./TestScene.usda'</span><span class="p">)</span>
 
 <span class="c1"># add a camera</span>
-<span class="n">my_cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;camera&#39;</span><span class="p">)</span>
+<span class="n">my_cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'camera'</span><span class="p">)</span>
 
 <span class="c1"># search the scene for the cube, move the cube to be visible from the camera, then frame it.</span>
-<span class="n">my_cube</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;*cube*&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">my_cube</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'*cube*'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">'mesh'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">my_cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">))</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">my_cam</span><span class="p">,</span> <span class="n">my_cube</span><span class="p">)</span>
 
 <span class="c1"># save the scene to a new file</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./UpdatedTestScene.usda&#39;</span><span class="p">)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'./UpdatedTestScene.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The image below shows the resulting scene after being modified by the script above.</p>
@@ -255,9 +255,9 @@ Instead, you can learn more about moving objects in the scene in this section ab
 </section>
 <section id="create-objects-with-ssca">
 <h2>Create objects with SSCA<a class="headerlink" href="#create-objects-with-ssca" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/primitive.html#module-substance3d.api.primitive.primitive"><span class="std std-ref">primitive</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/primitive.html#substance3d-api-primitive"><span class="std std-ref">primitive</span></a></p>
 <p>Earlier articles in this user guide have already covered how to create objects with SSCA, so instead of a full script, here’s an example of how to make a cube:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shape1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Look at the Primitive module documentation for more information and options.</p>
@@ -273,10 +273,10 @@ Like photoshop, it’s possible to stack many layers on top of each other to com
 <p>In the example below, we’re adding a layer using a <code class="docutils literal notranslate"><span class="pre">.usda</span></code> file, but many other file formats are supported, including FBX, OBJ, and GLTF.
 Use <code class="docutils literal notranslate"><span class="pre">scene.ALLOWED_EXTENSIONS</span></code> to get a list of all of them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new scene</span>
-<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;./MyScene.usda&#39;</span><span class="p">)</span>
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">'./MyScene.usda'</span><span class="p">)</span>
 
 <span class="c1"># import/append all the content of an existing file above all the content of my_scene</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;./ImportScene.usda&#39;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'./ImportScene.usda'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -293,7 +293,7 @@ It allows a better control of the scene hierarchy.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the referenced file has a declared default object (e.g : defaultPrim metadata in USD), this object and all its sub-objects will be imported.
-Otherwise, you can specify the desired object to import using <code class="docutils literal notranslate"><span class="pre">default_object</span></code> argument.</p>
+Otherwise, you can specify the desired object to import using the <code class="docutils literal notranslate"><span class="pre">target</span></code> argument.</p>
 <p>By default, the default object of all non-USD files will be the root of the scene.</p>
 </div>
 <p>In order to better understand how the reference content will replace the scene content, consider two files, <strong>A.usd</strong> and <strong>B.usd</strong>.</p>
@@ -350,22 +350,22 @@ and only the children of the defaultPrim are imported to the hierarchy without b
 
 <span class="c1"># creating scene elements that we store into variables</span>
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">level1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;level1&#39;</span><span class="p">)</span>
-<span class="n">level2</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;level2&#39;</span><span class="p">)</span>
+<span class="n">level1</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'level1'</span><span class="p">)</span>
+<span class="n">level2</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'level2'</span><span class="p">)</span>
 
-<span class="c1"># creating scene elements that we don&#39;t store in variables</span>
-<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level1</span><span class="p">,</span> <span class="s1">&#39;level1_cube1&#39;</span><span class="p">)</span>
-<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level1</span><span class="p">,</span> <span class="s1">&#39;level1_cube2&#39;</span><span class="p">)</span>
-<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level2</span><span class="p">,</span> <span class="s1">&#39;level2_cube1&#39;</span><span class="p">)</span>
-<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level2</span><span class="p">,</span> <span class="s1">&#39;level2_cube2&#39;</span><span class="p">)</span>
+<span class="c1"># creating scene elements that we don't store in variables</span>
+<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level1</span><span class="p">,</span> <span class="s1">'level1_cube1'</span><span class="p">)</span>
+<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level1</span><span class="p">,</span> <span class="s1">'level1_cube2'</span><span class="p">)</span>
+<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level2</span><span class="p">,</span> <span class="s1">'level2_cube1'</span><span class="p">)</span>
+<span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">level2</span><span class="p">,</span> <span class="s1">'level2_cube2'</span><span class="p">)</span>
 
-<span class="c1"># looking for objects with &quot;cube2&quot; in their name in the entire scene</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;*cube2*&#39;</span><span class="p">))</span> <span class="c1"># &gt; Will find and print two objects</span>
+<span class="c1"># looking for objects with "cube2" in their name in the entire scene</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'*cube2*'</span><span class="p">))</span> <span class="c1"># &gt; Will find and print two objects</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.search()</span></code> can be used in the same manner to find an object in a specific scope.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># looking for objects with &quot;cube2&quot; in their name in the level1 scope</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">level1</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;*cube2*&#39;</span><span class="p">))</span> <span class="c1"># &gt; Will find and print one object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># looking for objects with "cube2" in their name in the level1 scope</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">level1</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'*cube2*'</span><span class="p">))</span> <span class="c1"># &gt; Will find and print one object</span>
 </pre></div>
 </div>
 <p>The search operation will be limited to all the object’s children and grandchildren. This can be useful for decreasing
@@ -377,24 +377,24 @@ search time in very large scenes.</p>
 </div>
 <p>Below are some examples of useful search operations:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Searches the scene for an object with name cube.</span>
-<span class="n">cube</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;cube&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"cube"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># Returns a list of all objects of type &quot;camera&quot; in the scene.</span>
-<span class="n">cameras</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="c1"># Returns a list of all objects of type "camera" in the scene.</span>
+<span class="n">cameras</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">"camera"</span><span class="p">)</span>
 
 <span class="c1"># Searches for a material object under the cube object.</span>
-<span class="n">cube_material</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;material&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cube_material</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">"material"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># Returns a list of all objects that have &quot;shoe&quot; in their name.</span>
-<span class="n">shoes</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;*shoe*&quot;</span><span class="p">)</span>
+<span class="c1"># Returns a list of all objects that have "shoe" in their name.</span>
+<span class="n">shoes</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"*shoe*"</span><span class="p">)</span>
 
-<span class="c1"># Returns a list of all objects that contain any of the terms &quot;shoe&quot;, &quot;shirt&quot;, or &quot;glove&quot;.</span>
-<span class="n">clothing</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?:shoe|shirt|glove)&quot;</span><span class="p">,</span> <span class="n">is_regexp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Returns a list of all objects that contain any of the terms "shoe", "shirt", or "glove".</span>
+<span class="n">clothing</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?:shoe|shirt|glove)"</span><span class="p">,</span> <span class="n">is_regexp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Returns a list of all objects that have &quot;cube&quot; in their path.</span>
+<span class="c1"># Returns a list of all objects that have "cube" in their path.</span>
 <span class="c1"># By default, looks only at object names,</span>
 <span class="c1"># but with in_path=True arg, the path is also included.</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;*cube*&quot;</span><span class="p">,</span> <span class="n">in_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"*cube*"</span><span class="p">,</span> <span class="n">in_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> argument can be particularly useful for narrowing search results.
@@ -444,7 +444,7 @@ Scene’s <code class="docutils literal notranslate"><span class="pre">.objects<
 <span class="n">obj</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Get an object by object path</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;/Cube1/Sphere3&quot;</span><span class="p">]</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">"/Cube1/Sphere3"</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Object’s children :</p>
@@ -455,7 +455,7 @@ Scene’s <code class="docutils literal notranslate"><span class="pre">.objects<
 <span class="n">child</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Get a child by name</span>
-<span class="n">child</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="s2">&quot;Sphere3&quot;</span><span class="p">]</span>
+<span class="n">child</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="s2">"Sphere3"</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -499,14 +499,14 @@ existing one (if they exist), like you move a transform gizmo in a 3d software.<
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">primitive</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">transform</span>
 
-<span class="n">project_path</span> <span class="o">=</span> <span class="s2">&quot;./ExampleScripts/Generated_USDs/&quot;</span>
+<span class="n">project_path</span> <span class="o">=</span> <span class="s2">"./ExampleScripts/Generated_USDs/"</span>
 
 <span class="c1"># Create an empty scene</span>
-<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_path</span> <span class="o">+</span> <span class="s1">&#39;Transform_Test.usda&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">project_path</span> <span class="o">+</span> <span class="s1">'Transform_Test.usda'</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create a cube and a sphere</span>
-<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
-<span class="n">cube2</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;cube2&#39;</span><span class="p">)</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
+<span class="n">cube2</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'cube2'</span><span class="p">)</span>
 
 <span class="c1"># Translate, rotate, and scale the cube. and leave the sphere at the origin.</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
@@ -514,7 +514,7 @@ existing one (if they exist), like you move a transform gizmo in a 3d software.<
 <span class="n">transform</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 
 <span class="c1"># Save the scene.</span>
-<span class="c1"># The scene location was set when we created the my_scene object, so it doesn&#39;t need to be defined during the save operation.</span>
+<span class="c1"># The scene location was set when we created the my_scene object, so it doesn't need to be defined during the save operation.</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -523,7 +523,7 @@ existing one (if they exist), like you move a transform gizmo in a 3d software.<
 <p>To make the scene a little more interesting we can add a distant light and rotate it to create some shadows. Add the code below to the script (make sure it’s added before the line where the scene is saved, or the change won’t be reflected in the saved USDA).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a light and rotate it to create shadows</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">light</span>
-<span class="n">my_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;distant_light&#39;</span><span class="p">)</span>
+<span class="n">my_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'distant_light'</span><span class="p">)</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">my_light</span><span class="p">,</span> <span class="p">(</span><span class="mf">315.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -532,7 +532,7 @@ existing one (if they exist), like you move a transform gizmo in a 3d software.<
 </section>
 <section id="material">
 <h2>Material<a class="headerlink" href="#material" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/material.html#module-substance3d.api.material.material"><span class="std std-ref">material</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/material.html#substance3d-api-material"><span class="std std-ref">material</span></a></p>
 <p>SSCA includes several options to create a material. They can be created from SBSAR files, texture directories, or with a set of inputs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -547,20 +547,20 @@ You can set another parent by passing a Primhandler of type <cite>Scope</cite> t
 <h3>Create a material from textures<a class="headerlink" href="#create-a-material-from-textures" title="Link to this heading"></a></h3>
 <p>The code below shows how to create a simple PBR material by pointing to a collection of textures.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set a path to your texture folder</span>
-<span class="n">texture_path</span> <span class="o">=</span> <span class="s2">&quot;./textures&quot;</span>
+<span class="n">texture_path</span> <span class="o">=</span> <span class="s2">"./textures"</span>
 
 <span class="c1"># create a dictionary with the texture usage as key, and texture filename as value</span>
 <span class="n">texture_dictionary</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;baseColor&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Base_color.png&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;metallic&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Metallic.png&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ambientOcclusion&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Mixed_AO.png&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;normal&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Normal.png&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Height.png&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;roughness&quot;</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">&quot;DefaultMaterial_Roughness.png&quot;</span>
+    <span class="s2">"baseColor"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Base_color.png"</span><span class="p">,</span>
+    <span class="s2">"metallic"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Metallic.png"</span><span class="p">,</span>
+    <span class="s2">"ambientOcclusion"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Mixed_AO.png"</span><span class="p">,</span>
+    <span class="s2">"normal"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Normal.png"</span><span class="p">,</span>
+    <span class="s2">"height"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Height.png"</span><span class="p">,</span>
+    <span class="s2">"roughness"</span><span class="p">:</span> <span class="n">texture_path</span> <span class="o">+</span> <span class="s2">"DefaultMaterial_Roughness.png"</span>
 <span class="p">}</span>
 
 <span class="c1"># create the material from the texture dictionary</span>
-<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_inputs</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dictionary</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">)</span>
+<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_inputs</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dictionary</span><span class="p">,</span> <span class="s1">'cubes_material'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To save time, it is also possible to create a PBR material by pointing to a texture directory that
@@ -568,25 +568,25 @@ follows the Substance usage naming convention.</p>
 <p>If a texture’s file name contains one of these usage names, it will be automatically matched
 with the correct input:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SUBSTANCE_USAGE_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;diffuseColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;baseColor&quot;</span><span class="p">,</span> <span class="s2">&quot;Base_Color&quot;</span><span class="p">),</span>
-    <span class="s2">&quot;emissiveColor&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;emissive&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;metallic&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;metallic&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;roughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;roughness&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;clearcoat&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatWeight&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;clearcoatRoughness&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;coatRoughness&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;ior&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;IOR&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;normal&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;displacement&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;displacement&quot;</span><span class="p">,),</span>
-    <span class="s2">&quot;occlusion&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;ambientOcclusion&quot;</span><span class="p">,</span> <span class="s2">&quot;MixedAO&quot;</span><span class="p">,</span> <span class="s2">&quot;Mixed_AO&quot;</span><span class="p">),</span>
+    <span class="s2">"diffuseColor"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"baseColor"</span><span class="p">,</span> <span class="s2">"Base_Color"</span><span class="p">),</span>
+    <span class="s2">"emissiveColor"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"emissive"</span><span class="p">,),</span>
+    <span class="s2">"metallic"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"metallic"</span><span class="p">,),</span>
+    <span class="s2">"roughness"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"roughness"</span><span class="p">,),</span>
+    <span class="s2">"clearcoat"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"coatWeight"</span><span class="p">,),</span>
+    <span class="s2">"clearcoatRoughness"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"coatRoughness"</span><span class="p">,),</span>
+    <span class="s2">"opacity"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"opacity"</span><span class="p">,),</span>
+    <span class="s2">"ior"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"IOR"</span><span class="p">,),</span>
+    <span class="s2">"normal"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"normal"</span><span class="p">,),</span>
+    <span class="s2">"displacement"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"displacement"</span><span class="p">,),</span>
+    <span class="s2">"occlusion"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"ambientOcclusion"</span><span class="p">,</span> <span class="s2">"MixedAO"</span><span class="p">,</span> <span class="s2">"Mixed_AO"</span><span class="p">),</span>
     <span class="o">...</span>
     <span class="p">}</span>
 </pre></div>
 </div>
 <p>So, create a material from a textures directory with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set a path to your texture folder</span>
-<span class="n">texture_dir</span> <span class="o">=</span> <span class="s2">&quot;./textures&quot;</span>
-<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_textures_dir</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dir</span><span class="p">,</span> <span class="s1">&#39;cubes_material&#39;</span><span class="p">)</span>
+<span class="n">texture_dir</span> <span class="o">=</span> <span class="s2">"./textures"</span>
+<span class="n">cubes_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_textures_dir</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_dir</span><span class="p">,</span> <span class="s1">'cubes_material'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can get the full list of substance usage mapping by printing the result of <code class="docutils literal notranslate"><span class="pre">material.SUBSTANCE_USAGE_MAPPING</span></code></p>
@@ -598,7 +598,7 @@ with the correct input:</p>
 <section id="create-a-material-from-an-sbsar-file">
 <h3>Create a material from an SBSAR file<a class="headerlink" href="#create-a-material-from-an-sbsar-file" title="Link to this heading"></a></h3>
 <p>Creating a material from an SBSAR file is as simple as a single line of code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sbsar_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;./SBSARs/SimpleMat.sbsar&quot;</span><span class="p">,</span> <span class="s2">&quot;sbsar_mat&quot;</span> <span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sbsar_material</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_from_sbsar</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"./SBSARs/SimpleMat.sbsar"</span><span class="p">,</span> <span class="s2">"sbsar_mat"</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Here we’re creating a material, giving it the name “sbsar_mat” and putting it by default into the <cite>/materials</cite> scope.</p>
@@ -627,35 +627,35 @@ and how to tweak them.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">all_parameters</span><span class="p">)</span>
 
 <span class="c1"># it prints a dictionary with the following information per parameter</span>
-<span class="p">{</span> <span class="s1">&#39;parameter_identifier&#39;</span> <span class="p">:</span> <span class="p">{</span>
-    <span class="s1">&#39;guiDescription&#39;</span><span class="p">:</span> <span class="s1">&#39;description of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;guiGroup&#39;</span><span class="p">:</span> <span class="s1">&#39;group of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;guiWidget&#39;</span><span class="p">:</span> <span class="s1">&#39;widget of the parameter (color, slider, ...)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;identifier&#39;</span><span class="p">:</span> <span class="s1">&#39;identifier of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;label of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;maxValue&#39;</span><span class="p">:</span> <span class="s1">&#39;maximum value of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;minvalue&#39;</span><span class="p">:</span> <span class="s1">&#39;minimum value of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;type of the parameter (float, float2, float3, int, int2, boolean, ...&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;uid&#39;</span><span class="p">:</span> <span class="s1">&#39;uid of the parameter&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;value of the parameter&#39;</span>
+<span class="p">{</span> <span class="s1">'parameter_identifier'</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'guiDescription'</span><span class="p">:</span> <span class="s1">'description of the parameter'</span><span class="p">,</span>
+    <span class="s1">'guiGroup'</span><span class="p">:</span> <span class="s1">'group of the parameter'</span><span class="p">,</span>
+    <span class="s1">'guiWidget'</span><span class="p">:</span> <span class="s1">'widget of the parameter (color, slider, ...)'</span><span class="p">,</span>
+    <span class="s1">'identifier'</span><span class="p">:</span> <span class="s1">'identifier of the parameter'</span><span class="p">,</span>
+    <span class="s1">'label'</span><span class="p">:</span> <span class="s1">'label of the parameter'</span><span class="p">,</span>
+    <span class="s1">'maxValue'</span><span class="p">:</span> <span class="s1">'maximum value of the parameter'</span><span class="p">,</span>
+    <span class="s1">'minvalue'</span><span class="p">:</span> <span class="s1">'minimum value of the parameter'</span><span class="p">,</span>
+    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'type of the parameter (float, float2, float3, int, int2, boolean, ...'</span><span class="p">,</span>
+    <span class="s1">'uid'</span><span class="p">:</span> <span class="s1">'uid of the parameter'</span><span class="p">,</span>
+    <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'value of the parameter'</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># get only color parameters of a material</span>
 <span class="n">color_parameters</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">get_sbsar_parameters</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="n">material</span><span class="o">.</span><span class="n">SbsarWidget</span><span class="o">.</span><span class="n">COLOR</span><span class="p">)</span>
 
-<span class="c1"># get only parameters containing the word &quot;roughness&quot;</span>
-<span class="n">roughness_parameters</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">get_sbsar_parameters</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;*roughness*&#39;</span><span class="p">)</span>
+<span class="c1"># get only parameters containing the word "roughness"</span>
+<span class="n">roughness_parameters</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">get_sbsar_parameters</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">'*roughness*'</span><span class="p">)</span>
 
 <span class="c1"># Change the parameter value</span>
-<span class="c1"># If it&#39;s a boolean</span>
-<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">&#39;my_boolean_parameter&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="c1"># If it&#39;s an integer</span>
-<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">&#39;my_integer_parameter&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># If it&#39;s a float</span>
-<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">&#39;my_float_parameter&#39;</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">)</span>
-<span class="c1"># If it&#39;s a float3</span>
-<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">&#39;my_float3_parameter&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">))</span>
+<span class="c1"># If it's a boolean</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">'my_boolean_parameter'</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># If it's an integer</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">'my_integer_parameter'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># If it's a float</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">'my_float_parameter'</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">)</span>
+<span class="c1"># If it's a float3</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_sbsar_parameter</span><span class="p">(</span><span class="n">sbsar_material</span><span class="p">,</span> <span class="s1">'my_float3_parameter'</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
@@ -712,7 +712,7 @@ you can now choose between mapping projection types when applying your material.
 </section>
 <section id="lights">
 <h2>Lights<a class="headerlink" href="#lights" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/light.html#module-substance3d.api.light.light"><span class="std std-ref">light</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/light.html#substance3d-api-light"><span class="std std-ref">light</span></a></p>
 <p>The USD format has a wide range of lights available, but by default some of their names may be unfamiliar. <a class="reference external" href="https://www.youtube.com/watch?v=c7qyI8pZvF4&amp;t=172s">This video</a> created by Nvidia covers the lights available with USD and explains how lights can behave differently with the USD format. The table below shows the USD equivalent of common light types:</p>
 <table class="docutils align-default">
 <thead>
@@ -747,15 +747,15 @@ you can now choose between mapping projection types when applying your material.
 <h3>Dome Lights<a class="headerlink" href="#dome-lights" title="Link to this heading"></a></h3>
 <p>Dome lights behave slightly differently than other lights as they require an HDRI to cast light.
 To create a dome light and attach a texture to it, use:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dome_path</span> <span class="o">=</span> <span class="s2">&quot;./skylight.hdr&quot;</span>
-<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_path</span><span class="o">=</span><span class="n">dome_path</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;my_dome_light&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dome_path</span> <span class="o">=</span> <span class="s2">"./skylight.hdr"</span>
+<span class="n">light</span><span class="o">.</span><span class="n">dome</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">texture_path</span><span class="o">=</span><span class="n">dome_path</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="s1">'my_dome_light'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="cameras">
 <h2>Cameras<a class="headerlink" href="#cameras" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/camera.html#module-substance3d.api.camera.camera"><span class="std std-ref">camera</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/camera.html#substance3d-api-camera"><span class="std std-ref">camera</span></a></p>
 <section id="create-cameras">
 <h3>Create cameras<a class="headerlink" href="#create-cameras" title="Link to this heading"></a></h3>
 <p>Cameras are necessary to create renders with SSCA. There are 3 ways to create a camera with the <code class="docutils literal notranslate"><span class="pre">camera</span></code> module:</p>
@@ -764,7 +764,7 @@ To create a dome light and attach a texture to it, use:</p>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">camera</span>
 
-<span class="n">primary_camera</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;camera1&quot;</span><span class="p">)</span>
+<span class="n">primary_camera</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"camera1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -778,7 +778,7 @@ To create a dome light and attach a texture to it, use:</p>
 <span class="n">props</span><span class="o">.</span><span class="n">verticalAperture</span> <span class="o">=</span> <span class="mf">10.0</span>
 
 <span class="c1"># create camera using those properties</span>
-<span class="n">primary_camera</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">&#39;primary_cam&#39;</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+<span class="n">primary_camera</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s1">'primary_cam'</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Editable camera properties:</p>
@@ -811,7 +811,7 @@ To create a dome light and attach a texture to it, use:</p>
 </section>
 <section id="rendering">
 <h2>Rendering<a class="headerlink" href="#rendering" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/renderer.html#module-substance3d.api.renderer.renderer"><span class="std std-ref">renderer</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/renderer.html#substance3d-api-renderer"><span class="std std-ref">renderer</span></a></p>
 <p>SSCA includes an easy 3-step process for rendering using the <code class="docutils literal notranslate"><span class="pre">renderer</span></code> module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">renderer</span>
 
@@ -822,7 +822,7 @@ To create a dome light and attach a texture to it, use:</p>
 <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">camera</span><span class="o">=</span><span class="n">primary_camera</span><span class="p">)</span>
 
 <span class="c1"># save the image</span>
-<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./Render.png&#39;</span><span class="p">)</span>
+<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'./Render.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -831,7 +831,7 @@ To create a dome light and attach a texture to it, use:</p>
 </div>
 <p>You can do a render of all your cameras using the <code class="docutils literal notranslate"><span class="pre">.search()</span></code> method on your scene and iterating through all of them with a simple loop.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># search the scene for all camera objects</span>
-<span class="n">cameras</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;camera&#39;</span><span class="p">)</span>
+<span class="n">cameras</span> <span class="o">=</span> <span class="n">my_scene</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">'camera'</span><span class="p">)</span>
 
 <span class="c1"># initialize the renderer</span>
 <span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
@@ -840,7 +840,7 @@ To create a dome light and attach a texture to it, use:</p>
 <span class="c1"># loop through all cameras in the scene, rendering and saving an image for each of them</span>
 <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cameras</span><span class="p">:</span>
     <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">default_light</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">cam</span><span class="p">)</span>
-    <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./Camera&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'./Camera'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.png'</span><span class="p">)</span>
     <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -858,25 +858,25 @@ The snippet below shows how to render with a given background:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize the renderer</span>
 <span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
 <span class="c1"># render and add a background image</span>
-<span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">cam</span><span class="p">,</span> <span class="n">background_image</span><span class="o">=</span><span class="s1">&#39;./background.png&#39;</span><span class="p">)</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">cam</span><span class="p">,</span> <span class="n">background_image</span><span class="o">=</span><span class="s1">'./background.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="export">
 <h2>Export<a class="headerlink" href="#export" title="Link to this heading"></a></h2>
-<p>API Modules : <a class="reference internal" href="../api/export.html#module-substance3d.api.export.export"><span class="std std-ref">export</span></a></p>
+<p>API Modules : <a class="reference internal" href="../api/export.html#substance3d-api-export"><span class="std std-ref">export</span></a></p>
 <p>Sometimes you may need to export to formats other than USDA and USDC. SSCA allows you to export to FBX, GLTF and USDZ. Note that each file format has their own limitations, and they may not necessarily support saving all aspects of your scene.
 The snippet below shows how to export to each file format:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># export to USDZ</span>
-<span class="n">export</span><span class="o">.</span><span class="n">archive</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;./File.usdz&quot;</span><span class="p">)</span>
+<span class="n">export</span><span class="o">.</span><span class="n">archive</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"./File.usdz"</span><span class="p">)</span>
 
 <span class="c1"># export to FBX – bake_sbsar=False stops the exporter from baking down materials.</span>
-<span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;./File.fbx&quot;</span><span class="p">,</span> <span class="n">bake_sbsar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"./File.fbx"</span><span class="p">,</span> <span class="n">bake_sbsar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># export to GLTF or GLB</span>
-<span class="n">export</span><span class="o">.</span><span class="n">gltf</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;./File.gltf&quot;</span><span class="p">)</span>
-<span class="n">export</span><span class="o">.</span><span class="n">glb</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;./File.glb&quot;</span><span class="p">)</span>
+<span class="n">export</span><span class="o">.</span><span class="n">gltf</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"./File.gltf"</span><span class="p">)</span>
+<span class="n">export</span><span class="o">.</span><span class="n">glb</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"./File.glb"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -898,11 +898,11 @@ that you can save by calling <code class="docutils literal notranslate"><span cl
 
 <span class="c1"># resize an Image and save it as new file</span>
 <span class="n">resized_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">rendered_img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
-<span class="n">resized_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;./my_resized_img.png&quot;</span><span class="p">)</span>
+<span class="n">resized_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"./my_resized_img.png"</span><span class="p">)</span>
 
 <span class="c1"># create a solid color image and save it, by giving a (r, g, b) tuple and a size</span>
 <span class="n">solid_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
-<span class="n">solid_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;./solid_color.png&quot;</span><span class="p">)</span>
+<span class="n">solid_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"./solid_color.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -913,16 +913,16 @@ that you can save by calling <code class="docutils literal notranslate"><span cl
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">image</span>
 
 <span class="c1"># init the renderer with transparent background</span>
-<span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">renderer_name</span><span class="o">=</span><span class="s1">&#39;Eclair&#39;</span><span class="p">,</span> <span class="n">environment_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">renderer_name</span><span class="o">=</span><span class="s1">'Eclair'</span><span class="p">,</span> <span class="n">environment_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># render the scene</span>
 <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">default_light</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="n">cam</span><span class="p">)</span>
 
 <span class="c1"># combine the rendered image with the imported background image</span>
-<span class="n">background_img</span> <span class="o">=</span> <span class="s1">&#39;./background_image.png&#39;</span>
+<span class="n">background_img</span> <span class="o">=</span> <span class="s1">'./background_image.png'</span>
 <span class="n">composited_image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">rendered_img</span><span class="p">,</span> <span class="n">background_img</span><span class="p">)</span>
 
 <span class="c1"># save the composited image</span>
-<span class="n">composited_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./final_image.png&#39;</span><span class="p">)</span>
+<span class="n">composited_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'./final_image.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -950,38 +950,38 @@ a common variant set <code class="docutils literal notranslate"><span class="pre
 <span class="c1"># create a standard scene tree</span>
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">get_default</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
-<span class="n">cube_grp</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_asset&#39;</span><span class="p">)</span>
-<span class="n">cube_geo</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">cube_grp</span><span class="p">,</span> <span class="s1">&#39;cube_geo&#39;</span><span class="p">)</span>
+<span class="n">cube_grp</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_asset'</span><span class="p">)</span>
+<span class="n">cube_geo</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">cube_grp</span><span class="p">,</span> <span class="s1">'cube_geo'</span><span class="p">)</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cube_geo</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">45.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">))</span>
-<span class="n">cube_material</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">cube_grp</span><span class="p">,</span> <span class="s1">&#39;cube_mat&#39;</span><span class="p">)</span>
+<span class="n">cube_material</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">cube_grp</span><span class="p">,</span> <span class="s1">'cube_mat'</span><span class="p">)</span>
 
 <span class="c1"># create a red material variant under a new set called cube_color</span>
-<span class="n">cube_mat_red</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">variant_identifier</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">variant_set</span><span class="o">=</span><span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">cube_mat_red</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">variant_identifier</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">variant_set</span><span class="o">=</span><span class="s1">'cube_color'</span><span class="p">)</span>
 
 <span class="c1"># enter in the red variant context to edit it</span>
 <span class="c1"># all modifications on the cube or its children will be applied only on the variant</span>
 <span class="k">with</span> <span class="n">cube_mat_red</span><span class="p">:</span>
-    <span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s1">&#39;red_mat&#39;</span><span class="p">)</span>
+    <span class="n">red_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s1">'red_mat'</span><span class="p">)</span>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">red_mat</span><span class="p">,</span> <span class="n">cube_geo</span><span class="p">)</span>
 <span class="c1"># exit the red variant edition</span>
 
 <span class="c1"># create a blue material variant under the same set</span>
-<span class="n">cube_mat_blue</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">variant_identifier</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">variant_set</span><span class="o">=</span><span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">cube_mat_blue</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">variant_identifier</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span> <span class="n">variant_set</span><span class="o">=</span><span class="s1">'cube_color'</span><span class="p">)</span>
 
 <span class="c1"># enter in the blue variant context edition</span>
 <span class="k">with</span> <span class="n">cube_mat_blue</span><span class="p">:</span>
-    <span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">&#39;blue_mat&#39;</span><span class="p">)</span>
+    <span class="n">blue_mat</span> <span class="o">=</span> <span class="n">material</span><span class="o">.</span><span class="n">create_solid_color</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">'blue_mat'</span><span class="p">)</span>
     <span class="n">material</span><span class="o">.</span><span class="n">assign_to_objects</span><span class="p">(</span><span class="n">blue_mat</span><span class="p">,</span> <span class="n">cube_geo</span><span class="p">)</span>
 <span class="c1"># exit the red variant edition</span>
 
-<span class="c1"># get all variants under the &quot;cube_color&quot; set</span>
-<span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span> <span class="c1"># &gt;&gt; [&#39;red&#39;, &#39;blue&#39;]</span>
+<span class="c1"># get all variants under the "cube_color" set</span>
+<span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span> <span class="c1"># &gt;&gt; ['red', 'blue']</span>
 
 <span class="c1"># set the variant of your choice</span>
-<span class="n">variant</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">variant</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span>
 
 <span class="c1"># clear the variant selection</span>
-<span class="n">variant</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">variant</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>At this point, you will have different options to render all your variants.
@@ -990,48 +990,48 @@ Note that you will have to manually clear the selection if you wish to switch ba
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">camera</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">renderer</span>
 
 <span class="c1"># creating light and camera</span>
-<span class="n">d_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;distant_light&quot;</span><span class="p">)</span>
+<span class="n">d_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"distant_light"</span><span class="p">)</span>
 <span class="n">d_light</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">25000</span><span class="p">)</span> <span class="c1">#  Daylight intensity</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"camera"</span><span class="p">)</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">50.0</span><span class="p">))</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="n">cube_grp</span><span class="p">)</span>
 
 <span class="c1"># rendering variants</span>
 <span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
-<span class="n">cube_variants</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">cube_variants</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">var_id</span> <span class="ow">in</span> <span class="n">cube_variants</span><span class="p">:</span>
-    <span class="n">variant</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">var_id</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span> <span class="c1"># selects variant</span>
+    <span class="n">variant</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">var_id</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span> <span class="c1"># selects variant</span>
     <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cam</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-    <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">var_id</span><span class="si">}</span><span class="s1">_var.png&#39;</span><span class="p">)</span>
+    <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">'./</span><span class="si">{</span><span class="n">var_id</span><span class="si">}</span><span class="s1">_var.png'</span><span class="p">)</span>
 
 <span class="c1"># clearing the selection to switch back to default cube</span>
-<span class="n">variant</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span> <span class="c1"># clears variant selection</span>
+<span class="n">variant</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span> <span class="c1"># clears variant selection</span>
 <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cam</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./default.png&#39;</span><span class="p">)</span>
+<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'./default.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The other way is to render variants using context, avoiding the need for variant selection.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">camera</span><span class="p">,</span> <span class="n">light</span><span class="p">,</span> <span class="n">renderer</span>
 
 <span class="c1"># creating light and camera</span>
-<span class="n">d_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;distant_light&quot;</span><span class="p">)</span>
+<span class="n">d_light</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">distant</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"distant_light"</span><span class="p">)</span>
 <span class="n">d_light</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">25000</span><span class="p">)</span> <span class="c1">#  Daylight intensity</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;camera&quot;</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"camera"</span><span class="p">)</span>
 <span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">50.0</span><span class="p">))</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="n">cube_grp</span><span class="p">)</span>
 
 <span class="c1"># rendering variants</span>
 <span class="n">renderer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
-<span class="n">cube_variants</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span>
+<span class="n">cube_variants</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get_identifiers</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">var_id</span> <span class="ow">in</span> <span class="n">cube_variants</span><span class="p">:</span>
-    <span class="n">var</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">var_id</span><span class="p">,</span> <span class="s1">&#39;cube_color&#39;</span><span class="p">)</span> <span class="c1"># gets the Variant object</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">var_id</span><span class="p">,</span> <span class="s1">'cube_color'</span><span class="p">)</span> <span class="c1"># gets the Variant object</span>
     <span class="k">with</span> <span class="n">var</span><span class="p">:</span>
         <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cam</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-        <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">var_id</span><span class="si">}</span><span class="s1">_var.png&#39;</span><span class="p">)</span>
+        <span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">'./</span><span class="si">{</span><span class="n">var_id</span><span class="si">}</span><span class="s1">_var.png'</span><span class="p">)</span>
 
-<span class="c1"># assuming you didn&#39;t select a variant, this will render the default cube</span>
+<span class="c1"># assuming you didn't select a variant, this will render the default cube</span>
 <span class="n">rendered_img</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cam</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./default.png&#39;</span><span class="p">)</span>
+<span class="n">rendered_img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'./default.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1039,7 +1039,7 @@ Note that you will have to manually clear the selection if you wish to switch ba
 <h2>Animation<a class="headerlink" href="#animation" title="Link to this heading"></a></h2>
 <p>With SSCA, you can easily render animated scenes and also animate properties.</p>
 <p>How to render a series of frames:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the start and the end timecode of the given scene if it&#39;s not already set</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the start and the end timecode of the given scene if it's not already set</span>
 <span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">set_time_range</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">))</span>
 
 <span class="c1"># render all frames in the time range</span>
@@ -1052,18 +1052,18 @@ Note that you will have to manually clear the selection if you wish to switch ba
 
 <span class="n">my_scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
-<span class="n">world</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">)</span>
-<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s1">&#39;cube&#39;</span><span class="p">)</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s1">&#39;./assets/cube.fbx&#39;</span><span class="p">)</span>
-<span class="n">sphere</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s1">&#39;sphere&#39;</span><span class="p">)</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="s1">&#39;./assets/sphere.fbx&#39;</span><span class="p">)</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">'world'</span><span class="p">)</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s1">'cube'</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s1">'./assets/cube.fbx'</span><span class="p">)</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s1">'sphere'</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="s1">'./assets/sphere.fbx'</span><span class="p">)</span>
 
 <span class="n">cam</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_scn</span><span class="p">)</span>
 <span class="n">camera</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">cam</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">frame_fit</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="c1"># Add a key context to start animating</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">create_timecode_label</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">activate_timecode</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">):</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">create_timecode_label</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">'start'</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">activate_timecode</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">'start'</span><span class="p">):</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="p">(</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
@@ -1082,8 +1082,8 @@ Note that you will have to manually clear the selection if you wish to switch ba
     <span class="n">transform</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_rotate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
-<span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">create_timecode_label</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">activate_timecode</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">):</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">create_timecode_label</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">'end'</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">scene</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">activate_timecode</span><span class="p">(</span><span class="n">my_scn</span><span class="p">,</span> <span class="s1">'end'</span><span class="p">):</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="p">(</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_translate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">set_rotate</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>

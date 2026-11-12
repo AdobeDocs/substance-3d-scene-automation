@@ -1,0 +1,6 @@
+substance3d.api.material.material_utilities
+-------------------------------------------
+.. automodule:: substance3d.api.material.material_utilities
+    :members:
+    :show-inheritance:
+    :member-order: bysource

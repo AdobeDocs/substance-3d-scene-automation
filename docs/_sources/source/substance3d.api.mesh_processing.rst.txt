@@ -1,21 +1,30 @@
 substance3d.api.mesh_processing package
 =======================================
 
-Submodules
-----------
+Legacy operator API
+-------------------
 
-substance3d.api.mesh_processing.mesh_processing module
-------------------------------------------------------
+.. warning::
+
+   The ``*Op`` classes and ``process()`` compatibility API will be deprecated in favor of the
+   direct functions below.
+
+.. automodule:: substance3d.api.mesh_processing.operators
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 .. automodule:: substance3d.api.mesh_processing.mesh_processing
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Functional API
+--------------
 
-.. automodule:: substance3d.api.mesh_processing
+These functions are exported directly from ``substance3d.api.mesh_processing``.
+
+.. automodule:: substance3d.api.mesh_processing.command_execution
    :members:
    :undoc-members:
    :show-inheritance:

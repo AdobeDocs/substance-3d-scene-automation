@@ -5,36 +5,32 @@ CAD & Mesh Processing
 Introduction
 ============
 
-The **SSCA** Mesh Processing module contains a list of operators that can be applied to a given target, such as a StageHandler or PrimHandler.
-Processing on a target will apply the operator on all meshes of the target subtree.
-
-These operators can be chained in any order to build relevant and adapted processing workflow.
+The **SSCA** Mesh Processing module provides functions that can be applied to a target, such as a StageHandler or PrimHandler.
+Processing a target applies the function to all meshes in the target subtree.
 
 In industries involving 3D content, assets need to be prepared to fit pipeline requirements.
-With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and repack **SSCA** provides the advantage to automate asset optimization.
+With functions for remeshing, decimation, mesh cleaning, UV unwrap, and repacking, **SSCA** can automate asset optimization.
 
 
 **Simple Example:**
 
 .. code-block:: python
 
-   from pathlib import Path
-   from substance3d.api import scene, mesh_processing as mp
-   
-   # Path to the 3D file
-   my_3d_file = Path("meshes/mesh_file.obj")
+    from pathlib import Path
+    from substance3d.api import scene, mesh_processing as mp
+    
+    # Path to the 3D file
+    my_3d_file = Path("meshes/mesh_file.obj")
 
-   # Build a scene from the 3D file
-   scn = scene.load(my_3d_file)
+    # Build a scene from the 3D file
+    scn = scene.load(my_3d_file)
 
-   # Build a processing workflow (operators are configured via attributes)
-   ops = [mp.DecimationOp(), mp.UnwrapOp()]
-
-   # Run the workflow on the whole scene
-   mp.process(scn, ops)
+    # Run mesh-processing functions on the whole scene.
+    mp.decimate(scn)
+    mp.unwrap(scn)
 
 .. note::
-    Operators process the given prim and its sub-tree.
+    Mesh-processing functions process the given prim and its subtree.
     Run it on a Stagehandler to process all meshes of the scene.
     
     Mesh Processing works the same way on **CAD** and **3D** files.
@@ -77,12 +73,21 @@ Remove occluded meshes
 CAD files often contain meshes or parts that are inside the main asset shape like electrical circuits, or internal mechanical components. These objects are not visible, and removing them can help optimize the mesh processing and the work load for downstream tasks and steps like texturing, staging, etc.
 
 .. code-block:: python
-    
-    # Make sure vertices of every mesh are welded
-    remove_occluded_op = mesh_processing.RemoveOccludedInstancesOp()
 
-    # Default precision is set to 'Medium', but you can set it to 'Low' or 'High' depending on your needs.
-    remove_occluded_op.precision = mesh_processing.presets.RemoveOccludedInstancesPrecision.Medium
+    # A StageHandler processes every mesh below the scene's default prim.
+    mesh_processing.remove_occluded_instances(my_scene)
+
+    # mesh_group is a PrimHandler. This processes meshes in its subtree only.
+    mesh_processing.remove_occluded_instances(mesh_group)
+
+    # A list of PrimHandlers limits processing to the selected child subtrees.
+    selected_parts = [mesh_group.children[0], mesh_group.children[2]]
+
+    # Default precision is Medium; select Low or High to tune speed and precision.
+    mesh_processing.remove_occluded_instances(
+        selected_parts,
+        precision=mesh_processing.RemoveOccludedInstancesPrecision.Medium,
+    )
 
 The ``Precision`` attribute controls how many rays are cast to detect occluded meshes. Higher precision casts more rays, so more meshes are considered visible and preserved. For a hermetic shell, precision has no effect, so set it to 'Low' to save processing time.
 
@@ -113,16 +118,14 @@ Let's now load some of the cleaning operators:
 
 .. code-block:: python
     
-    # Make sure vertices of every mesh are welded
-    verts_weld_op = mesh_processing.RemoveDuplicateVerticesOp()
+    # Make sure vertices of every mesh are welded.
+    mesh_processing.remove_duplicate_vertices(my_scene)
 
-    # Fix potential non-manifold edges and vertices
-    manifoldness_op = mesh_processing.ResolveNonmanifoldnessOp()
+    # Fix potential non-manifold edges and vertices.
+    mesh_processing.resolve_nonmanifoldness(my_scene)
 
-    # Fill potential mesh holes
-    close_mesh_op = mesh_processing.CloseSmallHolesOp()
-    # Refine CloseSmallHolesOp attribute
-    close_mesh_op.max_hole_size = 10  # max hole's boundary vertices number to fill
+    # Fill holes with at most 10 boundary vertices.
+    mesh_processing.close_small_holes(my_scene, max_hole_size=10)
 
 
 Recover Quads from triangulated meshes
@@ -130,9 +133,11 @@ Recover Quads from triangulated meshes
 
 .. code-block:: python
     
-    quad_op = mesh_processing.QuadRecoverOp()
-    quad_op.max_corner_angular_deviation_degrees = 60.0
-    quad_op.max_planarity_angular_deviation_degrees = 10.0
+    mesh_processing.quad_recover(
+        my_scene,
+        max_corner_angular_deviation_degrees=60.0,
+        max_planarity_angular_deviation_degrees=10.0,
+    )
     
 
 .. image:: /source/static/mesh_processing/CAD_wire_triangles.jpg
@@ -147,28 +152,24 @@ Recover Quads from triangulated meshes
 Unwrap mesh UVs
 ***************
 
-The Unwrap operator works with four :ref:`modes<substance3d.api.mesh_processing>`: ``Default``, ``Organic``, ``Fast`` and ``HardEdge``.
+The unwrap function supports four :ref:`modes<substance3d.api.mesh_processing>`: ``Default``, ``Organic``, ``Fast`` and ``HardEdge``.
 
 The ``Default`` and ``HardEdge`` modes use the same triplanar-style hard-edge seaming behavior. Use ``Organic`` for the legacy organic-oriented workflow on varied assets. ``Fast`` prioritizes speed over segmentation and parameterization quality.
 
 .. code-block:: python
 
-    # Set up Unwrap operator for explicit triplanar-style hard-edge seaming.
-    unwrap_op = mesh_processing.UnwrapOp()
-
-    unwrap_op.mode = mesh_processing.UnwrapMode.HardEdge
-
-    # Configure packing options.
-    unwrap_op.packing.padding_size = 0.002  # Padding between islands in UV space.
-    unwrap_op.packing.max_num_uv_tiles = 4  # Maximum number of UV tiles to use when packing islands.
-    unwrap_op.packing.num_island_rotations = 1  # Number of rotations to try when packing islands.
-
-    # Configure segmentation options.
-    unwrap_op.segmentation.max_cluster_confidence = 0.97
-    unwrap_op.segmentation.max_num_iterations = 7
-    unwrap_op.segmentation.max_num_outliers = 1
-    unwrap_op.segmentation.elongation_threshold = 1.0
-    unwrap_op.segmentation.chunks_elongation = 1.0
+    mesh_processing.unwrap(
+        my_scene,
+        mode=mesh_processing.UnwrapMode.HardEdge,
+        padding_size=0.002,
+        max_num_uv_tiles=4,
+        num_island_rotations=1,
+        max_cluster_confidence=0.97,
+        max_num_iterations=7,
+        max_num_outliers=1,
+        elongation_threshold=1.0,
+        chunks_elongation=1.0,
+    )
     
 
 .. image:: /source/static/mesh_processing/CAD_triplanar_uvs_render.jpg
@@ -179,26 +180,24 @@ The ``Default`` and ``HardEdge`` modes use the same triplanar-style hard-edge se
     :alt: Unwrapped UVs HardEdge Mode 
     
 .. note::
-    Unwrap Operator automatically packs UV after Unwrap. You can refine packing results with the packing attributes of the Unwrap operator.
+    The unwrap function automatically packs UVs. Use its packing keyword arguments to refine the result.
 
 
-Compute mesh processing operators on the scene.
-***********************************************
+Export the processed scene
+**************************
 
 .. code-block:: python
-
-    mesh_processing.process(my_scene, [verts_weld_op, manifoldness_op, close_mesh_op, quad_op, unwrap_op])
 
     # Export the processed asset scene to a new file
     export.fbx(my_scene, Path("mesh_output/processed_cad_file.fbx"))
 
 .. note::
-    Each operator is executed one after the other, following the specified order.
+    Each function runs immediately, so call order defines the processing order.
 
 .. note::
-    ``parent`` can also be a list of objects (``list[PrimHandler]``), in which case every operator
+    ``parent`` can also be a list of objects (``list[PrimHandler]``), in which case the function
     is applied to all the given objects and their subtrees in a single call, e.g.
-    ``mesh_processing.process([obj_a, obj_b], [decimate_op])``. All objects in the list must
+    ``mesh_processing.decimate([obj_a, obj_b])``. All objects in the list must
     belong to the same stage.
 
 
@@ -208,7 +207,7 @@ Processing Mesh Attributes and Mesh/Subtree Values
 SSCA provides access to mesh and scene hierarchy values, including mesh and/or UV surface areas and edge length metrics.
 
 
-These operators are divided into two categories:
+These functions are divided into two categories:
 
 - **Indexed mesh attribute**: Operates on each mesh, storing their relative processed values into their mesh attributes.
 
@@ -222,18 +221,16 @@ These operators are divided into two categories:
     mesh_group = primitive.xform(main_scene, "mesh_grp")
     scene.add_reference(mesh_group, cube_file)
 
-    # Load values & attributes operators
-    uv_area_op = mesh_processing.ComputeUVAreaOp()  # Global mesh/subtree value
-    mesh_area_op = mesh_processing.ComputeMeshAreaOp()  # Global mesh/subtree value
-    edge_lengths_op = mesh_processing.ComputeEdgeLengthsOp()  # Indexed mesh attribute
+    # Compute global mesh/subtree values.
+    uv_area = mesh_processing.compute_uv_area(mesh_group)
+    mesh_area = mesh_processing.compute_mesh_area(mesh_group)
 
-    # Process the scene with the operators and store mesh group subtree global values as dictionary
-    processing_result = mesh_processing.process(mesh_group, [uv_area_op, mesh_area_op, edge_lengths_op])
+    # Create an indexed edge-length mesh attribute.
+    mesh_processing.compute_edge_lengths(mesh_group)
 
-    # Print mesh_group's values using the operator class's names as keys
-    print(processing_result.get("ComputeUVAreaOp"))
+    print(uv_area)
     # >> 0.375
-    print(processing_result.get("ComputeMeshAreaOp"))
+    print(mesh_area)
     # >> 6.0
 
     # Get and print mesh's edge lengths attributes.
@@ -256,12 +253,12 @@ These operators are divided into two categories:
 Best Practices
 **************
 
-* Chain **cleanup** operators (duplicates / degenerates / short edges) **before**
-  algorithms sensitive to topology (``decimation``, ``remeshing``, ``subdivision``).
-* Keep UV management steps (``UnwrapOp`` or ``RepackOp``) **after** topology edits to avoid
+* Chain **cleanup** functions (duplicates / degenerates / short edges) **before**
+    algorithms sensitive to topology (``decimate``, ``remesh``, ``subdivide``).
+* Keep UV management steps (``unwrap`` or ``repack``) **after** topology edits to avoid
   invalidating UVs unnecessarily.
-* Start with default attributes values, verify results with your renderer or
-  mesh review and then edit operators attributes value as needed.
+* Start with default argument values, verify results with your renderer or
+    mesh review, and then provide only the function arguments that need to change.
 
 
 ****

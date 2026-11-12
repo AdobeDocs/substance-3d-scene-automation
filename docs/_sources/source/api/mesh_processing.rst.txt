@@ -1,5 +1,14 @@
 substance3d.api.mesh_processing
 -------------------------------
+
+Legacy operator API
+~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+   The ``*Op`` classes and ``process()`` compatibility API will be deprecated in favor of the
+   direct mesh-processing functions documented below.
+
 .. automodule:: substance3d.api.mesh_processing.mesh_processing
     :members:
     :show-inheritance:
@@ -449,6 +458,19 @@ substance3d.api.mesh_processing
    +---------------------------------------------+------------+----------------+---------------------------------------------------------------------------------------------------------------+
    | **max_planarity_angular_deviation_degrees** | float      | 10.0           | Maximum allowed absolute angle in degrees between 2 adjacent triangles forming a quad.                        |
    +---------------------------------------------+------------+----------------+---------------------------------------------------------------------------------------------------------------+
+
+
+Functional API
+~~~~~~~~~~~~~~
+
+The preferred API exposes these functions directly from ``substance3d.api.mesh_processing``.
+For example, call ``mesh_processing.decimate(target)`` rather than constructing a
+``DecimationOp`` and passing it to ``process()``.
+
+.. automodule:: substance3d.api.mesh_processing.command_execution
+   :members:
+   :show-inheritance:
+   :member-order: bysource
 
 
 

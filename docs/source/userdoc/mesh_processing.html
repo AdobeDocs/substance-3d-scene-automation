@@ -78,7 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#clean-mesh-and-optimize-it-for-further-processing">Clean mesh and optimize it for further processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recover-quads-from-triangulated-meshes">Recover Quads from triangulated meshes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unwrap-mesh-uvs">Unwrap mesh UVs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compute-mesh-processing-operators-on-the-scene">Compute mesh processing operators on the scene.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-the-processed-scene">Export the processed scene</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#processing-mesh-attributes-and-mesh-subtree-values">Processing Mesh Attributes and Mesh/Subtree Values</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#best-practices">Best Practices</a></li>
 </ul>
@@ -140,31 +140,28 @@
 <h1>CAD &amp; Mesh Processing<a class="headerlink" href="#cad-mesh-processing" title="Link to this heading"></a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>The <strong>SSCA</strong> Mesh Processing module contains a list of operators that can be applied to a given target, such as a StageHandler or PrimHandler.
-Processing on a target will apply the operator on all meshes of the target subtree.</p>
-<p>These operators can be chained in any order to build relevant and adapted processing workflow.</p>
+<p>The <strong>SSCA</strong> Mesh Processing module provides functions that can be applied to a target, such as a StageHandler or PrimHandler.
+Processing a target applies the function to all meshes in the target subtree.</p>
 <p>In industries involving 3D content, assets need to be prepared to fit pipeline requirements.
-With Operators like remeshing, decimation, mesh cleaning and even uv unwrap and repack <strong>SSCA</strong> provides the advantage to automate asset optimization.</p>
+With functions for remeshing, decimation, mesh cleaning, UV unwrap, and repacking, <strong>SSCA</strong> can automate asset optimization.</p>
 <p><strong>Simple Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">mesh_processing</span> <span class="k">as</span> <span class="n">mp</span>
 
 <span class="c1"># Path to the 3D file</span>
-<span class="n">my_3d_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;meshes/mesh_file.obj&quot;</span><span class="p">)</span>
+<span class="n">my_3d_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"meshes/mesh_file.obj"</span><span class="p">)</span>
 
 <span class="c1"># Build a scene from the 3D file</span>
 <span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_3d_file</span><span class="p">)</span>
 
-<span class="c1"># Build a processing workflow (operators are configured via attributes)</span>
-<span class="n">ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="o">.</span><span class="n">DecimationOp</span><span class="p">(),</span> <span class="n">mp</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()]</span>
-
-<span class="c1"># Run the workflow on the whole scene</span>
-<span class="n">mp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">scn</span><span class="p">,</span> <span class="n">ops</span><span class="p">)</span>
+<span class="c1"># Run mesh-processing functions on the whole scene.</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">scn</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Operators process the given prim and its sub-tree.
+<p>Mesh-processing functions process the given prim and its subtree.
 Run it on a Stagehandler to process all meshes of the scene.</p>
 <p>Mesh Processing works the same way on <strong>CAD</strong> and <strong>3D</strong> files.</p>
 </div>
@@ -176,16 +173,16 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Path to the CAD file</span>
-<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;cad_input/my_cad_file.step&quot;</span><span class="p">)</span>
+<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"cad_input/my_cad_file.step"</span><span class="p">)</span>
 
 <span class="c1"># Create a scene</span>
 <span class="n">my_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="c1"># Create a group to host the imported cad file</span>
-<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">&quot;mesh_grp&quot;</span><span class="p">)</span>
+<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="s2">"mesh_grp"</span><span class="p">)</span>
 
-<span class="c1"># Import cad file and set the tessellation level at &#39;medium&#39;.</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">my_cad_file</span><span class="p">,</span> <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="c1"># Import cad file and set the tessellation level at 'medium'.</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">my_cad_file</span><span class="p">,</span> <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s1">'medium'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -196,11 +193,20 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <section id="remove-occluded-meshes">
 <h3>Remove occluded meshes<a class="headerlink" href="#remove-occluded-meshes" title="Link to this heading"></a></h3>
 <p>CAD files often contain meshes or parts that are inside the main asset shape like electrical circuits, or internal mechanical components. These objects are not visible, and removing them can help optimize the mesh processing and the work load for downstream tasks and steps like texturing, staging, etc.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
-<span class="n">remove_occluded_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveOccludedInstancesOp</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A StageHandler processes every mesh below the scene's default prim.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">remove_occluded_instances</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
 
-<span class="c1"># Default precision is set to &#39;Medium&#39;, but you can set it to &#39;Low&#39; or &#39;High&#39; depending on your needs.</span>
-<span class="n">remove_occluded_op</span><span class="o">.</span><span class="n">precision</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">presets</span><span class="o">.</span><span class="n">RemoveOccludedInstancesPrecision</span><span class="o">.</span><span class="n">Medium</span>
+<span class="c1"># mesh_group is a PrimHandler. This processes meshes in its subtree only.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">remove_occluded_instances</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">)</span>
+
+<span class="c1"># A list of PrimHandlers limits processing to the selected child subtrees.</span>
+<span class="n">selected_parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">mesh_group</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mesh_group</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="c1"># Default precision is Medium; select Low or High to tune speed and precision.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">remove_occluded_instances</span><span class="p">(</span>
+    <span class="n">selected_parts</span><span class="p">,</span>
+    <span class="n">precision</span><span class="o">=</span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveOccludedInstancesPrecision</span><span class="o">.</span><span class="n">Medium</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Precision</span></code> attribute controls how many rays are cast to detect occluded meshes. Higher precision casts more rays, so more meshes are considered visible and preserved. For a hermetic shell, precision has no effect, so set it to ‘Low’ to save processing time.</p>
@@ -218,24 +224,24 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 <section id="clean-mesh-and-optimize-it-for-further-processing">
 <h3>Clean mesh and optimize it for further processing<a class="headerlink" href="#clean-mesh-and-optimize-it-for-further-processing" title="Link to this heading"></a></h3>
 <p>Let’s now load some of the cleaning operators:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded</span>
-<span class="n">verts_weld_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">RemoveDuplicateVerticesOp</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure vertices of every mesh are welded.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">remove_duplicate_vertices</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
 
-<span class="c1"># Fix potential non-manifold edges and vertices</span>
-<span class="n">manifoldness_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ResolveNonmanifoldnessOp</span><span class="p">()</span>
+<span class="c1"># Fix potential non-manifold edges and vertices.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">resolve_nonmanifoldness</span><span class="p">(</span><span class="n">my_scene</span><span class="p">)</span>
 
-<span class="c1"># Fill potential mesh holes</span>
-<span class="n">close_mesh_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">CloseSmallHolesOp</span><span class="p">()</span>
-<span class="c1"># Refine CloseSmallHolesOp attribute</span>
-<span class="n">close_mesh_op</span><span class="o">.</span><span class="n">max_hole_size</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># max hole&#39;s boundary vertices number to fill</span>
+<span class="c1"># Fill holes with at most 10 boundary vertices.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">close_small_holes</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">max_hole_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="recover-quads-from-triangulated-meshes">
 <h3>Recover Quads from triangulated meshes<a class="headerlink" href="#recover-quads-from-triangulated-meshes" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quad_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">QuadRecoverOp</span><span class="p">()</span>
-<span class="n">quad_op</span><span class="o">.</span><span class="n">max_corner_angular_deviation_degrees</span> <span class="o">=</span> <span class="mf">60.0</span>
-<span class="n">quad_op</span><span class="o">.</span><span class="n">max_planarity_angular_deviation_degrees</span> <span class="o">=</span> <span class="mf">10.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">quad_recover</span><span class="p">(</span>
+    <span class="n">my_scene</span><span class="p">,</span>
+    <span class="n">max_corner_angular_deviation_degrees</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>
+    <span class="n">max_planarity_angular_deviation_degrees</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/CAD_wire_triangles.jpg"><img alt="Imported" height="205" src="../../_images/CAD_wire_triangles.jpg" width="205" />
@@ -245,24 +251,20 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 </section>
 <section id="unwrap-mesh-uvs">
 <h3>Unwrap mesh UVs<a class="headerlink" href="#unwrap-mesh-uvs" title="Link to this heading"></a></h3>
-<p>The Unwrap operator works with four <a class="reference internal" href="../api/mesh_processing.html#module-substance3d.api.mesh_processing.mesh_processing"><span class="std std-ref">modes</span></a>: <code class="docutils literal notranslate"><span class="pre">Default</span></code>, <code class="docutils literal notranslate"><span class="pre">Organic</span></code>, <code class="docutils literal notranslate"><span class="pre">Fast</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
+<p>The unwrap function supports four <a class="reference internal" href="../api/mesh_processing.html#substance3d-api-mesh-processing"><span class="std std-ref">modes</span></a>: <code class="docutils literal notranslate"><span class="pre">Default</span></code>, <code class="docutils literal notranslate"><span class="pre">Organic</span></code>, <code class="docutils literal notranslate"><span class="pre">Fast</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Default</span></code> and <code class="docutils literal notranslate"><span class="pre">HardEdge</span></code> modes use the same triplanar-style hard-edge seaming behavior. Use <code class="docutils literal notranslate"><span class="pre">Organic</span></code> for the legacy organic-oriented workflow on varied assets. <code class="docutils literal notranslate"><span class="pre">Fast</span></code> prioritizes speed over segmentation and parameterization quality.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Unwrap operator for explicit triplanar-style hard-edge seaming.</span>
-<span class="n">unwrap_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapOp</span><span class="p">()</span>
-
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapMode</span><span class="o">.</span><span class="n">HardEdge</span>
-
-<span class="c1"># Configure packing options.</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="mf">0.002</span>  <span class="c1"># Padding between islands in UV space.</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">max_num_uv_tiles</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Maximum number of UV tiles to use when packing islands.</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">packing</span><span class="o">.</span><span class="n">num_island_rotations</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Number of rotations to try when packing islands.</span>
-
-<span class="c1"># Configure segmentation options.</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_cluster_confidence</span> <span class="o">=</span> <span class="mf">0.97</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_iterations</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max_num_outliers</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">elongation_threshold</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">unwrap_op</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">chunks_elongation</span> <span class="o">=</span> <span class="mf">1.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span>
+    <span class="n">my_scene</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">UnwrapMode</span><span class="o">.</span><span class="n">HardEdge</span><span class="p">,</span>
+    <span class="n">padding_size</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+    <span class="n">max_num_uv_tiles</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">num_island_rotations</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_cluster_confidence</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span>
+    <span class="n">max_num_iterations</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">max_num_outliers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">elongation_threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">chunks_elongation</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/CAD_triplanar_uvs_render.jpg"><img alt="Imported" height="205" src="../../_images/CAD_triplanar_uvs_render.jpg" width="205" />
@@ -271,59 +273,55 @@ Run it on a Stagehandler to process all meshes of the scene.</p>
 </a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unwrap Operator automatically packs UV after Unwrap. You can refine packing results with the packing attributes of the Unwrap operator.</p>
+<p>The unwrap function automatically packs UVs. Use its packing keyword arguments to refine the result.</p>
 </div>
 </section>
-<section id="compute-mesh-processing-operators-on-the-scene">
-<h3>Compute mesh processing operators on the scene.<a class="headerlink" href="#compute-mesh-processing-operators-on-the-scene" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh_processing</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="p">[</span><span class="n">verts_weld_op</span><span class="p">,</span> <span class="n">manifoldness_op</span><span class="p">,</span> <span class="n">close_mesh_op</span><span class="p">,</span> <span class="n">quad_op</span><span class="p">,</span> <span class="n">unwrap_op</span><span class="p">])</span>
-
-<span class="c1"># Export the processed asset scene to a new file</span>
-<span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;mesh_output/processed_cad_file.fbx&quot;</span><span class="p">))</span>
+<section id="export-the-processed-scene">
+<h3>Export the processed scene<a class="headerlink" href="#export-the-processed-scene" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the processed asset scene to a new file</span>
+<span class="n">export</span><span class="o">.</span><span class="n">fbx</span><span class="p">(</span><span class="n">my_scene</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"mesh_output/processed_cad_file.fbx"</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Each operator is executed one after the other, following the specified order.</p>
+<p>Each function runs immediately, so call order defines the processing order.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">parent</span></code> can also be a list of objects (<code class="docutils literal notranslate"><span class="pre">list[PrimHandler]</span></code>), in which case every operator
+<p><code class="docutils literal notranslate"><span class="pre">parent</span></code> can also be a list of objects (<code class="docutils literal notranslate"><span class="pre">list[PrimHandler]</span></code>), in which case the function
 is applied to all the given objects and their subtrees in a single call, e.g.
-<code class="docutils literal notranslate"><span class="pre">mesh_processing.process([obj_a,</span> <span class="pre">obj_b],</span> <span class="pre">[decimate_op])</span></code>. All objects in the list must
+<code class="docutils literal notranslate"><span class="pre">mesh_processing.decimate([obj_a,</span> <span class="pre">obj_b])</span></code>. All objects in the list must
 belong to the same stage.</p>
 </div>
 </section>
 <section id="processing-mesh-attributes-and-mesh-subtree-values">
 <h3>Processing Mesh Attributes and Mesh/Subtree Values<a class="headerlink" href="#processing-mesh-attributes-and-mesh-subtree-values" title="Link to this heading"></a></h3>
 <p>SSCA provides access to mesh and scene hierarchy values, including mesh and/or UV surface areas and edge length metrics.</p>
-<p>These operators are divided into two categories:</p>
+<p>These functions are divided into two categories:</p>
 <ul class="simple">
 <li><p><strong>Indexed mesh attribute</strong>: Operates on each mesh, storing their relative processed values into their mesh attributes.</p></li>
 <li><p><strong>Global mesh/subtree values</strong>: Operates on either an entire scene, a subtree, or a single mesh, returning their processed mesh values as a dictionary.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a 1cm cube mesh</span>
-<span class="n">cube_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./meshes/cube.obj&quot;</span><span class="p">)</span>
+<span class="n">cube_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"./meshes/cube.obj"</span><span class="p">)</span>
 <span class="n">main_scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">&quot;mesh_grp&quot;</span><span class="p">)</span>
+<span class="n">mesh_group</span> <span class="o">=</span> <span class="n">primitive</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="n">main_scene</span><span class="p">,</span> <span class="s2">"mesh_grp"</span><span class="p">)</span>
 <span class="n">scene</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="n">cube_file</span><span class="p">)</span>
 
-<span class="c1"># Load values &amp; attributes operators</span>
-<span class="n">uv_area_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeUVAreaOp</span><span class="p">()</span>  <span class="c1"># Global mesh/subtree value</span>
-<span class="n">mesh_area_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeMeshAreaOp</span><span class="p">()</span>  <span class="c1"># Global mesh/subtree value</span>
-<span class="n">edge_lengths_op</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">ComputeEdgeLengthsOp</span><span class="p">()</span>  <span class="c1"># Indexed mesh attribute</span>
+<span class="c1"># Compute global mesh/subtree values.</span>
+<span class="n">uv_area</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">compute_uv_area</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">)</span>
+<span class="n">mesh_area</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">compute_mesh_area</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">)</span>
 
-<span class="c1"># Process the scene with the operators and store mesh group subtree global values as dictionary</span>
-<span class="n">processing_result</span> <span class="o">=</span> <span class="n">mesh_processing</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">,</span> <span class="p">[</span><span class="n">uv_area_op</span><span class="p">,</span> <span class="n">mesh_area_op</span><span class="p">,</span> <span class="n">edge_lengths_op</span><span class="p">])</span>
+<span class="c1"># Create an indexed edge-length mesh attribute.</span>
+<span class="n">mesh_processing</span><span class="o">.</span><span class="n">compute_edge_lengths</span><span class="p">(</span><span class="n">mesh_group</span><span class="p">)</span>
 
-<span class="c1"># Print mesh_group&#39;s values using the operator class&#39;s names as keys</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">processing_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ComputeUVAreaOp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uv_area</span><span class="p">)</span>
 <span class="c1"># &gt;&gt; 0.375</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">processing_result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ComputeMeshAreaOp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mesh_area</span><span class="p">)</span>
 <span class="c1"># &gt;&gt; 6.0</span>
 
-<span class="c1"># Get and print mesh&#39;s edge lengths attributes.</span>
-<span class="n">cube_mesh</span> <span class="o">=</span> <span class="n">mesh_group</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;mesh&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Get and print mesh's edge lengths attributes.</span>
+<span class="n">cube_mesh</span> <span class="o">=</span> <span class="n">mesh_group</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">'mesh'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">edge_lengths</span> <span class="o">=</span> <span class="n">cube_mesh</span><span class="o">.</span><span class="n">primvars</span><span class="o">.</span><span class="n">edgeLengths</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># cube_mesh.&lt;attribute_full_name&gt;.get()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">edge_lengths</span><span class="p">)</span>
 <span class="c1"># &gt;&gt; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span>
@@ -340,12 +338,18 @@ belong to the same stage.</p>
 <section id="best-practices">
 <h3>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Chain <strong>cleanup</strong> operators (duplicates / degenerates / short edges) <strong>before</strong>
-algorithms sensitive to topology (<code class="docutils literal notranslate"><span class="pre">decimation</span></code>, <code class="docutils literal notranslate"><span class="pre">remeshing</span></code>, <code class="docutils literal notranslate"><span class="pre">subdivision</span></code>).</p></li>
-<li><p>Keep UV management steps (<code class="docutils literal notranslate"><span class="pre">UnwrapOp</span></code> or <code class="docutils literal notranslate"><span class="pre">RepackOp</span></code>) <strong>after</strong> topology edits to avoid
+<li><dl class="simple">
+<dt>Chain <strong>cleanup</strong> functions (duplicates / degenerates / short edges) <strong>before</strong></dt><dd><p>algorithms sensitive to topology (<code class="docutils literal notranslate"><span class="pre">decimate</span></code>, <code class="docutils literal notranslate"><span class="pre">remesh</span></code>, <code class="docutils literal notranslate"><span class="pre">subdivide</span></code>).</p>
+</dd>
+</dl>
+</li>
+<li><p>Keep UV management steps (<code class="docutils literal notranslate"><span class="pre">unwrap</span></code> or <code class="docutils literal notranslate"><span class="pre">repack</span></code>) <strong>after</strong> topology edits to avoid
 invalidating UVs unnecessarily.</p></li>
-<li><p>Start with default attributes values, verify results with your renderer or
-mesh review and then edit operators attributes value as needed.</p></li>
+<li><dl class="simple">
+<dt>Start with default argument values, verify results with your renderer or</dt><dd><p>mesh review, and then provide only the function arguments that need to change.</p>
+</dd>
+</dl>
+</li>
 </ul>
 </section>
 </section>
@@ -364,11 +368,11 @@ Through these modules, you can set arguments like:</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">substance3d.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
 
 <span class="c1"># Path to the CAD file</span>
-<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/cad_file.iges&quot;</span><span class="p">)</span>
+<span class="n">my_cad_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"/cad_file.iges"</span><span class="p">)</span>
 
 <span class="c1"># Build a scene from tessellated CAD file</span>
 <span class="n">scn</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">my_cad_file</span><span class="p">,</span>
-                 <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>  <span class="c1"># Set tessellation level at import.</span>
+                 <span class="n">parametricTessellationLevel</span><span class="o">=</span><span class="s2">"medium"</span><span class="p">,</span>  <span class="c1"># Set tessellation level at import.</span>
                  <span class="n">generalRunMeshCleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set post cleanup operations after import.</span>
                  <span class="n">generalReadHiddenObjects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Read hidden objects from the CAD file as well.</span>
                  <span class="n">generalRunUvCorrection</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Run UV correction, repack UVs into 0-1 space.</span>

@@ -947,7 +947,7 @@ scripted automation.</p>
 <p>The config is a JSON file with a single top-level key <code class="docutils literal notranslate"><span class="pre">variant_sets</span></code> containing an
 array of variant set definitions. For complete working examples, see <a class="reference internal" href="#full-config-examples">Full Config Examples</a> below.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1138,27 +1138,27 @@ array of variant set definitions. For complete working examples, see <a class="r
 <details>
 <summary>Show / Hide</summary><p>File reference:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/hand_hi.usd&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/robot/arm/hand"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/hand_hi.usd"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Prim reference (binds to an existing prim in the scene):</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;has_file_reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/SourceGeometry/hand_hi&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/robot/arm/hand"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"has_file_reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/SourceGeometry/hand_hi"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>File reference with a specific internal prim:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/robot/arm/hand&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/hands.usd&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Hands/HiRes&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/robot/arm/hand"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/hands.usd"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Hands/HiRes"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1171,42 +1171,42 @@ directories, USD material files, and existing scene prims.</p>
 <details>
 <summary>Show / Hide</summary><p>SBSAR material:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/car_paint.sbsar&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/body"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/car_paint.sbsar"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>USD material file:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/brick_wall/brick_wall.usd&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/room/wall"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/brick_wall/brick_wall.usd"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Texture directory:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/prop/surface&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/wood_texture/&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/prop/surface"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/wood_texture/"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Existing prim in the scene:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;has_file_reference&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/Materials/BrickMaterial&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/room/wall"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"has_file_reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/Materials/BrickMaterial"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Wildcard target (applies to every matching prim in the subtree):</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/Looks/Material&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/surface.sbsar&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*/Looks/Material"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/surface.sbsar"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1219,24 +1219,24 @@ parameters.</p>
 <details>
 <summary>Show / Hide</summary><p>USD material input:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/chair/seat/Looks/Material&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;attribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inputs.baseColor&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(1, 0, 0)&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color3f&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/chair/seat/Looks/Material"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATTRIBUTE"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inputs.baseColor"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(1, 0, 0)"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color3f"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>SBSAR procedural parameter:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/floatplane/body&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;attribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;procedural_sbsar.roughness&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.3&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;float&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/floatplane/body"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATTRIBUTE"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"procedural_sbsar.roughness"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"float"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1296,10 +1296,10 @@ sets — for example, selecting a wheel size automatically selects a matching wh
 material.</p>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rubber_large&quot;</span>
+<span class="w">  </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTROLLER"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"variant_set"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WheelMaterial"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"selected_variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rubber_large"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1349,42 +1349,42 @@ configurations — the child sets only appear in the USD when their owning varia
 selected.</p>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VehicleType&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VehicleType"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/car.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/car.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">],</span>
-<span class="w">          </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CarColor&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CarColor"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="p">{</span>
-<span class="w">                      </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/red_paint.sbsar&quot;</span>
+<span class="w">                      </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/body"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/red_paint.sbsar"</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                  </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="p">{</span>
-<span class="w">                      </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/body&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/blue_paint.sbsar&quot;</span>
+<span class="w">                      </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/body"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/blue_paint.sbsar"</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                  </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
@@ -1393,12 +1393,12 @@ selected.</p>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bike&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bike"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/bike.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/bike.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -1416,39 +1416,39 @@ selected.</p>
 <h4>Geometry Swap (vehicle types)<a class="headerlink" href="#geometry-swap-vehicle-types" title="Link to this heading"></a></h4>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vehicle_type&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vehicle_type"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"selected_variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bike&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bike"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/bike.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tests/test_assets/usd/bike.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/car.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tests/test_assets/usd/car.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scooter&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scooter"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tests/test_assets/usd/scooter.fbx&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tests/test_assets/usd/scooter.fbx"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -1467,38 +1467,38 @@ selected.</p>
 <h4>Material Variants (wall finishes)<a class="headerlink" href="#material-variants-wall-finishes" title="Link to this heading"></a></h4>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WallMaterial&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WallMaterial"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;brick&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brick"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/brick_wall/brick_wall.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/room/wall"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/brick_wall/brick_wall.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wood&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wood"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/wood_wall.sbsar&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/room/wall"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/wood_wall.sbsar"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;concrete&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"concrete"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/room/wall&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/concrete_wall/concrete_wall.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/room/wall"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/concrete_wall/concrete_wall.usd"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
@@ -1517,66 +1517,66 @@ selected.</p>
 <h4>Cross-set Coordination with CONTROLLER<a class="headerlink" href="#cross-set-coordination-with-controller" title="Link to this heading"></a></h4>
 <details>
 <summary>Show / Hide</summary><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;variant_sets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"variant_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelSize&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WheelSize"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;small&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"small"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/wheel_small.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/wheel"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/wheel_small.usd"</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard_rubber&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTROLLER"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"variant_set"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WheelMaterial"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"selected_variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard_rubber"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;large&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;models/wheel_large.usd&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/wheel"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GEOMETRY"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"models/wheel_large.usd"</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTROLLER&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;variant_set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;selected_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sport_rubber&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTROLLER"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"variant_set"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WheelMaterial"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"selected_variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sport_rubber"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WheelMaterial&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prim_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;variants&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WheelMaterial"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prim_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standard_rubber&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard_rubber"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/rubber_standard.sbsar&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/wheel"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/rubber_standard.sbsar"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sport_rubber&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;opinions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sport_rubber"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"opinions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;target_prim&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/root/vehicle/wheel&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;opinion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATERIAL&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;referenced_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;materials/rubber_sport.sbsar&quot;</span>
+<span class="w">              </span><span class="nt">"target_prim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/root/vehicle/wheel"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"opinion_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATERIAL"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"referenced_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"materials/rubber_sport.sbsar"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>

@@ -1,6 +1,40 @@
 Substance3d Release Notes
 =========================
 
+1.9.0 (2026/10/26)
++++++
+
+Breaking Changes
+---------------
+- [Material] The legacy ``rotation`` argument in ``material.set_triplanar_transform()`` is deprecated and will be removed in a future release
+- [Scene] Parameters of type ``StageHandler`` / ``PrimHandler`` were renamed after their type: ``scene`` -> ``stage_handler``, ``object`` -> ``prim_handler``, ``objects`` -> ``prim_handlers``, and ``default_object`` -> ``target``. Affected functions: ``scene.save()``, ``scene.set_upaxis()``, ``scene.set_default()``, ``scene.get_default()``, ``scene.delete()``, ``scene.set_visibility()``, ``scene.local_to_reference()``, ``scene.add_reference()`` and ``material.create_from_reference()``. Positional calls are unaffected; calls using the old keyword names now raise ``TypeError``. Set ``SBS3D_DEPRECATED_FEATURES`` to restore the old keyword names, each call then emits a deprecation warning
+- [Utility] ``utility.session_editing()``, ``utility.calculate_bbox()``, ``utility.calculate_bbox_midpoint()`` and ``utility.bbox_info()`` follow the same renaming (``scn``/``scene`` -> ``stage_handler``, ``objects`` -> ``prim_handlers``), with the same ``SBS3D_DEPRECATED_FEATURES`` fallback
+- [Image] With the OpenImageIO 3.1.14 upgrade, ``image.color_space()`` can return a configured alias (e.g. ``srgb_rec709_scene``) instead of ``"sRGB"``. Comparing the result with ``==`` may fail, use ``image.are_color_spaces_equivalent()`` instead
+- [Mesh Processing] The class-based ``*Op`` operators and ``mesh_processing.process()`` are kept for backward compatibility but are superseded by the new direct functions (see Added) and will be deprecated and removed in a future release
+
+General
+-------
+- [General] SSCA now ships directly in Developer Sandbox software
+
+Added
+-----
+- [Mesh Processing] Mesh processing is now exposed as direct functions taking the target as first argument and options as keyword arguments, for example ``mesh_processing.decimate(scene)`` or ``mesh_processing.unwrap(prim_handler, mode=mesh_processing.UnwrapMode.HardEdge)``. The target can be a ``StageHandler``, a ``PrimHandler`` or a list of ``PrimHandler``. Available functions: ``unwrap``, ``repack``, ``triangulate``, ``remove_isolated_vertices``, ``decimate``, ``remesh``, ``subdivide``, ``close_small_holes``, ``orient_outward``, ``normalize``, ``remove_degenerate_faces``, ``remove_duplicate_faces``, ``remove_duplicate_vertices``, ``remove_occluded_instances``, ``remove_tiny_faces``, ``remove_short_edges``, ``resolve_nonmanifoldness``, ``resolve_vertex_nonmanifoldness``, ``compute_mesh_area``, ``compute_uv_area``, ``compute_edge_lengths``, ``compute_face_normals``, ``compute_vertex_normals``, ``compute_normals``, ``compute_tangents_and_bitangents`` and ``quad_recover``
+- [Image] New ``image.are_color_spaces_equivalent(first, second)`` function to compare color-space names, aliases and roles through the active color configuration. It raises for empty or unrecognized names. New ``image.SRGB_COLOR_SPACE`` and ``image.LINEAR_COLOR_SPACE`` string constants; plain ``"sRGB"`` and ``"linear"`` strings remain accepted
+- [Material] ``material.set_triplanar_transform()`` accepts ``rotation_xyz=(x, y, z)`` for per-axis Euler rotation in degrees, applied X then Y then Z. The legacy ``rotation`` argument is deprecated and emits ``DeprecationWarning`` whenever supplied; ``rotation_xyz`` takes precedence when both are given
+- [Mesh Processing] New mesh processing functions ``weld_meshes``, ``remove_t_junctions``, and ``combine_meshes``
+
+Improvements
+------------
+- [Image] Equivalent color-space aliases no longer trigger redundant pixel conversions, and format conversion now reports a failed color transform instead of silently succeeding
+- [Image] OpenImageIO upgraded from 2.4.8 to 3.1.14. Transparent GIF pixels now keep their palette RGB values (with zero alpha) instead of being zeroed
+
+Fixed
+-----
+- [Material] ``material.set_triplanar_transform()`` keeps the legacy ``triplanarRotation`` input synchronized with the Y component of ``triplanarRotationXYZ``, including when using the deprecated ``rotation`` argument
+- [Material] ``material.set_triplanar_transform(rotation=...)`` handles an existing but valueless ``triplanarRotationXYZ`` input by defaulting X/Z to zero
+- [Mesh Processing] ``RemoveTJunctionsOp`` no longer creates zero-area surface facets on CAD-ingested meshes (fix via Lagrange 6.49.0)  
+- [File Formats] T-junction fans on CAD-tessellated meshes no longer produce holes or invalid geometry in converted assets  
+
 1.8.0 (2026/09/30)
 +++++
 

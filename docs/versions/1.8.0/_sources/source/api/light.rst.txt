@@ -1,0 +1,6 @@
+substance3d.api.light
+---------------------
+.. automodule:: substance3d.api.light.light
+    :members:
+    :show-inheritance:
+    :member-order: bysource

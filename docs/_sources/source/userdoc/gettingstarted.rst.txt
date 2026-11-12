@@ -178,8 +178,8 @@ The imported content will replace the content of the selected PrimHandler (usual
 It allows a better control of the scene hierarchy.
 
 .. note::
-    If the referenced file has a declared default object (e.g : defaultPrim metadata in USD), this object and all its sub-objects will be imported. 
-    Otherwise, you can specify the desired object to import using ``default_object`` argument.
+    If the referenced file has a declared default object (e.g : defaultPrim metadata in USD), this object and all its sub-objects will be imported.
+    Otherwise, you can specify the desired object to import using the ``target`` argument.
 
     By default, the default object of all non-USD files will be the root of the scene.
 

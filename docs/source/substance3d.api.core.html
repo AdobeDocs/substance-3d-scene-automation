@@ -1283,13 +1283,16 @@ exists, it will replace <cite>foo</cite> in the module namespace.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="substance3d.api.core.utilities.deprecated_deco">
-<span class="sig-name descname"><span class="pre">deprecated_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.deprecated_deco" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">deprecated_deco</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_in</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.deprecated_deco" title="Link to this definition"></a></dt>
 <dd><p>Decorator that emits a standardized deprecation warning.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fn_name</strong> (<em>str</em>)</p></li>
 <li><p><strong>info</strong> (<em>str</em>)</p></li>
+<li><p><strong>replacement</strong> (<em>str</em>)</p></li>
+<li><p><strong>since</strong> (<em>str</em>)</p></li>
+<li><p><strong>remove_in</strong> (<em>str</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1396,6 +1399,25 @@ LayerStack and does not itself define any external composition arcs.</p>
 <li><p><strong>vector</strong> (<em>list</em>)</p></li>
 <li><p><strong>length</strong> (<em>int</em>)</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="substance3d.api.core.utilities.warn_deprecated">
+<span class="sig-name descname"><span class="pre">warn_deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_in</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#substance3d.api.core.utilities.warn_deprecated" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>)</p></li>
+<li><p><strong>info</strong> (<em>str</em>)</p></li>
+<li><p><strong>replacement</strong> (<em>str</em>)</p></li>
+<li><p><strong>since</strong> (<em>str</em>)</p></li>
+<li><p><strong>remove_in</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
